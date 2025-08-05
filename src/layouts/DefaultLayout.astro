@@ -3,7 +3,6 @@ import '../styles/tailwind.css'
 import '../assets/scss/index.scss'
 import SiteMeta from '../components/SiteMeta.astro'
 import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
 import { ClientRouter } from 'astro:transitions'
 
 const {
@@ -34,7 +33,10 @@ const {
     <main id="main-content" transition:animate="fade">
       <slot />
     </main>
-    <Footer />
+
+    <!-- Animations script -->
+    <script src="/src/assets/js/animations.js"></script>
+
     <style lang="scss" is:global>
       // sticky footer on low content pages
       html,
@@ -49,10 +51,6 @@ const {
 
         main {
           flex: 1 0 auto;
-        }
-
-        footer {
-          flex-shrink: 0;
         }
       }
 

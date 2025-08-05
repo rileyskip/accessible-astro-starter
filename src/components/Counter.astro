@@ -22,14 +22,66 @@ interface Props {
 const { count, title, sub } = Astro.props
 ---
 
-<div class="animate text-center">
-  <p class="text-6xl font-bold">{count}</p>
-  <p class="text-4xl font-semibold">{title}</p>
-  <p class="text-2xl">{sub}</p>
+<div class="animate animate-counter-in text-center">
+  <p class="animate-count-up text-6xl font-bold">{count}</p>
+  <p class="animate-text-slide-up text-4xl font-semibold">{title}</p>
+  <p class="animate-text-fade-in text-2xl">{sub}</p>
 </div>
 
 <style lang="scss">
   div > p:first-child {
     color: var(--link-color);
+  }
+
+  .animate-counter-in {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: counterIn 0.8s ease-out forwards;
+  }
+
+  .animate-count-up {
+    animation: countUp 2s ease-out 0.5s forwards;
+  }
+
+  .animate-text-slide-up {
+    transform: translateY(15px);
+    opacity: 0;
+    animation: textSlideUp 0.6s ease-out 1s forwards;
+  }
+
+  .animate-text-fade-in {
+    opacity: 0;
+    animation: textFadeIn 0.6s ease-out 1.2s forwards;
+  }
+
+  @keyframes counterIn {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes countUp {
+    from {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes textSlideUp {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes textFadeIn {
+    to {
+      opacity: 1;
+    }
   }
 </style>

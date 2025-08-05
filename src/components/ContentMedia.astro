@@ -24,11 +24,68 @@ const { imgSrc, reverseImg = false }: Props = Astro.props
 <section class="my-64">
   <div class="container">
     <div class="grid grid-cols-1 gap-24 md:grid-cols-2">
-      {!reverseImg ? <Media class="rounded-lg" src={imgSrc} /> : ''}
-      <div class="space-content flex flex-col justify-center">
+      {
+        !reverseImg ? (
+          <div class="animate-media-in">
+            <Media class="animate-media-hover rounded-lg" src={imgSrc} />
+          </div>
+        ) : (
+          ''
+        )
+      }
+      <div class="space-content animate-content-in flex flex-col justify-center">
         <slot />
       </div>
-      {reverseImg ? <Media class="rounded-lg" src={imgSrc} /> : ''}
+      {
+        reverseImg ? (
+          <div class="animate-media-in animation-delay-300">
+            <Media class="animate-media-hover rounded-lg" src={imgSrc} />
+          </div>
+        ) : (
+          ''
+        )
+      }
     </div>
   </div>
 </section>
+
+<style lang="scss">
+  .animate-media-in {
+    transform: translateX(-30px);
+    opacity: 0;
+    animation: mediaIn 0.8s ease-out forwards;
+  }
+
+  .animate-content-in {
+    transform: translateX(30px);
+    opacity: 0;
+    animation: contentIn 0.8s ease-out 0.2s forwards;
+  }
+
+  .animate-media-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes mediaIn {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes contentIn {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+</style>

@@ -20,11 +20,13 @@ interface Props {
 const { icon = 'mdi:rocket', title = 'Title' }: Props = Astro.props
 ---
 
-<div class="feature flex flex-col gap-4">
-  <Icon name={icon} />
+<div class="feature animate-feature-in flex flex-col gap-4">
+  <div class="icon-container animate-icon-bounce">
+    <Icon name={icon} />
+  </div>
   <div class="content">
-    <h3 class="text-2xl font-bold">{title}</h3>
-    <p>
+    <h3 class="animate-text-slide text-2xl font-bold">{title}</h3>
+    <p class="animate-text-fade">
       <slot>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, corporis.</slot>
     </p>
   </div>
@@ -35,6 +37,8 @@ const { icon = 'mdi:rocket', title = 'Title' }: Props = Astro.props
 
   .feature {
     position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
     padding: var(--space-l);
     inline-size: calc(100% - var(--space-l));
 
@@ -47,9 +51,22 @@ const { icon = 'mdi:rocket', title = 'Title' }: Props = Astro.props
       inline-size: 100%;
     }
 
+    &:hover {
+      transform: translateY(-8px);
+
+      &::after {
+        transform: translate(4px, 4px);
+      }
+
+      .icon-container {
+        transform: scale(1.1) rotate(5deg);
+      }
+    }
+
     &::before,
     &::after {
       position: absolute;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       content: '';
     }
 
@@ -70,6 +87,10 @@ const { icon = 'mdi:rocket', title = 'Title' }: Props = Astro.props
     }
   }
 
+  .icon-container {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   :global(.feature [data-icon]) {
     inline-size: 4rem;
     block-size: auto;
@@ -79,5 +100,59 @@ const { icon = 'mdi:rocket', title = 'Title' }: Props = Astro.props
   :global(.darkmode .feature::before) {
     box-shadow: 0 0 0 6px var(--color-neutral-900);
     background-color: var(--color-neutral-900);
+  }
+
+  // Animation classes
+  .animate-feature-in {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: featureIn 0.6s ease-out forwards;
+  }
+
+  .animate-icon-bounce {
+    animation: iconBounce 0.8s ease-out 0.2s forwards;
+  }
+
+  .animate-text-slide {
+    transform: translateX(-20px);
+    opacity: 0;
+    animation: textSlide 0.6s ease-out 0.4s forwards;
+  }
+
+  .animate-text-fade {
+    opacity: 0;
+    animation: textFade 0.6s ease-out 0.6s forwards;
+  }
+
+  @keyframes featureIn {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes iconBounce {
+    0% {
+      transform: scale(0) rotate(-10deg);
+    }
+    50% {
+      transform: scale(1.2) rotate(5deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+
+  @keyframes textSlide {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes textFade {
+    to {
+      opacity: 1;
+    }
   }
 </style>

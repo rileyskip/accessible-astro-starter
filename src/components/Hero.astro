@@ -21,25 +21,35 @@ const { src = '/astronaut-hero-img.webp' }: Props = Astro.props
   <div class="container">
     <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
       <div class="flex flex-col items-center gap-8 md:items-start">
-        <h1 class="text-center text-6xl md:text-left lg:text-8xl">
-          <slot><span class="text-gradient">Hi, I'm Riley</span> Web Developer</slot>
+        <h1 class="animate-fade-in-up text-center text-6xl md:text-left lg:text-8xl">
+          <slot><span class="text-gradient animate-gradient">Hi, I'm Riley</span> Web Developer</slot>
         </h1>
-        <p class="text-xl text-center md:text-left lg:text-2xl">
-          I create accessible, beautiful, and functional websites that make a difference. 
-          Passionate about inclusive design and modern web technologies.
+        <p class="animate-fade-in-up animation-delay-200 text-center text-xl md:text-left lg:text-2xl">
+          I create accessible, beautiful, and functional websites that make a difference. Passionate about inclusive
+          design and modern web technologies.
         </p>
-        <div class="flex flex-col gap-3 min-[500px]:flex-row">
-          <a class="button has-icon" href="/about">
+        <div class="animate-fade-in-up animation-delay-400 flex flex-col gap-3 min-[500px]:flex-row">
+          <a class="button has-icon animate-hover-lift" href="/about">
             <Icon name="lucide:user" />
             About Me
           </a>
-          <a class="button has-icon color-secondary" href="/portfolio/">
+          <a class="button has-icon color-secondary animate-hover-lift animation-delay-100" href="/portfolio/">
             <Icon name="lucide:briefcase" />
             View My Work
           </a>
         </div>
       </div>
-      <Image class="hidden lg:block" src={src} alt="Riley Skipper - Web Developer" decoding="async" width={800} height={600} loading="eager" />
+      <div class="animate-fade-in-left animation-delay-600">
+        <Image
+          class="animate-float hidden lg:block"
+          src={src}
+          alt="Riley Skipper - Web Developer"
+          decoding="async"
+          width={800}
+          height={600}
+          loading="eager"
+        />
+      </div>
     </div>
   </div>
 </section>
@@ -58,5 +68,86 @@ const { src = '/astronaut-hero-img.webp' }: Props = Astro.props
     background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  // Animation classes
+  .animate-fade-in-up {
+    transform: translateY(30px);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-left {
+    transform: translateX(-30px);
+    opacity: 0;
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+
+  .animate-gradient {
+    animation: gradientShift 3s ease-in-out infinite;
+    background-size: 200% 200%;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInLeft {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes gradientShift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 </style>
