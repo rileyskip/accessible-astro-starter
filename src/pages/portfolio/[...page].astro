@@ -11,13 +11,11 @@ import projectImage1 from '@assets/images/projects/project-image-1.png'
 import projectImage2 from '@assets/images/projects/project-image-2.png'
 import projectImage3 from '@assets/images/projects/project-image-3.png'
 import projectImage4 from '@assets/images/projects/project-image-4.png'
-import projectImage5 from '@assets/images/projects/project-image-5.png'
-import projectImage6 from '@assets/images/projects/project-image-6.png'
 
 export const getStaticPaths = (async ({ paginate }) => {
   const projects = await getCollection('projects')
 
-  const projectImages = [projectImage1, projectImage2, projectImage3, projectImage4, projectImage5, projectImage6]
+  const projectImages = [projectImage1, projectImage2, projectImage3, projectImage4]
 
   const projectsWithImages = projects.map((project, index) => {
     return {
@@ -35,39 +33,77 @@ interface Props {
 
 const { page } = Astro.props
 
-// Prepare pagination props
-const currentPage = page.currentPage
-const totalPages = Math.ceil(page.total / page.size)
+// Organize projects into sections
+const uxProjects = page.data.filter(
+  (project) => project.data.title === 'Cruise Booking App' || project.data.title === 'Dreamvision',
+)
+
+const developmentProjects = page.data.filter(
+  (project) => project.data.title === 'Expensely' || project.data.title === 'Drupal CMS Development',
+)
 ---
 
 <DefaultLayout
   title="Portfolio"
-  description="A showcase of projects built with Astro Content Collections, demonstrating dynamic content management."
+  description="A showcase of UX design and development projects, demonstrating skills in design, prototyping, and full-stack development."
 >
   <PageHeader
     title="Portfolio"
-    subtitle='A showcase of projects built with Astro Content Collections, demonstrating dynamic content management and organization. Learn more about <a href="https://docs.astro.build/en/guides/content-collections/">Astro Content Collections</a> in the official documentation.'
+    subtitle="A showcase of UX design and development projects, demonstrating skills in design, prototyping, and full-stack development."
     bgType="bordered"
   />
+
   <section class="my-12">
     <div class="container">
-      <p class="text-sm"><em>Project {page.start + 1} through {page.end + 1} of {page.total} total projects</em></p>
-      <ul class="my-3 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {
-          page.data.map((project) => (
-            <li>
-              <Card
-                imageComponent={project.featuredImage}
-                url={'/portfolio/' + project.id}
-                title={project.data.title}
-                footer={'Author: ' + project.data.author}
-              >
-                {project.data.description}
-              </Card>
-            </li>
-          ))
-        }
-      </ul>
+      <!-- UX Design Section -->
+      <div class="mb-16">
+        <h2 class="mb-8 text-4xl font-bold">UX Design</h2>
+        <p class="text-muted mb-8 text-lg">
+          Creative design projects showcasing user experience design, prototyping, and visual storytelling.
+        </p>
+        <ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {
+            uxProjects.map((project) => (
+              <li>
+                <Card
+                  imageComponent={project.featuredImage}
+                  url={'/portfolio/' + project.id}
+                  title={project.data.title}
+                  footer={'Author: ' + project.data.author}
+                >
+                  {project.data.description}
+                </Card>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Development Section -->
+      <div class="mb-16">
+        <h2 class="mb-8 text-4xl font-bold">Development</h2>
+        <p class="text-muted mb-8 text-lg">
+          Full-stack development projects demonstrating React, TypeScript, and Drupal CMS expertise.
+        </p>
+        <ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {
+            developmentProjects.map((project) => (
+              <li>
+                <Card
+                  imageComponent={project.featuredImage}
+                  url={'/portfolio/' + project.id}
+                  title={project.data.title}
+                  footer={'Author: ' + project.data.author}
+                >
+                  {project.data.description}
+                </Card>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Pagination -->
       <div class="mt-12 grid place-content-center">
         <Pagination
           firstPage={page.url.prev ? '/portfolio' : null}

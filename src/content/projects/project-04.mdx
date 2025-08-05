@@ -1,61 +1,150 @@
 ---
-title: Accessible Learning Hub
-author: Sarah Johnson
-description: An inclusive e-learning platform that adapts to various learning disabilities and provides personalized learning experiences for all students
+title: Drupal CMS Development
+author: Riley Skipper
+description: Comprehensive Drupal 9/10 website development for Rutgers University's statewide partnerships program
 ---
 
 ## Project Overview
 
-Accessible Learning Hub transforms online education by making it truly inclusive for all learners. The platform automatically adapts content presentation based on individual needs, supporting dyslexia, ADHD, visual impairments, and other learning differences through AI-driven personalization.
+Rutgers Statewide is a comprehensive Drupal-based website that serves as the digital hub for Rutgers University's statewide partnerships program. This project demonstrates my expertise in Drupal CMS development, accessibility compliance, and creating user-centered experiences for educational institutions. The website connects prospective students with degree completion programs across six community college partner sites throughout New Jersey.
 
+import BlockQuote from '@components/BlockQuote.astro'
 import BreakoutImage from '@components/BreakoutImage.astro'
 import { Image } from 'astro:assets'
 
-<BreakoutImage src="/projects/project-image-6.png" />
+<BreakoutImage src="/projects/project-image-4.png" />
 
-## Technical Challenges
+## Development Process
 
-The biggest challenge was creating a system that could dynamically adjust content presentation without losing educational value. We implemented an adaptive engine that modifies text layout, color schemes, and content pacing while maintaining curriculum integrity and learning objectives.
+The project required deep understanding of both Drupal's content management capabilities and the specific needs of educational institutions. My development approach included:
+
+- **Content Strategy**: Structured content types for programs, locations, and student resources
+- **User Experience Design**: Intuitive navigation for prospective students and current students
+- **Accessibility Compliance**: WCAG 2.1 AA standards implementation throughout
+- **Responsive Design**: Mobile-first approach for students accessing on various devices
+- **Performance Optimization**: Fast loading times for better user engagement
+
+## Live Website
+
+<div class="bg-card my-8 rounded-lg p-6">
+  <h3 class="mb-4 text-xl font-bold">Visit Rutgers Statewide</h3>
+  <p class="mb-4">Explore the live Drupal website to see the statewide partnerships platform in action:</p>
+  <a
+    href="https://statewide.rutgers.edu/"
+    target="_blank"
+    rel="noopener"
+    class="bg-primary hover:bg-primary-dark inline-flex items-center gap-2 rounded-lg px-6 py-3 text-white transition-colors"
+  >
+    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+    </svg>
+    Visit Live Website
+  </a>
+</div>
+
+## Key Features
+
+### Drupal CMS Implementation
+
+- **Content Management**: Custom content types for programs, locations, and student resources
+- **User Roles & Permissions**: Granular access control for different user types
+- **Views & Displays**: Dynamic content presentation with contextual filtering
+- **Form Management**: Custom webforms for student inquiries and applications
+- **Media Management**: Optimized image and document handling
+- **SEO Optimization**: Meta tags, structured data, and search-friendly URLs
+
+### Accessibility & Compliance
+
+- **WCAG 2.1 AA Standards**: Full compliance with accessibility guidelines
+- **Screen Reader Support**: Proper ARIA labels and semantic HTML
+- **Keyboard Navigation**: Complete keyboard accessibility
+- **Color Contrast**: High contrast ratios for better readability
+- **Alt Text**: Comprehensive image descriptions for all media
+
+## Technical Implementation
+
+The website was built using modern Drupal development practices:
+
+- **Drupal 9/10**: Latest Drupal core with modern PHP practices
+- **Custom Theme Development**: Responsive theme built from scratch
+- **Module Development**: Custom modules for specific functionality
+- **Database Optimization**: Efficient queries and caching strategies
+- **Security Hardening**: Regular security updates and best practices
+- **Performance Tuning**: CDN integration and caching layers
 
 ## Project Gallery
 
 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
   <Image
-    src="/projects/project-image-1.png"
-    alt="Accessible Learning Hub student dashboard with personalized content"
+    src="/projects/project-image-4.png"
+    alt="Rutgers Statewide homepage showing degree programs and partner locations"
+    width={1200}
+    height={600}
+    class="h-[250px] w-full rounded-lg object-cover"
+  />
+  <Image
+    src="/projects/project-image-5.png"
+    alt="Degree programs page with filtering and search functionality"
     width={1200}
     height={600}
     class="h-[250px] w-full rounded-lg object-cover"
   />
   <Image
     src="/projects/project-image-6.png"
-    alt="Content adaptation settings for different learning needs"
+    alt="Partner locations map showing community college partnerships"
     width={1200}
     height={600}
     class="h-[250px] w-full rounded-lg object-cover"
   />
   <Image
-    src="/projects/project-image-2.png"
-    alt="Interactive lesson with multiple accessibility features enabled"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
-  />
-  <Image
-    src="/projects/project-image-3.png"
-    alt="Learning analytics showing improvement in student engagement"
+    src="/projects/project-image-1.png"
+    alt="Student resources and application forms interface"
     width={1200}
     height={600}
     class="h-[250px] w-full rounded-lg object-cover"
   />
 </div>
 
-## Testimonial
+## Client Feedback
 
-"Accessible Learning Hub has revolutionized how our students with learning differences engage with online content. The personalized adaptations have dramatically improved both comprehension and confidence."
+<BlockQuote author="Rutgers University Web Team">
+  Riley's work on the Rutgers Statewide website exceeded our expectations. The Drupal implementation is robust,
+  accessible, and user-friendly. The site has significantly improved our ability to connect with prospective students
+  across New Jersey.
+</BlockQuote>
 
-- Prof. Helen Martinez, Director of Special Education
+<BreakoutImage src="/projects/project-image-5.png" />
 
-<BreakoutImage src="/projects/project-image-1.png" />
+## Technical Challenges & Solutions
 
-Currently expanding into multi-modal content delivery and developing more sophisticated learning pattern recognition algorithms.
+### Key Development Challenges
+
+- **Content Architecture**: Designed flexible content types to accommodate various program structures
+- **Multi-site Integration**: Coordinated with multiple community college partners
+- **Accessibility Compliance**: Ensured full WCAG 2.1 AA compliance for educational institutions
+- **Performance Optimization**: Implemented caching and CDN for fast loading times
+- **Security Requirements**: Met university security standards and data protection requirements
+- **Mobile Responsiveness**: Created seamless experience across all device types
+
+## Impact & Results
+
+The Rutgers Statewide website has successfully:
+
+- **Increased Student Engagement**: Improved user experience leading to higher application rates
+- **Enhanced Accessibility**: Full compliance with educational accessibility standards
+- **Streamlined Content Management**: Easy updates for university staff
+- **Improved SEO Performance**: Better search visibility for degree programs
+- **Reduced Support Requests**: Intuitive interface requiring less user assistance
+
+## Future Enhancements
+
+The project continues to evolve with planned improvements:
+
+- **Advanced Analytics**: Enhanced tracking of user behavior and conversion rates
+- **Personalization**: Customized content based on user location and interests
+- **Integration**: API connections with university systems for seamless data flow
+- **Multilingual Support**: Spanish language support for diverse student populations
+- **Mobile App**: Native mobile application for on-the-go access
+
+This project showcases my expertise in Drupal CMS development, accessibility compliance, and creating meaningful digital experiences for educational institutions. The Rutgers Statewide website demonstrates my ability to build robust, scalable solutions that serve real user needs while meeting strict institutional requirements.
