@@ -5,7 +5,18 @@ import Feature from '@components/Feature.astro'
 import Counter from '@components/Counter.astro'
 import ContentMedia from '@components/ContentMedia.astro'
 import ExternalLink from '@components/ExternalLink.astro'
-import { Accordion, AccordionItem, Avatar, AvatarGroup, Tabs,  TabsList, TabsTab, TabsPanel, } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+import {
+  Accordion,
+  AccordionItem,
+  Avatar,
+  AvatarGroup,
+  Tabs,
+  TabsList,
+  TabsTab,
+  TabsPanel,
+  Media,
+} from 'accessible-astro-components'
 ---
 
 <DefaultLayout title="Riley Skipper - Web Developer">
@@ -15,22 +26,28 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup, Tabs,  TabsList, TabsTab
       <h2 class="mb-16 text-6xl">What I Do</h2>
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
         <Feature icon="lucide:accessibility" title="Accessible Design">
-          I believe the web should be for everyone. Every project I build follows WCAG guidelines and accessibility best practices to ensure inclusive experiences.
+          I believe the web should be for everyone. Every project I build follows WCAG guidelines and accessibility best
+          practices to ensure inclusive experiences.
         </Feature>
         <Feature icon="lucide:code" title="Modern Development">
-          I build with cutting-edge technologies like React, TypeScript, and Astro to create fast, scalable, and maintainable web applications.
+          I build with cutting-edge technologies like React, TypeScript, and Astro to create fast, scalable, and
+          maintainable web applications.
         </Feature>
         <Feature icon="lucide:palette" title="Beautiful UI/UX">
-          Creating intuitive and visually appealing interfaces that users love to interact with. Design that works for everyone.
+          Creating intuitive and visually appealing interfaces that users love to interact with. Design that works for
+          everyone.
         </Feature>
         <Feature icon="lucide:zap" title="Performance">
-          Fast loading times and smooth interactions are non-negotiable. I optimize every project for speed and efficiency.
+          Fast loading times and smooth interactions are non-negotiable. I optimize every project for speed and
+          efficiency.
         </Feature>
         <Feature icon="lucide:users" title="User-Centered">
-          Every decision is made with the user in mind. I research, test, and iterate to create the best possible experience.
+          Every decision is made with the user in mind. I research, test, and iterate to create the best possible
+          experience.
         </Feature>
         <Feature icon="lucide:heart" title="Passionate">
-          I love what I do and it shows in my work. I'm always learning, growing, and pushing the boundaries of what's possible on the web.
+          I love what I do and it shows in my work. I'm always learning, growing, and pushing the boundaries of what's
+          possible on the web.
         </Feature>
       </div>
     </div>
@@ -47,8 +64,9 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup, Tabs,  TabsList, TabsTab
       <TabsPanel id="panel-1" labelledby="tab-1" selected>
         <h3>User-Centered Design</h3>
         <p>
-          I start every project by understanding the users and their needs. Through research, wireframing, and prototyping, 
-          I create designs that are both beautiful and functional. Accessibility is built into every design decision from the start.
+          I start every project by understanding the users and their needs. Through research, wireframing, and
+          prototyping, I create designs that are both beautiful and functional. Accessibility is built into every design
+          decision from the start.
         </p>
         <a href="/portfolio/">View my design work</a>
       </TabsPanel>
@@ -65,16 +83,17 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup, Tabs,  TabsList, TabsTab
           />
         </div>
         <p>
-          I write clean, semantic code that's easy to maintain and scale. Using modern frameworks and best practices, 
-          I build applications that perform well and are future-proof.
+          I write clean, semantic code that's easy to maintain and scale. Using modern frameworks and best practices, I
+          build applications that perform well and are future-proof.
         </p>
         <a href="/portfolio/">See my code</a>
       </TabsPanel>
       <TabsPanel id="panel-3" labelledby="tab-3">
         <h3>Thorough Testing</h3>
         <p>
-          Quality is paramount. I test across different browsers, devices, and assistive technologies to ensure 
-          every project works flawlessly for all users. Performance, accessibility, and user experience are thoroughly validated.
+          Quality is paramount. I test across different browsers, devices, and assistive technologies to ensure every
+          project works flawlessly for all users. Performance, accessibility, and user experience are thoroughly
+          validated.
         </p>
         <a href="/portfolio/">Check my projects</a>
       </TabsPanel>
@@ -83,15 +102,16 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup, Tabs,  TabsList, TabsTab
   <ContentMedia imgSrc="/accessible-components.webp">
     <h2>Why Accessibility Matters</h2>
     <p class="text-2xl">
-      The web should be accessible to everyone. I build with semantic HTML, proper ARIA labels, keyboard navigation, 
-      and screen reader support. Every project I create follows WCAG 2.2 AA standards to ensure an inclusive experience for all users.
+      The web should be accessible to everyone. I build with semantic HTML, proper ARIA labels, keyboard navigation, and
+      screen reader support. Every project I create follows WCAG 2.2 AA standards to ensure an inclusive experience for
+      all users.
     </p>
   </ContentMedia>
   <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
     <h2>Modern Web Technologies</h2>
     <p class="text-2xl">
-      I stay current with the latest web technologies and best practices. From React and TypeScript to Astro and modern CSS, 
-      I use the right tools for each project to deliver exceptional results.
+      I stay current with the latest web technologies and best practices. From React and TypeScript to Astro and modern
+      CSS, I use the right tools for each project to deliver exceptional results.
     </p>
   </ContentMedia>
   <section class="my-64">
@@ -107,32 +127,37 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup, Tabs,  TabsList, TabsTab
         <Accordion>
           <AccordionItem name="exclusive" title="What's your development process?" open>
             <p>
-              I follow a user-centered approach: research and discovery, design and prototyping, development with accessibility in mind, 
-              thorough testing, and ongoing support. Each phase includes client feedback to ensure we're building exactly what you need.
+              I follow a user-centered approach: research and discovery, design and prototyping, development with
+              accessibility in mind, thorough testing, and ongoing support. Each phase includes client feedback to
+              ensure we're building exactly what you need.
             </p>
           </AccordionItem>
           <AccordionItem name="exclusive" title="How do you ensure accessibility?">
             <p>
-              I build accessibility into every project from the start using semantic HTML, proper ARIA labels, keyboard navigation, 
-              and screen reader testing. All projects meet WCAG 2.2 AA standards and are tested with assistive technologies.
+              I build accessibility into every project from the start using semantic HTML, proper ARIA labels, keyboard
+              navigation, and screen reader testing. All projects meet WCAG 2.2 AA standards and are tested with
+              assistive technologies.
             </p>
           </AccordionItem>
           <AccordionItem name="exclusive" title="What technologies do you use?">
             <p>
-              I work with modern web technologies including React, TypeScript, Astro, Next.js, and various CSS frameworks. 
-              I choose the best tools for each project based on requirements, performance needs, and maintainability.
+              I work with modern web technologies including React, TypeScript, Astro, Next.js, and various CSS
+              frameworks. I choose the best tools for each project based on requirements, performance needs, and
+              maintainability.
             </p>
           </AccordionItem>
           <AccordionItem name="exclusive" title="Do you provide ongoing support?">
             <p>
-              Yes! I offer ongoing maintenance, updates, and support for all projects. I believe in building long-term relationships 
-              with clients and ensuring your website continues to perform well and meet your evolving needs.
+              Yes! I offer ongoing maintenance, updates, and support for all projects. I believe in building long-term
+              relationships with clients and ensuring your website continues to perform well and meet your evolving
+              needs.
             </p>
           </AccordionItem>
           <AccordionItem name="exclusive" title="How do you handle project communication?">
             <p>
-              Clear communication is key to successful projects. I provide regular updates, use project management tools for transparency, 
-              and am always available to answer questions. I believe in keeping you informed every step of the way.
+              Clear communication is key to successful projects. I provide regular updates, use project management tools
+              for transparency, and am always available to answer questions. I believe in keeping you informed every
+              step of the way.
             </p>
           </AccordionItem>
         </Accordion>
@@ -145,26 +170,138 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup, Tabs,  TabsList, TabsTab
       <p class="text-2xl">
         I'm constantly learning and expanding my skill set to deliver the best possible solutions for my clients.
       </p>
-      <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
-        <Avatar initials="DR" title="Drupal 9 & 10" subtitle="CMS Development" />
-        <Avatar initials="WP" title="WordPress" subtitle="Content Management" />
-        <Avatar initials="HT" title="HTML 5" subtitle="Semantic Markup" />
-        <Avatar initials="CS" title="CSS" subtitle="Styling & Layout" />
-        <Avatar initials="JS" title="JavaScript" subtitle="Interactive Logic" />
-        <Avatar initials="BS" title="Bootstrap 4 & 5" subtitle="CSS Framework" />
-        <Avatar initials="MY" title="MySQL" subtitle="Database Management" />
-        <Avatar initials="AP" title="Apache" subtitle="Web Server" />
-        <Avatar initials="LD" title="Lando/Docker" subtitle="Development Environment" />
-        <Avatar initials="XP" title="XAMPP" subtitle="Local Development" />
-        <Avatar initials="GH" title="GitHub" subtitle="Version Control" />
-        <Avatar initials="PM" title="PHPMyAdmin" subtitle="Database Admin" />
-        <Avatar initials="FG" title="Figma" subtitle="Design Tool" />
-        <Avatar initials="AC" title="Adobe CC" subtitle="Creative Suite" />
-        <Avatar initials="WF" title="Wireframing" subtitle="UX Design" />
-        <Avatar initials="PT" title="Prototyping" subtitle="User Testing" />
-        <Avatar initials="CD" title="Collaborative Design" subtitle="Team Work" />
-        <Avatar initials="UT" title="User Testing" subtitle="UX Research" />
-      </AvatarGroup>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img src="https://www.drupal.org/files/Wordmark_blue_RGB.png" alt="Drupal" class="mx-auto mb-4 h-12 w-auto" />
+          <h3 class="mb-2 text-xl font-bold">Drupal 9 & 10</h3>
+          <p class="text-muted text-sm">CMS Development</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img
+            src="https://s.w.org/style/images/about/WordPress-logotype-standard.png"
+            alt="WordPress"
+            class="mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">WordPress</h3>
+          <p class="text-muted text-sm">Content Management</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img
+            src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png"
+            alt="HTML5"
+            class="mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">HTML 5</h3>
+          <p class="text-muted text-sm">Semantic Markup</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg"
+            alt="CSS3"
+            class="mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">CSS</h3>
+          <p class="text-muted text-sm">Styling & Layout</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+            alt="JavaScript"
+            class="mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">JavaScript</h3>
+          <p class="text-muted text-sm">Interactive Logic</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img
+            src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
+            alt="Bootstrap"
+            class="mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">Bootstrap 4 & 5</h3>
+          <p class="text-muted text-sm">CSS Framework</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img
+            src="https://www.mysql.com/common/logos/logo-mysql-170x115.png"
+            alt="MySQL"
+            class="mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">MySQL</h3>
+          <p class="text-muted text-sm">Database Management</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img src="https://httpd.apache.org/images/apache-feather.png" alt="Apache" class="mx-auto mb-4 h-12 w-auto" />
+          <h3 class="mb-2 text-xl font-bold">Apache</h3>
+          <p class="text-muted text-sm">Web Server</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img src="https://lando.dev/images/logo.png" alt="Lando" class="mx-auto mb-4 h-12 w-auto" />
+          <h3 class="mb-2 text-xl font-bold">Lando/Docker</h3>
+          <p class="text-muted text-sm">Development Environment</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img src="https://www.apachefriends.org/images/xampp-logo.png" alt="XAMPP" class="mx-auto mb-4 h-12 w-auto" />
+          <h3 class="mb-2 text-xl font-bold">XAMPP</h3>
+          <p class="text-muted text-sm">Local Development</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img
+            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+            alt="GitHub"
+            class="mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">GitHub</h3>
+          <p class="text-muted text-sm">Version Control</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img
+            src="https://www.phpmyadmin.net/static/images/logo.png"
+            alt="PHPMyAdmin"
+            class="mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">PHPMyAdmin</h3>
+          <p class="text-muted text-sm">Database Admin</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img
+            src="https://www.figma.com/community/plugin/1144423918235619483/icon"
+            alt="Figma"
+            class="mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">Figma</h3>
+          <p class="text-muted text-sm">Design Tool</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Adobe_Systems_logo_and_wordmark.svg"
+            alt="Adobe Creative Cloud"
+            class="mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">Adobe CC</h3>
+          <p class="text-muted text-sm">Creative Suite</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <Icon name="lucide:layout" class="text-primary mx-auto mb-4 h-12 w-12" />
+          <h3 class="mb-2 text-xl font-bold">Wireframing</h3>
+          <p class="text-muted text-sm">UX Design</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <Icon name="lucide:smartphone" class="text-secondary mx-auto mb-4 h-12 w-12" />
+          <h3 class="mb-2 text-xl font-bold">Prototyping</h3>
+          <p class="text-muted text-sm">User Testing</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <Icon name="lucide:users" class="text-accent mx-auto mb-4 h-12 w-12" />
+          <h3 class="mb-2 text-xl font-bold">Collaborative Design</h3>
+          <p class="text-muted text-sm">Team Work</p>
+        </div>
+        <div class="bg-card rounded-2xl p-6 text-center">
+          <Icon name="lucide:search" class="text-primary mx-auto mb-4 h-12 w-12" />
+          <h3 class="mb-2 text-xl font-bold">User Testing</h3>
+          <p class="text-muted text-sm">UX Research</p>
+        </div>
+      </div>
     </div>
   </section>
   <section class="mt-64 mb-32">
