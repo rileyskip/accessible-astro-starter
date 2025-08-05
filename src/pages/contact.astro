@@ -1,0 +1,196 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import { Icon } from 'astro-icon/components'
+---
+
+<DefaultLayout title="Contact Riley Skipper - Let's Work Together">
+  <section class="my-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl text-center">
+        <h1 class="mb-8 text-6xl lg:text-8xl">Let's Connect</h1>
+        <p class="text-xl lg:text-2xl">
+          I'm always excited to hear about new projects and opportunities. 
+          Whether you want to discuss a project, ask a question, or just say hello, 
+          I'd love to hear from you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-64">
+    <div class="container">
+      <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
+        <div class="space-y-8">
+          <h2 class="text-4xl">Get in Touch</h2>
+          <p class="text-xl">
+            The best way to reach me is through email. I typically respond within 24 hours 
+            during business days. I'm also active on social media and always happy to connect 
+            with fellow developers and potential clients.
+          </p>
+          
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <Icon name="lucide:mail" class="h-6 w-6 text-primary" />
+              <div>
+                <h3 class="font-bold">Email</h3>
+                <a href="mailto:ryskipdesigns@gmail.com" class="text-lg hover:text-primary">
+                  ryskipdesigns@gmail.com
+                </a>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <Icon name="lucide:phone" class="h-6 w-6 text-secondary" />
+              <div>
+                <h3 class="font-bold">Phone</h3>
+                <a href="tel:334-390-1674" class="text-lg hover:text-primary">
+                  334-390-1674
+                </a>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <Icon name="lucide:map-pin" class="h-6 w-6 text-accent" />
+              <div>
+                <h3 class="font-bold">Location</h3>
+                <p class="text-lg">Available for remote work</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <Icon name="lucide:clock" class="h-6 w-6 text-accent" />
+              <div>
+                <h3 class="font-bold">Response Time</h3>
+                <p class="text-lg">Within 24 hours</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold">Follow Me</h3>
+            <div class="flex gap-4">
+              <a href="https://github.com/rileyskipper" class="flex items-center gap-2 rounded-lg bg-card p-3 hover:bg-primary hover:text-white">
+                <Icon name="lucide:github" class="h-5 w-5" />
+                <span>GitHub</span>
+              </a>
+              <a href="https://linkedin.com/in/ryskipper" class="flex items-center gap-2 rounded-lg bg-card p-3 hover:bg-primary hover:text-white">
+                <Icon name="lucide:linkedin" class="h-5 w-5" />
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-card p-8">
+          <h2 class="mb-6 text-3xl">Send a Message</h2>
+          <form class="space-y-6">
+            <div>
+              <label for="name" class="mb-2 block font-bold">Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                class="w-full rounded-lg border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
+                placeholder="Your name"
+              />
+            </div>
+            
+            <div>
+              <label for="email" class="mb-2 block font-bold">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                class="w-full rounded-lg border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
+                placeholder="your.email@example.com"
+              />
+            </div>
+            
+            <div>
+              <label for="subject" class="mb-2 block font-bold">Subject</label>
+              <select 
+                id="subject" 
+                name="subject" 
+                required 
+                class="w-full rounded-lg border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
+              >
+                <option value="">Select a subject</option>
+                <option value="project">New Project</option>
+                <option value="consultation">Consultation</option>
+                <option value="accessibility">Accessibility Audit</option>
+                <option value="partnership">Partnership</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="message" class="mb-2 block font-bold">Message</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="6" 
+                required 
+                class="w-full rounded-lg border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
+                placeholder="Tell me about your project or what you'd like to discuss..."
+              ></textarea>
+            </div>
+            
+            <button type="submit" class="button w-full">
+              <Icon name="lucide:send" />
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-64">
+    <div class="container">
+      <h2 class="mb-16 text-6xl text-center">What to Expect</h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div class="rounded-2xl bg-card p-6 text-center">
+          <Icon name="lucide:message-circle" class="mx-auto mb-4 h-12 w-12 text-primary" />
+          <h3 class="mb-2 text-xl font-bold">Quick Response</h3>
+          <p>I'll get back to you within 24 hours with a detailed response about your project.</p>
+        </div>
+        
+        <div class="rounded-2xl bg-card p-6 text-center">
+          <Icon name="lucide:calendar" class="mx-auto mb-4 h-12 w-12 text-secondary" />
+          <h3 class="mb-2 text-xl font-bold">Free Consultation</h3>
+          <p>Let's schedule a call to discuss your needs and see if we're a good fit to work together.</p>
+        </div>
+        
+        <div class="rounded-2xl bg-card p-6 text-center">
+          <Icon name="lucide:file-text" class="mx-auto mb-4 h-12 w-12 text-accent" />
+          <h3 class="mb-2 text-xl font-bold">Detailed Proposal</h3>
+          <p>I'll provide a comprehensive proposal with timeline, deliverables, and investment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-64">
+    <div class="container">
+      <div class="rounded-2xl bg-gradient-to-br from-primary-100 to-secondary-100 p-12 text-center dark:from-primary-900 dark:to-secondary-900">
+        <h2 class="mb-6 text-4xl">Ready to Start Your Project?</h2>
+        <p class="mb-8 text-xl">
+          I'm excited to hear about your vision and help bring it to life. 
+          Let's create something amazing together.
+        </p>
+        <div class="flex flex-col gap-4 min-[500px]:flex-row min-[500px]:justify-center">
+          <a href="mailto:ryskipdesigns@gmail.com" class="button has-icon">
+            <Icon name="lucide:mail" />
+            Send Email
+          </a>
+          <a href="/portfolio/" class="button has-icon color-secondary">
+            <Icon name="lucide:eye" />
+            View My Work
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</DefaultLayout> 

@@ -1,0 +1,291 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+import { Avatar, AvatarGroup } from 'accessible-astro-components'
+---
+
+<DefaultLayout title="About Riley Skipper - Web Developer">
+  <section class="my-24">
+    <div class="container">
+      <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
+        <div class="flex flex-col gap-8">
+          <h1 class="text-6xl lg:text-8xl">About Me</h1>
+          <p class="text-xl lg:text-2xl">
+            I'm Riley Skipper, a Web Developer and UX/UI Researcher who believes that great websites should be accessible to everyone. 
+            I combine modern development practices with a deep commitment to inclusive design and user experience.
+          </p>
+          <div class="flex flex-col gap-4 min-[500px]:flex-row">
+            <a class="button has-icon" href="/portfolio/">
+              <Icon name="lucide:briefcase" />
+              View My Work
+            </a>
+            <a class="button has-icon color-secondary" href="/contact">
+              <Icon name="lucide:mail" />
+              Get in Touch
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center justify-center">
+          <Image 
+            class="rounded-2xl shadow-2xl" 
+            src="/astronaut-hero-img.webp" 
+            alt="Riley Skipper - Web Developer" 
+            width={500} 
+            height={500} 
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-64">
+    <div class="container">
+      <h2 class="mb-16 text-6xl">My Story</h2>
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div class="space-y-8">
+          <p class="text-xl">
+            My journey in web development began at Camden County College where I earned my Web Design A.A.S. 
+            This foundation led me to Arizona State University where I completed my Internet & Web Development B.S., 
+            solidifying my passion for creating digital experiences that make a real difference.
+          </p>
+          <p class="text-xl">
+            I discovered early on that accessibility wasn't just a nice-to-have—it was essential. 
+            Working with legal associations and university systems taught me that every user matters, 
+            and every website should work for everyone, regardless of their abilities.
+          </p>
+          <p class="text-xl">
+            Today, I specialize in building websites that are not only beautiful and functional 
+            but also inclusive and accessible to everyone. My experience with Drupal, WordPress, 
+            and modern web technologies allows me to create solutions that truly serve their users.
+          </p>
+        </div>
+        <div class="space-y-8">
+          <div class="rounded-2xl bg-gradient-to-br from-primary-100 to-secondary-100 p-8 dark:from-primary-900 dark:to-secondary-900">
+            <h3 class="mb-4 text-2xl font-bold">My Mission</h3>
+            <p class="text-lg">
+              "Strive not to be a success, but rather to be of value." - Albert Einstein
+              I create web experiences that are accessible, performant, and valuable to all users. 
+              I believe that technology should bring people together, not create barriers.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-gradient-to-br from-secondary-100 to-primary-100 p-8 dark:from-secondary-900 dark:to-primary-900">
+            <h3 class="mb-4 text-2xl font-bold">My Values</h3>
+            <ul class="space-y-2 text-lg">
+              <li>• Accessibility first in everything I build</li>
+              <li>• User-centered design and research</li>
+              <li>• Clean, maintainable code that scales</li>
+              <li>• Continuous learning and growth</li>
+              <li>• Collaborative problem-solving</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-64">
+    <div class="container">
+      <h2 class="mb-16 text-6xl">Experience & Education</h2>
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div>
+          <h3 class="mb-8 text-3xl">Professional Experience</h3>
+          <div class="space-y-8">
+            <div class="border-l-4 border-primary pl-6">
+              <h4 class="text-xl font-bold">Web Developer</h4>
+              <p class="text-lg text-muted">Rutgers University • May 2022 - Current</p>
+              <ul class="mt-2 space-y-1 text-sm">
+                <li>• Designing and deploying dynamic elements and page layouts using Drupal CMS</li>
+                <li>• Prototyping and responsive designing websites and products for end users</li>
+                <li>• Accessibility management to comply with standards of ADA requirements</li>
+                <li>• Maintenance through diagnosing and resolving bugs, and QA testing within a local server environment</li>
+                <li>• Establishing a cohesive flow and branding by creating templates for users' editing and design needs</li>
+              </ul>
+            </div>
+            <div class="border-l-4 border-secondary pl-6">
+              <h4 class="text-xl font-bold">Junior Web Developer</h4>
+              <p class="text-lg text-muted">Legal Associations Management • Aug 2021 - May 2022</p>
+              <ul class="mt-2 space-y-1 text-sm">
+                <li>• WordPress based developing and maintaining law firm associations around the U.S.</li>
+                <li>• Assisting in setting up algorithms and data structures using WordPress' Oxygen and jQuery</li>
+                <li>• Designing mockups and prototyping with Figma, and key member to check for QA</li>
+                <li>• Collaboration with clients and marketing to establish design needs</li>
+                <li>• Monthly SEO management and improvements using tools such as Moz Pro and Alexa</li>
+              </ul>
+            </div>
+            <div class="border-l-4 border-accent pl-6">
+              <h4 class="text-xl font-bold">UX/UI Intern</h4>
+              <p class="text-lg text-muted">Philadelphia Printworks • Apr 2019 - Oct 2019</p>
+              <ul class="mt-2 space-y-1 text-sm">
+                <li>• User experience research by monitoring interaction trends</li>
+                <li>• Editing copy for upcoming social media posts</li>
+                <li>• Creative thinking allowing for brainstorming new avenues to increase user engagement</li>
+                <li>• Identifying design and code issues and reaching solutions for optimal user satisfaction</li>
+                <li>• Collaborative redesign of web navigation for improved UX</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="mb-8 text-3xl">Education & Certifications</h3>
+          <div class="space-y-8">
+            <div class="rounded-2xl bg-card p-6">
+              <h4 class="text-xl font-bold">Internet & Web Development B.S.</h4>
+              <p class="text-lg text-muted">Arizona State University • 2017-2019</p>
+              <p class="mt-2">Comprehensive study of web development, user experience design, and modern web technologies.</p>
+            </div>
+            <div class="rounded-2xl bg-card p-6">
+              <h4 class="text-xl font-bold">Web Design A.A.S.</h4>
+              <p class="text-lg text-muted">Camden County College • 2015-2017</p>
+              <p class="mt-2">Foundation in web design principles, HTML, CSS, and fundamental development practices.</p>
+            </div>
+            <div class="rounded-2xl bg-card p-6">
+              <h4 class="text-xl font-bold">ADA Compliance Experience</h4>
+              <p class="text-lg text-muted">Rutgers University</p>
+              <p class="mt-2">Extensive experience implementing and maintaining accessibility standards in higher education environments.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-64">
+    <div class="container">
+      <h2 class="mb-16 text-6xl">Skills & Technologies</h2>
+      <div class="space-y-12">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div class="rounded-2xl bg-card p-6">
+            <h3 class="mb-4 text-xl font-bold">Content Management</h3>
+            <ul class="space-y-2">
+              <li>• Drupal 9 & 10</li>
+              <li>• WordPress</li>
+              <li>• Oxygen Builder</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl bg-card p-6">
+            <h3 class="mb-4 text-xl font-bold">Frontend Development</h3>
+            <ul class="space-y-2">
+              <li>• HTML 5</li>
+              <li>• CSS</li>
+              <li>• JavaScript</li>
+              <li>• Bootstrap 4 & 5</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl bg-card p-6">
+            <h3 class="mb-4 text-xl font-bold">Backend & Tools</h3>
+            <ul class="space-y-2">
+              <li>• MySQL</li>
+              <li>• Apache</li>
+              <li>• Lando/Docker</li>
+              <li>• XAMPP</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl bg-card p-6">
+            <h3 class="mb-4 text-xl font-bold">Development Tools</h3>
+            <ul class="space-y-2">
+              <li>• GitHub</li>
+              <li>• PHPMyAdmin</li>
+              <li>• jQuery</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl bg-card p-6">
+            <h3 class="mb-4 text-xl font-bold">Design & UX</h3>
+            <ul class="space-y-2">
+              <li>• Figma</li>
+              <li>• Adobe Creative Cloud</li>
+              <li>• Wireframing</li>
+              <li>• Prototyping</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl bg-card p-6">
+            <h3 class="mb-4 text-xl font-bold">Research & Testing</h3>
+            <ul class="space-y-2">
+              <li>• User Testing</li>
+              <li>• Collaborative Design</li>
+              <li>• SEO Management</li>
+              <li>• QA Testing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-64">
+    <div class="container">
+      <h2 class="mb-16 text-6xl">When I'm Not Coding</h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-2xl bg-card p-6">
+          <Icon name="lucide:users" class="mb-4 h-12 w-12 text-primary" />
+          <h3 class="mb-2 text-xl font-bold">Team Leadership</h3>
+          <p>Drawing from my experience as a Barista Trainer at Starbucks, I excel at leading teams and creating positive, collaborative environments.</p>
+        </div>
+        <div class="rounded-2xl bg-card p-6">
+          <Icon name="lucide:search" class="mb-4 h-12 w-12 text-secondary" />
+          <h3 class="mb-2 text-xl font-bold">User Research</h3>
+          <p>I love diving deep into user behavior and interaction patterns to create better digital experiences.</p>
+        </div>
+        <div class="rounded-2xl bg-card p-6">
+          <Icon name="lucide:heart" class="mb-4 h-12 w-12 text-accent" />
+          <h3 class="mb-2 text-xl font-bold">Problem Solving</h3>
+          <p>I enjoy identifying design and code issues and finding creative solutions for optimal user satisfaction.</p>
+        </div>
+        <div class="rounded-2xl bg-card p-6">
+          <Icon name="lucide:message-circle" class="mb-4 h-12 w-12 text-primary" />
+          <h3 class="mb-2 text-xl font-bold">Client Collaboration</h3>
+          <p>I thrive on working directly with clients and marketing teams to establish design needs and goals.</p>
+        </div>
+        <div class="rounded-2xl bg-card p-6">
+          <Icon name="lucide:trending-up" class="mb-4 h-12 w-12 text-secondary" />
+          <h3 class="mb-2 text-xl font-bold">SEO & Analytics</h3>
+          <p>I'm passionate about improving website performance and visibility through SEO management and analytics.</p>
+        </div>
+        <div class="rounded-2xl bg-card p-6">
+          <Icon name="lucide:accessibility" class="mb-4 h-12 w-12 text-accent" />
+          <h3 class="mb-2 text-xl font-bold">Accessibility Advocacy</h3>
+          <p>I'm committed to ensuring digital experiences are accessible to everyone, regardless of ability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-64">
+    <div class="container">
+      <h2 class="mb-16 text-6xl">Let's Work Together</h2>
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div class="space-y-8">
+          <p class="text-xl">
+            I'm always excited to take on new projects that challenge me to grow and create something meaningful. 
+            Whether you need a new website, want to improve accessibility, or just want to chat about web development, 
+            I'd love to hear from you.
+          </p>
+          <p class="text-xl">
+            I believe in building long-term relationships with clients, not just completing projects. 
+            I want to understand your goals, your users, and your vision so we can create something truly special together.
+          </p>
+          <div class="flex flex-col gap-4 min-[500px]:flex-row">
+            <a class="button has-icon" href="/contact">
+              <Icon name="lucide:mail" />
+              Start a Project
+            </a>
+            <a class="button has-icon color-secondary" href="/portfolio/">
+              <Icon name="lucide:eye" />
+              See My Work
+            </a>
+          </div>
+        </div>
+        <div class="rounded-2xl bg-gradient-to-br from-primary-100 to-secondary-100 p-8 dark:from-primary-900 dark:to-secondary-900">
+          <h3 class="mb-6 text-2xl font-bold">What I'm Looking For</h3>
+          <ul class="space-y-4 text-lg">
+            <li>• Projects that make a positive impact</li>
+            <li>• Opportunities to push accessibility boundaries</li>
+            <li>• Long-term partnerships with great clients</li>
+            <li>• Projects that challenge me to learn and grow</li>
+            <li>• Work that aligns with my values</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</DefaultLayout> 
