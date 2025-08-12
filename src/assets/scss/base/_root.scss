@@ -1,11 +1,71 @@
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   interpolate-size: allow-keywords;
 
   // brand colors (change these to your own brand colors)
-  --brand-primary: #7c3aed; // violet-700
-  --brand-secondary: #e11d48; // rose-600
+  --brand-primary: #ef4444; // red-500
+  --brand-secondary: #2563eb; // blue-600
+  --brand-accent: #84cc16; // lime-500
   --brand-neutral: #b9bec4;
+  
+  /* 80s Terminal Colors */
+  --terminal-red: #ef4444; // red-500
+  --terminal-blue: #2563eb; // blue-600
+  --terminal-lime: #84cc16; // lime-500
+  --terminal-emerald: #34d399; // emerald-400
+  --terminal-blue-dark: #1e40af; // blue-800
+  --terminal-indigo: #3730a3; // indigo-800
+  --terminal-orange: #ea580c; // orange-600
+  --terminal-rose: #f43f5e; // rose-500
+  --terminal-black: #000000;
+  --terminal-dark-gray: #1a1a1a;
+  --terminal-light-gray: #cccccc;
+  
+  /* Modern Colors */
+  --modern-primary: #2563eb; // blue-600
+  --modern-secondary: #f43f5e; // rose-500
+  --modern-accent: #84cc16; // lime-500
+  --modern-background: #ffffff;
+  --modern-foreground: #1f2937;
+  --modern-muted: #6b7280;
+  
+  /* Background Colors */
+  --background-color: var(--terminal-black);
+  --background-color-subtle: var(--terminal-dark-gray);
+  
+  /* Text Colors */
+  --foreground-color: var(--terminal-lime);
+  --foreground-color-subtle: var(--terminal-light-gray);
+  --foreground-color-muted: #666666;
+  
+  /* Link Colors */
+  --link-color: var(--terminal-emerald);
+  --link-hover-color: var(--terminal-orange);
+  
+  /* Border Colors */
+  --border-color: #333333;
+  --border-color-subtle: #222222;
+  
+  /* Card Colors */
+  --card-background: var(--terminal-dark-gray);
+  --card-border: var(--border-color);
+  
+  /* Icon Colors */
+  --icon-color: var(--terminal-red);
+  
+  /* Grain Textures */
+  --grain-primary: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+  --grain-secondary: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+  --grain-accent: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+  
+  /* Scan Lines */
+  --scan-lines: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(132, 204, 22, 0.1) 2px,
+    rgba(132, 204, 22, 0.1) 4px
+  );
 
   // pallet brand
   --color-primary-100: oklch(from var(--brand-primary) 90% c h);
@@ -33,7 +93,7 @@
   // color scheme
   --foreground-color: light-dark(var(--color-neutral-800), var(--color-neutral-100));
   --background-color: light-dark(var(--color-neutral-100), var(--color-neutral-900));
-  --icon-color: light-dark(var(--color-neutral-800), var(--color-neutral-100));
+  --icon-color: light-dark(var(--color-secondary-400), var(--color-secondary-200));
   --link-color: light-dark(var(--color-primary-400), var(--color-secondary-100));
   --link-hover-color: light-dark(var(--color-primary-300), var(--color-secondary-200));
   --border-color: light-dark(var(--color-neutral-900), var(--color-neutral-100));
@@ -84,7 +144,7 @@
   --space-5xl: clamp(10rem, 9.5652rem + 2.1741vw, 10.5rem);
 
   // grid
-  // https://utopia.fyi/grid/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l&g=s,l,xl,12
+  // https://utopia.fyi/grid/calculator?c=320,16,1.2,1240,20,1.25,5,2,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l&g=s,l,xl,12
   --grid-max-width: 90rem;
   --grid-gutter: var(--space-s-l, clamp(1.125rem, 0.6467rem + 2.3913vw, 2.5rem));
   --grid-columns: 12;
@@ -144,7 +204,32 @@
   --kbd-color-background: light-dark(var(--color-gray-1000), var(--color-gray-200));
 }
 
-// dark color scheme overrides
-.darkmode {
+/* Modern Mode Overrides */
+.modern-mode {
+  color-scheme: light;
+  
+  --background-color: var(--modern-background);
+  --foreground-color: var(--modern-foreground);
+  --foreground-color-subtle: var(--modern-muted);
+  --link-color: var(--modern-primary);
+  --link-hover-color: var(--modern-secondary);
+  --border-color: #e5e7eb;
+  --card-background: #ffffff;
+  --icon-color: var(--modern-primary);
+  
+  /* Remove grain effects in modern mode */
+  --grain-primary: none;
+  --grain-secondary: none;
+  --grain-accent: none;
+  --scan-lines: none;
+}
+
+/* Retro Mode (default) */
+.retro-mode {
   color-scheme: dark;
+}
+
+// light color scheme overrides
+.lightmode {
+  color-scheme: light;
 }

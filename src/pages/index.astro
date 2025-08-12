@@ -20,10 +20,13 @@ import {
 ---
 
 <DefaultLayout title="Riley Skipper - Web Developer">
+  <!-- Grid Overlay for 80s aesthetic -->
+  <div class="grid-overlay"></div>
+
   <Hero />
   <section class="my-64">
     <div class="container">
-      <h2 class="mb-16 text-6xl">What I Do</h2>
+      <h2 class="section-header mb-16 text-6xl">What I Do</h2>
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
         <Feature icon="lucide:accessibility" title="Accessible Design">
           I believe the web should be for everyone. Every project I build follows WCAG guidelines and accessibility best
@@ -53,7 +56,7 @@ import {
     </div>
   </section>
   <div class="space-content">
-    <h2>My Approach</h2>
+    <h2 class="section-header">My Approach</h2>
     <Tabs>
       <TabsList>
         <TabsTab id="tab-1" controls="panel-1" selected>Design</TabsTab>
@@ -72,16 +75,7 @@ import {
       </TabsPanel>
       <TabsPanel id="panel-2" labelledby="tab-2">
         <h3>Clean, Modern Code</h3>
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <Media
-            class="rounded-lg"
-            src="https://images.unsplash.com/photo-1636819488537-a9b1ffb315ce?auto=format&fit=crop&w=800&q=100"
-          />
-          <Media
-            class="rounded-lg"
-            src="https://images.unsplash.com/photo-1636819488537-a9b1ffb315ce?auto=format&fit=crop&w=800&q=100"
-          />
-        </div>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2"></div>
         <p>
           I write clean, semantic code that's easy to maintain and scale. Using modern frameworks and best practices, I
           build applications that perform well and are future-proof.
@@ -117,14 +111,14 @@ import {
   <section class="my-64">
     <div class="container grid grid-cols-1 gap-12 md:grid-cols-2">
       <div class="flex flex-col items-start gap-4">
-        <h2 class="text-6xl">Frequently Asked</h2>
+        <h2 class="section-header text-6xl">Frequently Asked</h2>
         <p class="text-2xl">
           Common questions about my work, process, and how we can collaborate on your next project.
         </p>
         <a class="button" href="/contact">Get in touch</a>
       </div>
       <div class="space-content">
-        <Accordion>
+        <Accordion class="faq-accordion">
           <AccordionItem name="exclusive" title="What's your development process?" open>
             <p>
               I follow a user-centered approach: research and discovery, design and prototyping, development with
@@ -236,7 +230,7 @@ import {
         </div>
         <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.8s">
           <img
-            src="https://httpd.apache.org/images/apache-feather.png"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Apache_HTTP_server_logo_%282016%29.svg/1200px-Apache_HTTP_server_logo_%282016%29.svg.png"
             alt="Apache"
             class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
           />
@@ -245,21 +239,21 @@ import {
         </div>
         <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.9s">
           <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Apache_Friends_logo.svg/1200px-Apache_Friends_logo.svg.png"
+            alt="XAMPP"
+            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">XAMPP</h3>
+          <p class="text-muted text-sm">Local Development</p>
+        </div>
+        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.0s">
+          <img
             src="https://lando.dev/images/logo.png"
             alt="Lando"
             class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
           />
           <h3 class="mb-2 text-xl font-bold">Lando/Docker</h3>
           <p class="text-muted text-sm">Development Environment</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.0s">
-          <img
-            src="https://www.apachefriends.org/images/xampp-logo.png"
-            alt="XAMPP"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">XAMPP</h3>
-          <p class="text-muted text-sm">Local Development</p>
         </div>
         <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.1s">
           <img
@@ -281,7 +275,7 @@ import {
         </div>
         <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.3s">
           <img
-            src="https://www.figma.com/community/plugin/1144423918235619483/icon"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1200px-Figma-logo.svg.png"
             alt="Figma"
             class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
           />
@@ -297,22 +291,22 @@ import {
           <h3 class="mb-2 text-xl font-bold">Adobe CC</h3>
           <p class="text-muted text-sm">Creative Suite</p>
         </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.5s">
+        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.6s">
           <Icon name="lucide:layout" class="text-primary animate-icon-pulse mx-auto mb-4 h-12 w-12" />
           <h3 class="mb-2 text-xl font-bold">Wireframing</h3>
           <p class="text-muted text-sm">UX Design</p>
         </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.6s">
+        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.7s">
           <Icon name="lucide:smartphone" class="text-secondary animate-icon-pulse mx-auto mb-4 h-12 w-12" />
           <h3 class="mb-2 text-xl font-bold">Prototyping</h3>
           <p class="text-muted text-sm">User Testing</p>
         </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.7s">
+        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.8s">
           <Icon name="lucide:users" class="text-accent animate-icon-pulse mx-auto mb-4 h-12 w-12" />
           <h3 class="mb-2 text-xl font-bold">Collaborative Design</h3>
           <p class="text-muted text-sm">Team Work</p>
         </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.8s">
+        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.9s">
           <Icon name="lucide:search" class="text-primary animate-icon-pulse mx-auto mb-4 h-12 w-12" />
           <h3 class="mb-2 text-xl font-bold">User Testing</h3>
           <p class="text-muted text-sm">UX Research</p>
@@ -324,10 +318,10 @@ import {
     <div class="container">
       <h2 class="mb-16 text-6xl">My Impact</h2>
       <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
-        <Counter count="50+" title="Projects" sub="Completed" />
-        <Counter count="100%" title="Accessible" sub="Websites" />
-        <Counter count="5+" title="Years" sub="Experience" />
-        <Counter count="25+" title="Happy" sub="Clients" />
+        <Counter count="20+" title="Websites" sub="Built and Maintained" />
+        <Counter count="95%" title="Accessiblity" sub="Managed and Resolved" />
+        <Counter count="5+" title="Years" sub="Experience in Dev" />
+        <Counter count="5" title="New Tools" sub="Learned this year (and counting)" />
       </div>
     </div>
   </section>
@@ -340,7 +334,7 @@ import {
     padding: var(--space-s);
   }
 
-  // Skills animations
+  /* Skills animations */
   .animate-skill-card {
     transform: translateY(30px) scale(0.9);
     opacity: 0;
@@ -380,5 +374,15 @@ import {
     50% {
       transform: scale(1.1);
     }
+  }
+
+  /* FAQ styling */
+  .faq-accordion :global(button),
+  .faq-accordion :global([role='button']),
+  .faq-accordion :global(.accordion-trigger),
+  .faq-accordion :global(.accordion-button) {
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    font-family: Georgia, 'Times New Roman', serif !important;
   }
 </style>

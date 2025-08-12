@@ -1,65 +1,159 @@
 ---
 import { Icon } from 'astro-icon/components'
-import { Image } from 'astro:assets'
 import { SkipLink } from 'accessible-astro-components'
-
-/**
- * Header Component
- *
- * @description A component that displays the header with navigation and logo
- */
-interface Props {
-  /**
-   * The source URL for the logo image
-   */
-  logoSrc?: string
-}
-
-const { logoSrc = '/logo.svg' }: Props = Astro.props
 ---
 
-<header class="bg-background/80 sticky top-0 z-50 backdrop-blur-sm">
-  <SkipLink href="#main-content">Skip to main content</SkipLink>
+<header class="bg-background/80 border-border sticky top-0 z-50 border-b backdrop-blur-sm">
+  <SkipLink />
   <div class="container">
-    <nav class="flex items-center justify-between py-4">
-      <a href="/" class="flex items-center gap-2">
-        <Image class="h-8 w-8" src={logoSrc} alt="Logo" width={32} height={32} />
-        <span class="text-xl font-bold">Riley Skipper</span>
-      </a>
-      <ul class="flex items-center gap-8">
-        <li>
-          <a href="/" class="hover:text-link-hover">Home</a>
-        </li>
-        <li>
-          <a href="/about" class="hover:text-link-hover">About</a>
-        </li>
-        <li>
-          <a href="/portfolio/" class="hover:text-link-hover">Portfolio</a>
-        </li>
-        <li>
-          <a href="/contact" class="hover:text-link-hover">Get in Touch</a>
-        </li>
-        <li>
-          <a href="https://github.com/rileyskip" class="hover:text-link-hover" target="_blank" rel="noopener">
-            <Icon name="lucide:github" class="h-5 w-5" />
-            <span class="sr-only">GitHub</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <div class="flex items-center justify-between py-4">
+      <a href="/" class="hover:text-link-hover text-2xl font-bold"> Riley Skipper </a>
+      <nav>
+        <ul class="flex items-center gap-8">
+          <li>
+            <a href="/" class="hover:text-link-hover">Home</a>
+          </li>
+          <li>
+            <a href="/about" class="hover:text-link-hover">About</a>
+          </li>
+          <li>
+            <a href="/portfolio/" class="hover:text-link-hover">Portfolio</a>
+          </li>
+          <li>
+            <a href="/portfolio/color-palettes" class="hover:text-link-hover">Color Palettes</a>
+          </li>
+          <li>
+            <a href="/contact" class="hover:text-link-hover">Get in Touch</a>
+          </li>
+          <li>
+            <a href="https://github.com/rileyskip" class="hover:text-link-hover" target="_blank" rel="noopener">
+              <Icon name="lucide:github" class="h-5 w-5" />
+              <span class="sr-only">GitHub</span>
+            </a>
+          </li>
+          <li>
+            <button
+              id="back-to-future-btn"
+              class="back-to-future-btn"
+              aria-label="Switch between retro and modern styling"
+            >
+              <Icon name="lucide:zap" class="h-5 w-5" />
+              <span>Back to the Future</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
 
-<style lang="scss" is:global>
-  header {
-    .type-icon {
-      display: block;
-      margin-inline: -7px;
+<style>
+  .back-to-future-btn {
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid var(--terminal-lime);
+    border-radius: 0.25rem;
+    background: var(--terminal-dark-gray);
+    padding: 0.5rem 1rem;
+    overflow: hidden;
+    color: var(--terminal-lime);
+    font-family: 'Courier New', 'Lucida Console', monospace;
+  }
 
-      svg {
-        inline-size: 30px;
-        block-size: 30px;
-      }
-    }
+  .back-to-future-btn::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.3;
+    background-image: var(--grain-primary);
+    background-size: 100px 100px;
+    pointer-events: none;
+    content: '';
+  }
+
+  .back-to-future-btn:hover {
+    transform: scale(1.05);
+    border-color: var(--terminal-orange);
+    background: var(--terminal-lime);
+    color: var(--terminal-black);
+  }
+
+  .back-to-future-btn:hover::before {
+    opacity: 0.4;
+    background-image: var(--grain-secondary);
+  }
+
+  /* Modern styling when not in retro mode */
+  .modern-mode .back-to-future-btn {
+    box-shadow: var(--elevation-2);
+    border: 2px solid var(--color-primary-500);
+    background: var(--color-primary-400);
+    color: white;
+  }
+
+  .modern-mode .back-to-future-btn::before {
+    display: none;
+  }
+
+  .modern-mode .back-to-future-btn:hover {
+    box-shadow: var(--elevation-3);
+    border-color: var(--color-primary-600);
+    background: var(--color-primary-500);
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('back-to-future-btn')
+    const html = document.documentElement
+
+    // Check if we're in retro mode (default)
+    const isRetroMode = !localStorage.getItem('modern-mode')
+
+    if (isRetroMode) {
+      html.classList.add('retro-mode')
+      html.classList.remove('modern-mode')
+    } else {
+      html.classList.add('modern-mode')
+      html.classList.remove('retro-mode')
+    }
+
+    btn.addEventListener('click', function () {
+      if (html.classList.contains('retro-mode')) {
+        // Switch to modern mode
+        html.classList.remove('retro-mode')
+        html.classList.add('modern-mode')
+        localStorage.setItem('modern-mode', 'true')
+
+        // Update button text and icon
+        const span = btn.querySelector('span')
+        const svg = btn.querySelector('svg')
+        if (span) span.textContent = 'Back to the 80s'
+        if (svg) {
+          svg.innerHTML =
+            '<path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+        }
+      } else {
+        // Switch to retro mode
+        html.classList.remove('modern-mode')
+        html.classList.add('retro-mode')
+        localStorage.removeItem('modern-mode')
+
+        // Update button text and icon
+        const span = btn.querySelector('span')
+        const svg = btn.querySelector('svg')
+        if (span) span.textContent = 'Back to the Future'
+        if (svg) {
+          svg.innerHTML =
+            '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+        }
+      }
+    })
+  })
+</script>

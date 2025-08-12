@@ -64,6 +64,123 @@ The application was built using modern web technologies and best practices:
 - **Vercel Deployment**: Fast, reliable hosting with automatic deployments
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 
+## Color Scheme
+
+The Expensely design system uses a carefully crafted color palette that balances professionalism with accessibility:
+
+### Primary Colors
+
+- **Primary Blue**: `#2563eb` - Main brand color for buttons and links
+- **Secondary Blue**: `#3b82f6` - Supporting elements and hover states
+- **Success Green**: `#16a34a` - Positive actions and budget indicators
+- **Warning Yellow**: `#eab308` - Caution states and alerts
+
+### Neutral Colors
+
+- **Dark Gray**: `#111827` - Primary text and headings
+- **Medium Gray**: `#374151` - Secondary text and labels
+- **Light Gray**: `#6b7280` - Tertiary text and disabled states
+- **Border Gray**: `#d1d5db` - Borders and dividers
+- **Background Gray**: `#f3f4f6` - Card and section backgrounds
+- **White**: `#ffffff` - Primary background
+
+### Semantic Colors
+
+- **Error Red**: `#ef4444` - Error states and negative indicators
+- **Purple**: `#a855f7` - Special features and highlights
+
+### Accessibility Considerations
+
+- All color combinations meet WCAG 2.1 AA contrast requirements
+- Color is never used as the sole indicator of information
+- High contrast ratios ensure readability across all devices
+
+<div class="bg-card my-8 rounded-lg p-6">
+  <h3 class="mb-4 text-xl font-bold">Color Palette</h3>
+  <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+    <div class="text-center">
+      <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #2563eb;"></div>
+      <p class="text-sm font-medium">Primary Blue</p>
+      <p class="text-muted text-xs">#2563eb</p>
+    </div>
+    <div class="text-center">
+      <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #3b82f6;"></div>
+      <p class="text-sm font-medium">Secondary Blue</p>
+      <p class="text-muted text-xs">#3b82f6</p>
+    </div>
+    <div class="text-center">
+      <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #16a34a;"></div>
+      <p class="text-sm font-medium">Success Green</p>
+      <p class="text-muted text-xs">#16a34a</p>
+    </div>
+    <div class="text-center">
+      <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #eab308;"></div>
+      <p class="text-sm font-medium">Warning Yellow</p>
+      <p class="text-muted text-xs">#eab308</p>
+    </div>
+  </div>
+  <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-2">
+    <div class="text-center">
+      <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #ef4444;"></div>
+      <p class="text-sm font-medium">Error Red</p>
+      <p class="text-muted text-xs">#ef4444</p>
+    </div>
+    <div class="text-center">
+      <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #a855f7;"></div>
+      <p class="text-sm font-medium">Purple</p>
+      <p class="text-muted text-xs">#a855f7</p>
+    </div>
+  </div>
+</div>
+
+## User Flow
+
+The Expensely user experience follows a carefully designed flow that prioritizes simplicity and efficiency:
+
+### 1. Onboarding Experience
+
+- **Welcome Screen**: Clean introduction with clear value proposition
+- **Quick Setup**: Minimal initial configuration to get users started immediately
+- **Tutorial Overlay**: Optional guided tour of key features
+
+### 2. Main Dashboard
+
+- **Overview Cards**: Quick glance at current month's spending, budget status, and recent transactions
+- **Quick Actions**: Prominent "Add Expense" button for immediate expense entry
+- **Visual Indicators**: Color-coded budget progress and spending alerts
+
+### 3. Expense Entry Flow
+
+- **One-Click Entry**: Streamlined form with smart defaults
+- **Category Selection**: Visual category picker with custom category support
+- **Amount Input**: Large, accessible number input with currency formatting
+- **Auto-Save**: Automatic saving to prevent data loss
+
+### 4. Budget Management
+
+- **Visual Budget Bars**: Clear progress indicators for each category
+- **Alert System**: Notifications when approaching or exceeding budget limits
+- **Flexible Categories**: Customizable budget categories to match user needs
+
+### 5. Analytics & Insights
+
+- **Spending Trends**: Interactive charts showing spending patterns over time
+- **Category Breakdown**: Visual representation of spending by category
+- **Monthly Comparisons**: Easy comparison with previous months
+
+### 6. Data Management
+
+- **Export Options**: Download data in various formats
+- **Backup & Sync**: Local storage with cloud sync capabilities
+- **Privacy Controls**: User-controlled data sharing and retention
+
+### Key UX Principles
+
+- **Progressive Disclosure**: Complex features revealed as needed
+- **Consistent Navigation**: Predictable interface patterns throughout
+- **Responsive Design**: Seamless experience across all device sizes
+- **Accessibility First**: Full keyboard navigation and screen reader support
+
 ## Project Gallery
 
 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">

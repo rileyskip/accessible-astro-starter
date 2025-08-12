@@ -5,22 +5,24 @@ import { Card, Pagination } from 'accessible-astro-components'
 import { getCollection } from 'astro:content'
 import type { GetStaticPaths, Page } from 'astro'
 import type { CollectionEntry } from 'astro:content'
+import { Image } from 'astro:assets'
 
 // Import images directly for optimization
 import projectImage1 from '@assets/images/projects/project-image-1.png'
 import projectImage2 from '@assets/images/projects/project-image-2.png'
 import projectImage3 from '@assets/images/projects/project-image-3.png'
 import projectImage4 from '@assets/images/projects/project-image-4.png'
+import projectImage5 from '@assets/images/projects/project-image-5.png'
 
 export const getStaticPaths = (async ({ paginate }) => {
   const projects = await getCollection('projects')
 
-  const projectImages = [projectImage1, projectImage2, projectImage3, projectImage4]
+  const projectImages = [projectImage1, projectImage2, projectImage3, projectImage4, projectImage5]
 
   const projectsWithImages = projects.map((project, index) => {
     return {
       ...project,
-      featuredImage: projectImages[index % projectImages.length],
+      featuredImage: projectImages[index] || projectImages[0],
     }
   })
 
@@ -33,13 +35,17 @@ interface Props {
 
 const { page } = Astro.props
 
-// Organize projects into sections
+// Filter projects into categories
 const uxProjects = page.data.filter(
   (project) => project.data.title === 'Cruise Booking App' || project.data.title === 'Dreamvision',
 )
 
 const developmentProjects = page.data.filter(
-  (project) => project.data.title === 'Expensely' || project.data.title === 'Drupal CMS Development',
+  (project) =>
+    project.data.title === 'Expensely' ||
+    project.data.title === 'Drupal CMS Development' ||
+    project.data.title === 'GitLab Development' ||
+    project.data.title === 'Hotdog Tracker',
 )
 ---
 
@@ -81,26 +87,42 @@ const developmentProjects = page.data.filter(
 
       <!-- Development Section -->
       <div class="mb-16">
-        <h2 class="mb-8 text-4xl font-bold">Development</h2>
-        <p class="text-muted mb-8 text-lg">
-          Full-stack development projects demonstrating React, TypeScript, and Drupal CMS expertise.
-        </p>
-        <ul class="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {
-            developmentProjects.map((project) => (
-              <li>
-                <Card
-                  imageComponent={project.featuredImage}
-                  url={'/portfolio/' + project.id}
-                  title={project.data.title}
-                  footer={'Author: ' + project.data.author}
-                >
-                  {project.data.description}
-                </Card>
-              </li>
-            ))
-          }
-        </ul>
+        <div>
+          <h2 class="mb-6 text-3xl font-bold">Development</h2>
+          <p class="text-muted mb-8 text-lg">
+            Full-stack development projects showcasing modern web technologies and best practices.
+          </p>
+          <ul class="space-y-8">
+            {
+              developmentProjects.map((project) => (
+                <li class="group">
+                  <a href={`/portfolio/${project.id}/`} class="block">
+                    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                      <div class="space-y-4">
+                        <h3 class="group-hover:text-primary text-2xl font-bold">{project.data.title}</h3>
+                        <p class="text-muted">{project.data.description}</p>
+                        <div class="flex flex-wrap gap-2">
+                          {project.data.tags?.map((tag) => (
+                            <span class="bg-primary/10 text-primary rounded-full px-3 py-1 text-sm">{tag}</span>
+                          ))}
+                        </div>
+                      </div>
+                      <div class="relative overflow-hidden rounded-lg">
+                        <Image
+                          src={project.featuredImage}
+                          alt={project.data.title}
+                          width={600}
+                          height={400}
+                          class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </div>
 
       <!-- Pagination -->

@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content'
+
+const projects = await getCollection('projects')
+console.log(
+  'Projects debug:',
+  projects.map((p) => ({
+    id: p.id,
+    slug: p.slug,
+    collection: p.collection,
+    data: p.data,
+  })),
+)
+---
+
+<html>
+  <head>
+    <title>Debug Projects</title>
+  </head>
+  <body>
+    <h1>Project Debug Info</h1>
+    <pre>{JSON.stringify(projects.map(p => ({
+    id: p.id,
+    slug: p.slug,
+    collection: p.collection,
+    title: p.data.title
+  })), null, 2)}</pre>
+  </body>
+</html>

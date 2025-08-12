@@ -1,0 +1,443 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import { Image } from 'astro:assets'
+---
+
+<DefaultLayout title="Portfolio Color Palettes - Riley Skipper">
+  <section class="my-32">
+    <div class="container">
+      <h1 class="mb-8 text-6xl">Portfolio Color Palettes</h1>
+      <p class="text-muted text-2xl">Explore the design systems and color schemes used in my portfolio projects</p>
+    </div>
+  </section>
+
+  <!-- Cruise Booking App -->
+  <section class="my-32">
+    <div class="container">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div>
+          <h2 class="mb-6 text-4xl">Cruise Booking App</h2>
+          <p class="text-muted mb-8 text-lg">
+            A sophisticated color palette inspired by ocean travel and luxury, designed to convey trust and reliability.
+          </p>
+
+          <div class="mb-8">
+            <h3 class="mb-4 text-2xl font-bold">Primary Colors</h3>
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #1e40af;"></div>
+                <p class="text-sm font-medium">Ocean Blue</p>
+                <p class="text-muted text-xs">#1e40af</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #1e3a8a;"></div>
+                <p class="text-sm font-medium">Deep Navy</p>
+                <p class="text-muted text-xs">#1e3a8a</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #f97316;"></div>
+                <p class="text-sm font-medium">Coral Accent</p>
+                <p class="text-muted text-xs">#f97316</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #fbbf24;"></div>
+                <p class="text-sm font-medium">Gold Highlight</p>
+                <p class="text-muted text-xs">#fbbf24</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="mb-4 text-2xl font-bold">Neutral Colors</h3>
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #1f2937;"></div>
+                <p class="text-sm font-medium">Charcoal</p>
+                <p class="text-muted text-xs">#1f2937</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #4b5563;"></div>
+                <p class="text-sm font-medium">Steel Gray</p>
+                <p class="text-muted text-xs">#4b5563</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #9ca3af;"></div>
+                <p class="text-sm font-medium">Light Gray</p>
+                <p class="text-muted text-xs">#9ca3af</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #e5e7eb;"></div>
+                <p class="text-sm font-medium">Silver Border</p>
+                <p class="text-muted text-xs">#e5e7eb</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #f9fafb;"></div>
+                <p class="text-sm font-medium">Pearl White</p>
+                <p class="text-muted text-xs">#f9fafb</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg border border-gray-300" style="background-color: #ffffff;">
+                </div>
+                <p class="text-sm font-medium">Pure White</p>
+                <p class="text-muted text-xs">#ffffff</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <Image
+            src="/projects/project-image-1.png"
+            alt="Cruise booking app homepage showing featured destinations"
+            width={600}
+            height={400}
+            class="w-full rounded-lg"
+          />
+          <div class="bg-card rounded-lg p-6">
+            <h4 class="mb-4 text-xl font-bold">Design Philosophy</h4>
+            <ul class="space-y-2 text-sm">
+              <li>• <strong>Trust & Reliability:</strong> Blue tones convey security and dependability</li>
+              <li>• <strong>Luxury & Premium:</strong> Gold accents suggest high-quality service</li>
+              <li>• <strong>Warmth & Approachability:</strong> Coral highlights create friendly interactions</li>
+              <li>• <strong>Clean & Modern:</strong> Neutral grays provide professional foundation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dreamvision -->
+  <section class="my-32">
+    <div class="container">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div class="space-y-6">
+          <Image
+            src="/projects/project-image-2.png"
+            alt="Dreamvision homepage with immersive visual storytelling elements"
+            width={600}
+            height={400}
+            class="w-full rounded-lg"
+          />
+          <div class="bg-card rounded-lg p-6">
+            <h4 class="mb-4 text-xl font-bold">Design Philosophy</h4>
+            <ul class="space-y-2 text-sm">
+              <li>• <strong>Creativity & Innovation:</strong> Purple and pink convey artistic expression</li>
+              <li>• <strong>Technology & Trust:</strong> Blue tones represent reliability and expertise</li>
+              <li>• <strong>Energy & Excitement:</strong> Bright colors create engaging user experience</li>
+              <li>• <strong>Modern & Professional:</strong> Clean neutrals provide sophisticated foundation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="mb-6 text-4xl">Dreamvision</h2>
+          <p class="text-muted mb-8 text-lg">
+            A vibrant, energetic color palette that reflects creativity and innovation, designed to inspire and engage.
+          </p>
+
+          <div class="mb-8">
+            <h3 class="mb-4 text-2xl font-bold">Primary Colors</h3>
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #8b5cf6;"></div>
+                <p class="text-sm font-medium">Electric Purple</p>
+                <p class="text-muted text-xs">#8b5cf6</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #ec4899;"></div>
+                <p class="text-sm font-medium">Vibrant Pink</p>
+                <p class="text-muted text-xs">#ec4899</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #06b6d4;"></div>
+                <p class="text-sm font-medium">Neon Blue</p>
+                <p class="text-muted text-xs">#06b6d4</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #84cc16;"></div>
+                <p class="text-sm font-medium">Lime Green</p>
+                <p class="text-muted text-xs">#84cc16</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="mb-4 text-2xl font-bold">Neutral Colors</h3>
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #0f172a;"></div>
+                <p class="text-sm font-medium">Midnight Black</p>
+                <p class="text-muted text-xs">#0f172a</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #475569;"></div>
+                <p class="text-sm font-medium">Slate Gray</p>
+                <p class="text-muted text-xs">#475569</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #94a3b8;"></div>
+                <p class="text-sm font-medium">Cool Gray</p>
+                <p class="text-muted text-xs">#94a3b8</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #e2e8f0;"></div>
+                <p class="text-sm font-medium">Light Gray</p>
+                <p class="text-muted text-xs">#e2e8f0</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #f8fafc;"></div>
+                <p class="text-sm font-medium">Ghost White</p>
+                <p class="text-muted text-xs">#f8fafc</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg border border-gray-300" style="background-color: #ffffff;">
+                </div>
+                <p class="text-sm font-medium">Pure White</p>
+                <p class="text-muted text-xs">#ffffff</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expensely -->
+  <section class="my-32">
+    <div class="container">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div>
+          <h2 class="mb-6 text-4xl">Expensely</h2>
+          <p class="text-muted mb-8 text-lg">
+            A carefully crafted color palette that balances professionalism with accessibility, designed for financial
+            management.
+          </p>
+
+          <div class="mb-8">
+            <h3 class="mb-4 text-2xl font-bold">Primary Colors</h3>
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #2563eb;"></div>
+                <p class="text-sm font-medium">Primary Blue</p>
+                <p class="text-muted text-xs">#2563eb</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #3b82f6;"></div>
+                <p class="text-sm font-medium">Secondary Blue</p>
+                <p class="text-muted text-xs">#3b82f6</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #16a34a;"></div>
+                <p class="text-sm font-medium">Success Green</p>
+                <p class="text-muted text-xs">#16a34a</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #eab308;"></div>
+                <p class="text-sm font-medium">Warning Yellow</p>
+                <p class="text-muted text-xs">#eab308</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="mb-4 text-2xl font-bold">Neutral Colors</h3>
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #111827;"></div>
+                <p class="text-sm font-medium">Dark Gray</p>
+                <p class="text-muted text-xs">#111827</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #374151;"></div>
+                <p class="text-sm font-medium">Medium Gray</p>
+                <p class="text-muted text-xs">#374151</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #6b7280;"></div>
+                <p class="text-sm font-medium">Light Gray</p>
+                <p class="text-muted text-xs">#6b7280</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #d1d5db;"></div>
+                <p class="text-sm font-medium">Border Gray</p>
+                <p class="text-muted text-xs">#d1d5db</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #f3f4f6;"></div>
+                <p class="text-sm font-medium">Background Gray</p>
+                <p class="text-muted text-xs">#f3f4f6</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg border border-gray-300" style="background-color: #ffffff;">
+                </div>
+                <p class="text-sm font-medium">White</p>
+                <p class="text-muted text-xs">#ffffff</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="mb-4 text-2xl font-bold">Semantic Colors</h3>
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-2">
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #ef4444;"></div>
+                <p class="text-sm font-medium">Error Red</p>
+                <p class="text-muted text-xs">#ef4444</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #a855f7;"></div>
+                <p class="text-sm font-medium">Purple</p>
+                <p class="text-muted text-xs">#a855f7</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <Image
+            src="/projects/project-image-3.png"
+            alt="Expensely dashboard showing expense overview and budget tracking"
+            width={600}
+            height={400}
+            class="w-full rounded-lg"
+          />
+          <div class="bg-card rounded-lg p-6">
+            <h4 class="mb-4 text-xl font-bold">Accessibility Features</h4>
+            <ul class="space-y-2 text-sm">
+              <li>• All color combinations meet WCAG 2.1 AA contrast requirements</li>
+              <li>• Color is never used as the sole indicator of information</li>
+              <li>• High contrast ratios ensure readability across all devices</li>
+              <li>• Semantic color usage for clear information hierarchy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drupal CMS -->
+  <section class="my-32">
+    <div class="container">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div class="space-y-6">
+          <Image
+            src="/projects/project-image-4.png"
+            alt="Drupal CMS development for Rutgers Statewide website"
+            width={600}
+            height={400}
+            class="w-full rounded-lg"
+          />
+          <div class="bg-card rounded-lg p-6">
+            <h4 class="mb-4 text-xl font-bold">Technical Implementation</h4>
+            <ul class="space-y-2 text-sm">
+              <li>• <strong>Drupal 9 & 10:</strong> Modern CMS with advanced content management</li>
+              <li>• <strong>Accessibility:</strong> WCAG 2.1 AA compliance throughout</li>
+              <li>• <strong>Responsive Design:</strong> Mobile-first approach</li>
+              <li>• <strong>Performance:</strong> Optimized for speed and SEO</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="mb-6 text-4xl">Drupal CMS Development</h2>
+          <p class="text-muted mb-8 text-lg">
+            Rutgers Statewide website featuring a professional color scheme designed for educational institutions.
+          </p>
+
+          <div class="mb-8">
+            <h3 class="mb-4 text-2xl font-bold">Brand Colors</h3>
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #cc0000;"></div>
+                <p class="text-sm font-medium">Rutgers Red</p>
+                <p class="text-muted text-xs">#cc0000</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #000000;"></div>
+                <p class="text-sm font-medium">Black</p>
+                <p class="text-muted text-xs">#000000</p>
+              </div>
+              <div class="text-center">
+                <div class="mb-2 h-16 w-full rounded-lg border border-gray-300" style="background-color: #ffffff;">
+                </div>
+                <p class="text-sm font-medium">White</p>
+                <p class="text-muted text-xs">#ffffff</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="mb-4 text-2xl font-bold">Live Website</h3>
+            <div class="bg-card rounded-lg p-6">
+              <p class="mb-4">Visit the live Rutgers Statewide website to see the Drupal CMS implementation:</p>
+              <a
+                href="https://statewide.rutgers.edu/"
+                target="_blank"
+                rel="noopener"
+                class="bg-primary hover:bg-primary-dark inline-flex items-center gap-2 rounded-lg px-6 py-3 text-white transition-colors"
+              >
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
+                  ></path>
+                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+                </svg>
+                View Live Website
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color Palette Comparison -->
+  <section class="my-32">
+    <div class="container">
+      <h2 class="mb-12 text-center text-4xl">Color Palette Comparison</h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div class="bg-card rounded-lg p-6">
+          <h3 class="mb-4 text-xl font-bold">Cruise Booking</h3>
+          <div class="space-y-2">
+            <div class="h-8 w-full rounded" style="background-color: #1e40af;"></div>
+            <div class="h-8 w-full rounded" style="background-color: #f97316;"></div>
+            <div class="h-8 w-full rounded" style="background-color: #fbbf24;"></div>
+            <div class="h-8 w-full rounded" style="background-color: #1f2937;"></div>
+          </div>
+        </div>
+
+        <div class="bg-card rounded-lg p-6">
+          <h3 class="mb-4 text-xl font-bold">Dreamvision</h3>
+          <div class="space-y-2">
+            <div class="h-8 w-full rounded" style="background-color: #8b5cf6;"></div>
+            <div class="h-8 w-full rounded" style="background-color: #ec4899;"></div>
+            <div class="h-8 w-full rounded" style="background-color: #06b6d4;"></div>
+            <div class="h-8 w-full rounded" style="background-color: #84cc16;"></div>
+          </div>
+        </div>
+
+        <div class="bg-card rounded-lg p-6">
+          <h3 class="mb-4 text-xl font-bold">Expensely</h3>
+          <div class="space-y-2">
+            <div class="h-8 w-full rounded" style="background-color: #2563eb;"></div>
+            <div class="h-8 w-full rounded" style="background-color: #16a34a;"></div>
+            <div class="h-8 w-full rounded" style="background-color: #eab308;"></div>
+            <div class="h-8 w-full rounded" style="background-color: #111827;"></div>
+          </div>
+        </div>
+
+        <div class="bg-card rounded-lg p-6">
+          <h3 class="mb-4 text-xl font-bold">Drupal CMS</h3>
+          <div class="space-y-2">
+            <div class="h-8 w-full rounded" style="background-color: #cc0000;"></div>
+            <div class="h-8 w-full rounded" style="background-color: #000000;"></div>
+            <div class="h-8 w-full rounded border border-gray-300" style="background-color: #ffffff;"></div>
+            <div class="h-8 w-full rounded" style="background-color: #6b7280;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>
+

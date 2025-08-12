@@ -1,64 +1,67 @@
 ---
+import type { ImageMetadata } from 'astro'
+import { ViewTransitions } from 'astro:transitions'
+import { getImage } from 'astro:assets'
+import Header from '@components/Header.astro'
 import '../styles/tailwind.css'
 import '../assets/scss/index.scss'
-import SiteMeta from '../components/SiteMeta.astro'
-import Header from '../components/Header.astro'
-import { ClientRouter } from 'astro:transitions'
+
+export interface Props {
+  title?: string
+  description?: string
+  author?: string
+  image?: ImageMetadata
+  canonicalURL?: URL
+  type?: string
+}
 
 const {
   title = 'Riley Skipper - Web Developer',
   description = 'Web developer specializing in accessible, modern websites. Creating inclusive digital experiences with React, TypeScript, and Astro.',
-  url = Astro.site,
-  image = 'social-preview-image.png',
   author = 'Riley Skipper',
-} = Astro.props
+  image,
+  canonicalURL = Astro.url,
+  type = 'website',
+}: Props = Astro.props
+
+const ogImage = image ? await getImage({ src: image, alt: title }) : undefined
 ---
 
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en" dir="ltr" class="retro-mode">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!-- favicon -->
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <SiteMeta title={title} description={description.substring(0, 100)} url={url} image={image} author={author} />
-
-    <!-- Enable Astro View Transitions for all browsers -->
-    <ClientRouter />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    {ogImage && <meta property="og:image" content={ogImage.src} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage.src} />}
+    <title>{title}</title>
+    <ViewTransitions />
+    <script>
+      // Set retro mode as default if no preference is stored
+      if (!localStorage.getItem('modern-mode')) {
+        document.documentElement.classList.add('retro-mode')
+        document.documentElement.classList.remove('modern-mode')
+      } else {
+        document.documentElement.classList.add('modern-mode')
+        document.documentElement.classList.remove('retro-mode')
+      }
+    </script>
   </head>
   <body>
     <Header />
-    <main id="main-content" transition:animate="fade">
+    <main id="main-content">
       <slot />
     </main>
-
-    <!-- Animations script -->
     <script src="/src/assets/js/animations.js"></script>
-
-    <style lang="scss" is:global>
-      // sticky footer on low content pages
-      html,
-      body {
-        height: 100%;
-      }
-
-      body {
-        display: flex;
-        flex-direction: column;
-        overflow-x: clip;
-
-        main {
-          flex: 1 0 auto;
-        }
-      }
-
-      pre {
-        border: 2px solid var(--link-color);
-        border-radius: 0.35rem;
-        padding: 1rem;
-      }
-    </style>
   </body>
 </html>
