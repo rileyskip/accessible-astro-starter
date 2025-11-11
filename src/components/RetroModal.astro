@@ -1,0 +1,307 @@
+---
+/**
+ * Retro Modal Component
+ * 
+ * @description An 80s-themed modal that explains the retro mode
+ */
+---
+
+<div id="retro-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+  <div class="modal-container">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title" class="modal-title">
+          <span class="modal-icon">⚡</span> About 80s Mode
+        </h2>
+        <button 
+          id="close-modal" 
+          class="close-button"
+          aria-label="Close modal"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="retro-divider"></div>
+        <p class="modal-text">
+          This 80s mode was designed and created through my love of 80s nostalgia in film and tech. My initial introduction to coding was through the era of total customization in technology in both hardware and online platforms. This mode was created from the heart as a nod to my first evolution of learning to code.
+        </p>
+        <div class="retro-divider"></div>
+        
+        <div class="modal-footer">
+          <span class="footer-text">— Riley Skipper</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 1rem;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .modal-container {
+    max-width: 600px;
+    width: 100%;
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .modal-overlay.active .modal-container {
+    transform: scale(1) translateY(0);
+  }
+
+  .modal-content {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+    border: 3px solid var(--terminal-cyan);
+    border-radius: 0.5rem;
+    box-shadow: 
+      0 0 30px rgba(0, 255, 255, 0.5),
+      inset 0 0 60px rgba(0, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: var(--grain-primary);
+      background-size: 100px 100px;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent, 
+        var(--terminal-cyan) 50%, 
+        transparent
+      );
+      animation: scanline 2s linear infinite;
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid var(--terminal-cyan);
+    position: relative;
+    z-index: 1;
+  }
+
+  .modal-title {
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--terminal-cyan);
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .modal-icon {
+    font-size: 1.75rem;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .close-button {
+    background: transparent;
+    border: 2px solid var(--terminal-cyan);
+    color: var(--terminal-cyan);
+    font-size: 2rem;
+    line-height: 1;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    &:hover {
+      background: var(--terminal-cyan);
+      color: var(--terminal-black);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+      transform: rotate(90deg);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--terminal-pink);
+      outline-offset: 2px;
+    }
+  }
+
+  .modal-body {
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .retro-divider {
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      var(--terminal-cyan) 20%, 
+      var(--terminal-cyan) 80%, 
+      transparent
+    );
+    margin: 1.5rem 0;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+
+  .modal-text {
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--terminal-cyan);
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+  }
+
+  .modal-footer {
+    text-align: right;
+    margin-top: 1.5rem;
+  }
+
+  .footer-text {
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    font-size: 1rem;
+    color: var(--terminal-pink);
+    font-style: italic;
+    text-shadow: 0 0 10px rgba(255, 20, 147, 0.6);
+  }
+
+  @keyframes scanline {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(100vh);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    50% {
+      transform: scale(1.1);
+      filter: brightness(1.5);
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .modal-header {
+      padding: 1rem 1.5rem;
+    }
+
+    .modal-title {
+      font-size: 1.25rem;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .modal-text {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  function initModal() {
+    const modal = document.getElementById('retro-modal')
+    const openBtn = document.getElementById('open-retro-modal')
+    const closeBtn = document.getElementById('close-modal')
+
+    if (!modal) return
+
+    // Open modal
+    if (openBtn) {
+      openBtn.addEventListener('click', () => {
+        modal.classList.add('active')
+        modal.setAttribute('aria-hidden', 'false')
+        document.body.style.overflow = 'hidden'
+      })
+    }
+
+    // Close modal function
+    const closeModal = () => {
+      modal.classList.remove('active')
+      modal.setAttribute('aria-hidden', 'true')
+      document.body.style.overflow = ''
+    }
+
+    // Close button
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal)
+    }
+
+    // Close on overlay click
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal()
+      }
+    })
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal()
+      }
+    })
+  }
+
+  // Run on initial load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initModal)
+  } else {
+    initModal()
+  }
+
+  // Re-run on view transitions
+  document.addEventListener('astro:page-load', initModal)
+  document.addEventListener('astro:after-swap', initModal)
+</script>
+

@@ -1,0 +1,325 @@
+---
+title: Course Hub
+author: Riley Skipper
+description: Designer and co-developer for course management and registration application.
+tags: ['React', 'TypeScript', 'Next.Js', 'Tailwind', 'PostgreSQL']
+---
+
+## Project Overview
+
+Course Hub was built as cross-functional course management and registration system for lifelong learning programs. The platform streamlines the course administration and management, course discovery  and registration process across multiple departments and professional development programs.
+
+import BlockQuote from '@components/BlockQuote.astro'
+import BreakoutImage from '@components/BreakoutImage.astro'
+import { Image } from 'astro:assets'
+
+
+## Design Evolution
+
+### **Phase 1: Initial Branding and Tools**
+
+The initial design was a product of both Adobe XD and Figma. The first iterations featured a card-based layout optimized for mobile devices, making course information easily digestible on smaller screens.
+
+<div class="grid grid-cols-1 gap-4 md:grid-cols-2 my-8">
+  <Image
+    src="/projects/initial-branding.png"
+    alt="Mobile course card layout - Before design"
+    width={500}
+    height={700}
+    class="h-[400px] w-full rounded-lg object-contain bg-white"
+  />
+</div>
+
+The initial design phase included:
+- **Consistent Branding** through color and styling.
+- **First card layout iteration** for course details.
+- **Expandable sections** for admins to edit course details. 
+- **Sortable columns** for easy course comparison
+- **Duel Navigation Menus** based on unauthenticated and Admin view.
+- **Inline actions** for quick registration or viewing details
+- **Multi-field search** with filters for program, instructor, and location
+
+
+
+### **Phase 2: Prototype Evolution**
+ The prototyping phase was created on a local host using HTML, Tailwind CSS, and Javascript. The purpose was for the development team and stakeholders to interact with each functionality of the application, and to evaluate improvements for the design during the development process. 
+
+
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-8">
+  <div class="space-y-4">
+    <Image
+      src="/projects/initial-prototype.png"
+      alt="Master of Business and Science Degree branding"
+      width={1200}
+      height={200}
+      class="w-full"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">User View </h3>
+      <p class="text-muted">During the prototyping, the course detail layout had been improved for easier to follow reading while in large scale. This was also due to new data, that provided more insight in how the layout fit in real time. Other imporovements were an updated menu and navigation, and filtering style. </p>
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <Image
+      src="/projects/initial-admin.png"
+      alt="Education and learning icon"
+      width={500}
+      height={500}
+      class=""
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Admin View</h3>
+      <p class="text-muted">We knew the admin view needed to have a different visual appeal to seperate from user needs. The admin view has a different navigation menu for amdin controls, and has an extra column for Actions to edit or multi-select courses for editing course details. The modal appears when multiple courses are selected for editing. </p>
+    </div>
+    
+  </div>
+    <div class="space-y-4">
+    <Image
+      src="/projects/admin-nav.png"
+      alt="Education and learning icon"
+      width={100}
+      height={300}
+      class=""
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Admin Navigation Menu</h3>
+      <p class="text-muted">The Admin Navigation menu features the course listing page gto voew and edit course details, add banners, view and add admin users, manage courses by term, and logout. </p>
+    </div>
+    
+  </div>
+  
+</div>
+
+
+
+#### Many Rounds of Polling: Admin Course Edit
+
+We tested many componenets of the app during the prototyping phase using Figma. The Admin course editing went through multiple iterations of designs and polling. 
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-8">
+  <div class="space-y-4">
+    <Image
+      src="/projects/admin-edit.png"
+      alt="Master of Business and Science Degree branding"
+      width={1200}
+      height={200}
+      class="w-full"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Concise Admin Edit Modal </h3>
+      
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <Image
+      src="/projects/olliru-sticky.png"
+      alt="Education and learning icon"
+      width={500}
+      height={500}
+      class=""
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Verbose Admin Edit Modal</h3>
+     
+    </div>
+  </div>
+</div>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-8">
+  <div class="space-y-4">
+    <Image
+      src="/projects/override-edit.png"
+      alt="Master of Business and Science Degree branding"
+      width={1200}
+      height={200}
+      class="w-full"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Inline Admin Edit Modal </h3>
+     
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <Image
+      src="/projects/override-off.png"
+      alt="Education and learning icon"
+      width={500}
+      height={500}
+      class=""
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Override Mode</h3>
+     
+    </div>
+  </div>
+</div>
+
+
+
+### **Phase 3: A/B Testing, Design Improvements, and User Flow Figma Protoyping**
+With the use of our functioning prototpe, we A/B tested our application, looked for ways to improve user flow, card layout, and overall usability. 
+Having attended Figcon 2024, I proposed using Dev Mode version of Figma, to enhance our abilities in the software and communicate within the team. 
+
+Once Dev Mode was activated, we rebranded our checkout flows in Figma, created a poll, and found the best solution for user navigation. We applied our new designs and began developing in the Next.js framework.
+
+
+
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 my-12">
+
+<div class="space-y-4">
+    <Image
+      src="/projects/payment-method.png"
+      alt="Course details and registration interface"
+      width={1200}
+      height={600}
+      class="h-[300px] w-full rounded-lg object-contain bg-white "
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Revised Course Lisiting Page: Desktop</h3>
+      <p class="text-muted">Finalizied course listing desktop view based on real data, polling choices, stakeholder input, and A/B testing.</p>
+    </div>
+  </div>
+  <div class="space-y-4">
+    <Image
+      src="/projects/mobile.png"
+      alt="Course details and registration interface"
+      width={1200}
+      height={600}
+      class="h-[300px] w-full rounded-lg object-contain bg-white "
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Revised Course Lisiting Page: Mobile </h3>
+      <p class="text-muted">Finalizied course listing mobile view based on real data, polling choices, stakeholder input, and A/B testing.</p>
+    </div>
+  </div>
+  <div class="space-y-4">
+    <Image
+      src="/projects/button-variants.png"
+      alt="Course listing with concentration grouping"
+      width={1200}
+      height={600}
+      class="h-[300px] w-full rounded-lg object-contain bg-white "
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Button Variants</h3>
+      <p class="text-muted">Interactive, versatile buttons with various styling for Figma prototype. </p>
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <Image
+      src="/projects/cart-options.png"
+      alt="Advanced search and filter interface"
+      width={1200}
+      height={600}
+      class="h-[300px] w-full rounded-lg object-contain bg-white "
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Course Carts</h3>
+      <p class="text-muted">Multiple course cart layouts for checkout page that went through a polling process, with drop down of course details.</p>
+    </div>
+  </div>
+
+  
+
+  <div class="space-y-4">
+    <Image
+      src="/projects/payment-method-2.png"
+      alt="Multi-section course management"
+      width={1200}
+      height={600}
+      class="h-[300px] w-full rounded-lg object-contain bg-white "
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Payment Options</h3>
+      <p class="text-muted">Payment method section for checkout page.</p>
+    </div>
+  </div>
+  <div class="space-y-4">
+    <Image
+      src="/projects/payment-default.png"
+      alt="Multi-section course management"
+      width={1200}
+      height={600}
+      class="h-[300px] w-full rounded-lg object-contain bg-white "
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Default Checkout UI</h3>
+      <p class="text-muted">Default checkout page with no option selected.</p>
+    </div>
+  </div>
+  
+  <div class="space-y-4">
+    <Image
+      src="/projects/PO-left.png"
+      alt="Multi-section course management"
+      width={1200}
+      height={600}
+      class="h-[300px] w-full rounded-lg object-contain bg-white "
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Purchase Order UI</h3>
+      <p class="text-muted">Purchase order option reveals a form.</p>
+    </div>
+  </div>
+  
+  
+  
+  <div class="space-y-4">
+    <Image
+      src="/projects/credit.png"
+      alt="Multi-section course management"
+      width={1200}
+      height={600}
+      class="h-[300px] w-full rounded-lg object-contain bg-white "
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Credit Option UI</h3>
+      <p class="text-muted">Users choosing credit revelas a registration button that externally links to a third party registration page. </p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+### **Phase 4: Technical Implementation, Launch, and Final Notes**
+The application was then developed using Next.js, React, and Tailwind CSS. During development, we continued making improvements to the design as new solutions presented. 
+
+The Course Hub platform was built using modern web technologies.
+
+### Front-end Framework
+
+- **Next.Js 15 (React 19)**
+- **TypeScript**
+- **Tailwind CSS v4**
+- **SCSS/Sass**
+
+### Backend & Database
+
+- **PostgreSQL**
+- **Prisma**
+- **Next.Js API**
+
+
+## Application Features
+
+- **Dynamic URL based filtering**: Provides query params for program areas. 
+- **Admin Ovverride**: Admins can override course data from database instantly.
+- **Special Notes**: Admin controlled messaging systems by department
+- **Status Management**: Quickly change course status (Register, Course Full, Closed)
+- **Season-based navigation**: Switch course listing by season date. 
+- **Department Isolation**: Admins unable to access other departments without authorization.
+- **Powerful Filtering System**: Browse by concentration, season, instructor, or title/ course #.
+- **Screen Reader Support**: Semantic HTML and ARIA labels
+- **Color Contrast**: WCAG AA compliant color combinations
+- **Responsive Text**: Scales appropriately across devices and zoom levels
+- **Form Labels**: Clear, descriptive labels for all input fields
+- **Error Handling**: Helpful error messages and validation

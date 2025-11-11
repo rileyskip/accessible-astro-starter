@@ -1,0 +1,222 @@
+---
+title: Drupal Theming Updates
+author: Riley Skipper
+description: Comprehensive UI/UX improvements in Drupal 10 theme. 
+tags: ['Drupal', 'Custom Theme', 'Twig', 'Templating', 'WCAG 2.1']
+---
+
+## Project Overview
+
+I led a comprehensive theming and design system overhaul for Rutgers University's Drupal-based web platform. This project focused on modernizing the user interface, improving accessibility, implementing a cohesive design system, and enhancing the overall user experience across departmental websites.
+
+import BlockQuote from '@components/BlockQuote.astro'
+import BreakoutImage from '@components/BreakoutImage.astro'
+import { Image } from 'astro:assets'
+
+## Key Needs
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-8">
+  <div class="bg-card rounded-lg p-6 border border-border">
+    <h3 class="text-xl font-bold mb-3">Modern Design Architecture</h3>
+    <p class="text-muted">A modern, versatile design architecture with seamless interactive components that enhance user engagement and provide a contemporary web experience.</p>
+  </div>
+  
+  <div class="bg-card rounded-lg p-6 border border-border">
+    <h3 class="text-xl font-bold mb-3">Enhanced Usability</h3>
+    <p class="text-muted">Enhanced usability for our various age ranges of users and students, ensuring accessibility and intuitive navigation for all audiences.</p>
+  </div>
+  
+  <div class="bg-card rounded-lg p-6 border border-border">
+    <h3 class="text-xl font-bold mb-3">Flexible & Cohesive</h3>
+    <p class="text-muted">Broad in scope to apply across all departments for cohesive branding and recognizable tools, yet tailor-made for the specificities and nuances of each department and school.</p>
+  </div>
+  
+  <div class="bg-card rounded-lg p-6 border border-border">
+    <h3 class="text-xl font-bold mb-3">Powerful Simplicity</h3>
+    <p class="text-muted">Powerful templating that allows free range customization for web editors with no prior experience in coding or web design, achieved by introducing automatic safeguards for ADA and usability.</p>
+  </div>
+</div>
+
+
+
+  
+
+## Key Improvements
+
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 my-12">
+  {/* Responsive and ADA Compliance */}
+  <div class="space-y-4">
+    <Image
+      src="/projects/ADA.png"
+      alt="ADA Compliance checkmark icon"
+      width={500}
+      height={500}
+      class="h-[250px] w-full rounded-lg object-contain bg-white"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Responsive and ADA Compliance</h3>
+      <p class="text-muted">Continuous enhancements to ensure accessibility and optimal performance across devices, making your website more accessible to screen readers and ensuring smoother adjustments between desktop and mobile views.</p>
+    </div>
+  </div>
+
+  {/* Image Crop */}
+  <div class="space-y-4">
+    <Image
+      src="/projects/crop.png"
+      alt="Image crop and frame tools"
+      width={500}
+      height={500}
+      class="h-[250px] w-full rounded-lg object-contain bg-white"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Image Crop</h3>
+      <p class="text-muted">Easily crop images within your website's admin panel, allowing you to adjust product images or blog post featured images. Visit Our Drupal Help to learn how to use Image Crop.</p>
+    </div>
+  </div>
+
+  {/* New Scheme on Components */}
+  <div class="space-y-4">
+    <Image
+      src="/projects/component.png"
+      alt="Modern form components with toggle switches and buttons"
+      width={500}
+      height={500}
+      class="h-[250px] w-full rounded-lg object-contain bg-white"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">New Scheme on Components</h3>
+      <p class="text-muted">Enjoy a modern and seamless design with updated buttons, forms, and other elements, enhancing your site's overall visual appeal.</p>
+    </div>
+  </div>
+
+  {/* Masonry Layout */}
+  <div class="space-y-4">
+    <Image
+      src="/projects/masonry.png"
+      alt="Masonry grid layout system"
+      width={500}
+      height={500}
+      class="h-[250px] w-full rounded-lg object-contain bg-white"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Masonry Layout</h3>
+      <p class="text-muted">Utilize a grid layout on custom pages that displays content of varying heights in a column-based structure without large vertical gaps, ideal for events or news pages.</p>
+    </div>
+  </div>
+
+  {/* Dark Mode */}
+  <div class="space-y-4">
+    <Image
+      src="/projects/dark-mode.png"
+      alt="Light and dark mode toggle icon"
+      width={500}
+      height={500}
+      class="h-[250px] w-full rounded-lg object-contain bg-white"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Dark Mode</h3>
+      <p class="text-muted">A new feature that allows visitors to switch the website interface's color scheme from light to dark, reducing eye strain when viewing your site in low-light conditions.</p>
+    </div>
+  </div>
+
+  {/* New Sitemap Page */}
+  <div class="space-y-4">
+    <Image
+      src="/projects/sitemap.png"
+      alt="Sitemap page visualization"
+      width={500}
+      height={500}
+      class="h-[250px] w-full rounded-lg object-contain bg-white"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">New Sitemap Page</h3>
+      <p class="text-muted">Enhance search engine optimization and user navigation with a dedicated page displaying all your website's sections and pages.</p>
+    </div>
+  </div>
+
+  {/* Parallax Layout */}
+  <div class="space-y-4">
+    <Image
+      src="/projects/parallax.png"
+      alt="Parallax scrolling effect with landscape"
+      width={500}
+      height={500}
+      class="h-[250px] w-full rounded-lg object-contain bg-white"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Parallax Layout</h3>
+      <p class="text-muted">Add a scrolling visual effect that makes websites more engaging and immersive, with background images moving at a speed different from the foreground content.</p>
+    </div>
+  </div>
+
+  {/* UI Framework Upgrade */}
+  <div class="space-y-4">
+    <Image
+      src="/projects/phone.png"
+      alt="Mobile performance optimization with rocket icon"
+      width={500}
+      height={500}
+      class="h-[250px] w-full rounded-lg object-contain bg-white"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">UI Framework Upgrade</h3>
+      <p class="text-muted">Transition from Bootstrap 4 to 5, removing the jQuery dependency and incorporating the latest features and components. This results in faster load times and smoother animations, especially on mobile devices.</p>
+    </div>
+  </div>
+
+  {/* Sticky Menu */}
+  <div class="space-y-4">
+    <Image
+      src="/projects/sticky.png"
+      alt="Sticky navigation menu interface"
+      width={500}
+      height={500}
+      class="h-[250px] w-full rounded-lg object-contain bg-white"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Sticky Menu</h3>
+      <p class="text-muted">Improved user experience by keeping the main menu visible at the top as users scroll down your homepage, allowing for easy navigation.</p>
+    </div>
+  </div>
+
+  {/* Menu Alignment */}
+  <div class="space-y-4">
+    <Image
+      src="/projects/alignment.png"
+      alt="Menu alignment options"
+      width={500}
+      height={500}
+      class="h-[250px] w-full rounded-lg object-contain bg-white"
+    />
+    <div>
+      <h3 class="text-xl font-bold mb-2">Menu Alignment</h3>
+      <p class="text-muted">Choose between a right-aligned or center-justified menu based on the number of main menu items, providing a more tailored navigation experience.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+## Technical Implementation
+
+The Drupal theming project was built using modern web technologies and best practices:
+
+- **Drupal 9/10**: Leveraged the latest Drupal core features
+- **Twig Templates**: Custom Twig templates for flexible theming
+- **CSS Grid & Bootstrap 5**: Modern layout techniques for responsive design
+- **JavaScript ES6+**: Modern JavaScript for interactive components
+- **Accessibility**: WCAG 2.1 AA compliance throughout
+
+
+## Accessibility Features
+
+Accessibility was a core focus throughout the project:
+
+- **Keyboard Navigation**: Full keyboard support for all interactive elements
+- **Screen Reader Optimization**: Semantic HTML and ARIA labels
+- **Color Contrast**: All text meets WCAG AA standards minimum
+- **Alternative Content**: Proper alt text and captions for all media
+- **Auto-ADA**: Preventive measures to warn editors of ADA errors prior to publishing content.
+
