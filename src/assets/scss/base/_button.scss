@@ -38,15 +38,35 @@
     align-items: center;
     gap: var(--space-2xs);
 
-    [data-icon] {
+    [data-icon], svg {
       inline-size: 30px;
       block-size: auto;
+      color: currentColor;
+      opacity: 1;
+      visibility: visible;
     }
 
     &:where(:hover, :focus-visible) {
-      [data-icon] {
+      [data-icon], svg {
         animation: boop 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
       }
     }
+  }
+}
+
+// Modern mode button icons - ensure they're always visible
+.modern-mode .button {
+  [data-icon], svg {
+    color: currentColor !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+// Retro mode button icons - ensure they're visible too
+.retro-mode .button {
+  [data-icon], svg {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }

@@ -18,22 +18,21 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Retro Mode Styling */
+/* Retro Mode Styling - 80s Synthwave Grid */
 .retro-mode body {
   font-family: 'Courier New', 'Lucida Console', monospace;
-  background-image: 
-    var(--scan-lines),
-    linear-gradient(rgba(132, 204, 22, 0.3) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(132, 204, 22, 0.3) 1px, transparent 1px);
-  background-size: 
-    100% 4px,
-    20px 20px,
-    20px 20px;
-  background-position: 
-    0 0,
-    0 0,
-    0 0;
+  background: 
+    radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.9) 100%),
+    linear-gradient(to bottom, 
+      #0a0a0a 0%, 
+      #1a0a2e 25%,
+      #0a0a0a 50%,
+      #16213e 75%,
+      #0a0a0a 100%
+    );
+  background-attachment: fixed;
   position: relative;
+  overflow-x: hidden;
 }
 
 .retro-mode body::before {
@@ -43,11 +42,198 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: var(--grain-primary);
-  background-size: 200px 200px;
-  opacity: 0.2;
+  background-image: 
+    /* Large bright stars */
+    radial-gradient(3px 3px at 20% 30%, white, transparent),
+    radial-gradient(3px 3px at 60% 70%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 80% 10%, white, transparent),
+    radial-gradient(3px 3px at 90% 60%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 15% 90%, white, transparent),
+    radial-gradient(3px 3px at 45% 15%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 75% 85%, white, transparent),
+    /* Medium stars */
+    radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 30% 40%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 50% 60%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 70% 25%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 85% 45%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 25% 75%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 65% 90%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 40% 55%, rgba(255, 255, 255, 0.6), transparent),
+    /* Small stars - lots of them */
+    radial-gradient(1px 1px at 5% 5%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 15% 35%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 25% 65%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 35% 15%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 45% 45%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 55% 75%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 65% 25%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 75% 55%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 85% 15%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 95% 85%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 12% 52%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 22% 82%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 32% 22%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 42% 62%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 52% 92%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 62% 32%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 72% 72%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 82% 42%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 92% 12%, rgba(255, 255, 255, 0.5), transparent),
+    /* Tiny twinkling stars */
+    radial-gradient(1px 1px at 8% 18%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 18% 48%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 28% 78%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 38% 28%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 48% 58%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 58% 88%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 68% 38%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 78% 68%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 88% 28%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 98% 98%, rgba(255, 255, 255, 0.3), transparent);
+  background-size: 
+    200% 200%,
+    180% 180%,
+    190% 190%,
+    200% 200%,
+    185% 185%,
+    195% 195%,
+    175% 175%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  background-position: 
+    0% 0%,
+    100% 0%,
+    20% 30%,
+    80% 80%,
+    60% 40%,
+    40% 10%,
+    70% 60%,
+    10% 20%,
+    30% 40%,
+    50% 60%,
+    70% 25%,
+    85% 45%,
+    25% 75%,
+    65% 90%,
+    40% 55%,
+    5% 5%,
+    15% 35%,
+    25% 65%,
+    35% 15%,
+    45% 45%,
+    55% 75%,
+    65% 25%,
+    75% 55%,
+    85% 15%,
+    95% 85%,
+    12% 52%,
+    22% 82%,
+    32% 22%,
+    42% 62%,
+    52% 92%,
+    62% 32%,
+    72% 72%,
+    82% 42%,
+    92% 12%,
+    8% 18%,
+    18% 48%,
+    28% 78%,
+    38% 28%,
+    48% 58%,
+    58% 88%,
+    68% 38%,
+    78% 68%,
+    88% 28%,
+    98% 98%;
+  opacity: 0.8;
   pointer-events: none;
   z-index: 1;
+  animation: starfield 200s linear infinite, twinkle 3s ease-in-out infinite alternate;
+}
+
+.retro-mode body::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background-image: 
+    linear-gradient(0deg, rgba(147, 51, 234, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(147, 51, 234, 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center bottom;
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: bottom;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%);
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes starfield {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100px);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: center bottom;
+  }
+  100% {
+    background-position: center calc(bottom + 40px);
+  }
 }
 
 /* Modern Mode Styling */
@@ -63,9 +249,11 @@ body {
 /* 80s Terminal Styling */
 .retro-mode h1, .retro-mode h2, .retro-mode h3, .retro-mode h4, .retro-mode h5, .retro-mode h6 {
   font-family: 'Courier New', 'Lucida Console', monospace;
-  border-bottom: 2px solid var(--terminal-lime);
+  border-bottom: 2px solid var(--terminal-cyan);
   padding-bottom: 0.5rem;
   position: relative;
+  color: var(--terminal-cyan) !important;
+  z-index: 2;
 }
 
 .retro-mode h1::after, .retro-mode h2::after, .retro-mode h3::after, .retro-mode h4::after, .retro-mode h5::after, .retro-mode h6::after {
@@ -79,16 +267,40 @@ body {
   background-size: 100px 100px;
   opacity: 0.2;
   pointer-events: none;
+  z-index: -1;
 }
 
 .modern-mode h1, .modern-mode h2, .modern-mode h3, .modern-mode h4, .modern-mode h5, .modern-mode h6 {
   font-family: var(--font-heading);
   border-bottom: none;
   padding-bottom: 0;
+  color: var(--neutral-900) !important;
 }
 
 .modern-mode h1::after, .modern-mode h2::after, .modern-mode h3::after, .modern-mode h4::after, .modern-mode h5::after, .modern-mode h6::after {
   display: none;
+}
+
+/* Modern mode paragraph text */
+.modern-mode p {
+  color: var(--neutral-700);
+}
+
+/* Retro mode paragraph text */
+.retro-mode p {
+  color: var(--terminal-cyan);
+  position: relative;
+  z-index: 2;
+}
+
+/* Retro mode body text color */
+.retro-mode body {
+  color: var(--terminal-cyan);
+}
+
+/* Modern mode body text color */
+.modern-mode body {
+  color: var(--neutral-900);
 }
 
 a {
@@ -177,8 +389,8 @@ html {
 /* Button styling with 80s aesthetic */
 .retro-mode .button {
   background: var(--terminal-dark-gray);
-  border: 2px solid var(--terminal-lime);
-  color: var(--terminal-lime);
+  border: 2px solid var(--terminal-cyan);
+  color: var(--terminal-cyan);
   font-family: 'Courier New', 'Lucida Console', monospace;
   transition: all 0.3s ease;
   position: relative;
@@ -195,12 +407,30 @@ html {
     background-size: 100px 100px;
     opacity: 0.3;
     pointer-events: none;
+    z-index: 0;
+  }
+  
+  /* Make sure button content is above the grain */
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Ensure icons are visible */
+  svg, [data-icon] {
+    color: var(--terminal-cyan) !important;
+    position: relative;
+    z-index: 1;
   }
   
   &:hover {
-    background: var(--terminal-lime);
+    background: var(--terminal-cyan);
     color: var(--terminal-black);
-    border-color: var(--terminal-orange);
+    border-color: var(--terminal-pink);
+    
+    svg, [data-icon] {
+      color: var(--terminal-black) !important;
+    }
     
     &::before {
       background-image: var(--grain-secondary);
@@ -236,7 +466,7 @@ a:not(.button) {
 /* Terminal-style cards */
 .retro-mode .card, .retro-mode .bg-card {
   background: var(--card-background);
-  border: 2px solid var(--terminal-lime);
+  border: 2px solid var(--terminal-cyan);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -252,10 +482,23 @@ a:not(.button) {
     background-size: 150px 150px;
     opacity: 0.2;
     pointer-events: none;
+    z-index: 0;
+  }
+  
+  /* Make sure card content is visible */
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  h3, h4, h5, p, div {
+    color: var(--terminal-cyan);
+    position: relative;
+    z-index: 1;
   }
   
   &:hover {
-    border-color: var(--terminal-orange);
+    border-color: var(--terminal-pink);
     transform: translateY(-2px);
     
     &::before {
@@ -288,9 +531,10 @@ img {
 
 /* Icon styling */
 .retro-mode [data-icon], .retro-mode .icon {
-  color: var(--terminal-red);
+  color: var(--terminal-cyan) !important;
   transition: all 0.3s ease;
   position: relative;
+  z-index: 2;
   
   &::after {
     content: '';
@@ -307,7 +551,7 @@ img {
   }
   
   &:hover {
-    color: var(--terminal-orange);
+    color: var(--terminal-pink) !important;
     transform: scale(1.1);
     
     &::after {
@@ -387,8 +631,8 @@ img {
 /* Terminal-style input fields */
 .retro-mode input, .retro-mode textarea, .retro-mode select {
   background: var(--terminal-dark-gray);
-  border: 2px solid var(--terminal-lime);
-  color: var(--terminal-lime);
+  border: 2px solid var(--terminal-cyan);
+  color: var(--terminal-cyan);
   font-family: 'Courier New', 'Lucida Console', monospace;
   position: relative;
   
@@ -406,7 +650,7 @@ img {
   }
   
   &:focus {
-    border-color: var(--terminal-orange);
+    border-color: var(--terminal-pink);
     outline: none;
     
     &::before {
@@ -431,7 +675,7 @@ img {
 
 /* 80s-style navigation */
 .retro-mode nav {
-  border-bottom: 2px solid var(--terminal-lime);
+  border-bottom: 2px solid var(--terminal-cyan);
   position: relative;
   
   &::after {
@@ -455,8 +699,8 @@ img {
 /* Terminal-style code blocks */
 .retro-mode pre, .retro-mode code {
   background: var(--terminal-dark-gray);
-  border: 1px solid var(--terminal-lime);
-  color: var(--terminal-lime);
+  border: 1px solid var(--terminal-cyan);
+  color: var(--terminal-cyan);
   font-family: 'Courier New', 'Lucida Console', monospace;
   position: relative;
   
@@ -495,51 +739,99 @@ img {
 .retro-mode .terminal-cursor::after {
   content: '|';
   animation: terminal-blink 1s infinite;
-  color: var(--terminal-lime);
+  color: var(--terminal-cyan);
 }
 
-/* Grid overlay effect */
+/* Grid overlay effect - 80s Synthwave Style */
 .retro-mode .grid-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 50%;
   background-image: 
-    var(--scan-lines),
-    linear-gradient(rgba(132, 204, 22, 0.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(132, 204, 22, 0.2) 1px, transparent 1px);
-  background-size: 
-    100% 4px,
-    50px 50px,
-    50px 50px;
+    linear-gradient(0deg, rgba(147, 51, 234, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(147, 51, 234, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(500px) rotateX(-60deg);
+  transform-origin: top;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 100%);
+  animation: gridMoveTop 20s linear infinite;
+}
+
+@keyframes gridMoveTop {
+  0% {
+    background-position: center top;
+  }
+  100% {
+    background-position: center calc(top - 40px);
+  }
 }
 
 .modern-mode .grid-overlay {
   display: none;
 }
 
+/* Retro mode Feature component styling */
+.retro-mode .feature {
+  background: var(--terminal-dark-gray);
+  border: 2px solid var(--terminal-cyan);
+  
+  &::before {
+    background-color: var(--terminal-dark-gray) !important;
+    border: 2px solid var(--terminal-cyan) !important;
+    box-shadow: 0 0 0 6px var(--terminal-dark-gray) !important;
+  }
+  
+  &::after {
+    background-color: var(--terminal-cyan) !important;
+  }
+  
+  h3 {
+    color: var(--terminal-cyan) !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  
+  p {
+    color: var(--terminal-cyan) !important;
+  }
+  
+  [data-icon] {
+    color: var(--terminal-cyan) !important;
+  }
+  
+  &:hover {
+    &::after {
+      background-color: var(--terminal-pink) !important;
+    }
+  }
+}
+
 /* 80s-style section headers */
 .retro-mode .section-header {
   position: relative;
+  color: var(--terminal-cyan) !important;
   
   &::before {
     content: '>';
-    color: var(--terminal-lime);
+    color: var(--terminal-cyan);
     margin-right: 0.5rem;
   }
   
   &::after {
     content: '_';
-    color: var(--terminal-lime);
+    color: var(--terminal-cyan);
     animation: terminal-blink 1s infinite;
   }
 }
 
 .modern-mode .section-header {
   position: relative;
+  color: var(--neutral-900) !important;
   
   &::before {
     content: '';

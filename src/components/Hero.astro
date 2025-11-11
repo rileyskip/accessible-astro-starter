@@ -14,7 +14,7 @@ interface Props {
   src?: string
 }
 
-const { src = '/astronaut-hero-img.webp' }: Props = Astro.props
+const { src = '/retro-computer.png' }: Props = Astro.props
 ---
 
 <section class="hero my-24">
@@ -22,11 +22,10 @@ const { src = '/astronaut-hero-img.webp' }: Props = Astro.props
     <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
       <div class="flex flex-col items-center gap-8 md:items-start">
         <h1 class="animate-fade-in-up text-center text-6xl md:text-left lg:text-8xl">
-          <slot><span class="text-gradient animate-gradient">Hi, I'm Riley</span> Web Developer</slot>
+          <slot><span class="text-gradient animate-gradient">Riley Skipper</span> Web Dev</slot>
         </h1>
         <p class="animate-fade-in-up animation-delay-200 text-center text-xl md:text-left lg:text-2xl">
-          I create accessible, beautiful, and functional websites that make a difference. Passionate about inclusive
-          design and modern web technologies.
+          I create accessible, visually appealing, and functional websites with stable design systems. 
         </p>
         <div class="animate-fade-in-up animation-delay-400 flex flex-col gap-3 min-[500px]:flex-row">
           <a class="button has-icon animate-hover-lift" href="/about">
@@ -68,6 +67,63 @@ const { src = '/astronaut-hero-img.webp' }: Props = Astro.props
     background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  // Retro mode text visibility
+  :global(.retro-mode) .hero {
+    h1 {
+      color: var(--terminal-cyan);
+      border-bottom: none !important;
+    }
+
+    .text-gradient {
+      background: linear-gradient(315deg, var(--terminal-cyan) 25%, var(--terminal-pink));
+      background-clip: border-box;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      color: var(--terminal-cyan);
+    }
+
+    .button {
+      color: var(--terminal-cyan);
+      background: var(--terminal-dark-gray);
+      border: 2px solid var(--terminal-cyan);
+
+      svg, [data-icon] {
+        color: var(--terminal-cyan);
+      }
+
+      &:hover {
+        background: var(--terminal-cyan);
+        color: var(--terminal-black);
+
+        svg, [data-icon] {
+          color: var(--terminal-black);
+        }
+      }
+    }
+  }
+
+  // Modern mode text visibility
+  :global(.modern-mode) .hero {
+    h1 {
+      color: var(--neutral-900);
+    }
+
+    p {
+      color: var(--neutral-700);
+    }
+
+    .button {
+      svg, [data-icon] {
+        color: currentColor;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 
   // Animation classes

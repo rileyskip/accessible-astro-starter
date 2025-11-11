@@ -8,15 +8,14 @@
   --brand-accent: #84cc16; // lime-500
   --brand-neutral: #b9bec4;
   
-  /* 80s Terminal Colors */
-  --terminal-red: #ef4444; // red-500
-  --terminal-blue: #2563eb; // blue-600
-  --terminal-lime: #84cc16; // lime-500
-  --terminal-emerald: #34d399; // emerald-400
-  --terminal-blue-dark: #1e40af; // blue-800
-  --terminal-indigo: #3730a3; // indigo-800
-  --terminal-orange: #ea580c; // orange-600
-  --terminal-rose: #f43f5e; // rose-500
+  /* 80s Terminal Colors - Classic Cyan/Blue Scheme */
+  --terminal-cyan: #00d9ff; // Classic 80s cyan
+  --terminal-blue: #0ff; // Bright cyan-blue
+  --terminal-magenta: #ff00ff; // Classic magenta
+  --terminal-pink: #ff007f; // Hot pink
+  --terminal-purple: #9333ea; // Purple
+  --terminal-orange: #ff6b35; // Orange accent
+  --terminal-yellow: #ffdd00; // Yellow
   --terminal-black: #000000;
   --terminal-dark-gray: #1a1a1a;
   --terminal-light-gray: #cccccc;
@@ -34,13 +33,13 @@
   --background-color-subtle: var(--terminal-dark-gray);
   
   /* Text Colors */
-  --foreground-color: var(--terminal-lime);
+  --foreground-color: var(--terminal-cyan);
   --foreground-color-subtle: var(--terminal-light-gray);
   --foreground-color-muted: #666666;
   
   /* Link Colors */
-  --link-color: var(--terminal-emerald);
-  --link-hover-color: var(--terminal-orange);
+  --link-color: var(--terminal-blue);
+  --link-hover-color: var(--terminal-pink);
   
   /* Border Colors */
   --border-color: #333333;
@@ -51,7 +50,7 @@
   --card-border: var(--border-color);
   
   /* Icon Colors */
-  --icon-color: var(--terminal-red);
+  --icon-color: var(--terminal-cyan);
   
   /* Grain Textures */
   --grain-primary: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");

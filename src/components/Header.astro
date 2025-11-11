@@ -1,53 +1,160 @@
 ---
 import { Icon } from 'astro-icon/components'
 import { SkipLink } from 'accessible-astro-components'
+import RetroModal from '@components/RetroModal.astro'
+
+// Check if we're on the home page
+const isHomePage = Astro.url.pathname === '/'
 ---
 
-<header class="bg-background/80 border-border sticky top-0 z-50 border-b backdrop-blur-sm">
+<header class="site-header sticky top-0 z-50">
   <SkipLink />
   <div class="container">
-    <div class="flex items-center justify-between py-4">
-      <a href="/" class="hover:text-link-hover text-2xl font-bold"> Riley Skipper </a>
+    <div class="header-content flex items-center justify-between py-5">
+      <a href="/" class="logo-link text-2xl font-bold"> Riley Skipper </a>
       <nav>
-        <ul class="flex items-center gap-8">
+        <ul class="nav-menu flex items-center gap-2">
           <li>
-            <a href="/" class="hover:text-link-hover">Home</a>
+            <a href="/" class="nav-link">Home</a>
           </li>
           <li>
-            <a href="/about" class="hover:text-link-hover">About</a>
+            <a href="/about" class="nav-link">About</a>
           </li>
           <li>
-            <a href="/portfolio/" class="hover:text-link-hover">Portfolio</a>
+            <a href="/portfolio/" class="nav-link">Portfolio</a>
           </li>
           <li>
-            <a href="/portfolio/color-palettes" class="hover:text-link-hover">Color Palettes</a>
+            <a href="/contact" class="nav-link">Get in Touch</a>
           </li>
+          <li class="nav-divider"></li>
           <li>
-            <a href="/contact" class="hover:text-link-hover">Get in Touch</a>
-          </li>
-          <li>
-            <a href="https://github.com/rileyskip" class="hover:text-link-hover" target="_blank" rel="noopener">
+            <a href="https://github.com/rileyskip" class="nav-icon-link" target="_blank" rel="noopener" aria-label="GitHub">
               <Icon name="lucide:github" class="h-5 w-5" />
-              <span class="sr-only">GitHub</span>
             </a>
           </li>
-          <li>
-            <button
-              id="back-to-future-btn"
-              class="back-to-future-btn"
-              aria-label="Switch between retro and modern styling"
-            >
-              <Icon name="lucide:zap" class="h-5 w-5" />
-              <span>Back to the Future</span>
-            </button>
-          </li>
+          {isHomePage && (
+            <>
+              <li>
+                <button
+                  id="back-to-future-btn"
+                  class="back-to-future-btn"
+                  aria-label="Switch between retro and modern styling"
+                >
+                  <Icon name="lucide:sun" class="h-5 w-5" />
+                  <span>Back to the 80s</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  id="open-retro-modal"
+                  class="info-button"
+                  aria-label="Learn about 80s mode"
+                  title="Learn about 80s mode"
+                >
+                  <Icon name="lucide:info" class="h-5 w-5" />
+                </button>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </div>
   </div>
 </header>
 
-<style>
+<RetroModal />
+
+<style lang="scss">
+  /* Header Base Styles */
+  .site-header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    position: relative;
+    z-index: 10;
+  }
+
+  .logo-link {
+    transition: all 0.3s ease;
+    color: var(--neutral-900);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+
+    &:hover {
+      color: var(--color-primary-500);
+      transform: translateY(-1px);
+    }
+  }
+
+  /* Navigation Menu Styles */
+  .nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--neutral-700);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0.25rem;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary-500);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      color: var(--color-primary-500);
+      background: rgba(var(--color-primary-rgb, 99, 102, 241), 0.05);
+
+      &::after {
+        width: calc(100% - 2rem);
+      }
+    }
+  }
+
+  .nav-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--neutral-700);
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary-500);
+      background: rgba(var(--color-primary-rgb, 99, 102, 241), 0.05);
+      transform: translateY(-2px);
+    }
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 1.5rem;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 0 0.5rem;
+  }
+
+  /* Theme Toggle Button */
   .back-to-future-btn {
     display: flex;
     position: relative;
@@ -55,66 +162,213 @@ import { SkipLink } from 'accessible-astro-components'
     gap: 0.5rem;
     transition: all 0.3s ease;
     cursor: pointer;
-    border: 2px solid var(--terminal-lime);
-    border-radius: 0.25rem;
-    background: var(--terminal-dark-gray);
+    border: 2px solid var(--color-primary-500);
+    border-radius: 0.5rem;
+    background: var(--color-primary-500);
     padding: 0.5rem 1rem;
     overflow: hidden;
-    color: var(--terminal-lime);
-    font-family: 'Courier New', 'Lucida Console', monospace;
+    color: white;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.875rem;
   }
 
-  .back-to-future-btn::before {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    opacity: 0.3;
-    background-image: var(--grain-primary);
-    background-size: 100px 100px;
-    pointer-events: none;
-    content: '';
+  .back-to-future-btn > * {
+    position: relative;
+    z-index: 1;
   }
 
   .back-to-future-btn:hover {
-    transform: scale(1.05);
-    border-color: var(--terminal-orange);
-    background: var(--terminal-lime);
-    color: var(--terminal-black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
   }
 
-  .back-to-future-btn:hover::before {
-    opacity: 0.4;
-    background-image: var(--grain-secondary);
+  /* Retro Mode Header Styles */
+  .retro-mode .site-header {
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--terminal-cyan);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
   }
 
-  /* Modern styling when not in retro mode */
+  .retro-mode .logo-link {
+    color: var(--terminal-cyan);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    font-family: 'Courier New', 'Lucida Console', monospace;
+
+    &:hover {
+      color: var(--terminal-pink);
+      text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+      transform: translateY(-1px);
+    }
+  }
+
+  .retro-mode .nav-link {
+    color: var(--terminal-cyan);
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    border: 1px solid transparent;
+
+    &::before {
+      content: '[ ';
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    &::after {
+      content: ' ]';
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      background: none;
+      position: static;
+      width: auto;
+      height: auto;
+    }
+
+    &:hover {
+      color: var(--terminal-pink);
+      background: rgba(0, 255, 255, 0.1);
+      border-color: var(--terminal-cyan);
+      text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+
+      &::before,
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  .retro-mode .nav-icon-link {
+    color: var(--terminal-cyan);
+    border: 1px solid transparent;
+
+    &:hover {
+      color: var(--terminal-pink);
+      background: rgba(0, 255, 255, 0.1);
+      border-color: var(--terminal-cyan);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    }
+  }
+
+  .retro-mode .nav-divider {
+    background: var(--terminal-cyan);
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  }
+
+  .retro-mode .back-to-future-btn {
+    border: 2px solid #4169E1;
+    background: #1E3A8A;
+    color: #60A5FA;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    box-shadow: 0 0 15px rgba(65, 105, 225, 0.5);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: var(--grain-primary);
+      background-size: 100px 100px;
+      opacity: 0.2;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    &:hover {
+      background: #4169E1;
+      color: white;
+      border-color: #60A5FA;
+      box-shadow: 0 0 25px rgba(65, 105, 225, 0.8);
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Modern Mode Header Styles */
+  .modern-mode .site-header {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
   .modern-mode .back-to-future-btn {
-    box-shadow: var(--elevation-2);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+  }
+
+  /* Info Button Styles */
+  .info-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
     border: 2px solid var(--color-primary-500);
-    background: var(--color-primary-400);
-    color: white;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-primary-500);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+
+    svg {
+      position: relative;
+      z-index: 1;
+    }
+
+    &:hover {
+      background: var(--color-primary-500);
+      color: white;
+      transform: translateY(-2px) scale(1.1);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary-600);
+      outline-offset: 2px;
+    }
   }
 
-  .modern-mode .back-to-future-btn::before {
-    display: none;
+  .retro-mode .info-button {
+    border-color: var(--terminal-cyan);
+    color: var(--terminal-cyan);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    animation: pulse-glow 2s ease-in-out infinite;
+
+    &:hover {
+      background: var(--terminal-cyan);
+      color: var(--terminal-black);
+      border-color: var(--terminal-pink);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+      animation: none;
+    }
   }
 
-  .modern-mode .back-to-future-btn:hover {
-    box-shadow: var(--elevation-3);
-    border-color: var(--color-primary-600);
-    background: var(--color-primary-500);
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+    }
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  // Run initialization function
+  function initThemeToggle() {
     const btn = document.getElementById('back-to-future-btn')
     const html = document.documentElement
+    const isHomePage = window.location.pathname === '/'
 
-    // Check if we're in retro mode (default)
-    const isRetroMode = !localStorage.getItem('modern-mode')
+    // If not on home page, force modern mode
+    if (!isHomePage) {
+      html.classList.add('modern-mode')
+      html.classList.remove('retro-mode')
+      return
+    }
+
+    // On home page: Check if retro mode is explicitly enabled (default is modern)
+    const isRetroMode = localStorage.getItem('retro-mode') === 'true'
 
     if (isRetroMode) {
       html.classList.add('retro-mode')
@@ -124,36 +378,54 @@ import { SkipLink } from 'accessible-astro-components'
       html.classList.remove('retro-mode')
     }
 
-    btn.addEventListener('click', function () {
-      if (html.classList.contains('retro-mode')) {
-        // Switch to modern mode
-        html.classList.remove('retro-mode')
-        html.classList.add('modern-mode')
-        localStorage.setItem('modern-mode', 'true')
+    // Only add event listener if button exists (home page only)
+    if (btn) {
+      // Remove any existing listeners by cloning the button
+      const newBtn = btn.cloneNode(true)
+      btn.parentNode.replaceChild(newBtn, btn)
 
-        // Update button text and icon
-        const span = btn.querySelector('span')
-        const svg = btn.querySelector('svg')
-        if (span) span.textContent = 'Back to the 80s'
-        if (svg) {
-          svg.innerHTML =
-            '<path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
-        }
-      } else {
-        // Switch to retro mode
-        html.classList.remove('modern-mode')
-        html.classList.add('retro-mode')
-        localStorage.removeItem('modern-mode')
+      newBtn.addEventListener('click', function () {
+        if (html.classList.contains('retro-mode')) {
+          // Switch to modern mode
+          html.classList.remove('retro-mode')
+          html.classList.add('modern-mode')
+          localStorage.removeItem('retro-mode')
 
-        // Update button text and icon
-        const span = btn.querySelector('span')
-        const svg = btn.querySelector('svg')
-        if (span) span.textContent = 'Back to the Future'
-        if (svg) {
-          svg.innerHTML =
-            '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+          // Update button text and icon
+          const span = newBtn.querySelector('span')
+          const svg = newBtn.querySelector('svg')
+          if (span) span.textContent = 'Back to the 80s'
+          if (svg) {
+            svg.innerHTML =
+              '<path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+          }
+        } else {
+          // Switch to retro mode
+          html.classList.remove('modern-mode')
+          html.classList.add('retro-mode')
+          localStorage.setItem('retro-mode', 'true')
+
+          // Update button text and icon
+          const span = newBtn.querySelector('span')
+          const svg = newBtn.querySelector('svg')
+          if (span) span.textContent = 'Back to the Future'
+          if (svg) {
+            svg.innerHTML =
+              '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+          }
         }
-      }
-    })
-  })
+      })
+    }
+  }
+
+  // Run on initial load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeToggle)
+  } else {
+    initThemeToggle()
+  }
+
+  // Re-run when navigating back to the page (for SPAs/view transitions)
+  document.addEventListener('astro:page-load', initThemeToggle)
+  document.addEventListener('astro:after-swap', initThemeToggle)
 </script>

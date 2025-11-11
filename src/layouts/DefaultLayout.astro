@@ -28,7 +28,7 @@ const ogImage = image ? await getImage({ src: image, alt: title }) : undefined
 ---
 
 <!doctype html>
-<html lang="en" dir="ltr" class="retro-mode">
+<html lang="en" dir="ltr" class="modern-mode">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -46,15 +46,32 @@ const ogImage = image ? await getImage({ src: image, alt: title }) : undefined
     {ogImage && <meta name="twitter:image" content={ogImage.src} />}
     <title>{title}</title>
     <ViewTransitions />
-    <script>
-      // Set retro mode as default if no preference is stored
-      if (!localStorage.getItem('modern-mode')) {
-        document.documentElement.classList.add('retro-mode')
-        document.documentElement.classList.remove('modern-mode')
-      } else {
-        document.documentElement.classList.add('modern-mode')
-        document.documentElement.classList.remove('retro-mode')
+    <script is:inline>
+      // Initialize theme based on page and localStorage
+      function initTheme() {
+        const isHomePage = window.location.pathname === '/'
+        
+        // Non-home pages always use modern mode
+        if (!isHomePage) {
+          document.documentElement.classList.add('modern-mode')
+          document.documentElement.classList.remove('retro-mode')
+        } else {
+          // Home page: check if retro mode is explicitly enabled
+          if (localStorage.getItem('retro-mode') === 'true') {
+            document.documentElement.classList.add('retro-mode')
+            document.documentElement.classList.remove('modern-mode')
+          } else {
+            document.documentElement.classList.add('modern-mode')
+            document.documentElement.classList.remove('retro-mode')
+          }
+        }
       }
+
+      // Run on initial load
+      initTheme()
+
+      // Re-run on view transitions
+      document.addEventListener('astro:after-swap', initTheme)
     </script>
   </head>
   <body>
