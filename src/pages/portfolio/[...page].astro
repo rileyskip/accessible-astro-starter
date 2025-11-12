@@ -10,10 +10,10 @@ import { Image } from 'astro:assets'
 // Import images directly for optimization
 import projectImage1 from '@assets/images/projects/dreamvision.png'
 import projectImage2 from '@assets/images/projects/expensely-shot.png'
-import projectImage3 from '@assets/images/projects/drupal-logo.png'
+import projectImage3 from '@assets/images/projects/statewide-template.png'
 import projectImage4 from '@assets/images/projects/hotdog.png'
-import projectImage5 from '@assets/images/projects/code.png'
-import projectImage6 from '@assets/images/projects/crop.png'
+import projectImage5 from '@assets/images/projects/crop.png'
+import projectImage6 from '@assets/images/projects/course-hub.png'
 import drupalImage from '@assets/images/projects/course-hub.png' // Using project 5 as placeholder until drupal image is added
 import courseHubImage from '@assets/images/projects/course-hub.png' // Using project 6 as placeholder until course hub image is added
 
@@ -79,60 +79,65 @@ const sortedProjects = page.data.sort((a, b) => {
         </p>
       </div>
 
-      <!-- Project Grid -->
-      <ul class="space-y-20">
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
           sortedProjects.map((project, index) => (
-            <li class="group">
-              <a href={`/portfolio/${project.id}/`} class="block no-underline">
-                <div class={`grid grid-cols-1 gap-8 lg:grid-cols-5 items-center ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
-                  <div class={`space-y-4 flex flex-col justify-center lg:col-span-3 ${index % 2 === 1 ? 'lg:col-start-3' : ''}`}>
-                    <div class="flex items-center gap-3 mb-2">
-                      <span class="text-primary text-5xl font-bold opacity-20">{String(index + 1).padStart(2, '0')}</span>
-                      <h3 class="group-hover:text-primary text-3xl font-bold transition-colors">{project.data.title}</h3>
-                    </div>
-                    <p class="text-muted text-lg leading-relaxed">{project.data.description}</p>
-                    {project.data.tags && (
-                      <div class="flex flex-wrap gap-2 pt-2">
-                        {project.data.tags.map((tag) => (
-                          <span class="bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    <div class="pt-4">
-                      <span class="group-hover:text-primary inline-flex items-center gap-2 text-sm font-semibold transition-colors">
-                        View Project
-                        <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                  <div class={`relative overflow-hidden rounded-xl shadow-lg lg:col-span-2 ${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
-                    <div class="aspect-video">
-                      <Image
-                        src={project.featuredImage}
-                        alt={project.data.title}
-                        width={600}
-                        height={338}
-                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
+            <a href={`/portfolio/${project.id}/`} class="project-card group block no-underline">
+              <div class="card-container h-full flex flex-col bg-card rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:translate-y-[-8px]">
+                {/* Image */}
+                <div class="relative overflow-hidden aspect-video">
+                  <Image
+                    src={project.featuredImage}
+                    alt={project.data.title}
+                    width={600}
+                    height={338}
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div class="absolute top-4 left-4 w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-lg">
+                    {String(index + 1).padStart(2, '0')}
                   </div>
                 </div>
-              </a>
-            </li>
+                
+                {/* Content */}
+                <div class="flex-1 flex flex-col p-6 space-y-4">
+                  <h3 class="text-2xl font-bold group-hover:text-blue-600 transition-colors">
+                    {project.data.title}
+                  </h3>
+                  <p class="text-muted text-base flex-1">
+                    {project.data.description}
+                  </p>
+                  
+                  {project.data.tags && (
+                    <div class="flex flex-wrap gap-2">
+                      {project.data.tags.slice(0, 3).map((tag) => (
+                        <span class="bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-xs font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  
+                  <div class="pt-2">
+                    <span class="inline-flex items-center gap-2 text-blue-600 font-semibold transition-all group-hover:gap-3">
+                      View Project
+                      <svg class="h-5 w-5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
           ))
         }
-      </ul>
+      </div>
     </div>
   </section>
 </DefaultLayout>
 
 <style lang="scss">
-  a {
+  .project-card {
     text-decoration: none !important;
     
     &:hover {
@@ -140,29 +145,34 @@ const sortedProjects = page.data.sort((a, b) => {
     }
   }
   
-  li {
+  .card-container {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    
     &:hover {
-      .aspect-video::after {
-        opacity: 0.1;
-      }
+      border-color: rgba(59, 130, 246, 0.3);
     }
   }
   
-  .aspect-video {
-    position: relative;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, transparent, var(--action-color));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-    }
+  .bg-card {
+    background-color: white;
   }
   
   .no-underline {
     text-decoration: none !important;
+  }
+  
+  /* Dark mode support */
+  :global(.darkmode) {
+    .bg-card {
+      background-color: var(--color-neutral-900);
+    }
+    
+    .card-container {
+      border-color: rgba(255, 255, 255, 0.1);
+      
+      &:hover {
+        border-color: rgba(59, 130, 246, 0.5);
+      }
+    }
   }
 </style>

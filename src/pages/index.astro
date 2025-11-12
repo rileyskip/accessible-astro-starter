@@ -2,6 +2,9 @@
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import Hero from '@components/Hero.astro'
 import Feature from '@components/Feature.astro'
+import ScrollReveal from '@components/ScrollReveal.astro'
+import PrintMark from '@components/PrintMark.astro'
+import ParallaxBackground from '@components/ParallaxBackground.astro'
 import Counter from '@components/Counter.astro'
 import ContentMedia from '@components/ContentMedia.astro'
 import ExternalLink from '@components/ExternalLink.astro'
@@ -24,146 +27,196 @@ import {
   <div class="grid-overlay"></div>
 
   <Hero />
-  <section class="my-64">
-    <div class="container">
-      <h2 class="section-header mb-16 text-6xl">What I Do</h2>
-      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-        <Feature icon="lucide:accessibility" title="Accessible Design">
-          I believe the web should be for everyone. Every project I build follows WCAG guidelines and accessibility best
-          practices to ensure inclusive experiences.
-        </Feature>
-        <Feature icon="lucide:code" title="Modern Development">
-          I build with cutting-edge technologies like React, TypeScript, and Astro to create fast, scalable, and
-          maintainable web applications.
-        </Feature>
-        <Feature icon="lucide:palette" title="Beautiful UI/UX">
-          Creating intuitive and visually appealing interfaces that users love to interact with. Design that works for
-          everyone.
-        </Feature>
-        <Feature icon="lucide:zap" title="Performance">
-          Fast loading times and smooth interactions are non-negotiable. I optimize every project for speed and
-          efficiency.
-        </Feature>
-        <Feature icon="lucide:users" title="User-Centered">
-          Every decision is made with the user in mind. I research, test, and iterate to create the best possible
-          experience.
-        </Feature>
-        <Feature icon="lucide:heart" title="Passionate">
-          I love what I do and it shows in my work. I'm always learning, growing, and pushing the boundaries of what's
-          possible on the web.
-        </Feature>
+  <!-- What I Do Section - List Layout -->
+  <section class="section-editorial section-parallax my-64 lg:my-96">
+    <ParallaxBackground variant="blob" color="blue" position="top-right" size="lg" speed={0.6} />
+    <ParallaxBackground variant="circle" color="purple" position="bottom-left" size="md" speed={0.4} />
+    
+    <div class="container-wide relative z-10">
+      <div class="relative mb-24 lg:mb-32">
+        <PrintMark position="top-left" size="lg" />
+        <ScrollReveal direction="fade">
+          <h2 class="editorial-title">
+            <span class="block">What</span>
+            <span class="block offset-text">I Do</span>
+          </h2>
+        </ScrollReveal>
       </div>
-    </div>
-  </section>
-  <div class="space-content">
-    <h2 class="section-header">My Approach</h2>
-    <Tabs>
-      <TabsList>
-        <TabsTab id="tab-1" controls="panel-1" selected>Design</TabsTab>
-        <TabsTab id="tab-2" controls="panel-2">Development</TabsTab>
-        <TabsTab id="tab-3" controls="panel-3">Testing</TabsTab>
-      </TabsList>
 
-      <TabsPanel id="panel-1" labelledby="tab-1" selected>
-        <h3>User-Centered Design</h3>
-        <p>
-          I start every project by understanding the users and their needs. Through research, wireframing, and
-          prototyping, I create designs that are both beautiful and functional. Accessibility is built into every design
-          decision from the start.
-        </p>
-        <a href="/portfolio/">View my design work</a>
-      </TabsPanel>
-      <TabsPanel id="panel-2" labelledby="tab-2">
-        <h3>Clean, Modern Code</h3>
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2"></div>
-        <p>
-          I write clean, semantic code that's easy to maintain and scale. Using modern frameworks and best practices, I
-          build applications that perform well and are future-proof.
-        </p>
-        <a href="/portfolio/">See my code</a>
-      </TabsPanel>
-      <TabsPanel id="panel-3" labelledby="tab-3">
-        <h3>Thorough Testing</h3>
-        <p>
-          Quality is paramount. I test across different browsers, devices, and assistive technologies to ensure every
-          project works flawlessly for all users. Performance, accessibility, and user experience are thoroughly
-          validated.
-        </p>
-        <a href="/portfolio/">Check my projects</a>
-      </TabsPanel>
-    </Tabs>
-  </div>
-  <ContentMedia imgSrc="/accessible-components.webp">
-    <h2>Why Accessibility Matters</h2>
-    <p class="text-2xl">
-      The web should be accessible to everyone. I build with semantic HTML, proper ARIA labels, keyboard navigation, and
-      screen reader support. Every project I create follows WCAG 2.2 AA standards to ensure an inclusive experience for
-      all users.
-    </p>
-  </ContentMedia>
-  <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
-    <h2>Modern Web Technologies</h2>
-    <p class="text-2xl">
-      I stay current with the latest web technologies and best practices. From React and TypeScript to Astro and modern
-      CSS, I use the right tools for each project to deliver exceptional results.
-    </p>
-  </ContentMedia>
-  <section class="my-64">
-    <div class="container grid grid-cols-1 gap-12 md:grid-cols-2">
-      <div class="flex flex-col items-start gap-4">
-        <h2 class="section-header text-6xl">Frequently Asked</h2>
-        <p class="text-2xl">
-          Common questions about my work, process, and how we can collaborate on your next project.
-        </p>
-        <a class="button" href="/contact">Get in touch</a>
-      </div>
-      <div class="space-content">
-        <Accordion class="faq-accordion">
-          <AccordionItem name="exclusive" title="What's your development process?" open>
-            <p>
-              I follow a user-centered approach: research and discovery, design and prototyping, development with
-              accessibility in mind, thorough testing, and ongoing support. Each phase includes client feedback to
-              ensure we're building exactly what you need.
-            </p>
-          </AccordionItem>
-          <AccordionItem name="exclusive" title="How do you ensure accessibility?">
-            <p>
-              I build accessibility into every project from the start using semantic HTML, proper ARIA labels, keyboard
-              navigation, and screen reader testing. All projects meet WCAG 2.2 AA standards and are tested with
-              assistive technologies.
-            </p>
-          </AccordionItem>
-          <AccordionItem name="exclusive" title="What technologies do you use?">
-            <p>
-              I work with modern web technologies including React, TypeScript, Astro, Next.js, and various CSS
-              frameworks. I choose the best tools for each project based on requirements, performance needs, and
-              maintainability.
-            </p>
-          </AccordionItem>
-          <AccordionItem name="exclusive" title="Do you provide ongoing support?">
-            <p>
-              Yes! I offer ongoing maintenance, updates, and support for all projects. I believe in building long-term
-              relationships with clients and ensuring your website continues to perform well and meet your evolving
-              needs.
-            </p>
-          </AccordionItem>
-          <AccordionItem name="exclusive" title="How do you handle project communication?">
-            <p>
-              Clear communication is key to successful projects. I provide regular updates, use project management tools
-              for transparency, and am always available to answer questions. I believe in keeping you informed every
-              step of the way.
-            </p>
-          </AccordionItem>
-        </Accordion>
+      <div class="what-i-do-list">
+        <ScrollReveal direction="right" delay={100}>
+          <div class="skill-item">
+            <div class="skill-number">01</div>
+            <div class="skill-content">
+              <Icon name="lucide:accessibility" class="skill-icon" />
+              <h3 class="skill-title">Accessible Design</h3>
+              <p class="skill-description">
+                I believe the web should be for everyone. Every project I build follows WCAG guidelines and accessibility best
+                practices to ensure inclusive experiences.
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal direction="left" delay={200}>
+          <div class="skill-item">
+            <div class="skill-number">02</div>
+            <div class="skill-content">
+              <Icon name="lucide:code" class="skill-icon" />
+              <h3 class="skill-title">Modern Development</h3>
+              <p class="skill-description">
+                I build with cutting-edge technologies like React, TypeScript, and Astro to create fast, scalable, and
+                maintainable web applications.
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal direction="right" delay={300}>
+          <div class="skill-item">
+            <div class="skill-content">
+              <Icon name="lucide:palette" class="skill-icon" />
+              <h3 class="skill-title">Beautiful UI/UX</h3>
+              <p class="skill-description">
+                Creating intuitive and visually appealing interfaces that users love to interact with. Design that works for
+                everyone.
+              </p>
+            </div>
+            <div class="skill-number">03</div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal direction="left" delay={400}>
+          <div class="skill-item">
+            <div class="skill-content">
+              <Icon name="lucide:zap" class="skill-icon" />
+              <h3 class="skill-title">Performance</h3>
+              <p class="skill-description">
+                Fast loading times and smooth interactions are non-negotiable. I optimize every project for speed and
+                efficiency.
+              </p>
+            </div>
+            <div class="skill-number">04</div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal direction="right" delay={500}>
+          <div class="skill-item">
+            <div class="skill-number">05</div>
+            <div class="skill-content">
+              <Icon name="lucide:users" class="skill-icon" />
+              <h3 class="skill-title">User-Centered</h3>
+              <p class="skill-description">
+                Every decision is made with the user in mind. I research, test, and iterate to create the best possible
+                experience.
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal direction="left" delay={600}>
+          <div class="skill-item">
+            <div class="skill-content">
+              <Icon name="lucide:heart" class="skill-icon" />
+              <h3 class="skill-title">Passionate</h3>
+              <p class="skill-description">
+                I love what I do and it shows in my work. I'm always learning, growing, and pushing the boundaries of what's
+                possible on the web.
+              </p>
+            </div>
+            <div class="skill-number">06</div>
+          </div>
+        </ScrollReveal>
       </div>
     </div>
   </section>
-  <section class="my-64">
-    <div class="space-content container">
-      <h2 class="animate-fade-in-up text-6xl">Skills & Technologies</h2>
-      <p class="animate-fade-in-up animation-delay-200 text-2xl">
-        I'm constantly learning and expanding my skill set to deliver the best possible solutions for my clients.
-      </p>
+
+  <!-- FAQ Section - Disjointed Layout -->
+  <section class="section-editorial section-parallax my-64 lg:my-96">
+    <ParallaxBackground variant="gradient" color="cyan" position="top-left" size="xl" speed={0.3} />
+    <ParallaxBackground variant="dots" color="pink" position="bottom-right" size="md" speed={0.5} />
+    
+    <div class="container-wide relative z-10">
+      <div class="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-24">
+        <ScrollReveal direction="left" class="lg:col-span-5 lg:col-start-2">
+          <div class="relative">
+            <PrintMark position="top-right" size="md" />
+            <div class="sticky top-32 flex flex-col items-start gap-6">
+              <h2 class="editorial-title">
+                <span class="block">Frequently</span>
+                <span class="block offset-text">Asked</span>
+              </h2>
+              <p class="text-xl lg:text-2xl opacity-70">
+                Common questions about my work, process, and how we can collaborate on your next project.
+              </p>
+              <a class="button button-large mt-4" href="/contact">Get in touch</a>
+            </div>
+          </div>
+        </ScrollReveal>
+        
+        <ScrollReveal direction="right" delay={200} class="lg:col-span-5">
+          <div class="space-content">
+            <Accordion class="faq-accordion">
+              <AccordionItem name="exclusive" title="What's your development process?" open>
+                <p>
+                  I follow a user-centered approach: research and discovery, design and prototyping, development with
+                  accessibility in mind, thorough testing, and ongoing support. Each phase includes client feedback to
+                  ensure we're building exactly what you need.
+                </p>
+              </AccordionItem>
+              <AccordionItem name="exclusive" title="How do you ensure accessibility?">
+                <p>
+                  I build accessibility into every project from the start using semantic HTML, proper ARIA labels, keyboard
+                  navigation, and screen reader testing. All projects meet WCAG 2.2 AA standards and are tested with
+                  assistive technologies.
+                </p>
+              </AccordionItem>
+              <AccordionItem name="exclusive" title="What technologies do you use?">
+                <p>
+                  I work with modern web technologies including React, TypeScript, Astro, Next.js, and various CSS
+                  frameworks. I choose the best tools for each project based on requirements, performance needs, and
+                  maintainability.
+                </p>
+              </AccordionItem>
+              <AccordionItem name="exclusive" title="Do you provide ongoing support?">
+                <p>
+                  Yes! I offer ongoing maintenance, updates, and support for all projects. I believe in building long-term
+                  relationships with clients and ensuring your website continues to perform well and meet your evolving
+                  needs.
+                </p>
+              </AccordionItem>
+              <AccordionItem name="exclusive" title="How do you handle project communication?">
+                <p>
+                  Clear communication is key to successful projects. I provide regular updates, use project management tools
+                  for transparency, and am always available to answer questions. I believe in keeping you informed every
+                  step of the way.
+                </p>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+  <!-- Skills Section - Grid Layout -->
+  <section class="section-editorial section-parallax my-64 lg:my-96">
+    <ParallaxBackground variant="blob" color="purple" position="top-left" size="lg" speed={0.4} />
+    <ParallaxBackground variant="grid" color="blue" position="bottom-right" size="xl" speed={0.3} />
+    <ParallaxBackground variant="circle" color="cyan" position="center" size="md" speed={0.2} />
+    
+    <div class="container-wide relative z-10">
+      <div class="relative mb-24">
+        <PrintMark position="bottom-right" size="lg" />
+        <ScrollReveal direction="fade">
+          <h2 class="editorial-title text-center">
+            <span class="block">Skills &</span>
+            <span class="block offset-text">Technologies</span>
+          </h2>
+          <p class="mx-auto mt-8 max-w-3xl text-center text-xl opacity-70 lg:text-2xl">
+            I'm constantly learning and expanding my skill set to deliver the best possible solutions for my clients.
+          </p>
+        </ScrollReveal>
+      </div>
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.1s">
           <img
@@ -230,21 +283,39 @@ import {
         </div>
         <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.8s">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Apache_HTTP_server_logo_%282016%29.svg/1200px-Apache_HTTP_server_logo_%282016%29.svg.png"
-            alt="Apache"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
+            alt="React"
             class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
           />
-          <h3 class="mb-2 text-xl font-bold">Apache</h3>
-          <p class="text-muted text-sm">Web Server</p>
+          <h3 class="mb-2 text-xl font-bold">React</h3>
+          <p class="text-muted text-sm">Frontend Framework</p>
         </div>
         <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.9s">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Apache_Friends_logo.svg/1200px-Apache_Friends_logo.svg.png"
-            alt="XAMPP"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png"
+            alt="TypeScript"
             class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
           />
-          <h3 class="mb-2 text-xl font-bold">XAMPP</h3>
-          <p class="text-muted text-sm">Local Development</p>
+          <h3 class="mb-2 text-xl font-bold">TypeScript</h3>
+          <p class="text-muted text-sm">Type-Safe JavaScript</p>
+        </div>
+        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.95s">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Nextjs-logo.svg/1200px-Nextjs-logo.svg.png"
+            alt="Next.js"
+            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">Next.js</h3>
+          <p class="text-muted text-sm">React Framework</p>
+        </div>
+        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.98s">
+          <img
+            src="https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png"
+            alt="Vercel"
+            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
+          />
+          <h3 class="mb-2 text-xl font-bold">Vercel</h3>
+          <p class="text-muted text-sm">Cloud Deployment</p>
         </div>
         <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.0s">
           <img
@@ -314,45 +385,69 @@ import {
       </div>
     </div>
   </section>
-  <section class="mt-64 mb-32">
-    <div class="container">
-      <h2 class="mb-16 text-6xl">My Impact</h2>
-      <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
-        <Counter count="20+" title="Websites" sub="Built and Maintained" />
-        <Counter count="95%" title="Accessiblity" sub="Managed and Resolved" />
-        <Counter count="5+" title="Years" sub="Experience in Dev" />
-        <Counter count="5" title="New Tools" sub="Learned this year (and counting)" />
-      </div>
-    </div>
-  </section>
 </DefaultLayout>
 
-<style>
-  .avatar {
-    border: 1px solid var(--border-color-subtle);
-    border-radius: var(--radius-md);
-    padding: var(--space-s);
+<style lang="scss">
+  /* Editorial Design Styles */
+  .section-editorial {
+    position: relative;
+  }
+
+  .section-parallax {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .container-wide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: 768px) {
+      padding: 0 1.5rem;
+    }
+  }
+
+  .editorial-title {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    
+    .offset-text {
+      padding-left: clamp(2rem, 8vw, 8rem);
+      font-weight: 300;
+    }
+  }
+
+  .button-large {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
   }
 
   /* Skills animations */
   .animate-skill-card {
-    transform: translateY(30px) scale(0.9);
+    transform: translateY(30px) scale(0.96);
     opacity: 0;
-    animation: skillCardIn 0.6s ease-out forwards;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: skillCardIn 0.8s ease-out forwards;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
   }
 
   .animate-skill-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+    border-color: var(--action-color);
   }
 
   .animate-logo-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .animate-skill-card:hover .animate-logo-hover {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.15) rotate(8deg);
   }
 
   .animate-icon-pulse {
@@ -382,7 +477,180 @@ import {
   .faq-accordion :global(.accordion-trigger),
   .faq-accordion :global(.accordion-button) {
     font-weight: 700 !important;
-    font-size: 1.1rem !important;
-    font-family: Georgia, 'Times New Roman', serif !important;
+    font-size: 1.125rem !important;
+    font-family: var(--font-base) !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+      transform: translateX(4px);
+    }
+  }
+
+  .faq-accordion :global(.accordion-panel),
+  .faq-accordion :global([role='region']) {
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  /* Smooth scroll behavior */
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  /* What I Do List Styles */
+  .what-i-do-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      gap: 3rem;
+    }
+  }
+
+  .skill-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+
+    &:hover {
+      transform: translateX(10px);
+      border-color: var(--action-color);
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    @media (max-width: 768px) {
+      gap: 2rem;
+      padding: 1.5rem 0;
+    }
+  }
+
+  .skill-number {
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.15;
+    user-select: none;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.4s ease;
+
+    @media (max-width: 768px) {
+      font-size: 3rem;
+    }
+  }
+
+  .skill-item:hover .skill-number {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+
+  .skill-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skill-icon {
+    width: 3rem;
+    height: 3rem;
+    color: var(--action-color);
+    transition: all 0.4s ease;
+
+    @media (max-width: 768px) {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  .skill-item:hover .skill-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.4));
+  }
+
+  .skill-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .skill-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    opacity: 0.8;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+
+  /* Retro mode adjustments */
+  :global(.retro-mode) {
+    .editorial-title {
+      color: var(--terminal-cyan);
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .skill-item {
+      border-color: rgba(0, 255, 255, 0.2);
+
+      &:hover {
+        border-color: var(--terminal-cyan);
+      }
+    }
+
+    .skill-number {
+      background: linear-gradient(135deg, var(--terminal-cyan), var(--terminal-pink));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.2;
+    }
+
+    .skill-icon {
+      color: var(--terminal-cyan);
+    }
+
+    .skill-item:hover .skill-icon {
+      filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.6));
+    }
+
+    .skill-title {
+      color: var(--terminal-cyan);
+    }
+
+    .skill-description {
+      color: var(--terminal-cyan);
+      opacity: 0.8;
+    }
+
+    .animate-skill-card {
+      border-color: var(--terminal-cyan);
+      background: rgba(0, 255, 255, 0.05);
+      
+      &:hover {
+        background: rgba(0, 255, 255, 0.1);
+        box-shadow: 0 25px 50px rgba(0, 255, 255, 0.2);
+      }
+    }
   }
 </style>

@@ -1,0 +1,89 @@
+---
+/**
+ * ScrollReveal Component
+ * Reveals content as user scrolls
+ */
+interface Props {
+  delay?: number
+  direction?: 'up' | 'down' | 'left' | 'right' | 'fade'
+  class?: string
+}
+
+const { delay = 0, direction = 'up', class: className = '' } = Astro.props
+---
+
+<div class={`scroll-reveal scroll-reveal-${direction} ${className}`} data-delay={delay}>
+  <slot />
+</div>
+
+<script>
+  function initScrollReveal() {
+    const reveals = document.querySelectorAll('.scroll-reveal')
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target as HTMLElement
+            const delay = parseInt(element.dataset.delay || '0')
+            
+            setTimeout(() => {
+              element.classList.add('revealed')
+            }, delay)
+            
+            observer.unobserve(element)
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    )
+    
+    reveals.forEach((reveal) => observer.observe(reveal))
+  }
+
+  // Initialize on load and page transitions
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollReveal)
+  } else {
+    initScrollReveal()
+  }
+
+  document.addEventListener('astro:page-load', initScrollReveal)
+  document.addEventListener('astro:after-swap', initScrollReveal)
+</script>
+
+<style lang="scss">
+  .scroll-reveal {
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &.scroll-reveal-up {
+      transform: translateY(60px);
+    }
+    
+    &.scroll-reveal-down {
+      transform: translateY(-60px);
+    }
+    
+    &.scroll-reveal-left {
+      transform: translateX(60px);
+    }
+    
+    &.scroll-reveal-right {
+      transform: translateX(-60px);
+    }
+    
+    &.scroll-reveal-fade {
+      transform: none;
+    }
+    
+    &.revealed {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+</style>
+

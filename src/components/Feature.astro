@@ -44,7 +44,15 @@ const { icon = 'mdi:rocket', title = 'Title' }: Props = Astro.props
 
     > * {
       position: relative;
-      z-index: 2;
+      z-index: 10;
+    }
+
+    .icon-container,
+    .content,
+    h3,
+    p {
+      position: relative;
+      z-index: 10;
     }
 
     @include breakpoint(xl) {
@@ -95,6 +103,17 @@ const { icon = 'mdi:rocket', title = 'Title' }: Props = Astro.props
     inline-size: 4rem;
     block-size: auto;
     color: var(--link-color);
+    position: relative;
+    z-index: 10;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  :global(.feature svg) {
+    position: relative;
+    z-index: 10;
+    opacity: 1;
+    visibility: visible;
   }
 
   :global(.darkmode .feature::before) {

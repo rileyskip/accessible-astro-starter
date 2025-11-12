@@ -270,6 +270,29 @@ body {
   z-index: -1;
 }
 
+/* Default text styling (applies immediately before mode is set) */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--neutral-900) !important;
+  position: relative;
+  z-index: 2;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+p {
+  color: var(--neutral-700) !important;
+  position: relative;
+  z-index: 2;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ensure body text is visible */
+body {
+  color: var(--neutral-700);
+  opacity: 1;
+}
+
 .modern-mode h1, .modern-mode h2, .modern-mode h3, .modern-mode h4, .modern-mode h5, .modern-mode h6 {
   font-family: var(--font-heading);
   border-bottom: none;
@@ -283,24 +306,39 @@ body {
 
 /* Modern mode paragraph text */
 .modern-mode p {
-  color: var(--neutral-700);
+  color: var(--neutral-700) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Retro mode heading text */
+.retro-mode h1, .retro-mode h2, .retro-mode h3, .retro-mode h4, .retro-mode h5, .retro-mode h6 {
+  color: var(--terminal-cyan) !important;
+  position: relative;
+  z-index: 2;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Retro mode paragraph text */
 .retro-mode p {
-  color: var(--terminal-cyan);
+  color: var(--terminal-cyan) !important;
   position: relative;
   z-index: 2;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Retro mode body text color */
 .retro-mode body {
   color: var(--terminal-cyan);
+  opacity: 1;
 }
 
 /* Modern mode body text color */
 .modern-mode body {
   color: var(--neutral-900);
+  opacity: 1;
 }
 
 a {
@@ -775,10 +813,87 @@ img {
   display: none;
 }
 
+/* Default Feature component styling (applies before mode is set) */
+.feature {
+  h3 {
+    color: var(--neutral-900) !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  p {
+    color: var(--neutral-700) !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  [data-icon], svg {
+    color: var(--link-color) !important;
+    position: relative !important;
+    z-index: 10 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .icon-container {
+    position: relative !important;
+    z-index: 10 !important;
+  }
+}
+
+/* Modern mode Feature component styling */
+.modern-mode .feature {
+  background: transparent !important;
+  border: none !important;
+  
+  &::before {
+    background-color: var(--color-neutral-100) !important;
+    border: 3px solid var(--color-neutral-700) !important;
+    box-shadow: 0 0 0 6px var(--color-neutral-100) !important;
+  }
+  
+  &::after {
+    background-color: var(--link-color) !important;
+  }
+  
+  h3 {
+    color: var(--neutral-900) !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  p {
+    color: var(--neutral-700) !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  [data-icon], svg {
+    color: var(--link-color) !important;
+    position: relative !important;
+    z-index: 10 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .icon-container {
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  &:hover {
+    &::after {
+      background-color: var(--link-color) !important;
+    }
+  }
+}
+
 /* Retro mode Feature component styling */
 .retro-mode .feature {
-  background: var(--terminal-dark-gray);
-  border: 2px solid var(--terminal-cyan);
+  background: var(--terminal-dark-gray) !important;
+  border: 2px solid var(--terminal-cyan) !important;
   
   &::before {
     background-color: var(--terminal-dark-gray) !important;
@@ -794,14 +909,27 @@ img {
     color: var(--terminal-cyan) !important;
     border-bottom: none !important;
     padding-bottom: 0 !important;
+    position: relative !important;
+    z-index: 10 !important;
   }
   
   p {
     color: var(--terminal-cyan) !important;
+    position: relative !important;
+    z-index: 10 !important;
   }
   
-  [data-icon] {
+  [data-icon], svg {
     color: var(--terminal-cyan) !important;
+    position: relative !important;
+    z-index: 10 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .icon-container {
+    position: relative !important;
+    z-index: 10 !important;
   }
   
   &:hover {
@@ -809,6 +937,12 @@ img {
       background-color: var(--terminal-pink) !important;
     }
   }
+}
+
+/* Default section header styling */
+.section-header {
+  color: var(--neutral-900) !important;
+  position: relative;
 }
 
 /* 80s-style section headers */

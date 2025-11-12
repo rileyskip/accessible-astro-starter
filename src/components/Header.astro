@@ -9,56 +9,105 @@ const isHomePage = Astro.url.pathname === '/'
 
 <header class="site-header sticky top-0 z-50">
   <SkipLink />
+  <div class="header-glow"></div>
   <div class="container">
-    <div class="header-content flex items-center justify-between py-5">
-      <a href="/" class="logo-link text-2xl font-bold"> Riley Skipper </a>
-      <nav>
-        <ul class="nav-menu flex items-center gap-2">
-          <li>
-            <a href="/" class="nav-link">Home</a>
-          </li>
-          <li>
-            <a href="/about" class="nav-link">About</a>
-          </li>
-          <li>
-            <a href="/portfolio/" class="nav-link">Portfolio</a>
-          </li>
-          <li>
-            <a href="/contact" class="nav-link">Get in Touch</a>
-          </li>
-          <li class="nav-divider"></li>
-          <li>
-            <a href="https://github.com/rileyskip" class="nav-icon-link" target="_blank" rel="noopener" aria-label="GitHub">
-              <Icon name="lucide:github" class="h-5 w-5" />
-            </a>
-          </li>
-          {isHomePage && (
-            <>
-              <li>
-                <button
-                  id="back-to-future-btn"
-                  class="back-to-future-btn"
-                  aria-label="Switch between retro and modern styling"
-                >
-                  <Icon name="lucide:sun" class="h-5 w-5" />
-                  <span>Back to the 80s</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  id="open-retro-modal"
-                  class="info-button"
-                  aria-label="Learn about 80s mode"
-                  title="Learn about 80s mode"
-                >
-                  <Icon name="lucide:info" class="h-5 w-5" />
-                </button>
-              </li>
-            </>
-          )}
-        </ul>
-      </nav>
+    <div class="header-content flex items-center justify-between py-3 md:py-5">
+      <a href="/" class="logo-link text-2xl font-bold">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">Riley Skipper</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+      
+      <div class="flex items-center gap-2 sm:gap-3 buttons-container">
+        <!-- Theme Toggle Button (visible on mobile on home page only) -->
+        {isHomePage && (
+          <button
+            id="back-to-future-btn"
+            class="back-to-future-btn"
+            aria-label="Switch between retro and modern styling"
+          >
+            <Icon name="lucide:sun" class="h-5 w-5" />
+            <span class="hidden lg:inline">Back to the 80s</span>
+          </button>
+        )}
+
+        <!-- Hamburger Menu Button (mobile only) -->
+        <button
+          id="mobile-menu-toggle"
+          class="mobile-menu-toggle md:hidden"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+        >
+          <Icon name="lucide:menu" class="h-6 w-6 menu-icon" />
+          <Icon name="lucide:x" class="h-6 w-6 close-icon hidden" />
+        </button>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:block">
+          <ul class="nav-menu flex items-center gap-2">
+            <li>
+              <a href="/" class="nav-link">Home</a>
+            </li>
+            <li>
+              <a href="/about" class="nav-link">About</a>
+            </li>
+            <li>
+              <a href="/portfolio/" class="nav-link">Portfolio</a>
+            </li>
+            <li>
+              <a href="/contact" class="nav-link">Contact</a>
+            </li>
+            {isHomePage && (
+              <>
+                <li class="nav-divider"></li>
+                <li>
+                  <button
+                    id="open-retro-modal"
+                    class="info-button"
+                    aria-label="Learn about 80s mode"
+                    title="Learn about 80s mode"
+                  >
+                    <Icon name="lucide:info" class="h-5 w-5" />
+                  </button>
+                </li>
+              </>
+            )}
+          </ul>
+        </nav>
+      </div>
     </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu md:hidden">
+    <nav>
+      <ul class="mobile-nav-menu">
+        <li>
+          <a href="/" class="mobile-nav-link">Home</a>
+        </li>
+        <li>
+          <a href="/about" class="mobile-nav-link">About</a>
+        </li>
+        <li>
+          <a href="/portfolio/" class="mobile-nav-link">Portfolio</a>
+        </li>
+        <li>
+          <a href="/contact" class="mobile-nav-link">Contact</a>
+        </li>
+        {isHomePage && (
+          <li>
+            <button
+              id="open-retro-modal-mobile"
+              class="mobile-nav-link w-full text-left"
+              aria-label="Learn about 80s mode"
+            >
+              <Icon name="lucide:info" class="inline-block h-5 w-5 mr-2" />
+              About 80s Mode
+            </button>
+          </li>
+        )}
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -67,28 +116,129 @@ const isHomePage = Astro.url.pathname === '/'
 <style lang="scss">
   /* Header Base Styles */
   .site-header {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.95) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, transparent, #60A5FA, transparent) 1;
     transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 640px) {
+      .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  .header-glow {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #60A5FA, #3B82F6, #60A5FA, transparent);
+    animation: shimmer 3s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+  }
+
+  @keyframes shimmer {
+    0%, 100% {
+      opacity: 0.3;
+      transform: translateX(-100%);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(100%);
+    }
   }
 
   .header-content {
     position: relative;
     z-index: 10;
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .buttons-container {
+    flex-shrink: 0;
+    
+    @media (max-width: 374px) {
+      gap: 0.5rem !important; /* Tighter spacing on very small screens */
+    }
   }
 
   .logo-link {
     transition: all 0.3s ease;
-    color: var(--neutral-900);
+    color: white;
     text-decoration: none;
     font-weight: 700;
+    flex-shrink: 1;
+    min-width: 0; /* Allow text truncation if needed */
+
+    @media (max-width: 374px) {
+      font-size: 1.25rem !important; /* Smaller logo on very small screens */
+    }
     letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 1.25rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.5rem;
+    }
 
     &:hover {
-      color: var(--color-primary-500);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      
+      .logo-text {
+        background: linear-gradient(135deg, #60A5FA, #3B82F6, #2563EB);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .logo-bracket {
+        color: #60A5FA;
+        animation: bracket-pulse 0.6s ease;
+      }
+    }
+  }
+
+  .logo-bracket {
+    color: #60A5FA;
+    font-weight: 900;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .logo-text {
+    transition: all 0.3s ease;
+  }
+
+  @keyframes bracket-pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
     }
   }
 
@@ -101,33 +251,69 @@ const isHomePage = Astro.url.pathname === '/'
 
   .nav-link {
     display: block;
-    padding: 0.5rem 1rem;
-    color: var(--neutral-700);
-    text-decoration: none;
-    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 0.875rem;
     border-radius: 0.5rem;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
 
     &::after {
       content: '';
       position: absolute;
-      bottom: 0.25rem;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: var(--color-primary-500);
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background: linear-gradient(90deg, transparent, #60A5FA, #3B82F6, #60A5FA, transparent);
+      transition: height 0.3s ease;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.6);
+    }
+
+    span {
+      position: relative;
+      z-index: 1;
     }
 
     &:hover {
-      color: var(--color-primary-500);
-      background: rgba(var(--color-primary-rgb, 99, 102, 241), 0.05);
+      color: #60A5FA;
+      transform: translateY(-2px) scale(1.05);
+      text-shadow: 0 0 15px rgba(96, 165, 250, 0.8),
+                   0 0 30px rgba(96, 165, 250, 0.4);
+      animation: text-glow 0.6s ease-in-out;
 
       &::after {
-        width: calc(100% - 2rem);
+        height: 3px;
+        animation: underline-glow 0.6s ease-in-out infinite;
       }
+    }
+  }
+
+  @keyframes text-glow {
+    0%, 100% {
+      text-shadow: 0 0 15px rgba(96, 165, 250, 0.8),
+                   0 0 30px rgba(96, 165, 250, 0.4);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(96, 165, 250, 1),
+                   0 0 40px rgba(96, 165, 250, 0.6);
+    }
+  }
+
+  @keyframes underline-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(96, 165, 250, 1);
     }
   }
 
@@ -136,22 +322,52 @@ const isHomePage = Astro.url.pathname === '/'
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
-    color: var(--neutral-700);
+    color: rgba(255, 255, 255, 0.85);
     border-radius: 0.5rem;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border: 1px solid transparent;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 0.5rem;
+      background: linear-gradient(135deg, #60A5FA, #3B82F6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    svg {
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
 
     &:hover {
-      color: var(--color-primary-500);
-      background: rgba(var(--color-primary-rgb, 99, 102, 241), 0.05);
-      transform: translateY(-2px);
+      color: white;
+      transform: translateY(-3px) rotate(5deg);
+      border-color: #60A5FA;
+      box-shadow: 0 4px 15px rgba(96, 165, 250, 0.4);
+
+      &::before {
+        opacity: 0.15;
+      }
+
+      svg {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.8));
+      }
     }
   }
 
   .nav-divider {
-    width: 1px;
+    width: 2px;
     height: 1.5rem;
-    background: rgba(0, 0, 0, 0.1);
+    background: linear-gradient(180deg, transparent, #60A5FA, transparent);
     margin: 0 0.5rem;
+    border-radius: 1px;
+    box-shadow: 0 0 8px rgba(96, 165, 250, 0.3);
   }
 
   /* Theme Toggle Button */
@@ -160,17 +376,48 @@ const isHomePage = Astro.url.pathname === '/'
     position: relative;
     align-items: center;
     gap: 0.5rem;
-    transition: all 0.3s ease;
+    min-height: 44px; /* Minimum touch target size */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    border: 2px solid var(--color-primary-500);
-    border-radius: 0.5rem;
-    background: var(--color-primary-500);
-    padding: 0.5rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+    padding: 0.625rem 1.25rem;
     overflow: hidden;
     color: white;
     font-family: var(--font-body);
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.875rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    flex-shrink: 0; /* Prevent shrinking on small screens */
+
+    @media (max-width: 374px) {
+      padding: 0.5rem 0.875rem;
+      font-size: 0.8125rem;
+      gap: 0.375rem;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #60A5FA, #3B82F6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.5s ease;
+      border-radius: 50%;
+    }
   }
 
   .back-to-future-btn > * {
@@ -179,8 +426,23 @@ const isHomePage = Astro.url.pathname === '/'
   }
 
   .back-to-future-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5), 
+                0 0 20px rgba(96, 165, 250, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: #60A5FA;
+
+    &::before {
+      opacity: 1;
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  .back-to-future-btn:active {
+    transform: translateY(-1px) scale(0.98);
   }
 
   /* Retro Mode Header Styles */
@@ -287,11 +549,11 @@ const isHomePage = Astro.url.pathname === '/'
 
   /* Modern Mode Header Styles */
   .modern-mode .site-header {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.95);
   }
 
   .modern-mode .back-to-future-btn {
-    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
   }
 
   /* Info Button Styles */
@@ -301,30 +563,250 @@ const isHomePage = Astro.url.pathname === '/'
     justify-content: center;
     width: 2.5rem;
     height: 2.5rem;
+    min-width: 44px; /* Minimum touch target */
+    min-height: 44px; /* Minimum touch target */
     padding: 0.5rem;
-    border: 2px solid var(--color-primary-500);
+    border: 2px solid #60A5FA;
     border-radius: 50%;
     background: transparent;
-    color: var(--color-primary-500);
+    color: #60A5FA;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
     position: relative;
+    box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.4);
+    animation: info-pulse 2s ease-in-out infinite;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #60A5FA, #3B82F6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
 
     svg {
       position: relative;
       z-index: 1;
+      transition: all 0.3s ease;
     }
 
     &:hover {
-      background: var(--color-primary-500);
+      background: linear-gradient(135deg, #3B82F6, #2563EB);
       color: white;
-      transform: translateY(-2px) scale(1.1);
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+      transform: translateY(-3px) scale(1.15) rotate(15deg);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6),
+                  0 0 30px rgba(96, 165, 250, 0.4);
+      border-color: white;
+      animation: none;
+
+      &::before {
+        opacity: 0.2;
+      }
+
+      svg {
+        transform: rotate(-15deg);
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+      }
     }
 
     &:focus-visible {
-      outline: 2px solid var(--color-primary-600);
+      outline: 2px solid #3B82F6;
+      outline-offset: 3px;
+    }
+
+    &:active {
+      transform: translateY(-1px) scale(1.05);
+    }
+  }
+
+  @keyframes info-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 6px rgba(96, 165, 250, 0);
+    }
+  }
+
+  /* Mobile Menu Toggle Button */
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px; /* Minimum touch target size */
+    min-height: 44px; /* Minimum touch target size */
+    padding: 0.625rem;
+    color: white;
+    background: transparent;
+    border: 2px solid #60A5FA;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 110;
+    flex-shrink: 0; /* Prevent shrinking on small screens */
+
+    /* Hide on desktop screens (md: 768px and up) */
+    @media (min-width: 768px) {
+      display: none !important;
+    }
+
+    &:hover {
+      background: rgba(96, 165, 250, 0.1);
+      border-color: #60A5FA;
+      transform: scale(1.05);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #3B82F6;
       outline-offset: 2px;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    svg {
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 320px;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.95) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+    padding-top: max(5rem, env(safe-area-inset-top, 5rem)); /* Respect safe areas */
+    padding-bottom: env(safe-area-inset-bottom, 0); /* Respect bottom safe area */
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    overscroll-behavior: contain; /* Prevent scroll chaining */
+    pointer-events: none; /* Ignore clicks when closed */
+
+    /* Hide on desktop screens (md: 768px and up) */
+    @media (min-width: 768px) {
+      display: none !important;
+    }
+
+    &.open {
+      right: 0;
+      pointer-events: auto; /* Enable clicks when open */
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(96, 165, 250, 0.05), transparent);
+      pointer-events: none;
+    }
+
+    @media (max-width: 374px) {
+      width: 90%; /* Slightly narrower on very small screens */
+    }
+  }
+
+  .mobile-nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    min-height: 56px; /* Comfortable touch target */
+    padding: 1rem 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(96, 165, 250, 0.2);
+
+    &:hover {
+      background: rgba(96, 165, 250, 0.1);
+      border-left-color: #60A5FA;
+      color: #60A5FA;
+      padding-left: 2rem;
+    }
+
+    &:active {
+      background: rgba(96, 165, 250, 0.2);
+      transform: scale(0.98);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #3B82F6;
+      outline-offset: -2px;
+    }
+  }
+
+  /* Mobile Menu Overlay */
+  .mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 40;
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  /* Retro Mode Mobile Menu */
+  .retro-mode .mobile-menu {
+    border-left: 2px solid var(--terminal-cyan);
+    box-shadow: -4px 0 20px rgba(0, 255, 255, 0.3);
+  }
+
+  .retro-mode .mobile-nav-link {
+    color: var(--terminal-cyan);
+    font-family: 'Courier New', 'Lucida Console', monospace;
+
+    &:hover {
+      border-left-color: var(--terminal-pink);
+      color: var(--terminal-pink);
+      text-shadow: 0 0 10px rgba(255, 20, 147, 0.6);
+    }
+  }
+
+  .retro-mode .mobile-menu-toggle {
+    border-color: var(--terminal-cyan);
+    color: var(--terminal-cyan);
+
+    &:hover {
+      background: rgba(0, 255, 255, 0.1);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
     }
   }
 
@@ -381,8 +863,10 @@ const isHomePage = Astro.url.pathname === '/'
     // Only add event listener if button exists (home page only)
     if (btn) {
       // Remove any existing listeners by cloning the button
-      const newBtn = btn.cloneNode(true)
-      btn.parentNode.replaceChild(newBtn, btn)
+      const newBtn = btn.cloneNode(true) as HTMLElement
+      if (btn.parentNode) {
+        btn.parentNode.replaceChild(newBtn, btn)
+      }
 
       newBtn.addEventListener('click', function () {
         if (html.classList.contains('retro-mode')) {
@@ -428,4 +912,97 @@ const isHomePage = Astro.url.pathname === '/'
   // Re-run when navigating back to the page (for SPAs/view transitions)
   document.addEventListener('astro:page-load', initThemeToggle)
   document.addEventListener('astro:after-swap', initThemeToggle)
+
+  // Mobile Menu Toggle
+  function initMobileMenu() {
+    const menuToggle = document.getElementById('mobile-menu-toggle')
+    const mobileMenu = document.getElementById('mobile-menu')
+
+    if (!menuToggle || !mobileMenu) return
+
+    // Clone the button to remove old event listeners
+    const newToggle = menuToggle.cloneNode(true) as HTMLElement
+    if (menuToggle.parentNode) {
+      menuToggle.parentNode.replaceChild(newToggle, menuToggle)
+    }
+
+    // Get fresh references after cloning
+    const menuIcon = newToggle.querySelector('.menu-icon')
+    const closeIcon = newToggle.querySelector('.close-icon')
+
+    // Toggle menu function
+    function toggleMenu() {
+      if (!mobileMenu) return
+      
+      const isOpen = mobileMenu.classList.contains('open')
+      
+      if (isOpen) {
+        // Close menu
+        mobileMenu.classList.remove('open')
+        newToggle.setAttribute('aria-expanded', 'false')
+        menuIcon?.classList.remove('hidden')
+        closeIcon?.classList.add('hidden')
+        document.body.style.overflow = ''
+      } else {
+        // Open menu
+        mobileMenu.classList.add('open')
+        newToggle.setAttribute('aria-expanded', 'true')
+        menuIcon?.classList.add('hidden')
+        closeIcon?.classList.remove('hidden')
+        document.body.style.overflow = 'hidden'
+      }
+    }
+
+    // Menu toggle click
+    newToggle.addEventListener('click', toggleMenu)
+
+    // Close menu when clicking a link
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link')
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('open')) {
+          toggleMenu()
+        }
+      })
+    })
+
+    // Close menu on escape key (use a single handler per page)
+    const escapeHandler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
+        toggleMenu()
+      }
+    }
+    
+    // Remove old escape handler if exists
+    document.removeEventListener('keydown', escapeHandler)
+    document.addEventListener('keydown', escapeHandler)
+
+    // Handle retro modal in mobile menu
+    const retroModalMobile = document.getElementById('open-retro-modal-mobile')
+    if (retroModalMobile) {
+      retroModalMobile.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('open')) {
+          toggleMenu()
+        }
+        // Trigger the main modal
+        setTimeout(() => {
+          const mainModalBtn = document.getElementById('open-retro-modal')
+          if (mainModalBtn) {
+            mainModalBtn.click()
+          }
+        }, 300) // Wait for menu to close
+      })
+    }
+  }
+
+  // Run mobile menu initialization
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu)
+  } else {
+    initMobileMenu()
+  }
+
+  // Re-run on view transitions
+  document.addEventListener('astro:page-load', initMobileMenu)
+  document.addEventListener('astro:after-swap', initMobileMenu)
 </script>

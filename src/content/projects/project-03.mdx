@@ -1,27 +1,18 @@
 ---
 title: Expensely
 author: Riley Skipper
-description: A modern personal finance management application built with React and TypeScript
+description: A modern personal finance management application built with React and TypeScript.
 ---
 
 ## Project Overview
 
-Expensely is a comprehensive personal finance management application designed to help users track expenses, manage budgets, and gain insights into their spending habits. Built with React, TypeScript, and modern web technologies, this project demonstrates my full-stack development skills and ability to create intuitive, user-friendly applications that solve real-world problems.
+Expensely is a comprehensive personal finance management application designed to help users track expenses, manage budgets, and gain insights into their spending habits. Built with React and TypeScript and deployed using Vercel, this application demonstrates my full-stack development skills and ability to create intuitive, user-friendly applications that solve real-world problems.
 
 import BlockQuote from '@components/BlockQuote.astro'
 import BreakoutImage from '@components/BreakoutImage.astro'
 import { Image } from 'astro:assets'
 
-<BreakoutImage src="/projects/project-image-3.png" />
-
-## Development Process
-
-The project began with extensive user research to understand common pain points in personal finance management. I identified key user needs including:
-
-- **Expense Tracking**: Simple and quick expense entry with categorization
-- **Budget Management**: Visual budget tracking with alerts and notifications
-- **Financial Insights**: Clear analytics and spending pattern visualization
-- **Cross-Platform Access**: Responsive design for desktop and mobile use
+<BreakoutImage src="/projects/expensely-shot.png" />
 
 ## Live Demo
 
@@ -42,16 +33,42 @@ The project began with extensive user research to understand common pain points 
   </a>
 </div>
 
+## Key Needs
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-8">
+  <div class="bg-card rounded-lg p-6 border border-border">
+    <h3 class="text-xl font-bold mb-3">Expense Tracking</h3>
+    <p class="text-muted">Simple and quick expense entry with categorization</p>
+  </div>
+  
+  <div class="bg-card rounded-lg p-6 border border-border">
+    <h3 class="text-xl font-bold mb-3">Budget Management</h3>
+    <p class="text-muted">Visual budget tracking with alerts and notifications</p>
+  </div>
+  
+  <div class="bg-card rounded-lg p-6 border border-border">
+    <h3 class="text-xl font-bold mb-3">Financial Insights</h3>
+    <p class="text-muted">Clear analytics and spending pattern visualization</p>
+  </div>
+  
+  <div class="bg-card rounded-lg p-6 border border-border">
+    <h3 class="text-xl font-bold mb-3">Cross-Platform Access</h3>
+    <p class="text-muted">Responsive design for desktop and mobile use</p>
+  </div>
+</div>
+
+
+
 ## Key Features
 
-### Core Functionality
-
-- **Expense Tracking**: Add, edit, and categorize expenses with custom categories
-- **Budget Management**: Set monthly budgets with visual progress indicators
+- **Inline Editing**: Add, edit, and categorize expenses with custom categories
 - **Data Visualization**: Interactive charts and graphs for spending analysis
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
 - **Local Storage**: Data persistence using browser storage
-- **Accessibility**: WCAG 2.1 AA compliant with keyboard navigation
+- **State Management**:   State management using React hooks and context API
+- **Performance Optimization**: Optimized rendering and data handling for smooth user experience
+- **Accessibility**: Ensured full keyboard navigation and screen reader compatibility
+
 
 ## Technical Implementation
 
@@ -66,34 +83,6 @@ The application was built using modern web technologies and best practices:
 
 ## Color Scheme
 
-The Expensely design system uses a carefully crafted color palette that balances professionalism with accessibility:
-
-### Primary Colors
-
-- **Primary Blue**: `#2563eb` - Main brand color for buttons and links
-- **Secondary Blue**: `#3b82f6` - Supporting elements and hover states
-- **Success Green**: `#16a34a` - Positive actions and budget indicators
-- **Warning Yellow**: `#eab308` - Caution states and alerts
-
-### Neutral Colors
-
-- **Dark Gray**: `#111827` - Primary text and headings
-- **Medium Gray**: `#374151` - Secondary text and labels
-- **Light Gray**: `#6b7280` - Tertiary text and disabled states
-- **Border Gray**: `#d1d5db` - Borders and dividers
-- **Background Gray**: `#f3f4f6` - Card and section backgrounds
-- **White**: `#ffffff` - Primary background
-
-### Semantic Colors
-
-- **Error Red**: `#ef4444` - Error states and negative indicators
-- **Purple**: `#a855f7` - Special features and highlights
-
-### Accessibility Considerations
-
-- All color combinations meet WCAG 2.1 AA contrast requirements
-- Color is never used as the sole indicator of information
-- High contrast ratios ensure readability across all devices
 
 <div class="bg-card my-8 rounded-lg p-6">
   <h3 class="mb-4 text-xl font-bold">Color Palette</h3>
@@ -133,114 +122,136 @@ The Expensely design system uses a carefully crafted color palette that balances
   </div>
 </div>
 
-## User Flow
+### User Flow
 
-The Expensely user experience follows a carefully designed flow that prioritizes simplicity and efficiency:
+<div class="my-8">
+  <p class="text-lg mb-8">The Expensely user experience follows a carefully designed flow that prioritizes simplicity and efficiency:</p>
+  
+  <div class="space-y-6">
+    {/* Step 1 */}
+    <div class="relative pl-8 pb-8 border-l-4 border-blue-500">
+      <div class="absolute -left-6 top-0 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+        1
+      </div>
+      <div class="bg-gradient-to-r from-blue-50 to-transparent dark:from-blue-900/20 rounded-lg p-6 ml-4">
+        <h4 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">Onboarding Experience</h4>
+        <div class="space-y-3">
+          <div>
+            <p class="font-semibold text-lg">Welcome Screen</p>
+            <p class="text-muted">Clean introduction with clear value proposition</p>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Quick Setup</p>
+            <p class="text-muted">Minimal initial configuration to get users started immediately</p>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Tutorial Overlay</p>
+            <p class="text-muted">Optional guided tour of key features</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-### 1. Onboarding Experience
+    {/* Step 2 */}
+    <div class="relative pl-8 pb-8 border-l-4 border-purple-500">
+      <div class="absolute -left-6 top-0 w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+        2
+      </div>
+      <div class="bg-gradient-to-r from-purple-50 to-transparent dark:from-purple-900/20 rounded-lg p-6 ml-4">
+        <h4 class="text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400">Main Dashboard</h4>
+        <div class="space-y-3">
+          <div>
+            <p class="font-semibold text-lg">Overview Cards</p>
+            <p class="text-muted">Quick glance at current month's spending, budget status, and recent transactions</p>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Quick Actions</p>
+            <p class="text-muted">Prominent "Add Expense" button for immediate expense entry</p>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Visual Indicators</p>
+            <p class="text-muted">Color-coded budget progress and spending alerts</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-- **Welcome Screen**: Clean introduction with clear value proposition
-- **Quick Setup**: Minimal initial configuration to get users started immediately
-- **Tutorial Overlay**: Optional guided tour of key features
+    {/* Step 3 */}
+    <div class="relative pl-8 pb-8 border-l-4 border-green-500">
+      <div class="absolute -left-6 top-0 w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+        3
+      </div>
+      <div class="bg-gradient-to-r from-green-50 to-transparent dark:from-green-900/20 rounded-lg p-6 ml-4">
+        <h4 class="text-2xl font-bold mb-4 text-green-600 dark:text-green-400">Expense Entry Flow</h4>
+        <div class="space-y-3">
+          <div>
+            <p class="font-semibold text-lg">One-Click Entry</p>
+            <p class="text-muted">Streamlined form with smart defaults</p>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Category Selection</p>
+            <p class="text-muted">Visual category picker with custom category support</p>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Amount Input</p>
+            <p class="text-muted">Large, accessible number input with currency formatting</p>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Auto-Save</p>
+            <p class="text-muted">Automatic saving to prevent data loss</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-### 2. Main Dashboard
+    {/* Step 4 */}
+    <div class="relative pl-8 pb-8 border-l-4 border-yellow-500">
+      <div class="absolute -left-6 top-0 w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+        4
+      </div>
+      <div class="bg-gradient-to-r from-yellow-50 to-transparent dark:from-yellow-900/20 rounded-lg p-6 ml-4">
+        <h4 class="text-2xl font-bold mb-4 text-yellow-600 dark:text-yellow-400">Budget Management</h4>
+        <div class="space-y-3">
+          <div>
+            <p class="font-semibold text-lg">Visual Budget Bars</p>
+            <p class="text-muted">Clear progress indicators for each category</p>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Alert System</p>
+            <p class="text-muted">Notifications when approaching or exceeding budget limits</p>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Flexible Categories</p>
+            <p class="text-muted">Customizable budget categories to match user needs</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-- **Overview Cards**: Quick glance at current month's spending, budget status, and recent transactions
-- **Quick Actions**: Prominent "Add Expense" button for immediate expense entry
-- **Visual Indicators**: Color-coded budget progress and spending alerts
+    {/* Step 5 */}
+    <div class="relative pl-8 pb-8 border-l-4 border-pink-500">
+      <div class="absolute -left-6 top-0 w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+        5
+      </div>
+      <div class="bg-gradient-to-r from-pink-50 to-transparent dark:from-pink-900/20 rounded-lg p-6 ml-4">
+        <h4 class="text-2xl font-bold mb-4 text-pink-600 dark:text-pink-400">Analytics & Insights</h4>
+        <div class="space-y-3">
+          <div>
+            <p class="font-semibold text-lg">Spending Trends</p>
+            <p class="text-muted">Interactive charts showing spending patterns over time</p>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Category Breakdown</p>
+            <p class="text-muted">Visual representation of spending by category</p>
+          </div>
+          <div>
+            <p class="font-semibold text-lg">Monthly Comparisons</p>
+            <p class="text-muted">Easy comparison with previous months</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-### 3. Expense Entry Flow
-
-- **One-Click Entry**: Streamlined form with smart defaults
-- **Category Selection**: Visual category picker with custom category support
-- **Amount Input**: Large, accessible number input with currency formatting
-- **Auto-Save**: Automatic saving to prevent data loss
-
-### 4. Budget Management
-
-- **Visual Budget Bars**: Clear progress indicators for each category
-- **Alert System**: Notifications when approaching or exceeding budget limits
-- **Flexible Categories**: Customizable budget categories to match user needs
-
-### 5. Analytics & Insights
-
-- **Spending Trends**: Interactive charts showing spending patterns over time
-- **Category Breakdown**: Visual representation of spending by category
-- **Monthly Comparisons**: Easy comparison with previous months
-
-### 6. Data Management
-
-- **Export Options**: Download data in various formats
-- **Backup & Sync**: Local storage with cloud sync capabilities
-- **Privacy Controls**: User-controlled data sharing and retention
-
-### Key UX Principles
-
-- **Progressive Disclosure**: Complex features revealed as needed
-- **Consistent Navigation**: Predictable interface patterns throughout
-- **Responsive Design**: Seamless experience across all device sizes
-- **Accessibility First**: Full keyboard navigation and screen reader support
-
-## Project Gallery
-
-<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-  <Image
-    src="/projects/project-image-3.png"
-    alt="Expensely dashboard showing expense overview and budget tracking"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
-  />
-  <Image
-    src="/projects/project-image-4.png"
-    alt="Expense entry form with category selection and amount input"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
-  />
-  <Image
-    src="/projects/project-image-5.png"
-    alt="Financial analytics dashboard with spending charts and insights"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
-  />
-  <Image
-    src="/projects/project-image-6.png"
-    alt="Mobile responsive design showing expense tracking on mobile device"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
-  />
+    
+  </div>
 </div>
-
-## User Feedback
-
-<BlockQuote author="Personal Finance Enthusiast">
-  Expensely has completely transformed how I manage my finances. The interface is intuitive, the visualizations are
-  clear, and it's helped me identify spending patterns I never noticed before. The mobile experience is seamless!
-</BlockQuote>
-
-<BreakoutImage src="/projects/project-image-4.png" />
-
-## Technical Challenges & Solutions
-
-### Key Development Challenges
-
-- **State Management**: Implemented efficient state management using React hooks and context API
-- **Data Visualization**: Created responsive charts that work across all device sizes
-- **Performance Optimization**: Optimized rendering and data handling for smooth user experience
-- **Accessibility**: Ensured full keyboard navigation and screen reader compatibility
-- **Cross-Browser Compatibility**: Tested and optimized for all major browsers
-
-## Future Enhancements
-
-The project serves as a foundation for advanced personal finance features:
-
-- **Cloud Sync**: User accounts and data synchronization across devices
-- **Import/Export**: CSV import and export functionality for data portability
-- **Advanced Analytics**: Machine learning-powered spending insights and predictions
-- **Bill Reminders**: Automated bill tracking and payment reminders
-- **Investment Tracking**: Portfolio management and investment performance tracking
-
-Expensely demonstrates my ability to create practical, user-centered applications that solve real problems while maintaining high code quality and accessibility standards. The project showcases full-stack development skills, modern React patterns, and a commitment to creating meaningful user experiences.

@@ -1,90 +1,359 @@
 ---
 import { Icon } from 'astro-icon/components'
-import { Image } from 'astro:assets'
 
 /**
  * Hero Component
  *
- * @description A component that displays a hero section with a title, description, and image
+ * @description A component that displays a hero section with large animated typography
  */
-interface Props {
-  /**
-   * The source URL for the image
-   */
-  src?: string
-}
-
-const { src = '/retro-computer.png' }: Props = Astro.props
 ---
 
-<section class="hero my-24">
+<section class="hero my-24 lg:my-32">
   <div class="container">
-    <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
-      <div class="flex flex-col items-center gap-8 md:items-start">
-        <h1 class="animate-fade-in-up text-center text-6xl md:text-left lg:text-8xl">
-          <slot><span class="text-gradient animate-gradient">Riley Skipper</span> Web Dev</slot>
+    <div class="hero-content">
+      <!-- Large Animated Title -->
+      <div class="hero-title-wrapper">
+        <h1 class="hero-title">
+          <span class="hero-name" data-text="Riley Skipper">
+            <span class="hero-name-inner">Riley Skipper</span>
+          </span>
+          <span class="hero-role">
+            <span class="role-line">Web</span>
+            <span class="role-line role-dev">Dev</span>
+          </span>
         </h1>
-        <p class="animate-fade-in-up animation-delay-200 text-center text-xl md:text-left lg:text-2xl">
-          I create accessible, visually appealing, and functional websites with stable design systems. 
+        
+        <!-- Decorative Elements -->
+        <div class="hero-decoration decoration-1"></div>
+        <div class="hero-decoration decoration-2"></div>
+        <div class="hero-decoration decoration-3"></div>
+      </div>
+
+      <!-- Subtitle and CTA -->
+      <div class="hero-bottom">
+        <p class="hero-description">
+          I create accessible, visually appealing, and functional websites with stable design systems.
         </p>
-        <div class="animate-fade-in-up animation-delay-400 flex flex-col gap-3 min-[500px]:flex-row">
+        <div class="hero-buttons">
           <a class="button has-icon animate-hover-lift" href="/about">
             <Icon name="lucide:user" />
             About Me
           </a>
-          <a class="button has-icon color-secondary animate-hover-lift animation-delay-100" href="/portfolio/">
+          <a class="button has-icon color-secondary animate-hover-lift" href="/portfolio/">
             <Icon name="lucide:briefcase" />
             View My Work
           </a>
         </div>
-      </div>
-      <div class="animate-fade-in-left animation-delay-600">
-        <Image
-          class="animate-float hidden lg:block"
-          src={src}
-          alt="Riley Skipper - Web Developer"
-          decoding="async"
-          width={800}
-          height={600}
-          loading="eager"
-        />
       </div>
     </div>
   </div>
 </section>
 
 <style lang="scss">
-  h1 {
-    text-wrap: unset;
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
   }
 
-  .text-gradient {
-    background: linear-gradient(
-      315deg,
-      light-dark(var(--color-primary-300), var(--color-secondary-100)) 25%,
-      light-dark(var(--color-secondary-300), var(--color-primary-200))
-    );
-    background-clip: border-box;
+  .hero-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .hero-title-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(4rem, 15vw, 12rem);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Name Styling */
+  .hero-name {
+    display: block;
+    position: relative;
+    color: #1E40AF;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 900;
+    animation: slideInLeft 1s ease-out;
+    filter: drop-shadow(0 4px 20px rgba(59, 130, 246, 0.3));
+    
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.3;
+      filter: blur(10px);
+      animation: glowPulse 3s ease-in-out infinite;
+      z-index: -1;
+    }
+  }
+
+  .hero-name-inner {
+    position: relative;
+    display: inline-block;
+    animation: textFloat 3s ease-in-out infinite;
+  }
+
+  /* Role Styling */
+  .hero-role {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: 900;
+    animation: slideInRight 1s ease-out 0.3s backwards;
+  }
+
+  .role-line {
+    display: inline-block;
+    background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
+    margin-right: 0.3em;
+    transform-origin: bottom left;
+    
+    &:hover {
+      animation: bounce 0.6s ease;
+    }
   }
 
-  // Retro mode text visibility
+  .role-dev {
+    background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite reverse;
+  }
+
+  /* Decorative Elements */
+  .hero-decoration {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    animation: float 8s ease-in-out infinite;
+    z-index: 1;
+  }
+
+  .decoration-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #3B82F6, transparent);
+    top: -10%;
+    right: 10%;
+    animation-delay: 0s;
+  }
+
+  .decoration-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #8B5CF6, transparent);
+    bottom: 10%;
+    left: 5%;
+    animation-delay: 2s;
+  }
+
+  .decoration-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #EC4899, transparent);
+    top: 40%;
+    left: 50%;
+    animation-delay: 4s;
+  }
+
+  /* Bottom Section */
+  .hero-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    animation: fadeInUp 1s ease-out 0.6s backwards;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-description {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    max-width: 600px;
+    text-align: center;
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .animate-hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  /* Animations */
+  @keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes textFloat {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% {
+      opacity: 0.3;
+      filter: blur(20px);
+    }
+    50% {
+      opacity: 0.6;
+      filter: blur(30px);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    33% {
+      transform: translate(30px, -30px);
+    }
+    66% {
+      transform: translate(-20px, 20px);
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1) rotate(-5deg);
+    }
+  }
+
+  /* Retro Mode Styles */
   :global(.retro-mode) .hero {
-    h1 {
+    .hero-name {
       color: var(--terminal-cyan);
-      border-bottom: none !important;
+      filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.6));
+      
+      &::before {
+        background: var(--terminal-cyan);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: blur(15px);
+        opacity: 0.4;
+      }
     }
 
-    .text-gradient {
-      background: linear-gradient(315deg, var(--terminal-cyan) 25%, var(--terminal-pink));
-      background-clip: border-box;
+    .role-line {
+      background: linear-gradient(135deg, var(--terminal-cyan) 0%, var(--terminal-pink) 100%);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    p {
+    .role-dev {
+      background: linear-gradient(135deg, var(--terminal-pink) 0%, var(--terminal-purple) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
       color: var(--terminal-cyan);
+    }
+
+    .hero-decoration {
+      filter: blur(80px);
+      opacity: 0.2;
+    }
+
+    .decoration-1 {
+      background: radial-gradient(circle, var(--terminal-cyan), transparent);
+    }
+
+    .decoration-2 {
+      background: radial-gradient(circle, var(--terminal-pink), transparent);
+    }
+
+    .decoration-3 {
+      background: radial-gradient(circle, var(--terminal-purple), transparent);
     }
 
     .button {
@@ -107,13 +376,9 @@ const { src = '/retro-computer.png' }: Props = Astro.props
     }
   }
 
-  // Modern mode text visibility
+  /* Modern Mode Styles */
   :global(.modern-mode) .hero {
-    h1 {
-      color: var(--neutral-900);
-    }
-
-    p {
+    .hero-description {
       color: var(--neutral-700);
     }
 
@@ -126,84 +391,51 @@ const { src = '/retro-computer.png' }: Props = Astro.props
     }
   }
 
-  // Animation classes
-  .animate-fade-in-up {
-    transform: translateY(30px);
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 70vh;
+    }
 
-  .animate-fade-in-left {
-    transform: translateX(-30px);
-    opacity: 0;
-    animation: fadeInLeft 0.8s ease-out forwards;
-  }
+    .hero-content {
+      gap: 3rem;
+    }
 
-  .animate-gradient {
-    animation: gradientShift 3s ease-in-out infinite;
-    background-size: 200% 200%;
-  }
+    .hero-title {
+      font-size: clamp(3rem, 12vw, 6rem);
+    }
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
+    .hero-role {
+      margin-top: 0.25rem;
+    }
 
-  .animate-hover-lift {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    .hero-description {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
 
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    .hero-decoration {
+      filter: blur(40px);
+    }
+
+    .decoration-1,
+    .decoration-2,
+    .decoration-3 {
+      width: 200px;
+      height: 200px;
     }
   }
 
-  .animation-delay-100 {
-    animation-delay: 0.1s;
-  }
+  @media (max-width: 480px) {
+    .hero-buttons {
+      flex-direction: column;
+      width: 100%;
+      padding: 0 1rem;
 
-  .animation-delay-200 {
-    animation-delay: 0.2s;
-  }
-
-  .animation-delay-400 {
-    animation-delay: 0.4s;
-  }
-
-  .animation-delay-600 {
-    animation-delay: 0.6s;
-  }
-
-  @keyframes fadeInUp {
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeInLeft {
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
-  @keyframes gradientShift {
-    0%,
-    100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
+      a {
+        width: 100%;
+        justify-content: center;
+      }
     }
   }
 </style>

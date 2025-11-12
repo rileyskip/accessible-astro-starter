@@ -1,247 +1,282 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
+import ScrollReveal from '@components/ScrollReveal.astro'
+import PrintMark from '@components/PrintMark.astro'
+import ParallaxBackground from '@components/ParallaxBackground.astro'
 import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon/components'
 import { Avatar, AvatarGroup } from 'accessible-astro-components'
 ---
 
 <DefaultLayout title="About Riley Skipper - Web Developer">
-  <section class="my-24">
-    <div class="container">
-      <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
-        <div class="flex flex-col gap-8">
-          <h1 class="text-6xl lg:text-8xl">About Me</h1>
-          <p class="text-xl lg:text-2xl">
-            I'm Riley Skipper, a Web Developer and UX/UI Researcher who believes that great websites should be
-            accessible to everyone. I combine modern development practices with a deep commitment to inclusive design
-            and user experience.
-          </p>
-          <div class="flex flex-col gap-4 min-[500px]:flex-row">
-            <a class="button has-icon" href="/portfolio/">
-              <Icon name="lucide:briefcase" />
-              View My Work
-            </a>
-            <a class="button has-icon color-secondary" href="/contact">
-              <Icon name="lucide:mail" />
-              Get in Touch
-            </a>
+  <!-- Hero Section - Asymmetric Layout -->
+  <section class="section-editorial section-parallax my-24 lg:my-32">
+    <ParallaxBackground variant="blob" color="blue" position="top-right" size="lg" speed={0.5} />
+    <ParallaxBackground variant="gradient" color="purple" position="bottom-left" size="md" speed={0.3} />
+    
+    <div class="container-wide relative z-10">
+      <div class="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-24">
+        <ScrollReveal direction="up" class="lg:col-span-6 lg:col-start-2">
+          <div class="relative flex flex-col gap-8">
+            <PrintMark position="top-left" size="lg" />
+            <h1 class="editorial-title">
+              <span class="block">About</span>
+              <span class="block offset-text">Me</span>
+            </h1>
+            <p class="text-xl opacity-80 lg:text-2xl">
+              I'm Riley Skipper, a Web Developer and UX/UI Researcher who believes that great websites should be
+              accessible to everyone. I combine modern development practices with a deep commitment to inclusive design
+              and user experience.
+            </p>
+            <div class="flex flex-col gap-4 min-[500px]:flex-row">
+              <a class="button has-icon" href="/portfolio/">
+                <Icon name="lucide:briefcase" />
+                View My Work
+              </a>
+              <a class="button has-icon color-secondary" href="/contact">
+                <Icon name="lucide:mail" />
+                Get in Touch
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="flex items-center justify-center">
-          <Image
-            class="rounded-2xl shadow-2xl"
-            src="/hero-developer.webp"
-            alt="Riley Skipper - Web Developer"
-            width={500}
-            height={500}
-          />
-        </div>
+        </ScrollReveal>
+        
+        <ScrollReveal direction="left" delay={200} class="lg:col-span-4">
+          <div class="relative flex items-center justify-center lg:justify-end">
+            <PrintMark position="bottom-right" size="md" />
+            <Image
+              class="rounded-2xl shadow-2xl transition-transform duration-500 hover:scale-105"
+              src="/hero-developer.webp"
+              alt="Riley Skipper - Web Developer"
+              width={500}
+              height={500}
+            />
+          </div>
+        </ScrollReveal>
       </div>
     </div>
   </section>
 
-  <section class="my-64">
-    <div class="container">
-      <h2 class="mb-16 text-6xl">My Story</h2>
-      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
-        <div class="space-y-8">
-          <p class="text-xl">
-            My journey in web development began at Camden County College where I earned my Web Design A.A.S. This
-            foundation led me to Arizona State University where I completed my Internet & Web Development B.S.,
-            solidifying my passion for creating digital experiences that make a real difference.
-          </p>
-          <p class="text-xl">
-            I discovered early on that accessibility wasn't just a nice-to-have—it was essential. Working with legal
-            associations and university systems taught me that every user matters, and every website should work for
-            everyone, regardless of their abilities.
-          </p>
-          <p class="text-xl">
-            Today, I specialize in building websites that are not only beautiful and functional but also inclusive and
-            accessible to everyone. My experience with Drupal, WordPress, and modern web technologies allows me to
-            create solutions that truly serve their users.
-          </p>
+  <!-- Experience & Education - Disjointed Layout -->
+  <section class="section-editorial section-parallax my-64 lg:my-96">
+    <ParallaxBackground variant="dots" color="cyan" position="top-left" size="xl" speed={0.4} />
+    <ParallaxBackground variant="circle" color="pink" position="bottom-right" size="lg" speed={0.3} />
+    
+    <div class="container-wide relative z-10">
+      <ScrollReveal direction="fade">
+        <h2 class="editorial-title mb-24 text-center">
+          <span class="block">Experience &</span>
+          <span class="block offset-text">Education</span>
+        </h2>
+      </ScrollReveal>
+      
+      <div class="grid grid-cols-1 gap-24 lg:grid-cols-12 lg:gap-16">
+        <ScrollReveal direction="right" class="lg:col-span-6">
+          <div class="relative">
+            <PrintMark position="top-left" size="sm" />
+            <h3 class="mb-12 text-4xl font-bold">Professional Experience</h3>
+            <div class="space-y-12">
+              <div class="experience-card border-primary border-l-4 pl-6 transition-all duration-300 hover:pl-8">
+                <h4 class="text-2xl font-bold">Web Developer</h4>
+                <p class="text-muted mb-4 text-lg">Rutgers University • May 2022 - Current</p>
+                <ul class="space-y-2 opacity-80">
+                  <li>• Designing and deploying dynamic pages, templates, and components using Drupal CMS</li>
+                  <li>• Wireframing, designing, and prototyping user-centric interfaces for new products to improve overall usability</li>
+                  <li>• Accessibility website management in compliance with standards of WCAG 2</li>
+                  <li>• Diagnosing and resolving bugs, and QA testing within a local server environment</li>
+                  <li>• Co-developer for new application products using Next.Js framework</li>
+                </ul>
+              </div>
+              <div class="experience-card border-secondary border-l-4 pl-6 transition-all duration-300 hover:pl-8">
+                <h4 class="text-2xl font-bold">Junior Web Developer</h4>
+                <p class="text-muted mb-4 text-lg">Legal Associations Management • Aug 2021 - May 2022</p>
+                <ul class="space-y-2 opacity-80">
+                  <li>• WordPress based developing and maintaining law firm associations around the U.S.</li>
+                  <li>• Assisting in setting up algorithms and data structures using Wordpress' Oxygen and jQuery</li>
+                  <li>• Designing mockups and prototyping with Figma, and key member to check for QA</li>
+                  <li>• Collaboration with clients and marketing to establish design needs</li>
+                  <li>• Monthly SEO management and improvements using tools such as Moz Pro and Alexa</li>
+                </ul>
+              </div>
+              <div class="experience-card border-accent border-l-4 pl-6 transition-all duration-300 hover:pl-8">
+                <h4 class="text-2xl font-bold">UX/UI Intern</h4>
+                <p class="text-muted mb-4 text-lg">Philadelphia Printworks • Apr 2019 - Oct 2019</p>
+                <ul class="space-y-2 opacity-80">
+                  <li>• Quarterly consultant through reporting and implementing SEO strategies</li>
+                  <li>• Validating errors using Google Analytics and Lighthouse</li>
+                  <li>• Assistance in development using Shopify CMS</li>
+                  <li>• Digital copywriting</li>
+                  <li>• Collaborative redesign of web navigation for improved UX</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+        
+        <ScrollReveal direction="left" delay={200} class="lg:col-span-6">
+          <div class="relative">
+            <PrintMark position="top-right" size="sm" />
+            <h3 class="mb-12 text-4xl font-bold">Education & Certifications</h3>
+            <div class="space-y-8">
+              <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                <h4 class="text-2xl font-bold">Internet & Web Development B.S.</h4>
+                <p class="text-muted mb-4 text-lg">Arizona State University • 2017-2019</p>
+                <p class="opacity-80">
+                  Comprehensive study of web development, user experience design, and modern web technologies.
+                </p>
+              </div>
+              <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                <h4 class="text-2xl font-bold">Web Design A.A.S.</h4>
+                <p class="text-muted mb-4 text-lg">Camden County College • 2015-2017</p>
+                <p class="opacity-80">Foundation in web design principles, HTML, CSS, and fundamental development practices.</p>
+              </div>
+              <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                <h4 class="text-2xl font-bold">ADA Compliance Experience</h4>
+                <p class="text-muted mb-4 text-lg">Rutgers University</p>
+                <p class="opacity-80">
+                  Extensive experience implementing and maintaining accessibility standards in higher education
+                  environments.
+                </p>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hobbies Section - Grid Layout -->
+  <section class="section-editorial section-parallax my-64 lg:my-96">
+    <ParallaxBackground variant="blob" color="green" position="top-right" size="lg" speed={0.5} />
+    <ParallaxBackground variant="grid" color="blue" position="bottom-left" size="xl" speed={0.3} />
+    
+    <div class="container-wide relative z-10">
+      <ScrollReveal direction="fade">
+        <div class="relative mb-24">
+          <PrintMark position="top-left" size="md" />
+          <h2 class="editorial-title">
+            <span class="block">When I'm</span>
+            <span class="block offset-text">Not Coding</span>
+          </h2>
         </div>
-        <div class="space-y-8">
-          <div
-            class="from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900 rounded-2xl bg-gradient-to-br p-8"
-          >
-            <h3 class="mb-4 text-2xl font-bold">My Mission</h3>
-            <p class="text-lg">
-              "Strive not to be a success, but rather to be of value." - Albert Einstein I create web experiences that
-              are accessible, performant, and valuable to all users. I believe that technology should bring people
-              together, not create barriers.
+      </ScrollReveal>
+      
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <ScrollReveal direction="up" delay={100}>
+          <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+            <Icon name="lucide:anchor" class="text-primary mb-6 h-14 w-14" />
+            <h3 class="mb-3 text-2xl font-bold">Kayaking</h3>
+            <p class="opacity-80">
+              I love exploring waterways and finding peace on the water. Kayaking helps me clear my mind and find
+              inspiration for new projects.
             </p>
           </div>
-          <div
-            class="from-secondary-100 to-primary-100 dark:from-secondary-900 dark:to-primary-900 rounded-2xl bg-gradient-to-br p-8"
-          >
-            <h3 class="mb-4 text-2xl font-bold">My Values</h3>
-            <ul class="space-y-2 text-lg">
-              <li>• Accessibility first in everything I build</li>
-              <li>• User-centered design and research</li>
-              <li>• Clean, maintainable code that scales</li>
-              <li>• Continuous learning and growth</li>
-              <li>• Collaborative problem-solving</li>
-            </ul>
+        </ScrollReveal>
+        
+        <ScrollReveal direction="up" delay={200}>
+          <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+            <Icon name="lucide:book-open" class="text-secondary mb-6 h-14 w-14" />
+            <h3 class="mb-3 text-2xl font-bold">Reading</h3>
+            <p class="opacity-80">
+              I'm an avid reader, always exploring new ideas and perspectives. Books fuel my creativity and help me think
+              differently about problems.
+            </p>
           </div>
-        </div>
+        </ScrollReveal>
+        
+        <ScrollReveal direction="up" delay={300}>
+          <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+            <Icon name="lucide:circle-dot" class="text-accent mb-6 h-14 w-14" />
+            <h3 class="mb-3 text-2xl font-bold">Billiards</h3>
+            <p class="opacity-80">
+              I enjoy the strategic thinking and precision required in billiards. It's a great way to unwind and practice
+              focus and patience.
+            </p>
+          </div>
+        </ScrollReveal>
+        
+        <ScrollReveal direction="up" delay={400}>
+          <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+            <Icon name="lucide:tv" class="text-primary mb-6 h-14 w-14" />
+            <h3 class="mb-3 text-2xl font-bold">Avid Movie Watcher</h3>
+            <p class="opacity-80">
+              I love immersing myself in stories through film. Movies inspire my creativity and help me understand
+              different perspectives and narratives.
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
     </div>
   </section>
 
-  <section class="my-64">
-    <div class="container">
-      <h2 class="mb-16 text-6xl">Experience & Education</h2>
-      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
-        <div>
-          <h3 class="mb-8 text-3xl">Professional Experience</h3>
-          <div class="space-y-8">
-            <div class="border-primary border-l-4 pl-6">
-              <h4 class="text-xl font-bold">Web Developer</h4>
-              <p class="text-muted text-lg">Rutgers University • May 2022 - Current</p>
-              <ul class="mt-2 space-y-1 text-sm">
-                <li>• Designing and deploying dynamic elements and page layouts using Drupal CMS</li>
-                <li>• Prototyping and responsive designing websites and products for end users</li>
-                <li>• Accessibility management to comply with standards of ADA requirements</li>
-                <li>
-                  • Maintenance through diagnosing and resolving bugs, and QA testing within a local server environment
-                </li>
-                <li>
-                  • Establishing a cohesive flow and branding by creating templates for users' editing and design needs
-                </li>
-              </ul>
-            </div>
-            <div class="border-secondary border-l-4 pl-6">
-              <h4 class="text-xl font-bold">Junior Web Developer</h4>
-              <p class="text-muted text-lg">Legal Associations Management • Aug 2021 - May 2022</p>
-              <ul class="mt-2 space-y-1 text-sm">
-                <li>• WordPress based developing and maintaining law firm associations around the U.S.</li>
-                <li>• Assisting in setting up algorithms and data structures using WordPress' Oxygen and jQuery</li>
-                <li>• Designing mockups and prototyping with Figma, and key member to check for QA</li>
-                <li>• Collaboration with clients and marketing to establish design needs</li>
-                <li>• Monthly SEO management and improvements using tools such as Moz Pro and Alexa</li>
-              </ul>
-            </div>
-            <div class="border-accent border-l-4 pl-6">
-              <h4 class="text-xl font-bold">UX/UI Intern</h4>
-              <p class="text-muted text-lg">Philadelphia Printworks • Apr 2019 - Oct 2019</p>
-              <ul class="mt-2 space-y-1 text-sm">
-                <li>• User experience research by monitoring interaction trends</li>
-                <li>• Editing copy for upcoming social media posts</li>
-                <li>• Creative thinking allowing for brainstorming new avenues to increase user engagement</li>
-                <li>• Identifying design and code issues and reaching solutions for optimal user satisfaction</li>
-                <li>• Collaborative redesign of web navigation for improved UX</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h3 class="mb-8 text-3xl">Education & Certifications</h3>
-          <div class="space-y-8">
-            <div class="bg-card rounded-2xl p-6">
-              <h4 class="text-xl font-bold">Internet & Web Development B.S.</h4>
-              <p class="text-muted text-lg">Arizona State University • 2017-2019</p>
-              <p class="mt-2">
-                Comprehensive study of web development, user experience design, and modern web technologies.
-              </p>
-            </div>
-            <div class="bg-card rounded-2xl p-6">
-              <h4 class="text-xl font-bold">Web Design A.A.S.</h4>
-              <p class="text-muted text-lg">Camden County College • 2015-2017</p>
-              <p class="mt-2">Foundation in web design principles, HTML, CSS, and fundamental development practices.</p>
-            </div>
-            <div class="bg-card rounded-2xl p-6">
-              <h4 class="text-xl font-bold">ADA Compliance Experience</h4>
-              <p class="text-muted text-lg">Rutgers University</p>
-              <p class="mt-2">
-                Extensive experience implementing and maintaining accessibility standards in higher education
-                environments.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="my-64">
-    <div class="container">
-      <h2 class="mb-16 text-6xl">When I'm Not Coding</h2>
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <div class="bg-card rounded-2xl p-6">
-          <Icon name="lucide:anchor" class="text-primary mb-4 h-12 w-12" />
-          <h3 class="mb-2 text-xl font-bold">Kayaking</h3>
-          <p>
-            I love exploring waterways and finding peace on the water. Kayaking helps me clear my mind and find
-            inspiration for new projects.
-          </p>
-        </div>
-        <div class="bg-card rounded-2xl p-6">
-          <Icon name="lucide:book-open" class="text-secondary mb-4 h-12 w-12" />
-          <h3 class="mb-2 text-xl font-bold">Reading</h3>
-          <p>
-            I'm an avid reader, always exploring new ideas and perspectives. Books fuel my creativity and help me think
-            differently about problems.
-          </p>
-        </div>
-        <div class="bg-card rounded-2xl p-6">
-          <Icon name="lucide:circle-dot" class="text-accent mb-4 h-12 w-12" />
-          <h3 class="mb-2 text-xl font-bold">Billiards</h3>
-          <p>
-            I enjoy the strategic thinking and precision required in billiards. It's a great way to unwind and practice
-            focus and patience.
-          </p>
-        </div>
-        <div class="bg-card rounded-2xl p-6">
-          <Icon name="lucide:tv" class="text-primary mb-4 h-12 w-12" />
-          <h3 class="mb-2 text-xl font-bold">Avid Movie Watcher</h3>
-          <p>
-            I love immersing myself in stories through film. Movies inspire my creativity and help me understand
-            different perspectives and narratives.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="my-64">
-    <div class="container">
-      <h2 class="mb-16 text-6xl">Let's Work Together</h2>
-      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
-        <div class="space-y-8">
-          <p class="text-xl">
-            I'm always excited to take on new projects that challenge me to grow and create something meaningful.
-            Whether you need a new website, want to improve accessibility, or just want to chat about web development,
-            I'd love to hear from you.
-          </p>
-          <p class="text-xl">
-            I believe in building long-term relationships with clients, not just completing projects. I want to
-            understand your goals, your users, and your vision so we can create something truly special together.
-          </p>
-          <div class="flex flex-col gap-4 min-[500px]:flex-row">
-            <a class="button has-icon" href="/contact">
-              <Icon name="lucide:mail" />
-              Start a Project
-            </a>
-            <a class="button has-icon color-secondary" href="/portfolio/">
-              <Icon name="lucide:eye" />
-              See My Work
-            </a>
-          </div>
-        </div>
-        <div
-          class="from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900 rounded-2xl bg-gradient-to-br p-8"
-        >
-          <h3 class="mb-6 text-2xl font-bold">What I'm Looking For</h3>
-          <ul class="space-y-4 text-lg">
-            <li>• Projects that make a positive impact</li>
-            <li>• Opportunities to push accessibility boundaries</li>
-            <li>• Long-term partnerships with great clients</li>
-            <li>• Projects that challenge me to learn and grow</li>
-            <li>• Work that aligns with my values</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 </DefaultLayout>
+
+<style lang="scss">
+  /* Editorial Design Styles */
+  .section-editorial {
+    position: relative;
+  }
+
+  .section-parallax {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .container-wide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: 768px) {
+      padding: 0 1.5rem;
+    }
+  }
+
+  .editorial-title {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    
+    .offset-text {
+      padding-left: clamp(2rem, 8vw, 8rem);
+      font-weight: 300;
+    }
+  }
+
+  .experience-card {
+    &:hover {
+      border-width: 6px;
+    }
+  }
+
+  /* Smooth scroll behavior */
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  /* Retro mode adjustments */
+  :global(.retro-mode) {
+    .editorial-title {
+      color: var(--terminal-cyan);
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .experience-card {
+      &:hover {
+        background: rgba(0, 255, 255, 0.05);
+      }
+    }
+
+    .bg-card {
+      background: rgba(0, 255, 255, 0.05);
+      border: 1px solid var(--terminal-cyan);
+      
+      &:hover {
+        background: rgba(0, 255, 255, 0.1);
+        box-shadow: 0 25px 50px rgba(0, 255, 255, 0.2);
+      }
+    }
+  }
+</style>

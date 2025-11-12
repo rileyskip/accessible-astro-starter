@@ -1,0 +1,96 @@
+---
+/**
+ * Print Mark Component
+ * Decorative cross-hair/registration marks inspired by print design
+ */
+interface Props {
+  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center'
+  size?: 'sm' | 'md' | 'lg'
+  class?: string
+}
+
+const { position = 'top-left', size = 'md', class: className = '' } = Astro.props
+
+const sizeMap = {
+  sm: 30,
+  md: 50,
+  lg: 80
+}
+
+const crossSize = sizeMap[size]
+---
+
+<div class={`print-mark print-mark-${position} print-mark-${size} ${className}`}>
+  <svg width={crossSize} height={crossSize} viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Vertical line -->
+    <line x1="25" y1="0" x2="25" y2="15" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="25" y1="35" x2="25" y2="50" stroke="currentColor" stroke-width="1.5"/>
+    
+    <!-- Horizontal line -->
+    <line x1="0" y1="25" x2="15" y2="25" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="35" y1="25" x2="50" y2="25" stroke="currentColor" stroke-width="1.5"/>
+    
+    <!-- Center circle -->
+    <circle cx="25" cy="25" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <circle cx="25" cy="25" r="3" fill="currentColor"/>
+  </svg>
+</div>
+
+<style lang="scss">
+  .print-mark {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.15;
+    pointer-events: none;
+    color: currentColor;
+    
+    &.print-mark-top-left {
+      top: -20px;
+      left: -20px;
+    }
+    
+    &.print-mark-top-right {
+      top: -20px;
+      right: -20px;
+    }
+    
+    &.print-mark-bottom-left {
+      bottom: -20px;
+      left: -20px;
+    }
+    
+    &.print-mark-bottom-right {
+      bottom: -20px;
+      right: -20px;
+    }
+    
+    &.print-mark-center {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    @media (max-width: 768px) {
+      &.print-mark-sm svg {
+        width: 20px;
+        height: 20px;
+      }
+      
+      &.print-mark-md svg {
+        width: 30px;
+        height: 30px;
+      }
+      
+      &.print-mark-lg svg {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+  
+  :global(.retro-mode) .print-mark {
+    color: var(--terminal-cyan);
+    opacity: 0.3;
+  }
+</style>
+
