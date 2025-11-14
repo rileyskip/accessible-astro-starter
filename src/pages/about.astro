@@ -44,13 +44,7 @@ import { Avatar, AvatarGroup } from 'accessible-astro-components'
         <ScrollReveal direction="left" delay={200} class="lg:col-span-4">
           <div class="relative flex items-center justify-center lg:justify-end">
             <PrintMark position="bottom-right" size="md" />
-            <Image
-              class="rounded-2xl shadow-2xl transition-transform duration-500 hover:scale-105"
-              src="/hero-developer.webp"
-              alt="Riley Skipper - Web Developer"
-              width={500}
-              height={500}
-            />
+           
           </div>
         </ScrollReveal>
       </div>
@@ -152,58 +146,30 @@ import { Avatar, AvatarGroup } from 'accessible-astro-components'
     
     <div class="container-wide relative z-10">
       <ScrollReveal direction="fade">
-        <div class="relative mb-24">
+        <div class="relative mb-32">
           <PrintMark position="top-left" size="md" />
           <h2 class="editorial-title">
-            <span class="block">When I'm</span>
-            <span class="block offset-text">Not Coding</span>
+            <span class="block">Activities</span>
+            <span class="block offset-text text-8xl">When I'm Not Coding...</span>
           </h2>
         </div>
       </ScrollReveal>
       
-      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div class="hobbies-list">
         <ScrollReveal direction="up" delay={100}>
-          <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-            <Icon name="lucide:anchor" class="text-primary mb-6 h-14 w-14" />
-            <h3 class="mb-3 text-2xl font-bold">Kayaking</h3>
-            <p class="opacity-80">
-              I love exploring waterways and finding peace on the water. Kayaking helps me clear my mind and find
-              inspiration for new projects.
-            </p>
-          </div>
+          <h3 class="hobby-text hobby-camping">Camping</h3>
         </ScrollReveal>
         
         <ScrollReveal direction="up" delay={200}>
-          <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-            <Icon name="lucide:book-open" class="text-secondary mb-6 h-14 w-14" />
-            <h3 class="mb-3 text-2xl font-bold">Reading</h3>
-            <p class="opacity-80">
-              I'm an avid reader, always exploring new ideas and perspectives. Books fuel my creativity and help me think
-              differently about problems.
-            </p>
-          </div>
+          <h3 class="hobby-text hobby-kayaking">Kayaking</h3>
         </ScrollReveal>
         
         <ScrollReveal direction="up" delay={300}>
-          <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-            <Icon name="lucide:circle-dot" class="text-accent mb-6 h-14 w-14" />
-            <h3 class="mb-3 text-2xl font-bold">Billiards</h3>
-            <p class="opacity-80">
-              I enjoy the strategic thinking and precision required in billiards. It's a great way to unwind and practice
-              focus and patience.
-            </p>
-          </div>
+          <h3 class="hobby-text hobby-billiards">Billiards</h3>
         </ScrollReveal>
         
         <ScrollReveal direction="up" delay={400}>
-          <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-            <Icon name="lucide:tv" class="text-primary mb-6 h-14 w-14" />
-            <h3 class="mb-3 text-2xl font-bold">Avid Movie Watcher</h3>
-            <p class="opacity-80">
-              I love immersing myself in stories through film. Movies inspire my creativity and help me understand
-              different perspectives and narratives.
-            </p>
-          </div>
+          <h3 class="hobby-text hobby-horror">Horror Movies</h3>
         </ScrollReveal>
       </div>
     </div>
@@ -251,6 +217,76 @@ import { Avatar, AvatarGroup } from 'accessible-astro-components'
     }
   }
 
+  /* Hobbies List Layout */
+  .hobbies-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+
+    @media (max-width: 768px) {
+      gap: 2rem;
+    }
+  }
+
+  .hobby-text {
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 900;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+
+    &:hover {
+      transform: translateX(20px) scale(1.05);
+      filter: brightness(1.2);
+    }
+
+    @media (max-width: 768px) {
+      font-size: clamp(3rem, 10vw, 5rem);
+    }
+  }
+
+  /* Individual Hobby Colors */
+  .hobby-camping {
+    color: #10B981;
+    text-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+
+    &:hover {
+      text-shadow: 0 8px 40px rgba(16, 185, 129, 0.6);
+    }
+  }
+
+  .hobby-kayaking {
+    color: #3B82F6;
+    text-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+
+    &:hover {
+      text-shadow: 0 8px 40px rgba(59, 130, 246, 0.6);
+    }
+  }
+
+  .hobby-billiards {
+    color: #8B5CF6;
+    text-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+
+    &:hover {
+      text-shadow: 0 8px 40px rgba(139, 92, 246, 0.6);
+    }
+  }
+
+  .hobby-horror {
+    color: #EF4444;
+    text-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+
+    &:hover {
+      text-shadow: 0 8px 40px rgba(239, 68, 68, 0.6);
+    }
+  }
+
   /* Smooth scroll behavior */
   :global(html) {
     scroll-behavior: smooth;
@@ -277,6 +313,56 @@ import { Avatar, AvatarGroup } from 'accessible-astro-components'
         background: rgba(0, 255, 255, 0.1);
         box-shadow: 0 25px 50px rgba(0, 255, 255, 0.2);
       }
+    }
+
+    /* Retro Hobbies */
+    .hobby-camping {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(0, 255, 255, 0.1) 100%);
+      border: 2px solid var(--terminal-cyan);
+      box-shadow: 0 10px 40px rgba(0, 255, 255, 0.3);
+
+      &:hover {
+        box-shadow: 0 20px 60px rgba(0, 255, 255, 0.5);
+        background: linear-gradient(135deg, rgba(0, 255, 255, 0.3) 0%, rgba(0, 255, 255, 0.2) 100%);
+      }
+    }
+
+    .hobby-kayaking {
+      background: linear-gradient(135deg, rgba(255, 0, 127, 0.2) 0%, rgba(255, 0, 127, 0.1) 100%);
+      border: 2px solid var(--terminal-pink);
+      box-shadow: 0 10px 40px rgba(255, 0, 127, 0.3);
+
+      &:hover {
+        box-shadow: 0 20px 60px rgba(255, 0, 127, 0.5);
+        background: linear-gradient(135deg, rgba(255, 0, 127, 0.3) 0%, rgba(255, 0, 127, 0.2) 100%);
+      }
+    }
+
+    .hobby-billiards {
+      background: linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(147, 51, 234, 0.1) 100%);
+      border: 2px solid var(--terminal-purple);
+      box-shadow: 0 10px 40px rgba(147, 51, 234, 0.3);
+
+      &:hover {
+        box-shadow: 0 20px 60px rgba(147, 51, 234, 0.5);
+        background: linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(147, 51, 234, 0.2) 100%);
+      }
+    }
+
+    .hobby-horror {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(255, 0, 127, 0.2) 100%);
+      border: 2px solid var(--terminal-cyan);
+      box-shadow: 0 10px 40px rgba(0, 255, 255, 0.3);
+
+      &:hover {
+        box-shadow: 0 20px 60px rgba(255, 0, 127, 0.5);
+        background: linear-gradient(135deg, rgba(0, 255, 255, 0.3) 0%, rgba(255, 0, 127, 0.3) 100%);
+      }
+    }
+
+    .hobby-title,
+    .hobby-description {
+      color: white;
     }
   }
 </style>

@@ -10,9 +10,17 @@ Drupal development for Rutgers University. This project demonstrates my expertis
 
 import BlockQuote from '@components/BlockQuote.astro'
 import BreakoutImage from '@components/BreakoutImage.astro'
+import Lightbox from '@components/Lightbox.astro'
 import { Image } from 'astro:assets'
 
-<BreakoutImage src="/projects/templates.png" />
+<Lightbox 
+  src="/projects/statewide.png" 
+  alt="Rutgers Statewide homepage with hero image showing students collaborating" 
+  caption="Homepage featuring the tagline 'Convenient. Cost-Effective. Connected. That's Rutgers Statewide' with an engaging hero image and campus location cards below."
+  width={1400}
+  height={700}
+  class="w-full rounded-xl shadow-2xl mb-8"
+/>
 
 ## Development Process
 
@@ -45,34 +53,96 @@ This role required deep understanding of both Drupal's content management capabi
 
 
 ## Project Gallery
-Our templates were built to be flexible enough to allow editors with no prior knowledge to add, edit, and style content while adhering to a similar look, feel, and theme and maintain accessibility.
-<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-  <Image
+Our templates were built to be flexible enough to allow editors with no prior knowledge to add, edit, and style content while adhering to a similar look, feel, and theme and maintain accessibility. Click any image to view it in full size.
+
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 my-12">
+  <Lightbox
+    src="/projects/statewide-degree programs.png"
+    alt="Degree programs page showing a 4-column grid of program cards with icons including Business Administration, Criminal Justice, Health Administration, Health Sciences, Labor and Employment Relations, Liberal Studies, Master of Social Work, Political Science, Psychology, Public Health, RN to BS in Nursing, and Social Work"
+    caption="Degree Programs page featuring icon-based cards in a responsive grid layout with clear visual hierarchy. Built using complex Views, Bootstrap 5 tabs, and Jquery for navigating tab panes."
+    width={1400}
+    height={800}
+    class="h-[350px] w-full rounded-xl object-cover shadow-lg"
+  />
+  
+  <Lightbox
+    src="/projects/deia-events.png"
+    alt="Past Events page showing a filtering sidebar and event listings with Film: The Meaning of the Seed (2020) scheduled for Nov 12, 2025 and Film: Origin (2023) for Oct 29, 2025"
+    caption="Events page with robust filtering by category and search functionality, built using Views."
+    width={1400}
+    height={800}
+    class="h-[350px] w-full rounded-xl object-cover shadow-lg"
+  />
+  
+  <Lightbox
+    src="/projects/ac-degrees.png"
+    alt="Campus locations section showing five partner community colleges: Atlantic Cape, Brookdale, Camden CC, Mercer, and Morris, each with representative campus photos"
+    caption="Interactive campus location cards showcasing another View of Degree Programs. Above features a custom Hero template built using Bootstrap 5 and Twig, allowing editors to edit the hero of any page."
+    width={1400}
+    height={800}
+    class="h-[350px] w-full rounded-xl object-cover shadow-lg"
+  />
+  
+  <Lightbox
+    src="/projects/statewide-faq.png"
+    alt="FAQs page with accordion-style questions including 'Where are Rutgers Statewide degree programs available?', 'What undergraduate degree programs do you offer?', 'Do you offer any graduate programs through Rutgers Statewide?', 'Is financial aid available?', and 'Are the courses taught by Rutgers faculty?'"
+    caption="FAQs custom template built using Bootstrap 5 and Twig, allowing editors to add Faq sections to any page. "
+    width={1400}
+    height={800}
+    class="h-[350px] w-full rounded-xl object-cover shadow-lg"
+  />
+  
+  <Lightbox
     src="/projects/about-deia.png"
-    alt="Rutgers Statewide homepage showing degree programs and partner locations"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
+    alt="About DEIA page showing content templates and layouts"
+    caption="Custom content template for editors to add text and image in a two column layout. Freedom to stlye font, color, buttons, and images while maintaining accessibility and University branding."
+    width={1400}
+    height={800}
+    class="h-[350px] w-full rounded-xl object-cover shadow-lg"
   />
-  <Image
+  
+  <Lightbox
+    src="/projects/statewide.png"
+    alt="Prospective Students page with header text explaining how to earn a BA or BS degree through Rutgers Statewide by taking courses at partner community college sites"
+    caption="This website was built as multiple websites built in 1. This image features a double menu with the top menu being the overarcing school menu, and the sub-menu allowing students to choose their school of choice and switching the site's top menu to school-specific navigation."
+    width={1400}
+    height={800}
+    class="h-[350px] w-full rounded-xl object-cover shadow-lg"
+  />
+  
+  <Lightbox
+    src="/projects/2-column-layout.png"
+    alt="What Sets Us Apart section showing three categories: Convenient (earn bachelor's degree without long commute, full-time or part-time, day/evening/hybrid/online options), Cost-Effective (financial aid, Garden State Guarantee, save on commute and housing), and Connected (land-grant research university, 585,000+ alumni network, Life Coaches for holistic advising)"
+    caption="A second example of the flexibility of the two column layout template."
+    width={1400}
+    height={800}
+    class="h-[350px] w-full rounded-xl object-cover shadow-lg"
+  />
+  
+  <Lightbox
     src="/projects/templates.png"
-    alt="Degree programs page with filtering and search functionality"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
+    alt="Content templates showing various page layouts and design patterns"
+    caption="Other templates include cover images with text overays, and the flexibility of the templates- featuring the FAQ template used inside of a View. "
+    width={1400}
+    height={800}
+    class="h-[350px] w-full rounded-xl object-cover shadow-lg"
   />
-  <Image
+  
+  <Lightbox
     src="/projects/calendar.png"
-    alt="Partner locations map showing community college partnerships"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
+    alt="Calendar view showing event scheduling and management interface"
+    caption="Integrated calendar system with event management, filtering capabilities, and a table of contents with ancors to allow users to jump to content."
+    width={1400}
+    height={800}
+    class="h-[350px] w-full rounded-xl object-cover shadow-lg"
   />
-  <Image
+  
+  <Lightbox
     src="/projects/events.png"
-    alt="Student resources and application forms interface"
-    width={1200}
-    height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
+    alt="Events listing page showing upcoming and past events with filtering options"
+    caption="Another website example of the same templating system, used by a different website with a uniquely different styling."
+    width={1400}
+    height={800}
+    class="h-[350px] w-full rounded-xl object-cover shadow-lg"
   />
 </div>
