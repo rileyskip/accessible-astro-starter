@@ -11,6 +11,7 @@ Course Hub was built as cross-functional course management and registration syst
 
 import BlockQuote from '@components/BlockQuote.astro'
 import BreakoutImage from '@components/BreakoutImage.astro'
+import Lightbox from '@components/Lightbox.astro'
 import { Image } from 'astro:assets'
 
 
@@ -21,9 +22,10 @@ import { Image } from 'astro:assets'
 The initial design was a product of both Adobe XD and Figma. The first iterations featured a card-based layout optimized for mobile devices, making course information easily digestible on smaller screens.
 
 <div class="grid grid-cols-1 gap-4 md:grid-cols-2 my-8">
-  <Image
+  <Lightbox
     src="/projects/initial-branding.png"
     alt="Mobile course card layout - Before design"
+    caption="Initial mobile-first card design showing course information in an easily digestible format for smaller screens."
     width={500}
     height={700}
     class="h-[400px] w-full rounded-lg object-contain bg-white"
@@ -48,9 +50,10 @@ The initial design phase included:
 
 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-8">
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/initial-prototype.png"
-      alt="Master of Business and Science Degree branding"
+      alt="User view prototype showing improved course detail layout"
+      caption="User View prototype with enhanced course detail layout, updated menu and navigation, and improved filtering style based on real data testing."
       width={1200}
       height={200}
       class="w-full"
@@ -62,9 +65,10 @@ The initial design phase included:
   </div>
 
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/initial-admin.png"
-      alt="Education and learning icon"
+      alt="Admin view with navigation menu and action controls"
+      caption="Admin View prototype featuring dedicated navigation menu, Actions column for course editing, and multi-select modal for batch editing."
       width={500}
       height={500}
       class=""
@@ -76,9 +80,10 @@ The initial design phase included:
     
   </div>
     <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/admin-nav.png"
-      alt="Education and learning icon"
+      alt="Admin navigation menu sidebar"
+      caption="Admin Navigation menu with course listing, banner management, user administration, term management, and logout options."
       width={100}
       height={300}
       class=""
@@ -100,9 +105,10 @@ We tested many componenets of the app during the prototyping phase using Figma. 
 
 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-8">
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/admin-edit.png"
-      alt="Master of Business and Science Degree branding"
+      alt="Concise admin edit modal with essential fields"
+      caption="Concise Admin Edit Modal - Streamlined interface focusing on essential course editing fields."
       width={1200}
       height={200}
       class="w-full"
@@ -114,9 +120,10 @@ We tested many componenets of the app during the prototyping phase using Figma. 
   </div>
 
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/olliru-sticky.png"
-      alt="Education and learning icon"
+      alt="Verbose admin edit modal with detailed fields"
+      caption="Verbose Admin Edit Modal - Comprehensive interface with all available course details and fields for detailed editing."
       width={500}
       height={500}
       class=""
@@ -129,9 +136,10 @@ We tested many componenets of the app during the prototyping phase using Figma. 
 </div>
 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-8">
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/override-edit.png"
-      alt="Master of Business and Science Degree branding"
+      alt="Inline admin edit modal showing course modifications"
+      caption="Inline Admin Edit Modal - Quick edit interface for making course changes without leaving the main listing page."
       width={1200}
       height={200}
       class="w-full"
@@ -143,9 +151,10 @@ We tested many componenets of the app during the prototyping phase using Figma. 
   </div>
 
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/override-off.png"
-      alt="Education and learning icon"
+      alt="Override mode interface for admin controls"
+      caption="Override Mode - Special admin interface allowing instant database overrides for time-sensitive course changes."
       width={500}
       height={500}
       class=""
@@ -170,9 +179,10 @@ Once Dev Mode was activated, we rebranded our checkout flows in Figma, created a
 <div class="grid grid-cols-1 gap-8 md:grid-cols-2 my-12">
 
 <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/payment-method.png"
-      alt="Course details and registration interface"
+      alt="Desktop course listing page with filters and course cards"
+      caption="Revised Course Listing Page: Desktop - Finalized view based on real data, polling choices, stakeholder input, and A/B testing."
       width={1200}
       height={600}
       class="h-[300px] w-full rounded-lg object-contain bg-white "
@@ -183,9 +193,10 @@ Once Dev Mode was activated, we rebranded our checkout flows in Figma, created a
     </div>
   </div>
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/mobile.png"
-      alt="Course details and registration interface"
+      alt="Mobile responsive course listing interface"
+      caption="Revised Course Listing Page: Mobile - Optimized mobile view with touch-friendly controls and responsive design."
       width={1200}
       height={600}
       class="h-[300px] w-full rounded-lg object-contain bg-white "
@@ -196,9 +207,10 @@ Once Dev Mode was activated, we rebranded our checkout flows in Figma, created a
     </div>
   </div>
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/button-variants.png"
-      alt="Course listing with concentration grouping"
+      alt="Collection of interactive button variants with different states"
+      caption="Button Variants - Interactive, versatile buttons with various styling options for consistent Figma prototype design."
       width={1200}
       height={600}
       class="h-[300px] w-full rounded-lg object-contain bg-white "
@@ -210,9 +222,10 @@ Once Dev Mode was activated, we rebranded our checkout flows in Figma, created a
   </div>
 
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/cart-options.png"
-      alt="Advanced search and filter interface"
+      alt="Course cart layouts with expandable course details"
+      caption="Course Carts - Multiple layout options tested through polling, featuring expandable dropdown course details for the checkout process."
       width={1200}
       height={600}
       class="h-[300px] w-full rounded-lg object-contain bg-white "
@@ -226,9 +239,10 @@ Once Dev Mode was activated, we rebranded our checkout flows in Figma, created a
   
 
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/payment-method-2.png"
-      alt="Multi-section course management"
+      alt="Payment method selection interface"
+      caption="Payment Options - Comprehensive payment method selection section for the checkout page with multiple payment types."
       width={1200}
       height={600}
       class="h-[300px] w-full rounded-lg object-contain bg-white "
@@ -239,9 +253,10 @@ Once Dev Mode was activated, we rebranded our checkout flows in Figma, created a
     </div>
   </div>
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/payment-default.png"
-      alt="Multi-section course management"
+      alt="Default checkout page state"
+      caption="Default Checkout UI - Initial state of checkout page before payment method selection."
       width={1200}
       height={600}
       class="h-[300px] w-full rounded-lg object-contain bg-white "
@@ -253,9 +268,10 @@ Once Dev Mode was activated, we rebranded our checkout flows in Figma, created a
   </div>
   
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/PO-left.png"
-      alt="Multi-section course management"
+      alt="Purchase order form interface"
+      caption="Purchase Order UI - Expandable form revealed when users select the purchase order payment option."
       width={1200}
       height={600}
       class="h-[300px] w-full rounded-lg object-contain bg-white "
@@ -269,9 +285,10 @@ Once Dev Mode was activated, we rebranded our checkout flows in Figma, created a
   
   
   <div class="space-y-4">
-    <Image
+    <Lightbox
       src="/projects/credit.png"
-      alt="Multi-section course management"
+      alt="Credit payment option with external registration link"
+      caption="Credit Option UI - Credit selection reveals registration button with external link to third-party payment processor."
       width={1200}
       height={600}
       class="h-[300px] w-full rounded-lg object-contain bg-white "
