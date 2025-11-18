@@ -7,24 +7,24 @@ tags: ['Figma', 'Design', 'Prototyping', 'Interactive Design']
 
 ## Project Overview
 
-Dreamvision is a creative design project that explores the intersection of visual storytelling, user experience, and interactive design. This project demonstrates my ability to create immersive digital experiences that engage users through compelling narratives and intuitive interactions. The prototype showcases advanced design thinking and technical implementation using modern design tools.
+Dreamvision is a creative design project that explores the intersection of visual storytelling and interactive design. This is a personal project to engage users through compelling narratives and intuitive interactions. This prototype was the result of attending FigmaCon 2024 and learning new design trends and features. 
 
 
 import BlockQuote from '@components/BlockQuote.astro'
 import BreakoutImage from '@components/BreakoutImage.astro'
+import Lightbox from '@components/Lightbox.astro'
 import { Image } from 'astro:assets'
 
-<BreakoutImage src="/projects/project-image-2.png" />
-
-## Design Philosophy
-
-Dreamvision was born from the concept that digital experiences should be more than functional—they should be memorable and emotionally engaging. The project explores how design can create meaningful connections with users through:
-
-- **Visual Storytelling**: Narrative-driven design that guides users through compelling experiences
-- **Interactive Elements**: Engaging micro-interactions that enhance user engagement
-- **Emotional Design**: Creating experiences that resonate on an emotional level
-- **Innovative Layouts**: Pushing boundaries of traditional web design patterns
-
+<div class="my-8">
+  <Lightbox 
+    src="/projects/dreamvision-figma.png" 
+    alt="Dreamvision Figma design file showing the complete design system and prototypes" 
+    caption="Click to view the full Figma design file with all screens, components, and interactions."
+    width={400}
+    height={200}
+    class="w-full max-w-xl mx-auto rounded-xl shadow-lg"
+  />
+</div>
 ## Interactive Prototype
 
 <div class="bg-card my-8 rounded-lg p-6">
@@ -44,189 +44,70 @@ Dreamvision was born from the concept that digital experiences should be more th
   </a>
 </div>
 
-## Key Features
+## Design Philosophy
 
-### Creative Design Elements
+Dreamvision was born from the concept that digital experiences should be more than functional—they should be memorable and emotionally engaging. The project explores how design can create meaningful connections with users through:
 
-- **Immersive Storytelling**: Narrative-driven user journey with compelling visual elements
-- **Advanced Animations**: Smooth transitions and micro-interactions that enhance engagement
-- **Responsive Design**: Seamless experience across all device sizes
-- **Visual Hierarchy**: Clear information architecture that guides user attention
-- **Accessibility**: Inclusive design principles while maintaining creative expression
+- **Visual Storytelling**: Narrative-driven design that guides users through compelling experiences
+- **Interactive Elements**: Engaging micro-interactions that enhance user engagement
+- **Emotional Design**: Creating experiences that resonate on an emotional level
+- **Innovative Layouts**: Breaking traditional design patterns with personalized mid century iconography
+
+
+
+
 
 ## Technical Implementation
 
-The Dreamvision platform was designed using cutting-edge UX/UI methodologies:
+The Dreamvision platform was designed using UX/UI methodologies:
 
-- **Figma**: Comprehensive design system with interactive prototyping
-- **User-Centered Design**: Extensive user research and persona development
+- **Figma Free Version**: Design systema with interactive prototyping
 - **Information Architecture**: Intuitive content organization and navigation
-- **Responsive Design**: Seamless experience across all device sizes
-- **Accessibility**: WCAG 2.1 AA compliance for inclusive design
-- **Interactive Prototyping**: Advanced prototyping with conditional logic
+- **Interactive Prototyping**: Prototyping with conditional logic
+- **Design System**: A design system was created to ensure consistency across the prototype
+- **AI Integration**: Utilizing AI plugins to enhance the design process for faster layout creation, from information gathered from FigmaCon 2024.
 
-## Color Scheme
 
-Dreamvision employs a vibrant, energetic color palette that reflects creativity and innovation:
 
-### Primary Colors
-
-- **Electric Purple**: `#8b5cf6` - Primary brand color representing creativity and innovation
-- **Vibrant Pink**: `#ec4899` - Secondary color for energy and excitement
-- **Neon Blue**: `#06b6d4` - Accent color for technology and trust
-- **Lime Green**: `#84cc16` - Success states and positive actions
-
-### Neutral Colors
-
-- **Midnight Black**: `#0f172a` - Primary text and headings for contrast
-- **Slate Gray**: `#475569` - Secondary text and labels
-- **Cool Gray**: `#94a3b8` - Tertiary text and disabled states
-- **Light Gray**: `#e2e8f0` - Borders and dividers
-- **Ghost White**: `#f8fafc` - Card backgrounds
-- **Pure White**: `#ffffff` - Primary background
-
-### Semantic Colors
-
-- **Success Green**: `#22c55e` - Confirmation and positive feedback
-- **Warning Orange**: `#f59e0b` - Important alerts and notifications
-- **Error Red**: `#ef4444` - Error states and critical information
-- **Info Blue**: `#3b82f6` - Information and help content
-
-### Design Philosophy
-
-- **Creativity & Innovation**: Purple and pink convey artistic expression
-- **Technology & Trust**: Blue tones represent reliability and expertise
-- **Energy & Excitement**: Bright colors create engaging user experience
-- **Modern & Professional**: Clean neutrals provide sophisticated foundation
-
-<div class="bg-card my-8 rounded-lg p-6">
-  <h3 class="mb-4 text-xl font-bold">Color Palette</h3>
-  <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
-    <div class="text-center">
-      <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #8b5cf6;"></div>
-      <p class="text-sm font-medium">Electric Purple</p>
-      <p class="text-muted text-xs">#8b5cf6</p>
-    </div>
-    <div class="text-center">
-      <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #ec4899;"></div>
-      <p class="text-sm font-medium">Vibrant Pink</p>
-      <p class="text-muted text-xs">#ec4899</p>
-    </div>
-    <div class="text-center">
-      <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #06b6d4;"></div>
-      <p class="text-sm font-medium">Neon Blue</p>
-      <p class="text-muted text-xs">#06b6d4</p>
-    </div>
-    <div class="text-center">
-      <div class="mb-2 h-16 w-full rounded-lg" style="background-color: #84cc16;"></div>
-      <p class="text-sm font-medium">Lime Green</p>
-      <p class="text-muted text-xs">#84cc16</p>
-    </div>
-  </div>
-</div>
-
-## User Flow
-
-The Dreamvision platform follows a carefully crafted user journey designed to inspire and facilitate creative collaboration:
-
-### 1. Discovery & Onboarding
-
-- **Landing Experience**: Compelling hero section showcasing platform capabilities
-- **Value Proposition**: Clear explanation of benefits and use cases
-- **Quick Signup**: Streamlined registration with social login options
-- **Interactive Tour**: Guided introduction to key features and workflows
-
-### 2. Project Creation
-
-- **Template Library**: Pre-designed templates for common project types
-- **Custom Setup**: Flexible project configuration options
-- **Team Invitation**: Easy collaboration setup with role assignment
-- **Project Settings**: Comprehensive customization and branding options
-
-### 3. Content Creation
-
-- **Intuitive Editor**: Drag-and-drop interface for easy content creation
-- **Asset Library**: Built-in stock photos, icons, and design elements
-- **Real-time Collaboration**: Live editing with team member presence
-- **Version Control**: Automatic saving and revision history
-
-### 4. Design & Customization
-
-- **Visual Editor**: WYSIWYG interface for design customization
-- **Component Library**: Reusable design elements and templates
-- **Brand Integration**: Custom colors, fonts, and logo upload
-- **Responsive Preview**: Real-time preview across device sizes
-
-### 5. Review & Approval
-
-- **Comment System**: In-context feedback and discussion threads
-- **Approval Workflow**: Structured review process with role-based permissions
-- **Version Comparison**: Side-by-side comparison of design iterations
-- **Stakeholder Access**: Client-friendly viewing and feedback interface
-
-### 6. Publishing & Distribution
-
-- **Multi-format Export**: PDF, image, and web-ready formats
-- **Social Sharing**: Direct integration with social media platforms
-- **Analytics Dashboard**: Performance tracking and engagement metrics
-- **Asset Management**: Organized storage and retrieval system
-
-### Key UX Principles
-
-- **Intuitive Navigation**: Logical information architecture guides users
-- **Progressive Enhancement**: Advanced features revealed as users grow
-- **Collaborative Design**: Real-time teamwork and communication tools
-- **Mobile-First**: Responsive design optimized for all devices
-
-## Project Gallery
-
-<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-  <Image
-    src="/projects/project-image-2.png"
-    alt="Dreamvision homepage with immersive visual storytelling elements"
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-12">
+  <Lightbox
+    src="/projects/dream-logo.png"
+    alt="Dreamvision logo design with gradient effects and modern typography"
+    caption="Logo design featuring gradient effects and clean, modern typography for the Dreamvision brand."
     width={1200}
     height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
+    class="h-[280px] w-full rounded-lg object-cover shadow-lg"
   />
-  <Image
-    src="/projects/project-image-3.png"
-    alt="Interactive elements and micro-animations showcase"
+  <Lightbox
+    src="/projects/dream-icons.png"
+    alt="Custom icon set designed for Dreamvision interface"
+    caption="Custom-designed icon set with consistent styling and visual language for the Dreamvision interface."
     width={1200}
     height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
+    class="h-[280px] w-full rounded-lg object-contain bg-white shadow-lg"
   />
-  <Image
-    src="/projects/project-image-4.png"
-    alt="Responsive design demonstration across different devices"
+  <Lightbox
+    src="/projects/dream-illustrations.png"
+    alt="Illustration set featuring abstract shapes and vibrant colors"
+    caption="Abstract illustrations and visual elements that bring personality and energy to the Dreamvision experience."
     width={1200}
     height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
+    class="h-[280px] w-full rounded-lg object-contain bg-white shadow-lg"
   />
-  <Image
-    src="/projects/project-image-5.png"
-    alt="User journey mapping and interaction flow"
+  <Lightbox
+    src="/projects/dream-fonts.png"
+    alt="Typography system showing font pairings and text hierarchy"
+    caption="Complete typography system with font pairings, sizing scale, and text hierarchy for consistent design."
     width={1200}
     height={600}
-    class="h-[250px] w-full rounded-lg object-cover"
+    class="h-[280px] w-full rounded-lg object-contain bg-white shadow-lg"
   />
 </div>
 
-## Design Impact
-
-<BlockQuote author="Creative Director">
-  Dreamvision demonstrates exceptional creative vision and technical execution. The project shows how design can create
-  meaningful emotional connections while maintaining usability and accessibility standards.
-</BlockQuote>
-
-<BreakoutImage src="/projects/project-image-3.png" />
 
 ## Future Possibilities
 
-This project serves as a foundation for exploring new frontiers in digital design:
+This project serves as a foundation for exploring new frontiers in Figma. 
 
-- **Extended Reality**: Potential for VR/AR integration
-- **AI Integration**: Personalized experiences based on user behavior
-- **Interactive Storytelling**: Branching narratives and user-driven content
-- **Cross-Platform**: Expansion to mobile apps and other digital platforms
-
-Dreamvision represents my commitment to pushing creative boundaries while maintaining the highest standards of user experience design. It showcases my ability to balance artistic expression with functional design principles, creating experiences that are both beautiful and meaningful.
+- **AI Integration**: Utizing curerent Figma features and plugins top enhance the product on the development side. 
+- **Figma Dev Mode**: Experiencing the power of Figma Dev Mode to enhance the prototyping power and create stronger libraries and components. 
