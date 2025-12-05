@@ -35,11 +35,10 @@ const isHomePage = Astro.url.pathname === '/'
         <button
           id="mobile-menu-toggle"
           class="mobile-menu-toggle md:hidden"
-          aria-label="Toggle mobile menu"
+          aria-label="Open mobile menu"
           aria-expanded="false"
         >
-          <Icon name="lucide:menu" class="h-6 w-6 menu-icon" />
-          <Icon name="lucide:x" class="h-6 w-6 close-icon hidden" />
+          <Icon name="lucide:menu" class="h-6 w-6" />
         </button>
 
         <!-- Desktop Navigation -->
@@ -78,9 +77,22 @@ const isHomePage = Astro.url.pathname === '/'
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="mobile-menu md:hidden">
-    <nav>
+  <!-- Mobile Menu Backdrop -->
+  <div id="mobile-menu-backdrop" class="mobile-menu-backdrop"></div>
+
+  <!-- Mobile Menu - Hidden by default -->
+  <div id="mobile-menu" class="mobile-menu">
+    <!-- Close Button -->
+    <button
+      id="mobile-menu-close"
+      class="mobile-menu-close"
+      aria-label="Close menu"
+    >
+      <Icon name="lucide:x" class="h-6 w-6" />
+    </button>
+    
+    <!-- Navigation Links -->
+    <nav id="mobile-nav-links">
       <ul class="mobile-nav-menu">
         <li>
           <a href="/" class="mobile-nav-link">Home</a>
@@ -391,6 +403,11 @@ const isHomePage = Astro.url.pathname === '/'
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     flex-shrink: 0; /* Prevent shrinking on small screens */
 
+    /* Ensure icon is white */
+    svg {
+      color: white;
+    }
+
     @media (max-width: 374px) {
       padding: 0.5rem 0.875rem;
       font-size: 0.8125rem;
@@ -524,6 +541,11 @@ const isHomePage = Astro.url.pathname === '/'
     font-family: 'Courier New', 'Lucida Console', monospace;
     box-shadow: 0 0 15px rgba(65, 105, 225, 0.5);
 
+    /* Ensure icon is white in retro mode */
+    svg {
+      color: white;
+    }
+
     &::before {
       content: '';
       position: absolute;
@@ -544,6 +566,10 @@ const isHomePage = Astro.url.pathname === '/'
       border-color: #60A5FA;
       box-shadow: 0 0 25px rgba(65, 105, 225, 0.8);
       transform: translateY(-2px);
+
+      svg {
+        color: white;
+      }
     }
   }
 
@@ -676,11 +702,28 @@ const isHomePage = Astro.url.pathname === '/'
     }
   }
 
-  /* Mobile Menu */
+  /* Mobile Menu Backdrop - Simple overlay */
+  .mobile-menu-backdrop {
+    display: none; /* Hidden by default */
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 99;
+
+    /* Hide on desktop screens */
+    @media (min-width: 768px) {
+      display: none !important;
+    }
+  }
+
+  /* Mobile Menu - Following W3Schools pattern */
   .mobile-menu {
+    display: none; /* Hidden by default */
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 85%;
     max-width: 320px;
     height: 100vh;
@@ -689,7 +732,6 @@ const isHomePage = Astro.url.pathname === '/'
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
-    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 100;
     padding-top: max(5rem, env(safe-area-inset-top, 5rem)); /* Respect safe areas */
     padding-bottom: env(safe-area-inset-bottom, 0); /* Respect bottom safe area */
@@ -697,16 +739,10 @@ const isHomePage = Astro.url.pathname === '/'
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     overscroll-behavior: contain; /* Prevent scroll chaining */
-    pointer-events: none; /* Ignore clicks when closed */
 
     /* Hide on desktop screens (md: 768px and up) */
     @media (min-width: 768px) {
       display: none !important;
-    }
-
-    &.open {
-      right: 0;
-      pointer-events: auto; /* Enable clicks when open */
     }
 
     &::before {
@@ -719,6 +755,40 @@ const isHomePage = Astro.url.pathname === '/'
 
     @media (max-width: 374px) {
       width: 90%; /* Slightly narrower on very small screens */
+    }
+  }
+
+  /* Mobile Menu Close Button */
+  .mobile-menu-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(96, 165, 250, 0.1);
+    border: 2px solid rgba(96, 165, 250, 0.3);
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 101;
+
+    &:hover {
+      background: rgba(96, 165, 250, 0.2);
+      border-color: #60A5FA;
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    &:active {
+      transform: rotate(90deg) scale(0.95);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #3B82F6;
+      outline-offset: 2px;
     }
   }
 
@@ -784,9 +854,27 @@ const isHomePage = Astro.url.pathname === '/'
   }
 
   /* Retro Mode Mobile Menu */
+  .retro-mode .mobile-menu-backdrop {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(6px);
+  }
+
   .retro-mode .mobile-menu {
     border-left: 2px solid var(--terminal-cyan);
     box-shadow: -4px 0 20px rgba(0, 255, 255, 0.3);
+  }
+
+  .retro-mode .mobile-menu-close {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: var(--terminal-cyan);
+    color: var(--terminal-cyan);
+
+    &:hover {
+      background: rgba(0, 255, 255, 0.2);
+      border-color: var(--terminal-pink);
+      color: var(--terminal-pink);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    }
   }
 
   .retro-mode .mobile-nav-link {
@@ -913,12 +1001,13 @@ const isHomePage = Astro.url.pathname === '/'
   document.addEventListener('astro:page-load', initThemeToggle)
   document.addEventListener('astro:after-swap', initThemeToggle)
 
-  // Mobile Menu Toggle
+  // Mobile Menu Toggle - Following W3Schools pattern
   function initMobileMenu() {
     const menuToggle = document.getElementById('mobile-menu-toggle')
     const mobileMenu = document.getElementById('mobile-menu')
+    const backdrop = document.getElementById('mobile-menu-backdrop')
 
-    if (!menuToggle || !mobileMenu) return
+    if (!menuToggle || !mobileMenu || !backdrop) return
 
     // Clone the button to remove old event listeners
     const newToggle = menuToggle.cloneNode(true) as HTMLElement
@@ -926,29 +1015,30 @@ const isHomePage = Astro.url.pathname === '/'
       menuToggle.parentNode.replaceChild(newToggle, menuToggle)
     }
 
-    // Get fresh references after cloning
-    const menuIcon = newToggle.querySelector('.menu-icon')
-    const closeIcon = newToggle.querySelector('.close-icon')
+    // Ensure menu and backdrop start closed
+    mobileMenu.style.display = 'none'
+    backdrop.style.display = 'none'
 
-    // Toggle menu function
+    // Toggle menu function - W3Schools pattern
     function toggleMenu() {
-      if (!mobileMenu) return
+      if (!mobileMenu || !backdrop) return
       
-      const isOpen = mobileMenu.classList.contains('open')
-      
-      if (isOpen) {
+      // Simple toggle between display none and block
+      if (mobileMenu.style.display === 'block') {
         // Close menu
-        mobileMenu.classList.remove('open')
+        mobileMenu.style.display = 'none'
+        backdrop.style.display = 'none'
         newToggle.setAttribute('aria-expanded', 'false')
-        menuIcon?.classList.remove('hidden')
-        closeIcon?.classList.add('hidden')
+        newToggle.setAttribute('aria-label', 'Open mobile menu')
+        newToggle.style.display = '' // Show hamburger button
         document.body.style.overflow = ''
       } else {
         // Open menu
-        mobileMenu.classList.add('open')
+        mobileMenu.style.display = 'block'
+        backdrop.style.display = 'block'
         newToggle.setAttribute('aria-expanded', 'true')
-        menuIcon?.classList.add('hidden')
-        closeIcon?.classList.remove('hidden')
+        newToggle.setAttribute('aria-label', 'Close mobile menu')
+        newToggle.style.display = 'none' // Hide hamburger button
         document.body.style.overflow = 'hidden'
       }
     }
@@ -956,19 +1046,38 @@ const isHomePage = Astro.url.pathname === '/'
     // Menu toggle click
     newToggle.addEventListener('click', toggleMenu)
 
+    // Close button inside menu - clone to remove old listeners
+    const closeButton = document.getElementById('mobile-menu-close')
+    if (closeButton && closeButton.parentNode) {
+      const newCloseButton = closeButton.cloneNode(true) as HTMLElement
+      closeButton.parentNode.replaceChild(newCloseButton, closeButton)
+      newCloseButton.addEventListener('click', (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        toggleMenu()
+      })
+    }
+
+    // Close menu when clicking backdrop
+    backdrop.addEventListener('click', () => {
+      if (mobileMenu.style.display === 'block') {
+        toggleMenu()
+      }
+    })
+
     // Close menu when clicking a link
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link')
     mobileNavLinks.forEach(link => {
       link.addEventListener('click', () => {
-        if (mobileMenu.classList.contains('open')) {
+        if (mobileMenu.style.display === 'block') {
           toggleMenu()
         }
       })
     })
 
-    // Close menu on escape key (use a single handler per page)
+    // Close menu on escape key
     const escapeHandler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
+      if (e.key === 'Escape' && mobileMenu?.style.display === 'block') {
         toggleMenu()
       }
     }
@@ -981,7 +1090,7 @@ const isHomePage = Astro.url.pathname === '/'
     const retroModalMobile = document.getElementById('open-retro-modal-mobile')
     if (retroModalMobile) {
       retroModalMobile.addEventListener('click', () => {
-        if (mobileMenu.classList.contains('open')) {
+        if (mobileMenu.style.display === 'block') {
           toggleMenu()
         }
         // Trigger the main modal
