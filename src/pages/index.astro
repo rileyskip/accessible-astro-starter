@@ -587,6 +587,25 @@ import {
     .editorial-title {
       color: var(--terminal-cyan);
       text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      /* Reduce font size in retro mode - monospace fonts are wider */
+      font-size: clamp(2rem, 6vw, 4rem);
+      /* Override retro heading styles that add unwanted spacing */
+      border-bottom: none;
+      padding-bottom: 0;
+      
+      &::after {
+        display: none;
+      }
+      
+      .offset-text {
+        padding-left: clamp(1rem, 4vw, 4rem);
+      }
+    }
+    
+    /* Disable sticky on FAQ section in retro mode to prevent overlap */
+    .sticky {
+      position: relative;
+      top: auto;
     }
 
     .skill-item {

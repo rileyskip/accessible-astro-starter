@@ -781,6 +781,10 @@ img {
 }
 
 /* Grid overlay effect - 80s Synthwave Style */
+.grid-overlay {
+  pointer-events: none;
+}
+
 .retro-mode .grid-overlay {
   position: fixed;
   top: 0;

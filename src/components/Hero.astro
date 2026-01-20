@@ -29,11 +29,8 @@ import { Icon } from 'astro-icon/components'
         <div class="hero-decoration decoration-3"></div>
       </div>
 
-      <!-- Subtitle and CTA -->
+      <!-- CTA Buttons -->
       <div class="hero-bottom">
-        <p class="hero-description">
-          I create accessible, visually appealing, and functional websites with stable design systems.
-        </p>
         <div class="hero-buttons">
           <a class="button has-icon animate-hover-lift" href="/about">
             <Icon name="lucide:user" />
@@ -157,6 +154,7 @@ import { Icon } from 'astro-icon/components'
     opacity: 0.3;
     animation: float 8s ease-in-out infinite;
     z-index: 1;
+    pointer-events: none;
   }
 
   .decoration-1 {
@@ -210,6 +208,8 @@ import { Icon } from 'astro-icon/components'
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
+    position: relative;
+    z-index: 10;
   }
 
   .animate-hover-lift {
