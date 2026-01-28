@@ -1,10 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components'
 import { SkipLink } from 'accessible-astro-components'
-import RetroModal from '@components/RetroModal.astro'
-
-// Check if we're on the home page
-const isHomePage = Astro.url.pathname === '/'
 ---
 
 <header class="site-header sticky top-0 z-50">
@@ -19,18 +15,6 @@ const isHomePage = Astro.url.pathname === '/'
       </a>
       
       <div class="flex items-center gap-2 sm:gap-3 buttons-container">
-        <!-- Theme Toggle Button (visible on mobile on home page only) -->
-        {isHomePage && (
-          <button
-            id="back-to-future-btn"
-            class="back-to-future-btn"
-            aria-label="Switch between retro and modern styling"
-          >
-            <Icon name="lucide:sun" class="h-5 w-5" />
-            <span class="hidden lg:inline">Back to the 80s</span>
-          </button>
-        )}
-
         <!-- Hamburger Menu Button (mobile only) -->
         <button
           id="mobile-menu-toggle"
@@ -56,21 +40,6 @@ const isHomePage = Astro.url.pathname === '/'
             <li>
               <a href="/contact" class="nav-link">Contact</a>
             </li>
-            {isHomePage && (
-              <>
-                <li class="nav-divider"></li>
-                <li>
-                  <button
-                    id="open-retro-modal"
-                    class="info-button"
-                    aria-label="Learn about 80s mode"
-                    title="Learn about 80s mode"
-                  >
-                    <Icon name="lucide:info" class="h-5 w-5" />
-                  </button>
-                </li>
-              </>
-            )}
           </ul>
         </nav>
       </div>
@@ -106,24 +75,10 @@ const isHomePage = Astro.url.pathname === '/'
         <li>
           <a href="/contact" class="mobile-nav-link">Contact</a>
         </li>
-        {isHomePage && (
-          <li>
-            <button
-              id="open-retro-modal-mobile"
-              class="mobile-nav-link w-full text-left"
-              aria-label="Learn about 80s mode"
-            >
-              <Icon name="lucide:info" class="inline-block h-5 w-5 mr-2" />
-              About 80s Mode
-            </button>
-          </li>
-        )}
       </ul>
     </nav>
   </div>
 </header>
-
-<RetroModal />
 
 <style lang="scss">
   /* Header Base Styles */
@@ -192,7 +147,7 @@ const isHomePage = Astro.url.pathname === '/'
     flex-shrink: 0;
     
     @media (max-width: 374px) {
-      gap: 0.5rem !important; /* Tighter spacing on very small screens */
+      gap: 0.5rem !important;
     }
   }
 
@@ -202,10 +157,10 @@ const isHomePage = Astro.url.pathname === '/'
     text-decoration: none;
     font-weight: 700;
     flex-shrink: 1;
-    min-width: 0; /* Allow text truncation if needed */
+    min-width: 0;
 
     @media (max-width: 374px) {
-      font-size: 1.25rem !important; /* Smaller logo on very small screens */
+      font-size: 1.25rem !important;
     }
     letter-spacing: -0.02em;
     display: flex;
@@ -300,361 +255,10 @@ const isHomePage = Astro.url.pathname === '/'
       transform: translateY(-2px) scale(1.05);
       text-shadow: 0 0 15px rgba(96, 165, 250, 0.8),
                    0 0 30px rgba(96, 165, 250, 0.4);
-      animation: text-glow 0.6s ease-in-out;
 
       &::after {
         height: 3px;
-        animation: underline-glow 0.6s ease-in-out infinite;
       }
-    }
-  }
-
-  @keyframes text-glow {
-    0%, 100% {
-      text-shadow: 0 0 15px rgba(96, 165, 250, 0.8),
-                   0 0 30px rgba(96, 165, 250, 0.4);
-    }
-    50% {
-      text-shadow: 0 0 20px rgba(96, 165, 250, 1),
-                   0 0 40px rgba(96, 165, 250, 0.6);
-    }
-  }
-
-  @keyframes underline-glow {
-    0%, 100% {
-      box-shadow: 0 0 10px rgba(96, 165, 250, 0.6);
-    }
-    50% {
-      box-shadow: 0 0 20px rgba(96, 165, 250, 1);
-    }
-  }
-
-  .nav-icon-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    color: rgba(255, 255, 255, 0.85);
-    border-radius: 0.5rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    border: 1px solid transparent;
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 0.5rem;
-      background: linear-gradient(135deg, #60A5FA, #3B82F6);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    svg {
-      position: relative;
-      z-index: 1;
-      transition: all 0.3s ease;
-    }
-
-    &:hover {
-      color: white;
-      transform: translateY(-3px) rotate(5deg);
-      border-color: #60A5FA;
-      box-shadow: 0 4px 15px rgba(96, 165, 250, 0.4);
-
-      &::before {
-        opacity: 0.15;
-      }
-
-      svg {
-        transform: scale(1.1);
-        filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.8));
-      }
-    }
-  }
-
-  .nav-divider {
-    width: 2px;
-    height: 1.5rem;
-    background: linear-gradient(180deg, transparent, #60A5FA, transparent);
-    margin: 0 0.5rem;
-    border-radius: 1px;
-    box-shadow: 0 0 8px rgba(96, 165, 250, 0.3);
-  }
-
-  /* Theme Toggle Button */
-  .back-to-future-btn {
-    display: flex;
-    position: relative;
-    align-items: center;
-    gap: 0.5rem;
-    min-height: 44px; /* Minimum touch target size */
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    border: 2px solid transparent;
-    border-radius: 0.75rem;
-    background: linear-gradient(135deg, #3B82F6, #2563EB);
-    padding: 0.625rem 1.25rem;
-    overflow: hidden;
-    color: white;
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 0.875rem;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    flex-shrink: 0; /* Prevent shrinking on small screens */
-
-    /* Ensure icon is white */
-    svg {
-      color: white;
-    }
-
-    @media (max-width: 374px) {
-      padding: 0.5rem 0.875rem;
-      font-size: 0.8125rem;
-      gap: 0.375rem;
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #60A5FA, #3B82F6);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
-      transform: translate(-50%, -50%) scale(0);
-      transition: transform 0.5s ease;
-      border-radius: 50%;
-    }
-  }
-
-  .back-to-future-btn > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .back-to-future-btn:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5), 
-                0 0 20px rgba(96, 165, 250, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    border-color: #60A5FA;
-
-    &::before {
-      opacity: 1;
-    }
-
-    &::after {
-      transform: translate(-50%, -50%) scale(1);
-    }
-  }
-
-  .back-to-future-btn:active {
-    transform: translateY(-1px) scale(0.98);
-  }
-
-  /* Retro Mode Header Styles */
-  .retro-mode .site-header {
-    background: rgba(0, 0, 0, 0.98);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 2px solid var(--terminal-cyan);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-  }
-
-  .retro-mode .logo-link {
-    color: var(--terminal-cyan);
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    font-family: 'Courier New', 'Lucida Console', monospace;
-
-    &:hover {
-      color: var(--terminal-pink);
-      text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
-      transform: translateY(-1px);
-    }
-  }
-
-  .retro-mode .nav-link {
-    color: var(--terminal-cyan);
-    font-family: 'Courier New', 'Lucida Console', monospace;
-    border: 1px solid transparent;
-
-    &::before {
-      content: '[ ';
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    &::after {
-      content: ' ]';
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      background: none;
-      position: static;
-      width: auto;
-      height: auto;
-    }
-
-    &:hover {
-      color: var(--terminal-pink);
-      background: rgba(0, 255, 255, 0.1);
-      border-color: var(--terminal-cyan);
-      text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
-
-      &::before,
-      &::after {
-        opacity: 1;
-      }
-    }
-  }
-
-  .retro-mode .nav-icon-link {
-    color: var(--terminal-cyan);
-    border: 1px solid transparent;
-
-    &:hover {
-      color: var(--terminal-pink);
-      background: rgba(0, 255, 255, 0.1);
-      border-color: var(--terminal-cyan);
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-    }
-  }
-
-  .retro-mode .nav-divider {
-    background: var(--terminal-cyan);
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-  }
-
-  .retro-mode .back-to-future-btn {
-    border: 2px solid #4169E1;
-    background: #1E3A8A;
-    color: #60A5FA;
-    font-family: 'Courier New', 'Lucida Console', monospace;
-    box-shadow: 0 0 15px rgba(65, 105, 225, 0.5);
-
-    /* Ensure icon is white in retro mode */
-    svg {
-      color: white;
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: var(--grain-primary);
-      background-size: 100px 100px;
-      opacity: 0.2;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    &:hover {
-      background: #4169E1;
-      color: white;
-      border-color: #60A5FA;
-      box-shadow: 0 0 25px rgba(65, 105, 225, 0.8);
-      transform: translateY(-2px);
-
-      svg {
-        color: white;
-      }
-    }
-  }
-
-  /* Modern Mode Header Styles */
-  .modern-mode .site-header {
-    background: rgba(0, 0, 0, 0.95);
-  }
-
-  .modern-mode .back-to-future-btn {
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-  }
-
-  /* Info Button Styles */
-  .info-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    min-width: 44px; /* Minimum touch target */
-    min-height: 44px; /* Minimum touch target */
-    padding: 0.5rem;
-    border: 2px solid #60A5FA;
-    border-radius: 50%;
-    background: transparent;
-    color: #60A5FA;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    flex-shrink: 0;
-    position: relative;
-    box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.4);
-    animation: info-pulse 2s ease-in-out infinite;
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #60A5FA, #3B82F6);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 0;
-    }
-
-    svg {
-      position: relative;
-      z-index: 1;
-      transition: all 0.3s ease;
-    }
-
-    &:hover {
-      background: linear-gradient(135deg, #3B82F6, #2563EB);
-      color: white;
-      transform: translateY(-3px) scale(1.15) rotate(15deg);
-      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6),
-                  0 0 30px rgba(96, 165, 250, 0.4);
-      border-color: white;
-      animation: none;
-
-      &::before {
-        opacity: 0.2;
-      }
-
-      svg {
-        transform: rotate(-15deg);
-        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
-      }
-    }
-
-    &:focus-visible {
-      outline: 2px solid #3B82F6;
-      outline-offset: 3px;
-    }
-
-    &:active {
-      transform: translateY(-1px) scale(1.05);
-    }
-  }
-
-  @keyframes info-pulse {
-    0%, 100% {
-      box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.4);
-    }
-    50% {
-      box-shadow: 0 0 0 6px rgba(96, 165, 250, 0);
     }
   }
 
@@ -663,8 +267,8 @@ const isHomePage = Astro.url.pathname === '/'
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 44px; /* Minimum touch target size */
-    min-height: 44px; /* Minimum touch target size */
+    min-width: 44px;
+    min-height: 44px;
     padding: 0.625rem;
     color: white;
     background: transparent;
@@ -674,9 +278,8 @@ const isHomePage = Astro.url.pathname === '/'
     transition: all 0.3s ease;
     position: relative;
     z-index: 110;
-    flex-shrink: 0; /* Prevent shrinking on small screens */
+    flex-shrink: 0;
 
-    /* Hide on desktop screens (md: 768px and up) */
     @media (min-width: 768px) {
       display: none !important;
     }
@@ -702,9 +305,9 @@ const isHomePage = Astro.url.pathname === '/'
     }
   }
 
-  /* Mobile Menu Backdrop - Simple overlay */
+  /* Mobile Menu Backdrop */
   .mobile-menu-backdrop {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.7);
@@ -712,35 +315,33 @@ const isHomePage = Astro.url.pathname === '/'
     -webkit-backdrop-filter: blur(4px);
     z-index: 99;
 
-    /* Hide on desktop screens */
     @media (min-width: 768px) {
       display: none !important;
     }
   }
 
-  /* Mobile Menu - Following W3Schools pattern */
+  /* Mobile Menu */
   .mobile-menu {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     top: 0;
     right: 0;
     width: 85%;
     max-width: 320px;
     height: 100vh;
-    height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    height: 100dvh;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.95) 100%);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
     z-index: 100;
-    padding-top: max(5rem, env(safe-area-inset-top, 5rem)); /* Respect safe areas */
-    padding-bottom: env(safe-area-inset-bottom, 0); /* Respect bottom safe area */
+    padding-top: max(5rem, env(safe-area-inset-top, 5rem));
+    padding-bottom: env(safe-area-inset-bottom, 0);
     overflow-y: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    overscroll-behavior: contain; /* Prevent scroll chaining */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 
-    /* Hide on desktop screens (md: 768px and up) */
     @media (min-width: 768px) {
       display: none !important;
     }
@@ -754,7 +355,7 @@ const isHomePage = Astro.url.pathname === '/'
     }
 
     @media (max-width: 374px) {
-      width: 90%; /* Slightly narrower on very small screens */
+      width: 90%;
     }
   }
 
@@ -803,7 +404,7 @@ const isHomePage = Astro.url.pathname === '/'
   .mobile-nav-link {
     display: flex;
     align-items: center;
-    min-height: 56px; /* Comfortable touch target */
+    min-height: 56px;
     padding: 1rem 1.5rem;
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
@@ -834,174 +435,10 @@ const isHomePage = Astro.url.pathname === '/'
       outline-offset: -2px;
     }
   }
-
-  /* Mobile Menu Overlay */
-  .mobile-menu-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 40;
-
-    &.open {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-
-  /* Retro Mode Mobile Menu */
-  .retro-mode .mobile-menu-backdrop {
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(6px);
-  }
-
-  .retro-mode .mobile-menu {
-    border-left: 2px solid var(--terminal-cyan);
-    box-shadow: -4px 0 20px rgba(0, 255, 255, 0.3);
-  }
-
-  .retro-mode .mobile-menu-close {
-    background: rgba(0, 255, 255, 0.1);
-    border-color: var(--terminal-cyan);
-    color: var(--terminal-cyan);
-
-    &:hover {
-      background: rgba(0, 255, 255, 0.2);
-      border-color: var(--terminal-pink);
-      color: var(--terminal-pink);
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-    }
-  }
-
-  .retro-mode .mobile-nav-link {
-    color: var(--terminal-cyan);
-    font-family: 'Courier New', 'Lucida Console', monospace;
-
-    &:hover {
-      border-left-color: var(--terminal-pink);
-      color: var(--terminal-pink);
-      text-shadow: 0 0 10px rgba(255, 20, 147, 0.6);
-    }
-  }
-
-  .retro-mode .mobile-menu-toggle {
-    border-color: var(--terminal-cyan);
-    color: var(--terminal-cyan);
-
-    &:hover {
-      background: rgba(0, 255, 255, 0.1);
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-    }
-  }
-
-  .retro-mode .info-button {
-    border-color: var(--terminal-cyan);
-    color: var(--terminal-cyan);
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-    animation: pulse-glow 2s ease-in-out infinite;
-
-    &:hover {
-      background: var(--terminal-cyan);
-      color: var(--terminal-black);
-      border-color: var(--terminal-pink);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-      animation: none;
-    }
-  }
-
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-    }
-    50% {
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-    }
-  }
 </style>
 
 <script>
-  // Run initialization function
-  function initThemeToggle() {
-    const btn = document.getElementById('back-to-future-btn')
-    const html = document.documentElement
-    const isHomePage = window.location.pathname === '/'
-
-    // If not on home page, force modern mode
-    if (!isHomePage) {
-      html.classList.add('modern-mode')
-      html.classList.remove('retro-mode')
-      return
-    }
-
-    // On home page: Check if retro mode is explicitly enabled (default is modern)
-    const isRetroMode = localStorage.getItem('retro-mode') === 'true'
-
-    if (isRetroMode) {
-      html.classList.add('retro-mode')
-      html.classList.remove('modern-mode')
-    } else {
-      html.classList.add('modern-mode')
-      html.classList.remove('retro-mode')
-    }
-
-    // Only add event listener if button exists (home page only)
-    if (btn) {
-      // Remove any existing listeners by cloning the button
-      const newBtn = btn.cloneNode(true) as HTMLElement
-      if (btn.parentNode) {
-        btn.parentNode.replaceChild(newBtn, btn)
-      }
-
-      newBtn.addEventListener('click', function () {
-        if (html.classList.contains('retro-mode')) {
-          // Switch to modern mode
-          html.classList.remove('retro-mode')
-          html.classList.add('modern-mode')
-          localStorage.removeItem('retro-mode')
-
-          // Update button text and icon
-          const span = newBtn.querySelector('span')
-          const svg = newBtn.querySelector('svg')
-          if (span) span.textContent = 'Back to the 80s'
-          if (svg) {
-            svg.innerHTML =
-              '<path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
-          }
-        } else {
-          // Switch to retro mode
-          html.classList.remove('modern-mode')
-          html.classList.add('retro-mode')
-          localStorage.setItem('retro-mode', 'true')
-
-          // Update button text and icon
-          const span = newBtn.querySelector('span')
-          const svg = newBtn.querySelector('svg')
-          if (span) span.textContent = 'Back to the Future'
-          if (svg) {
-            svg.innerHTML =
-              '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
-          }
-        }
-      })
-    }
-  }
-
-  // Run on initial load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initThemeToggle)
-  } else {
-    initThemeToggle()
-  }
-
-  // Re-run when navigating back to the page (for SPAs/view transitions)
-  document.addEventListener('astro:page-load', initThemeToggle)
-  document.addEventListener('astro:after-swap', initThemeToggle)
-
-  // Mobile Menu Toggle - Following W3Schools pattern
+  // Mobile Menu Toggle
   function initMobileMenu() {
     const menuToggle = document.getElementById('mobile-menu-toggle')
     const mobileMenu = document.getElementById('mobile-menu')
@@ -1019,18 +456,17 @@ const isHomePage = Astro.url.pathname === '/'
     mobileMenu.style.display = 'none'
     backdrop.style.display = 'none'
 
-    // Toggle menu function - W3Schools pattern
+    // Toggle menu function
     function toggleMenu() {
       if (!mobileMenu || !backdrop) return
       
-      // Simple toggle between display none and block
       if (mobileMenu.style.display === 'block') {
         // Close menu
         mobileMenu.style.display = 'none'
         backdrop.style.display = 'none'
         newToggle.setAttribute('aria-expanded', 'false')
         newToggle.setAttribute('aria-label', 'Open mobile menu')
-        newToggle.style.display = '' // Show hamburger button
+        newToggle.style.display = ''
         document.body.style.overflow = ''
       } else {
         // Open menu
@@ -1038,7 +474,7 @@ const isHomePage = Astro.url.pathname === '/'
         backdrop.style.display = 'block'
         newToggle.setAttribute('aria-expanded', 'true')
         newToggle.setAttribute('aria-label', 'Close mobile menu')
-        newToggle.style.display = 'none' // Hide hamburger button
+        newToggle.style.display = 'none'
         document.body.style.overflow = 'hidden'
       }
     }
@@ -1046,7 +482,7 @@ const isHomePage = Astro.url.pathname === '/'
     // Menu toggle click
     newToggle.addEventListener('click', toggleMenu)
 
-    // Close button inside menu - clone to remove old listeners
+    // Close button inside menu
     const closeButton = document.getElementById('mobile-menu-close')
     if (closeButton && closeButton.parentNode) {
       const newCloseButton = closeButton.cloneNode(true) as HTMLElement
@@ -1082,26 +518,8 @@ const isHomePage = Astro.url.pathname === '/'
       }
     }
     
-    // Remove old escape handler if exists
     document.removeEventListener('keydown', escapeHandler)
     document.addEventListener('keydown', escapeHandler)
-
-    // Handle retro modal in mobile menu
-    const retroModalMobile = document.getElementById('open-retro-modal-mobile')
-    if (retroModalMobile) {
-      retroModalMobile.addEventListener('click', () => {
-        if (mobileMenu.style.display === 'block') {
-          toggleMenu()
-        }
-        // Trigger the main modal
-        setTimeout(() => {
-          const mainModalBtn = document.getElementById('open-retro-modal')
-          if (mainModalBtn) {
-            mainModalBtn.click()
-          }
-        }, 300) // Wait for menu to close
-      })
-    }
   }
 
   // Run mobile menu initialization

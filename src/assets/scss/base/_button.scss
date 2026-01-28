@@ -54,18 +54,10 @@
   }
 }
 
-// Modern mode button icons - ensure they're always visible
-.modern-mode .button {
+// Button icons - ensure they're always visible
+.button {
   [data-icon], svg {
     color: currentColor !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-}
-
-// Retro mode button icons - ensure they're visible too
-.retro-mode .button {
-  [data-icon], svg {
     opacity: 1 !important;
     visibility: visible !important;
   }

@@ -1,5 +1,5 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   interpolate-size: allow-keywords;
 
   // brand colors (change these to your own brand colors)
@@ -7,18 +7,6 @@
   --brand-secondary: #2563eb; // blue-600
   --brand-accent: #84cc16; // lime-500
   --brand-neutral: #b9bec4;
-  
-  /* 80s Terminal Colors - Classic Cyan/Blue Scheme */
-  --terminal-cyan: #00d9ff; // Classic 80s cyan
-  --terminal-blue: #0ff; // Bright cyan-blue
-  --terminal-magenta: #ff00ff; // Classic magenta
-  --terminal-pink: #ff007f; // Hot pink
-  --terminal-purple: #9333ea; // Purple
-  --terminal-orange: #ff6b35; // Orange accent
-  --terminal-yellow: #ffdd00; // Yellow
-  --terminal-black: #000000;
-  --terminal-dark-gray: #1a1a1a;
-  --terminal-light-gray: #cccccc;
   
   /* Modern Colors */
   --modern-primary: #2563eb; // blue-600
@@ -29,42 +17,28 @@
   --modern-muted: #6b7280;
   
   /* Background Colors */
-  --background-color: var(--terminal-black);
-  --background-color-subtle: var(--terminal-dark-gray);
+  --background-color: var(--modern-background);
+  --background-color-subtle: #f9fafb;
   
   /* Text Colors */
-  --foreground-color: var(--terminal-cyan);
-  --foreground-color-subtle: var(--terminal-light-gray);
-  --foreground-color-muted: #666666;
+  --foreground-color: var(--modern-foreground);
+  --foreground-color-subtle: var(--modern-muted);
+  --foreground-color-muted: #9ca3af;
   
   /* Link Colors */
-  --link-color: var(--terminal-blue);
-  --link-hover-color: var(--terminal-pink);
+  --link-color: var(--modern-primary);
+  --link-hover-color: var(--modern-secondary);
   
   /* Border Colors */
-  --border-color: #333333;
-  --border-color-subtle: #222222;
+  --border-color: #e5e7eb;
+  --border-color-subtle: #f3f4f6;
   
   /* Card Colors */
-  --card-background: var(--terminal-dark-gray);
+  --card-background: #ffffff;
   --card-border: var(--border-color);
   
   /* Icon Colors */
-  --icon-color: var(--terminal-cyan);
-  
-  /* Grain Textures */
-  --grain-primary: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
-  --grain-secondary: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
-  --grain-accent: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
-  
-  /* Scan Lines */
-  --scan-lines: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(132, 204, 22, 0.1) 2px,
-    rgba(132, 204, 22, 0.1) 4px
-  );
+  --icon-color: var(--modern-primary);
 
   // pallet brand
   --color-primary-100: oklch(from var(--brand-primary) 90% c h);
@@ -90,15 +64,10 @@
   --color-neutral-900: oklch(from var(--brand-neutral) 15% c h);
 
   // color scheme
-  --foreground-color: light-dark(var(--color-neutral-800), var(--color-neutral-100));
-  --background-color: light-dark(var(--color-neutral-100), var(--color-neutral-900));
-  --icon-color: light-dark(var(--color-secondary-400), var(--color-secondary-200));
-  --link-color: light-dark(var(--color-primary-400), var(--color-secondary-100));
-  --link-hover-color: light-dark(var(--color-primary-300), var(--color-secondary-200));
-  --border-color: light-dark(var(--color-neutral-900), var(--color-neutral-100));
-  --border-color-subtle: light-dark(var(--color-neutral-300), var(--color-neutral-800));
-  --text-decoration-color: light-dark(var(--color-neutral-700), var(--color-neutral-100));
-  --text-decoration-color-hover: light-dark(var(--color-neutral-100), var(--color-neutral-200));
+  --neutral-900: var(--color-neutral-900);
+  --neutral-700: var(--color-neutral-700);
+  --text-decoration-color: var(--color-neutral-700);
+  --text-decoration-color-hover: var(--color-neutral-200);
 
   // theme settings
   --radius-small: 3px;
@@ -198,37 +167,7 @@
   --backdrop-blur: blur(3px);
 
   // kbd
-  --kbd-color-text: light-dark(var(--color-gray-200), var(--color-gray-800));
-  --kbd-color-border: light-dark(var(--color-gray-700), var(--color-gray-300));
-  --kbd-color-background: light-dark(var(--color-gray-1000), var(--color-gray-200));
-}
-
-/* Modern Mode Overrides */
-.modern-mode {
-  color-scheme: light;
-  
-  --background-color: var(--modern-background);
-  --foreground-color: var(--modern-foreground);
-  --foreground-color-subtle: var(--modern-muted);
-  --link-color: var(--modern-primary);
-  --link-hover-color: var(--modern-secondary);
-  --border-color: #e5e7eb;
-  --card-background: #ffffff;
-  --icon-color: var(--modern-primary);
-  
-  /* Remove grain effects in modern mode */
-  --grain-primary: none;
-  --grain-secondary: none;
-  --grain-accent: none;
-  --scan-lines: none;
-}
-
-/* Retro Mode (default) */
-.retro-mode {
-  color-scheme: dark;
-}
-
-// light color scheme overrides
-.lightmode {
-  color-scheme: light;
+  --kbd-color-text: var(--color-neutral-200);
+  --kbd-color-border: var(--color-neutral-700);
+  --kbd-color-background: var(--color-neutral-800);
 }

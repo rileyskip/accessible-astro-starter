@@ -23,9 +23,6 @@ import {
 ---
 
 <DefaultLayout title="Riley Skipper - Web Developer">
-  <!-- Grid Overlay for 80s aesthetic -->
-  <div class="grid-overlay"></div>
-
   <Hero />
   <!-- What I Do Section - List Layout -->
   <section class="section-editorial section-parallax my-64 lg:my-96">
@@ -582,73 +579,4 @@ import {
     }
   }
 
-  /* Retro mode adjustments */
-  :global(.retro-mode) {
-    .editorial-title {
-      color: var(--terminal-cyan);
-      text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-      /* Reduce font size in retro mode - monospace fonts are wider */
-      font-size: clamp(2rem, 6vw, 4rem);
-      /* Override retro heading styles that add unwanted spacing */
-      border-bottom: none;
-      padding-bottom: 0;
-      
-      &::after {
-        display: none;
-      }
-      
-      .offset-text {
-        padding-left: clamp(1rem, 4vw, 4rem);
-      }
-    }
-    
-    /* Disable sticky on FAQ section in retro mode to prevent overlap */
-    .sticky {
-      position: relative;
-      top: auto;
-    }
-
-    .skill-item {
-      border-color: rgba(0, 255, 255, 0.2);
-
-      &:hover {
-        border-color: var(--terminal-cyan);
-      }
-    }
-
-    .skill-number {
-      background: linear-gradient(135deg, var(--terminal-cyan), var(--terminal-pink));
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      opacity: 0.2;
-    }
-
-    .skill-icon {
-      color: var(--terminal-cyan);
-    }
-
-    .skill-item:hover .skill-icon {
-      filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.6));
-    }
-
-    .skill-title {
-      color: var(--terminal-cyan);
-    }
-
-    .skill-description {
-      color: var(--terminal-cyan);
-      opacity: 0.8;
-    }
-
-    .animate-skill-card {
-      border-color: var(--terminal-cyan);
-      background: rgba(0, 255, 255, 0.05);
-      
-      &:hover {
-        background: rgba(0, 255, 255, 0.1);
-        box-shadow: 0 25px 50px rgba(0, 255, 255, 0.2);
-      }
-    }
-  }
 </style>
