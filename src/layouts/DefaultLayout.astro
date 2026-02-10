@@ -5,6 +5,7 @@ import { getImage } from 'astro:assets'
 import Header from '@components/Header.astro'
 import '../styles/tailwind.css'
 import '../assets/scss/index.scss'
+import Analytics from '@vercel/analytics/astro'
 
 export interface Props {
   title?: string
@@ -53,5 +54,6 @@ const ogImage = image ? await getImage({ src: image, alt: title }) : undefined
       <slot />
     </main>
     <script src="/src/assets/js/animations.js"></script>
+    <Analytics />
   </body>
 </html>
