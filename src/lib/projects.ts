@@ -44,7 +44,7 @@ const projectMeta: Record<
       'Lifelong learning programs across Rutgers ran on separate, siloed systems — making course discovery, admin workflows, and registration painfully fragmented for students and staff.',
     solution:
       'Course Hub: one unified application that brings departments together with clearer navigation, smarter course management, and a smoother browse-to-checkout flow.',
-    image: '/projects/coursehub/mbs-fall-2026.png',
+    image: '/projects/coursehub/mbs-catalog.png',
   },
   'project-04': {
     problem:

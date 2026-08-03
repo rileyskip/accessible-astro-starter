@@ -5,11 +5,13 @@ description: A mobile UX concept that improves digital transparency for E-ZPass 
 tags: ['UX Design', 'Mobile UI', 'Information Architecture', 'Accessibility', 'Figma']
 ---
 
+import Lightbox from '@components/Lightbox.astro'
+
 ## Project Overview
 
 E-ZPass account management can feel opaque — balances, violations, and payment deadlines are easy to miss, and users often discover problems only after fees have already stacked up. This concept reframes the experience around **digital transparency**, surfacing the information people need before it becomes a financial obstacle.
 
-**Role:** UX/UI Designer
+**Role:** UX/UI Design Concept
 
 ## The Problem
 
@@ -27,61 +29,57 @@ I redesigned the mobile experience to prioritize clarity, urgency, and timely ac
 
 ## Key Screens
 
+Click any screen to view it larger.
+
 <div class="grid grid-cols-2 gap-4 md:grid-cols-3 my-8 max-w-3xl">
-  <figure>
-    <img
-      src="/projects/ezpass-nj/good-standing.png"
-      alt="E-ZPass mobile dashboard showing a positive account balance and good standing status"
-      class="ezpass-screen"
-      loading="lazy"
-    />
-    <figcaption class="text-sm opacity-80 mt-2">Good standing — balance and status at a glance.</figcaption>
-  </figure>
-  <figure>
-    <img
-      src="/projects/ezpass-nj/at-risk.png"
-      alt="E-ZPass mobile dashboard showing a negative account balance with an at-risk alert"
-      class="ezpass-screen"
-      loading="lazy"
-    />
-    <figcaption class="text-sm opacity-80 mt-2">At risk — high-visibility alert before fees compound.</figcaption>
-  </figure>
-  <figure>
-    <img
-      src="/projects/ezpass-nj/threshold.png"
-      alt="E-ZPass notification screen alerting the user that their account balance has reached the threshold amount"
-      class="ezpass-screen"
-      loading="lazy"
-    />
-    <figcaption class="text-sm opacity-80 mt-2">Threshold alerts with direct paths to add funds.</figcaption>
-  </figure>
-  <figure>
-    <img
-      src="/projects/ezpass-nj/violations.png"
-      alt="E-ZPass violations screen showing toll violations with an honor-system discount for early payment"
-      class="ezpass-screen"
-      loading="lazy"
-    />
-    <figcaption class="text-sm opacity-80 mt-2">Violations with honor-system payment incentives.</figcaption>
-  </figure>
-  <figure>
-    <img
-      src="/projects/ezpass-nj/account-history.png"
-      alt="E-ZPass account history screen with a scannable transaction table"
-      class="ezpass-screen"
-      loading="lazy"
-    />
-    <figcaption class="text-sm opacity-80 mt-2">Scannable transaction history.</figcaption>
-  </figure>
-  <figure>
-    <img
-      src="/projects/ezpass-nj/notification.png"
-      alt="E-ZPass notifications screen with a threshold amount reached alert"
-      class="ezpass-screen"
-      loading="lazy"
-    />
-    <figcaption class="text-sm opacity-80 mt-2">Consolidated notifications center.</figcaption>
-  </figure>
+  <Lightbox
+    src="/projects/ezpass-nj/good-standing.png"
+    alt="E-ZPass mobile dashboard showing a positive account balance and good standing status"
+    caption="Good standing — balance and status at a glance."
+    width={400}
+    height={800}
+    class="ezpass-screen w-full rounded-lg shadow-md"
+  />
+  <Lightbox
+    src="/projects/ezpass-nj/at-risk.png"
+    alt="E-ZPass mobile dashboard showing a negative account balance with an at-risk alert"
+    caption="At risk — high-visibility alert before fees compound."
+    width={400}
+    height={800}
+    class="ezpass-screen w-full rounded-lg shadow-md"
+  />
+  <Lightbox
+    src="/projects/ezpass-nj/threshold.png"
+    alt="E-ZPass account dashboard with threshold alert indicator"
+    caption="Threshold alerts surface before balances go negative."
+    width={400}
+    height={800}
+    class="ezpass-screen w-full rounded-lg shadow-md"
+  />
+  <Lightbox
+    src="/projects/ezpass-nj/violations.png"
+    alt="E-ZPass violations screen showing toll violations with an honor-system discount for early payment"
+    caption="Violations with honor-system payment incentives."
+    width={400}
+    height={800}
+    class="ezpass-screen w-full rounded-lg shadow-md"
+  />
+  <Lightbox
+    src="/projects/ezpass-nj/account-history.png"
+    alt="E-ZPass account history screen with a scannable transaction table"
+    caption="Scannable transaction history."
+    width={400}
+    height={800}
+    class="ezpass-screen w-full rounded-lg shadow-md"
+  />
+  <Lightbox
+    src="/projects/ezpass-nj/notification.png"
+    alt="E-ZPass notifications screen with a threshold amount reached alert"
+    caption="Consolidated notifications center."
+    width={400}
+    height={800}
+    class="ezpass-screen w-full rounded-lg shadow-md"
+  />
 </div>
 
 ## Accessibility Considerations

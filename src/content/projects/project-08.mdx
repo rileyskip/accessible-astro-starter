@@ -6,6 +6,7 @@ tags: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'PostgreSQL', 'UX Design', 
 ---
 
 import ProjectButton from '@components/ProjectButton.astro'
+import Lightbox from '@components/Lightbox.astro'
 
 ## Project Overview
 
@@ -21,135 +22,162 @@ Course Hub solves that by combining multiple departments into **one unified appl
 
 ## The Problem: Siloed Departments, Fragmented Experiences
 
-Each program area operated like its own island — different layouts, different admin workflows, and no consistent way for users to discover courses or complete registration. That created friction for:
+Each program area operated like its own island — different layouts, different admin workflows, and no consistent way for users to discover courses or complete registration. That created friction for students, admins, and stakeholders maintaining separate tools instead of one scalable platform.
 
-- **Students and professionals** trying to find the right course across program areas
-- **Admins** managing listings, terms, banners, and overrides department by department
-- **Stakeholders** maintaining separate tools instead of one scalable platform
+## One Architecture, Many Departments
 
-## The Solution: One Hub, Many Programs
+Instead of rebuilding the experience for every school, Course Hub uses a **shared application architecture** with department-specific branding, filters, and permissions. CGS, MBS, and other programs feel distinct to users — but run on the same patterns underneath.
 
-Course Hub unifies those experiences under a single design system and application architecture — while still giving each department its own identity, filters, and admin permissions.
+Click any image to view it larger.
 
 ### Center for Government Services (CGS)
 
-The [CGS landing page](https://coursehub.rutgers.edu/cgs) brings 17+ program areas into one browsable hub. Instead of sending users to disconnected destinations, they start from a clear program directory and move into seasonal course listings with consistent navigation.
+The [CGS landing page](https://coursehub.rutgers.edu/cgs) brings 17+ program areas into one browsable hub with shared seasonal navigation and a consistent path from program discovery into course listings.
 
-<div class="my-8">
-  <img
-    src="/projects/coursehub/cgs-landing.png"
-    alt="Rutgers Course Hub CGS landing page showing unified program area cards for government services training"
-    class="w-full rounded-xl shadow-lg"
-    loading="lazy"
-  />
-  <p class="text-sm opacity-80 mt-3">
-    CGS program areas — previously scattered — now live in one navigable directory with shared seasonal navigation and a consistent path into course listings.
-  </p>
-</div>
-
-**What this improved:**
-- Unified entry point for siloed government training programs
-- Clearer information architecture by program area
-- Seasonal navigation (Spring, Summer, Fall) shared across departments
-- Faster path from department discovery to current course offerings
+<Lightbox
+  src="/projects/coursehub/cgs-landing.png"
+  alt="Rutgers Course Hub CGS landing page with program area cards and seasonal navigation"
+  caption="Siloed government training programs now share one entry point — same layout, same navigation model, department-specific content."
+  width={1400}
+  height={900}
+  class="w-full rounded-xl shadow-lg"
+/>
 
 ### Master of Business & Science (MBS)
 
-The [MBS Fall 2026 catalog](https://coursehub.rutgers.edu/mbs/2026/fall) shows how the same platform scales to complex, filter-heavy course browsing — with concentration filters, location search, sortable listings, and inline registration.
+The [MBS Fall 2026 catalog](https://coursehub.rutgers.edu/mbs/2026/fall) shows how the platform scales to filter-heavy, high-volume course browsing without breaking the shared experience.
 
-<div class="my-8">
-  <img
-    src="/projects/coursehub/mbs-fall-2026.png"
-    alt="Rutgers Course Hub MBS Fall 2026 course listing with filters, sortable table, and register buttons"
-    class="w-full rounded-xl shadow-lg"
-    loading="lazy"
+<Lightbox
+  src="/projects/coursehub/mbs-catalog.png"
+  alt="Rutgers Course Hub MBS Fall 2026 catalog with filters, sortable course table, and register buttons"
+  caption="MBS uses the same catalog architecture as CGS — concentration filters, sortable columns, and inline registration — adapted for a more complex course inventory."
+  width={1400}
+  height={900}
+  class="w-full rounded-xl shadow-lg"
+/>
+
+## Filtering, Sorting & Responsive Course Tables
+
+Course discovery had to work for both quick lookups and deep browsing. The filter bar supports concentration, location, room, title, course number, and instructor — with sortable table columns so users can reorganize results without losing context.
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-8">
+  <Lightbox
+    src="/projects/coursehub/course-filters.png"
+    alt="Course Hub filter bar with concentration, location, room, title, and instructor search fields"
+    caption="Multi-criteria filtering keeps large catalogs scannable across departments."
+    width={1200}
+    height={400}
+    class="w-full rounded-lg shadow-md"
   />
-  <p class="text-sm opacity-80 mt-3">
-    MBS course listings with concentration and location filters, scannable course data, and Register actions that keep users in a consistent browse-to-checkout flow.
-  </p>
+  <Lightbox
+    src="/projects/coursehub/course-table.png"
+    alt="Course Hub responsive course table with color-coded concentration tags and register actions"
+    caption="Flexible course cards stack on smaller screens and expand into sortable rows on desktop."
+    width={1200}
+    height={600}
+    class="w-full rounded-lg shadow-md"
+  />
 </div>
 
-**What this improved:**
-- Powerful filtering by concentration, location, instructor, and course number
-- Scannable course tables with sortable columns
-- Inline **Register** actions that reduce dead ends
-- Special notes and section details surfaced at the point of decision
+**Design decisions:**
+- **Filtering and sorting** on every major column — title, meeting days, location, instructor
+- **Color-coded concentration tags** so users can scan program areas at a glance
+- **Responsive table layout** that reflows from card stacks to full data rows without hiding critical fields
+- **Inline Register actions** that keep users in the browse-to-checkout flow
 
-## Improved User Flow: Browse → Register → Checkout
+## Effective Color Coding
 
-A major focus was shortening the distance between finding a course and completing registration. We prototyped, polled, and A/B tested cart layouts, payment options, and checkout states before shipping in Next.js.
+Color carries meaning across the product — not just decoration. Concentration tags, alert types, override states, and primary actions each use a distinct palette so users and admins can read status quickly.
+
+- **Program tags** — teal and blue pills distinguish concentrations and course types
+- **Primary actions** — yellow Register and Search buttons draw attention without breaking Rutgers branding
+- **Override states** — amber "Currently Overridden" badges signal admin-edited listings
+- **Alert banners** — warning, info, and success types map to consistent background colors in the admin panel
+
+## Browse → Cart → Checkout
+
+Registration flow was prototyped, polled, and A/B tested before shipping. The cart keeps course details, pricing, and checkout actions in one lightweight overlay so users don't lose their place in the catalog.
+
+<div class="my-8 max-w-md mx-auto">
+  <Lightbox
+    src="/projects/coursehub/shopping-cart.png"
+    alt="Course Hub shopping cart overlay with course details, total, and checkout actions"
+    caption="Cart overlay with item count badge, clear pricing, and a direct path to checkout."
+    width={600}
+    height={500}
+    class="w-full rounded-lg shadow-md"
+  />
+</div>
+
+Cart layouts and payment options were tested through Figma polling to find the clearest checkout experience before development.
 
 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-8">
-  <div>
-    <img
-      src="/projects/payment-method.png"
-      alt="Course Hub desktop listing with filters and course cards"
-      class="w-full rounded-lg shadow-md"
-      loading="lazy"
-    />
-    <p class="text-sm opacity-80 mt-2">Desktop course listing — filterable, scannable, and built for high-volume catalogs.</p>
-  </div>
-  <div>
-    <img
-      src="/projects/mobile.png"
-      alt="Course Hub mobile responsive course listing"
-      class="w-full rounded-lg shadow-md"
-      loading="lazy"
-    />
-    <p class="text-sm opacity-80 mt-2">Mobile-responsive browsing so users can explore and register on any device.</p>
-  </div>
-  <div>
-    <img
-      src="/projects/cart-options.png"
-      alt="Course cart checkout layout options"
-      class="w-full rounded-lg shadow-md"
-      loading="lazy"
-    />
-    <p class="text-sm opacity-80 mt-2">Cart layouts tested through polling to find the clearest checkout experience.</p>
-  </div>
-  <div>
-    <img
-      src="/projects/payment-method-2.png"
-      alt="Payment method selection in Course Hub checkout"
-      class="w-full rounded-lg shadow-md"
-      loading="lazy"
-    />
-    <p class="text-sm opacity-80 mt-2">Payment options designed to reduce confusion at the final step.</p>
-  </div>
+  <Lightbox
+    src="/projects/cart-options.png"
+    alt="Course Hub cart layout options tested during design polling"
+    caption="Cart layout variations tested through polling to reduce confusion at checkout."
+    width={1200}
+    height={800}
+    class="w-full rounded-lg shadow-md"
+  />
+  <Lightbox
+    src="/projects/payment-method-2.png"
+    alt="Course Hub payment method selection screen"
+    caption="Payment method selection designed to keep users confident through the final step."
+    width={1200}
+    height={800}
+    class="w-full rounded-lg shadow-md"
+  />
 </div>
 
-## Easier Navigation & Admin Management
+## Admin Control Panel
 
-Students see one consistent interface. Admins get tooling built for real operational needs — course editing, batch updates, term management, banner controls, and department-scoped permissions.
+Admins needed more than a course editor — they needed a control panel for banners, overrides, user management, and audit trails. The admin experience mirrors the public site's clarity: sidebar navigation, typed actions, and guardrails before anything goes live.
 
-<div class="grid grid-cols-1 gap-6 md:grid-cols-2 my-8">
-  <div>
-    <img
-      src="/projects/initial-admin.png"
-      alt="Course Hub admin view with course listing and action controls"
-      class="w-full rounded-lg shadow-md"
-      loading="lazy"
-    />
-    <p class="text-sm opacity-80 mt-2">Admin course listing with inline actions and multi-select editing.</p>
-  </div>
-  <div>
-    <img
-      src="/projects/coursehub/admin-changelog.png"
-      alt="Course Hub admin control panel requiring a change log message before saving updates"
-      class="w-full rounded-lg shadow-md"
-      loading="lazy"
-    />
-    <p class="text-sm opacity-80 mt-2">Required change log messages keep admin edits accountable — every save documents who changed what, when, and why across the control panel.</p>
-  </div>
+### Site-Wide Banners & Notices
+
+<Lightbox
+  src="/projects/coursehub/admin-banners.png"
+  alt="Course Hub admin panel for creating site-wide banners with alert types and revision log navigation"
+  caption="Create and manage banners that appear across all department pages — with alert types, rich text, and character limits for time-sensitive announcements."
+  width={1200}
+  height={800}
+  class="w-full rounded-lg shadow-md"
+/>
+
+### Manual Course Overrides
+
+When course data needs to change fast — cancellations, schedule updates, pricing corrections — admins can override listings inline. Override state is visible on both the admin side and the public catalog.
+
+<Lightbox
+  src="/projects/coursehub/manual-override.png"
+  alt="Course Hub course listing with Currently Overridden badge and clear override controls"
+  caption="Manual overrides surface with a clear badge and dedicated Edit / Clear Override actions — so staff know exactly what's been changed and can revert when needed."
+  width={1200}
+  height={600}
+  class="w-full rounded-lg shadow-md"
+/>
+
+### Version Control & Revision Logs
+
+Every admin save requires a change log message. Combined with a dedicated **Revision Logs** section in the control panel, teams get a paper trail of who changed what, when, and why — critical when multiple departments share one platform.
+
+<div class="my-8 max-w-2xl">
+  <Lightbox
+    src="/projects/coursehub/admin-changelog.png"
+    alt="Course Hub admin control panel requiring a change log message before saving updates"
+    caption="Required change log messages and revision logs create accountability across admin editing — no silent updates across shared department data."
+    width={900}
+    height={500}
+    class="w-full rounded-lg shadow-md"
+  />
 </div>
-
-Admin workflows went through multiple design iterations — from concise edit modals to inline overrides — with version control and revision logs built into the editing experience so teams can track changes across departments without losing context.
 
 ## Design & Development Process
 
 1. **Discovery** — mapped siloed department needs and overlapping user journeys
 2. **Prototyping** — HTML/Tailwind/JS prototypes for stakeholder testing
-3. **Figma polling** — checkout flows, cart layouts, and admin edit patterns
+3. **Figma polling** — checkout flows, cart layouts, filter patterns, and admin edit states
 4. **A/B testing** — validated listing layouts and registration paths
 5. **Build & launch** — Next.js 15, React 19, TypeScript, Tailwind CSS v4, PostgreSQL
 
@@ -163,12 +191,14 @@ Admin workflows went through multiple design iterations — from concise edit mo
 
 - **Unified multi-department platform** with department-specific branding and permissions
 - **Dynamic URL-based filtering** with query params for program areas and concentrations
+- **Sortable, responsive course tables** that scale from mobile cards to full desktop rows
+- **Color-coded status and program tags** for faster scanning
+- **Admin manual overrides** with visible override state and clear/revert actions
+- **Version control** through required change log messages and revision logs
+- **Site-wide banner management** with typed alerts across all department pages
+- **Shopping cart and checkout flow** tested through polling and A/B testing
 - **Season-based navigation** across Spring, Summer, Fall, and Winter offerings
-- **Admin override tools** for time-sensitive course updates
-- **Status management** — Register, Course Full, Closed
-- **Responsive design** from mobile browse to desktop checkout
-- **Screen reader support** and accessible form patterns throughout
 
 ## Outcome
 
-Course Hub replaced fragmented program experiences with a single, scalable platform — making it easier for users to find courses, for admins to manage them, and for Rutgers to grow lifelong learning programs without rebuilding the wheel for every department.
+Course Hub replaced fragmented program experiences with a single, scalable platform — making it easier for users to find courses, for admins to manage them with accountability, and for Rutgers to grow lifelong learning programs without rebuilding the wheel for every department.

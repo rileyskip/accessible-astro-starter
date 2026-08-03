@@ -312,10 +312,15 @@ const solution = meta?.solution ?? project.data.description
     box-shadow: var(--shadow-soft);
   }
 
-  .case-study-content figcaption {
+  .case-study-content .lightbox-wrapper {
+    width: 100%;
+  }
+
+  .case-study-content .image-caption {
     font-size: 0.88rem;
     line-height: 1.5;
     color: var(--muted-foreground);
+    margin-top: 0.5rem;
   }
 
   .case-study-content .tall-screenshot-preview .lightbox-image {
