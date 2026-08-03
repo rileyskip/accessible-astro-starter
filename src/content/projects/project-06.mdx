@@ -6,9 +6,8 @@ tags: ['React', 'TypeScript', 'Next.js', 'Application Development']
 ---
 
 import BreakoutImage from '@components/BreakoutImage.astro'
+import ProjectButton from '@components/ProjectButton.astro'
 
-
-<Image class="mx-auto" src="/projects/hotdog.png" width={400} height={200} alt="Hotdog Tracker" />
 
 ## Project Overview
 
@@ -18,18 +17,7 @@ Hotdog Tracker is an application that allows users to track their hotdog consump
 <div class="bg-card my-8 rounded-lg p-6">
   <h3 class="mb-4 text-xl font-bold">Live Application</h3>
   <p class="mb-4">Experience the Hotdog Tracker in action:</p>
-  <a
-    href="https://hotdog-tracker.vercel.app/"
-    target="_blank"
-    rel="noopener"
-    class="bg-primary hover:bg-primary-dark inline-flex items-center gap-2 rounded-lg px-6 py-3 text-white transition-colors"
-  >
-    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-    </svg>
-    Visit Hotdog Tracker
-  </a>
+  <ProjectButton href="https://hotdog-tracker.vercel.app/" label="Visit Hotdog Tracker" />
 </div>
 
 

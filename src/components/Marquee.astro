@@ -1,0 +1,118 @@
+---
+/**
+ * Accessible horizontal marquee for skills and focus areas.
+ */
+interface Props {
+  items?: string[]
+  speed?: number
+}
+
+const defaultItems = [
+  'Accessible design',
+  'Information architecture',
+  'React',
+  'Drupal',
+  'Design systems',
+  'UX research',
+  'WCAG',
+  'Figma',
+  'TypeScript',
+  'User-centered product work',
+]
+
+const { items = defaultItems, speed = 32 } = Astro.props
+const trackItems = [...items, ...items]
+---
+
+<section class="marquee-band" aria-label="Focus areas">
+  <div class="marquee-viewport">
+    <div class="marquee-track" style={`--marquee-duration: ${speed}s`}>
+      {
+        trackItems.map((item) => (
+          <span class="marquee-item">
+            <span class="marquee-dot" aria-hidden="true" />
+            {item}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-band {
+    margin: 1.5rem 0 2.5rem;
+    border-block: 1px solid var(--border);
+    background: color-mix(in srgb, var(--brand-lavender) 42%, var(--background));
+    overflow: hidden;
+  }
+
+  .marquee-viewport {
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 2rem;
+    padding: 0.95rem 0;
+    animation: marquee-scroll var(--marquee-duration, 32s) linear infinite;
+  }
+
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--foreground);
+    white-space: nowrap;
+  }
+
+  .marquee-dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: var(--brand-orange);
+    flex: 0 0 auto;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-viewport {
+      mask-image: none;
+    }
+
+    .marquee-track {
+      flex-wrap: wrap;
+      justify-content: center;
+      width: auto;
+      gap: 0.75rem 1.25rem;
+      padding: 1rem;
+      animation: none;
+    }
+
+    .marquee-item:nth-child(n + 11) {
+      display: none;
+    }
+  }
+</style>

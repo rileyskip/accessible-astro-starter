@@ -22,8 +22,6 @@ interface Props {
 const { project } = Astro.props
 const { Content } = await render(project)
 const meta = getProjectMeta(project.id)
-const featuredImage = meta?.image ?? '/projects/project-image-1.png'
-const imageCompact = meta?.imageCompact ?? false
 const problem = meta?.problem ?? 'Users faced friction in a complex workflow.'
 const solution = meta?.solution ?? project.data.description
 ---
@@ -55,15 +53,6 @@ const solution = meta?.solution ?? project.data.description
           <p>{solution}</p>
         </article>
       </div>
-
-      <figure class:list={['case-study-feature', imageCompact && 'case-study-feature-compact']}>
-        <img
-          class:list={imageCompact && 'case-study-feature-image--compact'}
-          src={featuredImage}
-          alt={`${project.data.title} project preview`}
-          loading="eager"
-        />
-      </figure>
 
       {
         project.data.tags && project.data.tags.length > 0 && (
@@ -171,26 +160,6 @@ const solution = meta?.solution ?? project.data.description
     margin: 0.55rem 0 0;
     font-size: 1.02rem;
     line-height: 1.65;
-  }
-
-  .case-study-feature {
-    margin: 2rem 0 0;
-  }
-
-  .case-study-feature img {
-    width: 100%;
-    border-radius: 1.25rem;
-    box-shadow: var(--shadow-medium);
-  }
-
-  .case-study-feature-compact {
-    display: grid;
-    place-items: center;
-  }
-
-  .case-study-feature-image--compact {
-    width: min(42%, 280px);
-    box-shadow: var(--shadow-soft);
   }
 
   .tag-list {
@@ -314,17 +283,44 @@ const solution = meta?.solution ?? project.data.description
     box-shadow: var(--shadow-soft);
   }
 
-  .case-study-content a {
+  .case-study-content a:not(.project-btn) {
     color: var(--accent-link);
     font-weight: 600;
   }
 
-  .case-study-content a:hover,
-  .case-study-content a:focus-visible {
+  .case-study-content a:not(.project-btn):hover,
+  .case-study-content a:not(.project-btn):focus-visible {
     text-decoration: underline;
+  }
+
+  .case-study-content a.project-btn :is(p, .project-btn-label) {
+    margin: 0;
+    color: #fff7ef;
+    font: inherit;
+    font-weight: inherit;
   }
 
   .case-study-content .my-8 {
     margin-block: 2rem;
+  }
+
+  .case-study-content .ezpass-screen {
+    width: 100%;
+    max-width: 11rem;
+    margin-inline: auto;
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .case-study-content figcaption {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--muted-foreground);
+  }
+
+  .case-study-content .tall-screenshot-preview .lightbox-image {
+    max-height: 28rem;
+    object-fit: cover;
+    object-position: top center;
   }
 </style>

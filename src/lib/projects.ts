@@ -41,10 +41,10 @@ const projectMeta: Record<
   },
   'project-08': {
     problem:
-      'Students and admins were juggling disconnected tools just to register for a single course.',
+      'Lifelong learning programs across Rutgers ran on separate, siloed systems — making course discovery, admin workflows, and registration painfully fragmented for students and staff.',
     solution:
-      'One cohesive hub that streamlines course discovery, registration, and management — designed for the people actually using it.',
-    image: '/projects/cgs-desktop.png',
+      'Course Hub: one unified application that brings departments together with clearer navigation, smarter course management, and a smoother browse-to-checkout flow.',
+    image: '/projects/coursehub/mbs-fall-2026.png',
   },
   'project-04': {
     problem:
@@ -65,7 +65,7 @@ const projectMeta: Record<
       'A trusted local business had almost no digital footprint — and was losing leads to competitors who looked more credible online.',
     solution:
       'A complete brand identity and client-ready website that builds trust from the first click and stays easy to maintain.',
-    image: '/projects/templates.png',
+    image: '/projects/eclipseinspection/eclipseinspection-home.png',
   },
   'project-06': {
     problem: "Tracking a quirky habit shouldn't feel like homework.",

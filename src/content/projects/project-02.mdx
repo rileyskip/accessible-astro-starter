@@ -13,6 +13,7 @@ Dreamvision is a creative design project that explores the intersection of visua
 import BlockQuote from '@components/BlockQuote.astro'
 import BreakoutImage from '@components/BreakoutImage.astro'
 import Lightbox from '@components/Lightbox.astro'
+import ProjectButton from '@components/ProjectButton.astro'
 import { Image } from 'astro:assets'
 
 <div class="my-8">
@@ -30,18 +31,7 @@ import { Image } from 'astro:assets'
 <div class="bg-card my-8 rounded-lg p-6">
   <h3 class="mb-4 text-xl font-bold">Experience Dreamvision</h3>
   <p class="mb-4">Explore the interactive Figma prototype to see the creative design experience in action:</p>
-  <a
-    href="https://www.figma.com/proto/W1bJft6KEHjHZkjF5mTdBj/Dreamvision?page-id=0%3A1&node-id=42-3662&viewport=1567%2C1156%2C0.31&t=2LnRAJTLxRPByy4x-1&scaling=scale-down&content-scaling=fixed"
-    target="_blank"
-    rel="noopener"
-    class="bg-primary hover:bg-primary-dark inline-flex items-center gap-2 rounded-lg px-6 py-3 text-white transition-colors"
-  >
-    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-    </svg>
-    View Figma Prototype
-  </a>
+  <ProjectButton href="https://www.figma.com/proto/W1bJft6KEHjHZkjF5mTdBj/Dreamvision?page-id=0%3A1&node-id=42-3662&viewport=1567%2C1156%2C0.31&t=2LnRAJTLxRPByy4x-1&scaling=scale-down&content-scaling=fixed" label="View Figma Prototype" />
 </div>
 
 ## Design Philosophy

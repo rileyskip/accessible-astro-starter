@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import SiteHeader from '@components/SiteHeader.astro'
+import ScrollReveal from '@components/ScrollReveal.astro'
 import { siteConfig } from '@config/site'
 import { getProjects, workPageSize } from '@lib/projects'
 
@@ -47,8 +48,9 @@ const { page, totalPages, visibleProjects } = Astro.props
 
       <section class="works-list" aria-label="Project list">
         {
-          visibleProjects.map((project) => (
-            <article class="work-card">
+          visibleProjects.map((project, index) => (
+            <ScrollReveal delay={index * 120}>
+              <article class="work-card">
               <div class="work-copy">
                 <p class="work-name">{project.name}</p>
                 <p class="work-label">The challenge</p>
@@ -58,7 +60,7 @@ const { page, totalPages, visibleProjects } = Astro.props
 
                 <div class="actions">
                   <a class="project-button" href={project.href}>
-                    <span>Explore this project</span>
+                    <span>View case study</span>
                     <span aria-hidden="true">→</span>
                   </a>
                 </div>
@@ -79,6 +81,7 @@ const { page, totalPages, visibleProjects } = Astro.props
                 />
               </div>
             </article>
+            </ScrollReveal>
           ))
         }
       </section>
@@ -242,13 +245,19 @@ const { page, totalPages, visibleProjects } = Astro.props
     border-color: var(--control-border);
   }
 
+  .project-button,
+  .project-button:visited {
+    color: #fff7ef;
+  }
+
   .project-button:hover,
-  .project-button:focus-visible,
-  .pagination-link:hover,
-  .pagination-link:focus-visible {
+  .project-button:focus-visible {
     transform: translateY(-1px);
     background: color-mix(in srgb, var(--brand-blue) 88%, #000 12%);
     border-color: color-mix(in srgb, var(--brand-blue) 88%, #000 12%);
+    color: #fff7ef;
+    outline: 3px solid var(--brand-orange);
+    outline-offset: 3px;
   }
 
   .pagination-link:hover,
@@ -285,8 +294,8 @@ const { page, totalPages, visibleProjects } = Astro.props
   }
 
   .project-preview-image--compact {
-    width: min(62%, 240px);
-    max-height: 20rem;
+    width: min(48%, 160px);
+    max-height: 14rem;
     object-fit: contain;
     box-shadow: var(--shadow-soft);
   }

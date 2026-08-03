@@ -12,6 +12,7 @@ Drupal development for Rutgers University. This project demonstrates my expertis
 import BlockQuote from '@components/BlockQuote.astro'
 import BreakoutImage from '@components/BreakoutImage.astro'
 import Lightbox from '@components/Lightbox.astro'
+import ProjectButton from '@components/ProjectButton.astro'
 import { Image } from 'astro:assets'
 
 <Lightbox 
@@ -27,19 +28,24 @@ import { Image } from 'astro:assets'
 <div class="bg-card my-8 rounded-lg p-6">
   <h3 class="mb-4 text-xl font-bold">Rutgers Statewide</h3>
   <p class="mb-4">Explore the an example of the templating system built for this website.</p>
-  <a
-    href="https://statewide.rutgers.edu"
-    target="_blank"
-    rel="noopener"
-    class="bg-primary hover:bg-primary-dark inline-flex items-center gap-2 rounded-lg px-6 py-3 text-white transition-colors"
-  >
-    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-    </svg>
-    View Live Demo
-  </a>
+  <ProjectButton href="https://statewide.rutgers.edu" label="View Live Demo" />
 </div>
+
+## Division of Lifelong Learning & Innovation
+
+A flagship Drupal build for Rutgers' Division of Lifelong Learning and Innovation — a content-rich landing experience with program pathways, events, FAQs, and editorial templates designed for long-term maintainability.
+
+<div class="my-8 max-w-[11rem] mx-auto tall-screenshot-preview">
+  <Lightbox
+    src="/projects/drupal/division-page.png"
+    alt="Rutgers Division of Lifelong Learning and Innovation homepage with hero, program sections, events, and FAQs"
+    caption="Division landing page built in Drupal with flexible content sections, event listings, and editor-friendly templates across lifelong learning programs."
+    width={200}
+    height={1024}
+    class="w-full rounded-xl shadow-2xl"
+  />
+</div>
+
 ## Development Process
 
 This role required deep understanding of both Drupal's content management capabilities and the specific needs of educational institutions. My development approach included:

@@ -1,6 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import SiteHeader from '@components/SiteHeader.astro'
+import Marquee from '@components/Marquee.astro'
+import ScrollReveal from '@components/ScrollReveal.astro'
 import { siteConfig } from '@config/site'
 import { getProjects } from '@lib/projects'
 
@@ -18,18 +20,21 @@ const projects = await getProjects({ featuredOnly: true })
         <div class="hero-copy">
           <p class="hero-eyebrow">Selected work</p>
           <p class="hero-text">
-            I turn messy user problems into products people actually want to use — with accessible
-            design, clear information architecture, and interfaces built to earn trust.
+            I turn tangled user problems into products people reach for — with accessible design,
+            purposeful structure, and interfaces built to earn trust.
           </p>
         </div>
       </section>
+
+      <Marquee />
 
       <section class="projects" id="work" aria-labelledby="selected-work-heading">
         <h2 id="selected-work-heading" class="sr-only">Selected work</h2>
         <div class="projects-grid">
           {
-            projects.map((project) => (
-              <article class={`project-card ${project.background}`}>
+            projects.map((project, index) => (
+              <ScrollReveal delay={index * 100}>
+                <article class={`project-card ${project.background}`}>
                 <div class="project-header">
                   <p class="project-name">{project.name}</p>
                 </div>
@@ -57,10 +62,11 @@ const projects = await getProjects({ featuredOnly: true })
                 </div>
 
                 <a class="project-button" href={project.href}>
-                  Explore this project
+                  View case study
                   <span aria-hidden="true">→</span>
                 </a>
               </article>
+              </ScrollReveal>
             ))
           }
         </div>
@@ -75,6 +81,11 @@ const projects = await getProjects({ featuredOnly: true })
     width: min(calc(100% - 3rem), 78rem);
     margin: 0 auto;
     padding: 1.25rem 0 5rem;
+  }
+
+  .marquee-band {
+    margin-inline: calc(50% - 50vw);
+    width: 100vw;
   }
 
   .hero {
@@ -208,9 +219,9 @@ const projects = await getProjects({ featuredOnly: true })
   }
 
   .project-preview-image--compact {
-    width: min(62%, 220px);
+    width: min(48%, 160px);
     height: auto;
-    max-height: 18rem;
+    max-height: 14rem;
     object-fit: contain;
     box-shadow: var(--shadow-soft);
   }
@@ -239,13 +250,22 @@ const projects = await getProjects({ featuredOnly: true })
   .project-card.brand-lavender .project-button {
     background: var(--brand-blue);
     border-color: var(--brand-blue);
-    color: var(--brand-cream);
+    color: #fff7ef;
+  }
+
+  .project-card.brand-blue .project-button,
+  .project-card.brand-orange .project-button {
+    background: color-mix(in srgb, var(--background) 12%, transparent);
+    color: #fff7ef;
   }
 
   .project-button:hover,
   .project-button:focus-visible {
     transform: translateY(-1px);
     background: color-mix(in srgb, var(--background) 22%, transparent);
+    color: #fff7ef;
+    outline: 3px solid var(--brand-orange);
+    outline-offset: 3px;
   }
 
   .project-card.brand-cream .project-button:hover,
@@ -253,6 +273,7 @@ const projects = await getProjects({ featuredOnly: true })
   .project-card.brand-lavender .project-button:hover,
   .project-card.brand-lavender .project-button:focus-visible {
     background: color-mix(in srgb, var(--brand-blue) 88%, #000 12%);
+    color: #fff7ef;
   }
 
   @media (max-width: 980px) {
