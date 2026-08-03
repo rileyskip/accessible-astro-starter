@@ -1,0 +1,322 @@
+---
+import Layout from '@layouts/Layout.astro'
+import SiteHeader from '@components/SiteHeader.astro'
+import { siteConfig } from '@config/site'
+import { getProjects, workPageSize } from '@lib/projects'
+
+export async function getStaticPaths() {
+  const projects = await getProjects({ featuredOnly: true })
+  const totalPages = Math.ceil(projects.length / workPageSize)
+
+  return Array.from({ length: Math.max(totalPages - 1, 0) }, (_, index) => {
+    const pageNumber = index + 2
+    const start = (pageNumber - 1) * workPageSize
+    const end = start + workPageSize
+
+    return {
+      params: { page: String(pageNumber) },
+      props: {
+        page: pageNumber,
+        totalPages,
+        visibleProjects: projects.slice(start, end),
+      },
+    }
+  })
+}
+
+const { page, totalPages, visibleProjects } = Astro.props
+---
+
+<Layout
+  title={`Work Page ${page} | ${siteConfig.name}`}
+  description={`Page ${page} of selected work by ${siteConfig.authorName}.`}
+>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="works-page">
+    <SiteHeader />
+
+    <main id="main-content" class="works-main">
+      <header class="works-hero">
+        <p class="works-eyebrow">Selected work</p>
+        <h1>More projects in the same system, with room for future case studies to grow into.</h1>
+        <p class="works-intro">
+          Page {page} of {totalPages} keeps the layout consistent while leaving space to expand the archive.
+        </p>
+      </header>
+
+      <section class="works-list" aria-label="Project list">
+        {
+          visibleProjects.map((project) => (
+            <article class="work-card">
+              <div class="work-copy">
+                <p class="work-name">{project.name}</p>
+                <p class="work-label">The challenge</p>
+                <p class="work-problem">{project.problem}</p>
+                <p class="work-label">What I delivered</p>
+                <h2>{project.solution}</h2>
+
+                <div class="actions">
+                  <a class="project-button" href={project.href}>
+                    <span>Explore this project</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class:list={['work-visual', project.imageCompact && 'work-visual-compact']}>
+                <img
+                  class:list={[
+                    'project-preview-image',
+                    project.imageCompact && 'project-preview-image--compact',
+                  ]}
+                  src={project.image}
+                  alt={project.alt}
+                  loading="lazy"
+                  decoding="async"
+                  width="1280"
+                  height="720"
+                />
+              </div>
+            </article>
+          ))
+        }
+      </section>
+
+      <nav class="pagination" aria-label="Works pagination">
+        {
+          Array.from({ length: totalPages }, (_, index) => {
+            const pageNumber = index + 1
+            const href = pageNumber === 1 ? '/work' : `/work/page/${pageNumber}`
+
+            return (
+              <a
+                class:list={['pagination-link', page === pageNumber && 'is-current']}
+                href={href}
+                aria-current={page === pageNumber ? 'page' : undefined}
+              >
+                {pageNumber}
+              </a>
+            )
+          })
+        }
+      </nav>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .works-page {
+    width: min(calc(100% - 3rem), 78rem);
+    margin: 0 auto;
+    padding: 1.25rem 0 5rem;
+  }
+
+  .works-main {
+    padding-top: 4.5rem;
+  }
+
+  .works-eyebrow,
+  .work-name {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  h1,
+  h2 {
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: var(--foreground);
+  }
+
+  h1 {
+    margin-top: 1rem;
+    font-size: clamp(2.6rem, 4.6vw, 4.4rem);
+    line-height: 1.03;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 2.1vw, 2.2rem);
+    line-height: 1.08;
+  }
+
+  .work-problem {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--muted-foreground);
+  }
+
+  .work-label {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+
+  .works-intro,
+  .work-description {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--muted-foreground);
+  }
+
+  .works-intro {
+    max-width: 42rem;
+    margin: 1.35rem 0 0;
+  }
+
+  .work-description {
+    max-width: 34rem;
+    margin: 0;
+  }
+
+  .works-list {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .work-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(22rem, 1.1fr);
+    gap: 2rem;
+    align-items: start;
+    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+  }
+
+  .work-copy {
+    display: grid;
+    align-content: start;
+    gap: 0.8rem;
+  }
+
+  .actions {
+    display: flex;
+    margin-top: 0.75rem;
+  }
+
+  .project-button,
+  .pagination-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 48px;
+    padding: 0.85rem 1.2rem;
+    border: 1px solid var(--brand-blue);
+    border-radius: 999px;
+    background: var(--brand-blue);
+    color: var(--brand-cream);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+      transform 120ms ease,
+      border-color 120ms ease,
+      background-color 120ms ease;
+  }
+
+  .pagination-link {
+    width: 3.25rem;
+    height: 3.25rem;
+    min-height: 3.25rem;
+    padding: 0;
+    flex: 0 0 3.25rem;
+    background: transparent;
+    color: inherit;
+    border-color: var(--control-border);
+  }
+
+  .project-button:hover,
+  .project-button:focus-visible,
+  .pagination-link:hover,
+  .pagination-link:focus-visible {
+    transform: translateY(-1px);
+    background: color-mix(in srgb, var(--brand-blue) 88%, #000 12%);
+    border-color: color-mix(in srgb, var(--brand-blue) 88%, #000 12%);
+  }
+
+  .pagination-link:hover,
+  .pagination-link:focus-visible {
+    background: var(--muted);
+    border-color: var(--border-strong);
+    color: inherit;
+  }
+
+  .pagination-link.is-current {
+    background: var(--foreground);
+    border-color: var(--foreground);
+    color: var(--background);
+  }
+
+  .work-visual {
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border-radius: 1rem;
+    align-self: start;
+  }
+
+  .work-visual-compact {
+    padding: 0.5rem 0;
+  }
+
+  .project-preview-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-medium);
+  }
+
+  .project-preview-image--compact {
+    width: min(62%, 240px);
+    max-height: 20rem;
+    object-fit: contain;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .pagination {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 860px) {
+    .work-card {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .works-page {
+      width: min(calc(100% - 1.5rem), 78rem);
+      padding-top: 1rem;
+    }
+
+    .works-main {
+      padding-top: 4rem;
+    }
+
+    .work-card {
+      padding: 1.2rem;
+    }
+  }
+</style>

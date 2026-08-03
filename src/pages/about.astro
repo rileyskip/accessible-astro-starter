@@ -1,307 +1,291 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro'
-import ScrollReveal from '@components/ScrollReveal.astro'
-import PrintMark from '@components/PrintMark.astro'
-import ParallaxBackground from '@components/ParallaxBackground.astro'
-import { Image } from 'astro:assets'
-import { Icon } from 'astro-icon/components'
-import { Avatar, AvatarGroup } from 'accessible-astro-components'
+import Layout from '@layouts/Layout.astro'
+import SiteHeader from '@components/SiteHeader.astro'
+import { siteConfig } from '@config/site'
+import { contact, toolGroups, experience, education } from '@data/resume'
 ---
 
-<DefaultLayout title="About Riley Skipper - Web Developer">
-  <!-- Hero Section - Asymmetric Layout -->
-  <section class="section-editorial section-parallax my-24 lg:my-32">
-    <ParallaxBackground variant="blob" color="blue" position="top-right" size="lg" speed={0.5} />
-    <ParallaxBackground variant="gradient" color="purple" position="bottom-left" size="md" speed={0.3} />
-    
-    <div class="container-wide relative z-10">
-      <div class="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-24">
-        <ScrollReveal direction="up" class="lg:col-span-6 lg:col-start-2">
-          <div class="relative flex flex-col gap-8">
-            <PrintMark position="top-left" size="lg" />
-            <h1 class="editorial-title">
-              <span class="block">About</span>
-              <span class="block offset-text">Me</span>
-            </h1>
-            <p class="text-xl opacity-80 lg:text-2xl">
-              Web Developer and UX/UI Designer shaping interfaces using foundations of accessibility. My motivation is to build within an environment where user empathy is the path to the longevity and success of a product and every possible user is carefully thought of. I combine modern development practices and a deep commitment to inclusive design.
-            </p>
-            <div class="flex flex-col gap-4 min-[500px]:flex-row">
-              <a class="button has-icon" href="/portfolio/">
-                <Icon name="lucide:briefcase" />
-                View My Work
-              </a>
-              <a class="button has-icon color-secondary" href="/contact">
-                <Icon name="lucide:mail" />
-                Get in Touch
-              </a>
-            </div>
-          </div>
-        </ScrollReveal>
-        
-        <ScrollReveal direction="left" delay={200} class="lg:col-span-4">
-          <div class="relative flex items-center justify-center lg:justify-end">
-            <PrintMark position="bottom-right" size="md" />
-           
-          </div>
-        </ScrollReveal>
-      </div>
-    </div>
-  </section>
+<Layout
+  title={`About | ${siteConfig.name}`}
+  description="Web developer and UX designer building accessible digital products with React, Drupal, Figma, and WCAG-aligned design systems."
+>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <!-- Experience & Education - Disjointed Layout -->
-  <section class="section-editorial section-parallax my-64 lg:my-96">
-    <ParallaxBackground variant="dots" color="cyan" position="top-left" size="xl" speed={0.4} />
-    <ParallaxBackground variant="circle" color="pink" position="bottom-right" size="lg" speed={0.3} />
-    
-    <div class="container-wide relative z-10">
-      <ScrollReveal direction="fade">
-        <h2 class="editorial-title mb-24 text-center">
-          <span class="block">Experience &</span>
-          <span class="block offset-text">Education</span>
-        </h2>
-      </ScrollReveal>
-      
-      <div class="grid grid-cols-1 gap-24 lg:grid-cols-12 lg:gap-16">
-        <ScrollReveal direction="right" class="lg:col-span-6">
-          <div class="relative">
-            <PrintMark position="top-left" size="sm" />
-            <h3 class="mb-12 text-4xl font-bold">Professional Experience</h3>
-            <div class="space-y-12">
-              <div class="experience-card border-primary border-l-4 pl-6 transition-all duration-300 hover:pl-8">
-                <h4 class="text-2xl font-bold">Drupal Web Developer</h4>
-                <p class="text-muted mb-4 text-lg">Rutgers University • May 2022 - Current</p>
-                <ul class="space-y-2 opacity-80">
-                  <li>• Building dynamic Drupal templates and custom themes across websites for enhanced content publishing</li>
-                  <li>• Spearheaded WCAG 2.1 compliance initiatives through UI component updates, reporting, and documentation</li>
-                  <li>• Co-developed a Next.js student facing application, establishing a scalable prototype and shared design system</li>
-                  <li>• Routine bug resolutions through systematic QA testing and local environment debugging with Docker/Lando</li>
-                  <li>• Partnering with admins to prioritize key projects by establishing CI/CD pipelines and development workflows</li>
-                </ul>
-              </div>
-              <div class="experience-card border-secondary border-l-4 pl-6 transition-all duration-300 hover:pl-8">
-                <h4 class="text-2xl font-bold">Junior Web Developer</h4>
-                <p class="text-muted mb-4 text-lg">Legal Associations Management • Aug 2021 - May 2022</p>
-                <ul class="space-y-2 opacity-80">
-                  <li>• Developed and maintained WordPress sites for legal associations, ensuring uptime and responsiveness</li>
-                  <li>• Implemented custom algorithms using Oxygen Builder and jQuery</li>
-                  <li>• Led QA testing and wireframing in Figma, collaborating with stakeholders to deliver user-centric designs</li>
-                  <li>• Improved organic search rankings through monthly SEO optimization using Moz Pro and Alexa</li>
-                </ul>
-              </div>
-              <div class="experience-card border-accent border-l-4 pl-6 transition-all duration-300 hover:pl-8">
-                <h4 class="text-2xl font-bold">Search Engine Optimization Consultant</h4>
-                <p class="text-muted mb-4 text-lg">Philadelphia Printworks • Jan 2021 - Mar 2021</p>
-                <ul class="space-y-2 opacity-80">
-                  <li>• Monitoring interaction trends through reporting and implementing SEO strategies</li>
-                  <li>• Debugging code on Shopify CMS platform</li>
-                  <li>• Reporting and resolving errors using Google Analytics and Lighthouse</li>
-                </ul>
-              </div>
-              <div class="experience-card border-primary border-l-4 pl-6 transition-all duration-300 hover:pl-8">
-                <h4 class="text-2xl font-bold">Freelance Web Designer and Developer</h4>
-                <p class="text-muted mb-4 text-lg">Eclipse Inspection • Jun 2020 - Sep 2020</p>
-                <ul class="space-y-2 opacity-80">
-                  <li>• Client collaboration on building a brand identity, including color scheme, logo, font, website layout and architecture</li>
-                  <li>• Design and deployment using a CMS, built to handoff and maintainable by client</li>
-                  <li>• Implementation of SEO using Google Analytics</li>
-                </ul>
-              </div>
-              <div class="experience-card border-accent border-l-4 pl-6 transition-all duration-300 hover:pl-8">
-                <h4 class="text-2xl font-bold">UX/UI Intern</h4>
-                <p class="text-muted mb-4 text-lg">Philadelphia Printworks • Apr 2019 - Oct 2019</p>
-                <ul class="space-y-2 opacity-80">
-                  <li>• Monitoring and reporting interaction trends in Google Analytics</li>
-                  <li>• Implementing SEO strategies and updating website architecture based on user trends</li>
-                  <li>• Collaborative redesign of web navigation for improved UX</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-        
-        <ScrollReveal direction="left" delay={200} class="lg:col-span-6">
-          <div class="relative">
-            <PrintMark position="top-right" size="sm" />
-            <h3 class="mb-12 text-4xl font-bold">Education & Certifications</h3>
-            <div class="space-y-8">
-              <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-                <h4 class="text-2xl font-bold">Internet & Web Development B.S.</h4>
-                <p class="text-muted mb-4 text-lg">Arizona State University • 2017-2019</p>
-                <ul class="space-y-2 opacity-80">
-                  <li>• Dean's List 2017 & 2019</li>
-                </ul>
-              </div>
-              <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-                <h4 class="text-2xl font-bold">Web Design A.A.S.</h4>
-                <p class="text-muted mb-4 text-lg">Camden County College • 2015-2017</p>
-              </div>
-              <div class="bg-card rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-                <h4 class="text-2xl font-bold">Professional Development</h4>
-                <p class="text-muted mb-4 text-lg">Conferences & Workshops</p>
-                <ul class="space-y-2 opacity-80">
-                  <li>• FigCon 2024 Attendee</li>
-                  <li>• Drupal NJ Camp 2022 Attendee</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-      </div>
-    </div>
-  </section>
+  <div class="page">
+    <SiteHeader />
 
-  <!-- Hobbies Section - Grid Layout -->
-  <section class="section-editorial section-parallax my-64 lg:my-96">
-    <ParallaxBackground variant="blob" color="green" position="top-right" size="lg" speed={0.5} />
-    <ParallaxBackground variant="grid" color="blue" position="bottom-left" size="xl" speed={0.3} />
-    
-    <div class="container-wide relative z-10">
-      <ScrollReveal direction="fade">
-        <div class="relative mb-32">
-          <PrintMark position="top-left" size="md" />
-          <h2 class="editorial-title">
-            <span class="block">Activities</span>
-            <span class="block offset-text text-8xl">When I'm Not Coding...</span>
-          </h2>
+    <main id="main-content">
+      <section class="hero">
+        <p class="eyebrow">About</p>
+        <h1 class="display-title">Web developer focused on accessible, user-centered product work.</h1>
+        <p class="hero-text">
+          I build and design digital experiences across Drupal, React, and design systems — with a
+          strong emphasis on accessibility, clear information architecture, and interfaces that hold
+          up for real users.
+        </p>
+        <ul class="contact-list" aria-label="Contact information">
+          <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+          <li>
+            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<i class="fa-brands fa-linkedin"></i></a>
+          </li>
+        </ul>
+        <div class="hero-actions">
+          <a class="pill-link" href="/work">View my work</a>
+          <a class="pill-link pill-link-secondary" href="/contact">Get in touch</a>
         </div>
-      </ScrollReveal>
-      
-      <div class="hobbies-list">
-        <ScrollReveal direction="up" delay={100}>
-          <h3 class="hobby-text hobby-camping">Camping</h3>
-        </ScrollReveal>
-        
-        <ScrollReveal direction="up" delay={200}>
-          <h3 class="hobby-text hobby-kayaking">Kayaking</h3>
-        </ScrollReveal>
-        
-        <ScrollReveal direction="up" delay={300}>
-          <h3 class="hobby-text hobby-billiards">Billiards</h3>
-        </ScrollReveal>
-        
-        <ScrollReveal direction="up" delay={400}>
-          <h3 class="hobby-text hobby-horror">Horror Movies</h3>
-        </ScrollReveal>
-      </div>
-    </div>
-  </section>
+      </section>
 
-</DefaultLayout>
+      <section class="editorial-section" aria-labelledby="tools-heading">
+        <div class="section-rail">
+          <p class="section-kicker">Tools</p>
+        </div>
+        <div class="story-block">
+          <h2 id="tools-heading" class="sr-only">Skills and tools</h2>
+          <div class="tools-grid">
+            {
+              toolGroups.map((group) => (
+                <div class="tool-card">
+                  <h3>{group.category}</h3>
+                  <p>{group.items.join(', ')}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
 
-<style lang="scss">
-  /* Editorial Design Styles */
-  .section-editorial {
+      <section class="editorial-section" aria-labelledby="experience-heading">
+        <div class="section-rail">
+          <p class="section-kicker">Experience</p>
+        </div>
+        <div class="story-block">
+          <h2 id="experience-heading" class="sr-only">Professional experience</h2>
+          {
+            experience.map((entry) => (
+              <article class="experience-entry">
+                <div class="experience-heading">
+                  <h3>{entry.title}</h3>
+                  <p class="experience-meta">
+                    {entry.company} • {entry.period}
+                  </p>
+                </div>
+                <ul>
+                  {entry.bullets.map((bullet) => <li>{bullet}</li>)}
+                </ul>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="editorial-section" aria-labelledby="education-heading">
+        <div class="section-rail">
+          <p class="section-kicker">Education</p>
+        </div>
+        <div class="story-block">
+          <h2 id="education-heading" class="sr-only">Education</h2>
+          {
+            education.map((entry) => (
+              <article class="education-entry">
+                <h3>{entry.degree}</h3>
+                <p class="experience-meta">
+                  {entry.school} • {entry.period}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .page {
     position: relative;
-  }
-
-  .section-parallax {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-  }
-
-  .container-wide {
-    max-width: 1400px;
+    width: min(calc(100% - 3rem), 78rem);
     margin: 0 auto;
-    padding: 0 2rem;
-
-    @media (max-width: 768px) {
-      padding: 0 1.5rem;
-    }
+    padding: 1.25rem 0 5rem;
   }
 
-  .editorial-title {
-    font-size: clamp(3rem, 10vw, 8rem);
-    font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -0.03em;
-    
-    .offset-text {
-      padding-left: clamp(2rem, 8vw, 8rem);
-      font-weight: 300;
-    }
+  .hero {
+    padding: 5rem 0 3rem;
   }
 
-  .experience-card {
-    &:hover {
-      border-width: 6px;
-    }
-  }
-
-  /* Hobbies List Layout */
-  .hobbies-list {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 0;
-
-    @media (max-width: 768px) {
-      gap: 2rem;
-    }
-  }
-
-  .hobby-text {
-    font-size: clamp(4rem, 10vw, 8rem);
-    font-weight: 900;
+  .eyebrow,
+  .section-kicker {
     margin: 0;
-    line-height: 1.1;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+
+  .hero-text {
+    max-width: 42rem;
+    margin: 1.5rem 0 0;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--muted-foreground);
+  }
+
+  .contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .contact-list a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-link);
+    text-decoration: none;
+  }
+
+  .contact-list a:hover,
+  .contact-list a:focus-visible {
+    text-decoration: underline;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .pill-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--brand-blue);
+    border-radius: 999px;
+    background: var(--brand-blue);
+    color: var(--brand-cream);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+      transform 120ms ease,
+      background-color 120ms ease;
+  }
+
+  .pill-link-secondary {
+    background: transparent;
+    color: var(--foreground);
+    border-color: var(--control-border);
+  }
+
+  .pill-link:hover,
+  .pill-link:focus-visible {
+    transform: translateY(-1px);
+  }
+
+  .pill-link-secondary:hover,
+  .pill-link-secondary:focus-visible {
+    background: var(--muted);
+    border-color: var(--border-strong);
+  }
+
+  .editorial-section {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .story-block {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .tool-card {
+    padding: 1.1rem 1.2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+  }
+
+  .tool-card h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .tool-card p {
+    margin: 0.45rem 0 0;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+  }
+
+  .experience-entry,
+  .education-entry {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .experience-entry h3,
+  .education-entry h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
     letter-spacing: -0.03em;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-
-    &:hover {
-      transform: translateX(20px) scale(1.05);
-      filter: brightness(1.2);
-    }
-
-    @media (max-width: 768px) {
-      font-size: clamp(3rem, 10vw, 5rem);
-    }
   }
 
-  /* Individual Hobby Colors */
-  .hobby-camping {
-    color: #10B981;
-    text-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
-
-    &:hover {
-      text-shadow: 0 8px 40px rgba(16, 185, 129, 0.6);
-    }
+  .experience-meta {
+    margin: 0.35rem 0 0;
+    font-size: 0.98rem;
+    color: var(--muted-foreground);
   }
 
-  .hobby-kayaking {
-    color: #3B82F6;
-    text-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+  .experience-entry ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.45rem;
+  }
 
-    &:hover {
-      text-shadow: 0 8px 40px rgba(59, 130, 246, 0.6);
+  .experience-entry li {
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: var(--muted-foreground);
+  }
+
+  @media (max-width: 900px) {
+    .tools-grid {
+      grid-template-columns: 1fr;
     }
   }
 
-  .hobby-billiards {
-    color: #8B5CF6;
-    text-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+  @media (max-width: 720px) {
+    .page {
+      width: min(calc(100% - 1.5rem), 78rem);
+      padding-top: 1rem;
+    }
 
-    &:hover {
-      text-shadow: 0 8px 40px rgba(139, 92, 246, 0.6);
+    .hero {
+      padding: 4rem 0 3rem;
+    }
+
+    .editorial-section {
+      grid-template-columns: 1fr;
     }
   }
-
-  .hobby-horror {
-    color: #EF4444;
-    text-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
-
-    &:hover {
-      text-shadow: 0 8px 40px rgba(239, 68, 68, 0.6);
-    }
-  }
-
-  /* Smooth scroll behavior */
-  :global(html) {
-    scroll-behavior: smooth;
-  }
-
 </style>

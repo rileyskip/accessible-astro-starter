@@ -1,108 +1,252 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro'
-import { Icon } from 'astro-icon/components'
+import Layout from '@layouts/Layout.astro'
+import SiteHeader from '@components/SiteHeader.astro'
+import { siteConfig } from '@config/site'
 ---
 
-<DefaultLayout title="Contact Riley Skipper - Let's Work Together">
-  <section class="my-24">
-    <div class="container">
-      <div class="mx-auto max-w-4xl text-center">
-        <h1 class="mb-8 text-6xl lg:text-8xl">Let's Connect</h1>
-        <p class="text-xl lg:text-2xl">
-          I'm always excited to hear about new projects and opportunities. 
-          Whether you want to discuss a project, ask a question, or just say hello, 
-          I'd love to hear from you.
+<Layout
+  title={`Contact | ${siteConfig.name}`}
+  description="Get in touch about UX projects, accessibility audits, or new opportunities."
+>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="page">
+    <SiteHeader />
+
+    <main id="main-content">
+      <section class="hero">
+        <p class="eyebrow">Contact</p>
+        <h1 class="display-title">Have a problem worth solving? Let's talk.</h1>
+        <p class="hero-text">
+          Whether you're scoping a new product, untangling a confusing workflow, or need help making
+          an interface more accessible — I'd love to hear what you're working on.
         </p>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section class="my-24">
-    <div class="container">
-      <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
-        <div class="space-y-8">
-          <h2 class="text-4xl">Get in Touch</h2>
-          <div class="space-y-4">
-            <div class="flex gap-4">
-              <a href="https://github.com/rileyskip" class="flex items-center gap-2 rounded-lg bg-card p-3 hover:bg-primary hover:text-white">
-                <Icon name="lucide:github" class="h-5 w-5" />
-                <span>GitHub</span>
-              </a>
-              <a href="https://linkedin.com/in/ryskipper" class="flex items-center gap-2 rounded-lg bg-card p-3 hover:bg-primary hover:text-white">
-                <Icon name="lucide:linkedin" class="h-5 w-5" />
-                <span>LinkedIn</span>
-              </a>
-              <a href="mailto:riley.skipper96@gmail.com" class="flex items-center gap-2 rounded-lg bg-card p-3 hover:bg-primary hover:text-white">
-                <Icon name="lucide:mail" class="h-5 w-5" />
-                <span>Email</span>
-              </a>
-            </div>
-          </div>
-        </div>
+      <div class="contact-grid">
+        <section class="contact-panel" aria-labelledby="reach-out-heading">
+          <h2 id="reach-out-heading">Reach out directly</h2>
+          <p class="panel-text">
+            Email is the fastest way to start a conversation. I'm also on GitHub and LinkedIn.
+          </p>
 
-        <div class="rounded-2xl bg-card p-8">
-          <h2 class="mb-6 text-3xl">Send a Message</h2>
-          <form class="space-y-6">
-            <div>
-              <label for="name" class="mb-2 block font-bold">Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                required 
-                class="w-full rounded-lg border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
-                placeholder="Your name"
-              />
+          <ul class="contact-links">
+            <li>
+              <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+            </li>
+            {
+              siteConfig.socialLinks.map((link) => (
+                <li>
+                  <a href={link.href} target="_blank" rel="noopener noreferrer">
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="contact-panel" aria-labelledby="message-heading">
+          <h2 id="message-heading">Send a message</h2>
+          <form class="contact-form">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required autocomplete="name" />
             </div>
-            
-            <div>
-              <label for="email" class="mb-2 block font-bold">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                required 
-                class="w-full rounded-lg border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
-                placeholder="your.email@example.com"
-              />
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email" />
             </div>
-            
-            <div>
-              <label for="subject" class="mb-2 block font-bold">Subject</label>
-              <select 
-                id="subject" 
-                name="subject" 
-                required 
-                class="w-full rounded-lg border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
-              >
+
+            <div class="field">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject" required>
                 <option value="">Select a subject</option>
-                <option value="project">New Project</option>
-                <option value="consultation">Consultation</option>
-                <option value="accessibility">Accessibility Audit</option>
+                <option value="project">New project</option>
+                <option value="consultation">UX consultation</option>
+                <option value="accessibility">Accessibility audit</option>
                 <option value="partnership">Partnership</option>
                 <option value="other">Other</option>
               </select>
             </div>
-            
-            <div>
-              <label for="message" class="mb-2 block font-bold">Message</label>
-              <textarea 
-                id="message" 
-                name="message" 
-                rows="6" 
-                required 
-                class="w-full rounded-lg border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
-                placeholder="Tell me about your project or what you'd like to discuss..."
-              ></textarea>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                placeholder="Describe the problem you're trying to solve…"></textarea>
             </div>
-            
-            <button type="submit" class="button w-full">
-              <Icon name="lucide:send" />
-              Send Message
-            </button>
+
+            <button class="submit-btn" type="submit">Send message</button>
           </form>
-        </div>
+        </section>
       </div>
-    </div>
-  </section>
-</DefaultLayout> 
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .page {
+    position: relative;
+    width: min(calc(100% - 3rem), 78rem);
+    margin: 0 auto;
+    padding: 1.25rem 0 5rem;
+  }
+
+  .hero {
+    padding: 5rem 0 3rem;
+  }
+
+  .eyebrow {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+
+  .hero-text {
+    max-width: 40rem;
+    margin: 1.5rem 0 0;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--muted-foreground);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .contact-panel {
+    padding: 1.75rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+  }
+
+  .contact-panel h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .panel-text {
+    margin: 0.75rem 0 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--muted-foreground);
+  }
+
+  .contact-links {
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .contact-links a {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--accent-link);
+    text-decoration: none;
+  }
+
+  .contact-links a:hover,
+  .contact-links a:focus-visible {
+    text-decoration: underline;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .field label {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--control-border);
+    border-radius: 0.75rem;
+    background: var(--background);
+    color: var(--foreground);
+  }
+
+  .field textarea {
+    min-height: 9rem;
+    resize: vertical;
+  }
+
+  .field input:focus-visible,
+  .field select:focus-visible,
+  .field textarea:focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+    border-color: var(--brand-blue);
+  }
+
+  .submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--brand-blue);
+    border-radius: 999px;
+    background: var(--brand-blue);
+    color: var(--brand-cream);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      transform 120ms ease,
+      background-color 120ms ease;
+  }
+
+  .submit-btn:hover,
+  .submit-btn:focus-visible {
+    transform: translateY(-1px);
+    background: color-mix(in srgb, var(--brand-blue) 88%, #000 12%);
+  }
+
+  @media (max-width: 860px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .page {
+      width: min(calc(100% - 1.5rem), 78rem);
+      padding-top: 1rem;
+    }
+
+    .hero {
+      padding: 4rem 0 2.5rem;
+    }
+  }
+</style>

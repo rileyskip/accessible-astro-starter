@@ -1,0 +1,101 @@
+---
+import Layout from '@layouts/Layout.astro'
+import SiteHeader from '@components/SiteHeader.astro'
+import { siteConfig } from '@config/site'
+---
+
+<Layout
+  title={`Terms of Use | ${siteConfig.name}`}
+  description="Terms of use for this portfolio site."
+  showFooterCta={false}
+  noindex={true}
+>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="legal-page">
+    <SiteHeader />
+
+    <main id="main-content" class="legal-main">
+      <header class="legal-header">
+        <h1>Terms of Use</h1>
+        <p class="legal-intro">
+          By using this site, you agree to the following terms. If you do not agree, please do not use
+          the site.
+        </p>
+      </header>
+
+      <article class="legal-content">
+        <section>
+          <h2>Use of Content</h2>
+          <p>
+            Portfolio content, case studies, and visuals are provided for informational purposes. Do not
+            reproduce project work without permission.
+          </p>
+        </section>
+
+        <section>
+          <h2>No Warranty</h2>
+          <p>
+            This site is provided as-is without warranties of any kind. {siteConfig.authorName} is not
+            liable for damages arising from use of the site.
+          </p>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+          <p>
+            Questions about these terms can be sent to{' '}
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+          </p>
+        </section>
+      </article>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .legal-page {
+    width: min(calc(100% - 3rem), 62rem);
+    margin: 0 auto;
+    padding: 1.25rem 0 5rem;
+  }
+
+  .legal-main {
+    padding-top: 4rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    letter-spacing: -0.04em;
+  }
+
+  .legal-intro,
+  .legal-content p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--muted-foreground);
+  }
+
+  .legal-intro {
+    margin-top: 1rem;
+  }
+
+  .legal-content {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .legal-content h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.35rem;
+    color: var(--foreground);
+  }
+
+  @media (max-width: 720px) {
+    .legal-page {
+      width: min(calc(100% - 1.5rem), 62rem);
+    }
+  }
+</style>

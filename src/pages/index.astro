@@ -1,582 +1,278 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro'
-import Hero from '@components/Hero.astro'
-import Feature from '@components/Feature.astro'
-import ScrollReveal from '@components/ScrollReveal.astro'
-import PrintMark from '@components/PrintMark.astro'
-import ParallaxBackground from '@components/ParallaxBackground.astro'
-import Counter from '@components/Counter.astro'
-import ContentMedia from '@components/ContentMedia.astro'
-import ExternalLink from '@components/ExternalLink.astro'
-import { Icon } from 'astro-icon/components'
-import {
-  Accordion,
-  AccordionItem,
-  Avatar,
-  AvatarGroup,
-  Tabs,
-  TabsList,
-  TabsTab,
-  TabsPanel,
-  Media,
-} from 'accessible-astro-components'
+import Layout from '@layouts/Layout.astro'
+import SiteHeader from '@components/SiteHeader.astro'
+import { siteConfig } from '@config/site'
+import { getProjects } from '@lib/projects'
+
+const projects = await getProjects({ featuredOnly: true })
 ---
 
-<DefaultLayout title="Riley Skipper - Web Developer">
-  <Hero />
-  <!-- What I Do Section - List Layout -->
-  <section class="section-editorial section-parallax my-64 lg:my-96">
-    <ParallaxBackground variant="blob" color="blue" position="top-right" size="lg" speed={0.6} />
-    <ParallaxBackground variant="circle" color="purple" position="bottom-left" size="md" speed={0.4} />
-    
-    <div class="container-wide relative z-10">
-      <div class="relative mb-24 lg:mb-32">
-        <PrintMark position="top-left" size="lg" />
-        <ScrollReveal direction="fade">
-          <h2 class="editorial-title">
-            <span class="block">What</span>
-            <span class="block offset-text">I Do</span>
-          </h2>
-        </ScrollReveal>
-      </div>
+<Layout title={siteConfig.title} description={siteConfig.description}>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-      <div class="what-i-do-list">
-        <ScrollReveal direction="right" delay={100}>
-          <div class="skill-item">
-            <div class="skill-number">01</div>
-            <div class="skill-content">
-              <Icon name="lucide:accessibility" class="skill-icon" />
-              <h3 class="skill-title">Accessible Design</h3>
-              <p class="skill-description">
-                Monthly monitoring, reporting, and debugging accessibility errors to ensure compliance according to WCAG 2.0. Resolutions involve updating Drupal modules, custom code, creating custom error handling, and updating the custom Drupal sub-theme to ensure accessibility compliance.
-              </p>
-            </div>
-          </div>
-        </ScrollReveal>
+  <div class="page">
+    <SiteHeader />
 
-        <ScrollReveal direction="right" delay={200}>
-          <div class="skill-item">
-            <div class="skill-content">
-              <Icon name="lucide:code" class="skill-icon" />
-              <h3 class="skill-title">Drupal Development</h3>
-              <p class="skill-description">
-              Drupal 9 and 10 development, including custom modules, themes, and configuration management.
-              </p>
-            </div>
-            <div class="skill-number">02</div>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal direction="left" delay={200}>
-          <div class="skill-item">
-            <div class="skill-number">03</div>
-            <div class="skill-content">
-              <Icon name="lucide:code" class="skill-icon" />
-              <h3 class="skill-title">Application Development</h3>
-              <p class="skill-description">
-                I build and implement with new technologies such as React, TypeScript, and Astro to create fast, scalable, and
-                maintainable web applications.  
-              </p>
-            </div>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal direction="left" delay={300}>
-          <div class="skill-item">
-            <div class="skill-content">
-              <Icon name="lucide:palette" class="skill-icon" />
-              <h3 class="skill-title">Beautiful UI/UX</h3>
-              <p class="skill-description">
-                A Design System process beginning with wireframes and prototyping, user testing, followed by development using a modern, responsive, and accessible framework.
-              </p>
-            </div>
-            <div class="skill-number">04</div>
-          </div>
-        </ScrollReveal>
-
-
-        <ScrollReveal direction="right" delay={500}>
-          <div class="skill-item">
-            <div class="skill-number">05</div>
-            <div class="skill-content">
-              <Icon name="lucide:users" class="skill-icon" />
-              <h3 class="skill-title">User-Centered</h3>
-              <p class="skill-description">
-                Every decision is made with the user in mind. I research, test, and implement new user flows to create the best possible
-                experience based on user feedback, testing, and analytics.
-              </p>
-            </div>
-          </div>
-        </ScrollReveal>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section - Disjointed Layout -->
-  <section class="section-editorial section-parallax my-64 lg:my-96">
-    <ParallaxBackground variant="gradient" color="cyan" position="top-left" size="xl" speed={0.3} />
-    <ParallaxBackground variant="dots" color="pink" position="bottom-right" size="md" speed={0.5} />
-    
-    <div class="container-wide relative z-10">
-      <div class="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-24">
-        <ScrollReveal direction="left" class="lg:col-span-5 lg:col-start-2">
-          <div class="relative">
-            <PrintMark position="top-right" size="md" />
-            <div class="sticky top-32 flex flex-col items-start gap-6">
-              <h2 class="editorial-title">
-                <span class="block">Frequently</span>
-                <span class="block offset-text">Asked</span>
-              </h2>
-              <p class="text-xl lg:text-2xl opacity-70">
-                Common questions about my work, process, and how we can collaborate..
-              </p>
-              <a class="button button-large mt-4" href="/contact">Get in touch</a>
-            </div>
-          </div>
-        </ScrollReveal>
-        
-        <ScrollReveal direction="right" delay={200} class="lg:col-span-5">
-          <div class="space-content">
-            <Accordion class="faq-accordion">
-              <AccordionItem name="exclusive" title="What platforms do you use to build websites?" open>
-                <p>
-                  I use a combination Drupal and WordPress for CMS development, along with custom code and subtheming. For web-based applications, I use React, TypeScript, Astro, Next.js, and various CSS frameworks.
-                </p>
-              </AccordionItem>
-              <AccordionItem name="exclusive" title="How do you ensure accessibility?">
-                <p>
-                  I build accessibility into every project from the start using semantic HTML, proper ARIA labels, keyboard
-                  navigation, and screen reader testing. In my current role, I oversee accessibility through monthly monitoring, debugging, and reporting. I have created an accessiblity procedure to ensure ADA standards are met at both an admin and editor levels for all website usage, with our website passing at a 95% average.
-                </p>
-              </AccordionItem>
-              <AccordionItem name="exclusive" title="Are your websites editable for non-technical users?">
-                <p>
-                  Yes! I work with HTML, Bootstrap, and Twig, and CSS frameworks in Drupal to create custom templates for editor usage. I build CMS websites that are flexible, responsive, accessible, and have easy editing capabilities while still allowing for powerful, dynamic choices in layout, color, and button styling. 
-                
-                </p>
-              </AccordionItem>
-              <AccordionItem name="exclusive" title="What does your development process look like?">
-                <p>
-                  My process begins with a discovery phase to understand and ensure the wants and needs of both user and client can be met in the best ways possible. I then create wireframes and a design system to ensure the website or application adheres to branding policies, current pracitices, and enhances the current user experience. I then develop the website using the design system, and then apply user tests for usability. The site is run through a check for accessibility to resolve any errors to adhere to WCAG 2.1, and is then deployed once approval is met and all checks are passed. I provide ongoing support and maintenance post deployment.
-                </p>
-              </AccordionItem>
-              <AccordionItem name="exclusive" title="How do you handle project communication?">
-                <p>
-                  Clear communication is key to successful projects. I provide regular updates, use project management tools
-                  for transparency, and am always available to answer questions. I believe in keeping you informed every
-                  step of the way.
-                </p>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </ScrollReveal>
-      </div>
-    </div>
-  </section>
-  <!-- Skills Section - Grid Layout -->
-  <section class="section-editorial section-parallax my-64 lg:my-96">
-    <ParallaxBackground variant="blob" color="purple" position="top-left" size="lg" speed={0.4} />
-    <ParallaxBackground variant="grid" color="blue" position="bottom-right" size="xl" speed={0.3} />
-    <ParallaxBackground variant="circle" color="cyan" position="center" size="md" speed={0.2} />
-    
-    <div class="container-wide relative z-10">
-      <div class="relative mb-24">
-        <PrintMark position="bottom-right" size="lg" />
-        <ScrollReveal direction="fade">
-          <h2 class="editorial-title text-center">
-            <span class="block">Skills &</span>
-            <span class="block offset-text">Technologies</span>
-          </h2>
-          <p class="mx-auto mt-8 max-w-3xl text-center text-xl opacity-70 lg:text-2xl">
-            I'm constantly learning and expanding my skill set to deliver the best possible solutions for my clients.
+    <main id="main-content">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="hero-eyebrow">Selected work</p>
+          <p class="hero-text">
+            I turn messy user problems into products people actually want to use — with accessible
+            design, clear information architecture, and interfaces built to earn trust.
           </p>
-        </ScrollReveal>
-      </div>
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.1s">
-          <img
-            src="https://www.drupal.org/files/Wordmark_blue_RGB.png"
-            alt="Drupal"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">Drupal 9 & 10</h3>
-          <p class="text-muted text-sm">CMS Development</p>
         </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.2s">
-          <img
-            src="https://s.w.org/style/images/about/WordPress-logotype-standard.png"
-            alt="WordPress"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">WordPress</h3>
-          <p class="text-muted text-sm">Content Management</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.3s">
-          <img
-            src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png"
-            alt="HTML5"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">HTML 5</h3>
-          <p class="text-muted text-sm">Semantic Markup</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.4s">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg"
-            alt="CSS3"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">CSS</h3>
-          <p class="text-muted text-sm">Styling & Layout</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.5s">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-            alt="JavaScript"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">JavaScript</h3>
-          <p class="text-muted text-sm">Interactive Logic</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.6s">
-          <img
-            src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
-            alt="Bootstrap"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">Bootstrap 4 & 5</h3>
-          <p class="text-muted text-sm">CSS Framework</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.7s">
-          <img
-            src="https://www.mysql.com/common/logos/logo-mysql-170x115.png"
-            alt="MySQL"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">MySQL</h3>
-          <p class="text-muted text-sm">Database Management</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.8s">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
-            alt="React"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">React</h3>
-          <p class="text-muted text-sm">Frontend Framework</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.9s">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png"
-            alt="TypeScript"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">TypeScript</h3>
-          <p class="text-muted text-sm">Type-Safe JavaScript</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.95s">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Nextjs-logo.svg/1200px-Nextjs-logo.svg.png"
-            alt="Next.js"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">Next.js</h3>
-          <p class="text-muted text-sm">React Framework</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 0.98s">
-          <img
-            src="https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png"
-            alt="Vercel"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">Vercel</h3>
-          <p class="text-muted text-sm">Cloud Deployment</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.0s">
-          <img
-            src="https://lando.dev/images/logo.png"
-            alt="Lando"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">Lando/Docker</h3>
-          <p class="text-muted text-sm">Development Environment</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.1s">
-          <img
-            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            alt="GitHub"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">GitHub</h3>
-          <p class="text-muted text-sm">Version Control</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.2s">
-          <img
-            src="https://www.phpmyadmin.net/static/images/logo.png"
-            alt="PHPMyAdmin"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">PHPMyAdmin</h3>
-          <p class="text-muted text-sm">Database Admin</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.3s">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1200px-Figma-logo.svg.png"
-            alt="Figma"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">Figma</h3>
-          <p class="text-muted text-sm">Design Tool</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.4s">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Adobe_Systems_logo_and_wordmark.svg"
-            alt="Adobe Creative Cloud"
-            class="animate-logo-hover mx-auto mb-4 h-12 w-auto"
-          />
-          <h3 class="mb-2 text-xl font-bold">Adobe CC</h3>
-          <p class="text-muted text-sm">Creative Suite</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.6s">
-          <Icon name="lucide:layout" class="text-primary animate-icon-pulse mx-auto mb-4 h-12 w-12" />
-          <h3 class="mb-2 text-xl font-bold">Wireframing</h3>
-          <p class="text-muted text-sm">UX Design</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.7s">
-          <Icon name="lucide:smartphone" class="text-secondary animate-icon-pulse mx-auto mb-4 h-12 w-12" />
-          <h3 class="mb-2 text-xl font-bold">Prototyping</h3>
-          <p class="text-muted text-sm">User Testing</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.8s">
-          <Icon name="lucide:users" class="text-accent animate-icon-pulse mx-auto mb-4 h-12 w-12" />
-          <h3 class="mb-2 text-xl font-bold">Collaborative Design</h3>
-          <p class="text-muted text-sm">Team Work</p>
-        </div>
-        <div class="bg-card animate-skill-card rounded-2xl p-6 text-center" style="animation-delay: 1.9s">
-          <Icon name="lucide:search" class="text-primary animate-icon-pulse mx-auto mb-4 h-12 w-12" />
-          <h3 class="mb-2 text-xl font-bold">User Testing</h3>
-          <p class="text-muted text-sm">UX Research</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</DefaultLayout>
+      </section>
 
-<style lang="scss">
-  /* Editorial Design Styles */
-  .section-editorial {
+      <section class="projects" id="work" aria-labelledby="selected-work-heading">
+        <h2 id="selected-work-heading" class="sr-only">Selected work</h2>
+        <div class="projects-grid">
+          {
+            projects.map((project) => (
+              <article class={`project-card ${project.background}`}>
+                <div class="project-header">
+                  <p class="project-name">{project.name}</p>
+                </div>
+
+                <div class="project-copy">
+                  <p class="project-label">The challenge</p>
+                  <p class="project-problem">{project.problem}</p>
+                  <p class="project-label">What I delivered</p>
+                  <h3 class="project-title">{project.solution}</h3>
+                </div>
+
+                <div class:list={['project-visual', project.imageCompact && 'project-visual-compact']}>
+                  <img
+                    class:list={[
+                      'project-preview-image',
+                      project.imageCompact && 'project-preview-image--compact',
+                    ]}
+                    src={project.image}
+                    alt={project.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width="960"
+                    height="540"
+                  />
+                </div>
+
+                <a class="project-button" href={project.href}>
+                  Explore this project
+                  <span aria-hidden="true">→</span>
+                </a>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .page {
     position: relative;
-  }
-
-  .section-parallax {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-  }
-
-  .container-wide {
-    max-width: 1400px;
+    width: min(calc(100% - 3rem), 78rem);
     margin: 0 auto;
-    padding: 0 2rem;
-
-    @media (max-width: 768px) {
-      padding: 0 1.5rem;
-    }
+    padding: 1.25rem 0 5rem;
   }
 
-  .editorial-title {
-    font-size: clamp(3rem, 10vw, 8rem);
-    font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -0.03em;
-    
-    .offset-text {
-      padding-left: clamp(2rem, 8vw, 8rem);
-      font-weight: 300;
-    }
+  .hero {
+    padding: 5rem 0 3rem;
   }
 
-  .button-large {
-    padding: 1rem 2rem;
-    font-size: 1.125rem;
+  .hero-eyebrow {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
     font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
   }
 
-  /* Skills animations */
-  .animate-skill-card {
-    transform: translateY(30px) scale(0.96);
-    opacity: 0;
-    animation: skillCardIn 0.8s ease-out forwards;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid transparent;
+  .hero-text {
+    max-width: 40rem;
+    margin: 0.75rem 0 0;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
   }
 
-  .animate-skill-card:hover {
-    transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-    border-color: var(--action-color);
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
   }
 
-  .animate-logo-hover {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  .project-card {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 1.25rem;
+    height: 100%;
+    padding: 1.5rem;
+    border-radius: 1.35rem;
+    overflow: hidden;
+    transition:
+      transform 140ms ease,
+      box-shadow 140ms ease;
   }
 
-  .animate-skill-card:hover .animate-logo-hover {
-    transform: scale(1.15) rotate(8deg);
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
   }
 
-  .animate-icon-pulse {
-    animation: iconPulse 2s ease-in-out infinite;
+  .project-card.brand-blue {
+    background: #214fc4;
+    color: #fff7ef;
   }
 
-  @keyframes skillCardIn {
-    to {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
+  .project-card.brand-cream {
+    background: #fff7ef;
+    color: #1a2d5c;
+    border: 1px solid #e3e3ff;
   }
 
-  @keyframes iconPulse {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
+  .project-card.brand-orange {
+    background: #ff5100;
+    color: #fff7ef;
   }
 
-  /* FAQ styling */
-  .faq-accordion :global(button),
-  .faq-accordion :global([role='button']),
-  .faq-accordion :global(.accordion-trigger),
-  .faq-accordion :global(.accordion-button) {
-    font-weight: 700 !important;
-    font-size: 1.125rem !important;
-    font-family: var(--font-base) !important;
-    transition: all 0.3s ease !important;
-    
-    &:hover {
-      transform: translateX(4px);
-    }
+  .project-card.brand-lavender {
+    background: #e3e3ff;
+    color: #1a2d5c;
   }
 
-  .faq-accordion :global(.accordion-panel),
-  .faq-accordion :global([role='region']) {
-    font-size: 1rem;
-    line-height: 1.7;
-    opacity: 0.8;
+  .project-name {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    opacity: 0.85;
   }
 
-  /* Smooth scroll behavior */
-  :global(html) {
-    scroll-behavior: smooth;
+  .project-copy {
+    display: grid;
+    gap: 0.35rem;
   }
 
-  /* What I Do List Styles */
-  .what-i-do-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    @media (max-width: 768px) {
-      gap: 3rem;
-    }
-  }
-
-  .skill-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 3rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    transition: all 0.4s ease;
-
-    &:hover {
-      transform: translateX(10px);
-      border-color: var(--action-color);
-    }
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-    @media (max-width: 768px) {
-      gap: 2rem;
-      padding: 1.5rem 0;
-    }
-  }
-
-  .skill-number {
-    font-size: 5rem;
-    font-weight: 900;
-    line-height: 1;
-    opacity: 0.15;
-    user-select: none;
-    flex-shrink: 0;
-    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.4s ease;
-
-    @media (max-width: 768px) {
-      font-size: 3rem;
-    }
-  }
-
-  .skill-item:hover .skill-number {
-    opacity: 0.3;
-    transform: scale(1.1);
-  }
-
-  .skill-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .skill-icon {
-    width: 3rem;
-    height: 3rem;
-    color: var(--action-color);
-    transition: all 0.4s ease;
-
-    @media (max-width: 768px) {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
-  }
-
-  .skill-item:hover .skill-icon {
-    transform: scale(1.1) rotate(5deg);
-    filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.4));
-  }
-
-  .skill-title {
-    font-size: 2rem;
+  .project-label {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
     font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .project-problem {
     margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  .project-title {
+    margin: 0;
+    font-size: clamp(1.2rem, 1.6vw, 1.55rem);
+    font-weight: 800;
     line-height: 1.2;
+    letter-spacing: -0.03em;
+  }
 
-    @media (max-width: 768px) {
-      font-size: 1.5rem;
+  .project-visual {
+    position: relative;
+    min-height: 14rem;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+
+  .project-visual-compact {
+    min-height: auto;
+    padding: 0.5rem 0;
+  }
+
+  .project-preview-image {
+    width: 100%;
+    height: 14rem;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-medium);
+  }
+
+  .project-preview-image--compact {
+    width: min(62%, 220px);
+    height: auto;
+    max-height: 18rem;
+    object-fit: contain;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .project-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0.85rem 1.2rem;
+    border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--background) 12%, transparent);
+    color: inherit;
+    font-size: 0.98rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+      transform 120ms ease,
+      background-color 120ms ease;
+    justify-self: start;
+  }
+
+  .project-card.brand-cream .project-button,
+  .project-card.brand-lavender .project-button {
+    background: var(--brand-blue);
+    border-color: var(--brand-blue);
+    color: var(--brand-cream);
+  }
+
+  .project-button:hover,
+  .project-button:focus-visible {
+    transform: translateY(-1px);
+    background: color-mix(in srgb, var(--background) 22%, transparent);
+  }
+
+  .project-card.brand-cream .project-button:hover,
+  .project-card.brand-cream .project-button:focus-visible,
+  .project-card.brand-lavender .project-button:hover,
+  .project-card.brand-lavender .project-button:focus-visible {
+    background: color-mix(in srgb, var(--brand-blue) 88%, #000 12%);
+  }
+
+  @media (max-width: 980px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
     }
   }
 
-  .skill-description {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    opacity: 0.8;
-    margin: 0;
+  @media (max-width: 720px) {
+    .page {
+      width: min(calc(100% - 1.5rem), 78rem);
+      padding-top: 1rem;
+    }
 
-    @media (max-width: 768px) {
-      font-size: 1rem;
+    .hero {
+      padding: 3rem 0 2rem;
+    }
+
+    .project-preview-image--compact {
+      width: min(72%, 200px);
     }
   }
-
 </style>

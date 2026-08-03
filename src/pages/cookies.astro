@@ -1,0 +1,111 @@
+---
+import Layout from '@layouts/Layout.astro'
+import SiteHeader from '@components/SiteHeader.astro'
+import { siteConfig } from '@config/site'
+---
+
+<Layout
+  title={`Cookie Policy | ${siteConfig.name}`}
+  description="Cookie policy and consent settings for this site."
+  showFooterCta={false}
+  noindex={true}
+>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="legal-page">
+    <SiteHeader />
+
+    <main id="main-content" class="legal-main">
+      <header class="legal-header">
+        <h1>Cookie Policy</h1>
+        <p class="legal-intro">
+          This page explains what this site stores in the browser, how visitor consent is saved, and
+          how optional categories like analytics or marketing should be handled.
+        </p>
+      </header>
+
+      <article class="legal-content">
+        <section>
+          <h2>What This Site Stores</h2>
+          <p>
+            By default, the site stores two small browser-based preference records: the selected color
+            theme and cookie consent preferences.
+          </p>
+          <p>
+            These values are saved in <code>localStorage</code> and are used only to remember visitor
+            choices in the current browser.
+          </p>
+        </section>
+
+        <section>
+          <h2>Stored Keys</h2>
+          <ul>
+            <li><code>maria-theme</code> — light or dark mode preference</li>
+            <li><code>maria-cookie-consent</code> — consent version, timestamp, and optional categories</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>How to Change Preferences</h2>
+          <p>
+            Reopen the preferences modal from the footer <strong>Cookie Preferences</strong> button, or
+            <a
+              href="#"
+              onclick="window.dispatchEvent(new CustomEvent('maria:openCookieConsent')); return false;"
+            >
+              open cookie preferences now
+            </a>.
+          </p>
+        </section>
+      </article>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .legal-page {
+    width: min(calc(100% - 3rem), 62rem);
+    margin: 0 auto;
+    padding: 1.25rem 0 5rem;
+  }
+
+  .legal-main {
+    padding-top: 4rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    letter-spacing: -0.04em;
+  }
+
+  .legal-intro,
+  .legal-content p,
+  .legal-content li {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--muted-foreground);
+  }
+
+  .legal-intro {
+    margin-top: 1rem;
+  }
+
+  .legal-content {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .legal-content h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.35rem;
+    color: var(--foreground);
+  }
+
+  @media (max-width: 720px) {
+    .legal-page {
+      width: min(calc(100% - 1.5rem), 62rem);
+    }
+  }
+</style>
