@@ -33,56 +33,56 @@ const projectMeta: Record<
 > = {
   'project-10': {
     problem:
-      'Drivers were discovering account problems too late — hidden balances, missed violations, and fees that felt deliberately opaque.',
+      'E-ZPass users often learned about account problems too late. Balances, violations, and fees were hard to find in the existing experience.',
     solution:
-      'A mobile experience built for clarity: instant account health, proactive alerts, and payment incentives that reward action before penalties hit.',
+      'A mobile interface that shows account status clearly, sends timely alerts, and gives users direct paths to add funds or pay violations.',
     image: '/projects/ezpass-nj/good-standing.png',
     imageCompact: true,
   },
   'project-08': {
     problem:
-      'Lifelong learning programs across Rutgers ran on separate, siloed systems — making course discovery, admin workflows, and registration painfully fragmented for students and staff.',
+      'Rutgers lifelong learning programs used separate systems. Students and staff had difficulty finding courses, managing listings, and completing registration.',
     solution:
-      'Course Hub: one unified application that brings departments together with clearer navigation, smarter course management, and a smoother browse-to-checkout flow.',
+      'Course Hub, a single application that supports multiple departments with shared navigation, course management tools, and a consistent registration flow.',
     image: '/projects/coursehub/mbs-catalog.png',
   },
   'project-04': {
     problem:
-      'Enterprise content teams needed publishing power without sacrificing accessibility or editorial control.',
+      'Content teams needed a CMS that supported publishing, accessibility, and editorial control at scale.',
     solution:
-      'Scalable Drupal platforms with structured templates, WCAG-aligned components, and workflows editors can trust.',
+      'Drupal websites with structured templates, WCAG-aligned components, and workflows that editors can use with confidence.',
     image: '/projects/statewide.png',
   },
   'project-03': {
     problem:
-      'Most finance apps dump data on users without telling them what to do next.',
+      'Personal finance tools often present large amounts of data without clear next steps for the user.',
     solution:
-      'A React-powered dashboard that turns spending patterns into clear, actionable insights users can act on immediately.',
+      'A React dashboard that organizes spending data and presents it in a way that supports budgeting decisions.',
     image: '/projects/expensely-shot.png',
   },
   'project-09': {
     problem:
-      'A trusted local business had almost no digital footprint — and was losing leads to competitors who looked more credible online.',
+      'A local home inspection business had limited online presence and needed a site that would build trust with potential clients.',
     solution:
-      'A complete brand identity and client-ready website that builds trust from the first click and stays easy to maintain.',
+      'A brand identity and website that presents services clearly and can be maintained by the client.',
     image: '/projects/eclipseinspection/eclipseinspection-home.png',
   },
   'project-06': {
-    problem: "Tracking a quirky habit shouldn't feel like homework.",
+    problem: 'The project needed a simple way to log and review data over time.',
     solution:
-      'A playful, interactive tracker that makes logging fun and keeps users coming back.',
+      'A web application for tracking entries with a clear interface and persistent data storage.',
     image: '/projects/hotdog.png',
   },
   'project-02': {
     problem:
-      "Great stories were getting lost in static decks that couldn't show what the experience would actually feel like.",
+      'Static presentations did not show how an interactive experience would feel to users.',
     solution:
-      'An interactive Figma prototype that brings narrative design to life — ready for testing before a single line of code.',
+      'An interactive Figma prototype that demonstrates layout, flow, and interaction before development begins.',
     image: '/projects/dreamvision-figma.png',
   },
   'project-07': {
-    problem: 'An outdated Drupal theme made content hard to scan, update, and maintain.',
-    solution: 'Drupal 10 UI improvements with clearer hierarchy and reusable patterns.',
+    problem: 'An older Drupal theme made content difficult to read, update, and maintain.',
+    solution: 'Drupal 10 theme updates with clearer hierarchy and reusable interface patterns.',
     image: '/projects/admin-edit.png',
   },
 }
@@ -103,7 +103,7 @@ export async function getProjects(options: GetProjectsOptions = {}): Promise<Pro
 
   const projects = collection.map((project) => {
     const meta = projectMeta[project.id] ?? {
-      problem: 'Users faced friction in a complex workflow.',
+      problem: 'Users had difficulty completing a common task in the product.',
       solution: project.data.description,
       image: '/projects/project-image-1.png',
     }

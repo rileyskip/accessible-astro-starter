@@ -22,7 +22,7 @@ interface Props {
 const { project } = Astro.props
 const { Content } = await render(project)
 const meta = getProjectMeta(project.id)
-const problem = meta?.problem ?? 'Users faced friction in a complex workflow.'
+const problem = meta?.problem ?? 'Users had difficulty completing a common task in the product.'
 const solution = meta?.solution ?? project.data.description
 ---
 
@@ -68,7 +68,7 @@ const solution = meta?.solution ?? project.data.description
 
       <footer class="case-study-footer">
         <a class="pill-link" href="/work">View all work</a>
-        <a class="pill-link pill-link-secondary" href="/contact">Let's build something</a>
+        <a class="pill-link pill-link-secondary" href="/contact">Contact me</a>
       </footer>
     </main>
   </div>

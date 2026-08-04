@@ -28,7 +28,7 @@ export const siteConfig: SiteConfig = {
   name: 'Riley Skipper',
   title: 'Riley Skipper | UX-Focused Web Developer',
   description:
-    'UX-oriented web developer designing accessible digital products — from problem framing to polished, inclusive interfaces.',
+    'Web developer and UX designer who builds accessible digital products with clear structure and inclusive interfaces.',
   siteUrl: normalizedSiteUrl,
   email: 'ryskipperdev@gmail.com',
   locale: 'en-US',

@@ -1,7 +1,7 @@
 ---
 title: EZ Pass - NJ
 author: Riley Skipper
-description: A mobile UX concept that improves digital transparency for E-ZPass account management through clearer information architecture, alerting, and accessible design patterns.
+description: A mobile UX concept for E-ZPass account management that focuses on clear information structure, timely alerts, and accessible design.
 tags: ['UX Design', 'Mobile UI', 'Information Architecture', 'Accessibility', 'Figma']
 ---
 
@@ -9,23 +9,25 @@ import Lightbox from '@components/Lightbox.astro'
 
 ## Project Overview
 
-E-ZPass account management can feel opaque — balances, violations, and payment deadlines are easy to miss, and users often discover problems only after fees have already stacked up. This concept reframes the experience around **digital transparency**, surfacing the information people need before it becomes a financial obstacle.
+E-ZPass account management can be difficult to understand. Balances, violations, and payment deadlines are easy to miss. Users often learn about problems only after fees have increased.
+
+This concept focuses on digital transparency. It presents account information clearly and gives users time to act before problems become more costly.
 
 **Role:** UX/UI Design Concept
 
 ## The Problem
 
-Drivers lacked clear visibility into account health. Critical details like negative balances, threshold warnings, and new violations were buried behind confusing navigation, making it harder to act before penalties escalated. The result was friction, overdue fees, and preventable non-payment.
+Drivers did not have clear visibility into account status. Negative balances, threshold warnings, and violations were hard to find. This made it more difficult to respond before penalties increased.
 
 ## The Solution
 
-I redesigned the mobile experience to prioritize clarity, urgency, and timely action:
+The mobile interface prioritizes clear status, timely alerts, and direct actions:
 
-- **Information architecture** that puts account balance and violation notices at the top of the hierarchy
-- **Color-coded account alerting** so users can instantly distinguish good standing, at-risk balances, and active violations
-- **An honor-system payment model** that encourages on-time payments through discounted options when users pay within defined timeframes — reducing both overdue fees and non-payment
-- **Consistent, clear iconography** across navigation and quick actions
-- **WCAG-aligned color contrast** for text, alerts, and interactive elements
+- Account balance and violation notices appear at the top of the screen hierarchy.
+- Color-coded alerts help users distinguish good standing, at-risk balances, and active violations.
+- An honor-system payment model offers reduced fees when users pay within set timeframes.
+- Navigation and quick actions use consistent iconography.
+- Text, alerts, and interactive elements follow WCAG color contrast guidelines.
 
 ## Key Screens
 
@@ -35,7 +37,7 @@ Click any screen to view it larger.
   <Lightbox
     src="/projects/ezpass-nj/good-standing.png"
     alt="E-ZPass mobile dashboard showing a positive account balance and good standing status"
-    caption="Good standing — balance and status at a glance."
+    caption="Good standing view with balance and status shown at the top."
     width={400}
     height={800}
     class="ezpass-screen w-full rounded-lg shadow-md"
@@ -43,7 +45,7 @@ Click any screen to view it larger.
   <Lightbox
     src="/projects/ezpass-nj/at-risk.png"
     alt="E-ZPass mobile dashboard showing a negative account balance with an at-risk alert"
-    caption="At risk — high-visibility alert before fees compound."
+    caption="At-risk view with a visible alert when the balance is negative."
     width={400}
     height={800}
     class="ezpass-screen w-full rounded-lg shadow-md"
@@ -51,7 +53,7 @@ Click any screen to view it larger.
   <Lightbox
     src="/projects/ezpass-nj/threshold.png"
     alt="E-ZPass account dashboard with threshold alert indicator"
-    caption="Threshold alerts surface before balances go negative."
+    caption="Threshold alert shown before the balance goes negative."
     width={400}
     height={800}
     class="ezpass-screen w-full rounded-lg shadow-md"
@@ -59,7 +61,7 @@ Click any screen to view it larger.
   <Lightbox
     src="/projects/ezpass-nj/violations.png"
     alt="E-ZPass violations screen showing toll violations with an honor-system discount for early payment"
-    caption="Violations with honor-system payment incentives."
+    caption="Violations screen with honor-system payment options."
     width={400}
     height={800}
     class="ezpass-screen w-full rounded-lg shadow-md"
@@ -67,7 +69,7 @@ Click any screen to view it larger.
   <Lightbox
     src="/projects/ezpass-nj/account-history.png"
     alt="E-ZPass account history screen with a scannable transaction table"
-    caption="Scannable transaction history."
+    caption="Transaction history in a scannable table format."
     width={400}
     height={800}
     class="ezpass-screen w-full rounded-lg shadow-md"
@@ -75,7 +77,7 @@ Click any screen to view it larger.
   <Lightbox
     src="/projects/ezpass-nj/notification.png"
     alt="E-ZPass notifications screen with a threshold amount reached alert"
-    caption="Consolidated notifications center."
+    caption="Notifications collected in one view."
     width={400}
     height={800}
     class="ezpass-screen w-full rounded-lg shadow-md"
@@ -84,11 +86,11 @@ Click any screen to view it larger.
 
 ## Accessibility Considerations
 
-- High-contrast text and alert colors tested against WCAG standards
-- Large, legible balance typography for critical account data
-- Consistent iconography with text labels for primary actions
-- Clear visual hierarchy so alerts, balances, and violations are distinguishable at a glance
+- Text and alert colors were tested against WCAG standards.
+- Balance amounts use large, readable type.
+- Primary actions include text labels in addition to icons.
+- Alerts, balances, and violations use distinct visual hierarchy.
 
 ## Outcome
 
-This concept demonstrates how clearer information architecture and proactive alerting can turn an opaque toll account into a transparent, actionable experience — helping users resolve issues earlier, avoid unnecessary fees, and stay in control of their account.
+This concept shows how clearer information structure and timely alerts can make toll account management easier to understand. Users can respond to problems earlier, reduce unnecessary fees, and stay informed about account status.
