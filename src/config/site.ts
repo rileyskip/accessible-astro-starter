@@ -61,8 +61,5 @@ export const siteConfig: SiteConfig = {
     { href: '/terms', label: 'Terms' },
     { href: '/accessibility-statement', label: 'Accessibility' },
   ],
-  socialLinks: [
-    { href: 'https://github.com/rileyskipper', label: 'GitHub' },
-    { href: 'https://linkedin.com/in/ryskipper', label: 'LinkedIn' },
-  ],
+  socialLinks: [{ href: 'https://linkedin.com/in/ryskipper', label: 'LinkedIn' }],
 }

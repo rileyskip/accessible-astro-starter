@@ -19,7 +19,7 @@ import { siteConfig } from '@config/site'
         <h1 class="display-title">Contact</h1>
         <p class="hero-text">
           If you have a project, workflow question, or accessibility need, please reach out by
-          email. I am also available on GitHub and LinkedIn.
+          email or LinkedIn.
         </p>
       </section>
 
@@ -27,23 +27,20 @@ import { siteConfig } from '@config/site'
         <section class="contact-panel" aria-labelledby="reach-out-heading">
           <h2 id="reach-out-heading">Reach out directly</h2>
           <p class="panel-text">
-            Email is the fastest way to start a conversation. I'm also on GitHub and LinkedIn.
+            Email is the fastest way to start a conversation. You can also connect on LinkedIn.
           </p>
 
-          <ul class="contact-links">
-            <li>
-              <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-            </li>
-            {
-              siteConfig.socialLinks.map((link) => (
-                <li>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer">
-                    {link.label}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
+          <div class="contact-links">
+            <a class="pill-link" href={`mailto:${siteConfig.email}`}>Email me</a>
+            <a
+              class="pill-link pill-link-secondary"
+              href={siteConfig.socialLinks[0].href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+          </div>
         </section>
 
         <section class="contact-panel" aria-labelledby="message-heading">
@@ -150,22 +147,49 @@ import { siteConfig } from '@config/site'
 
   .contact-links {
     margin: 1.5rem 0 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.75rem;
   }
 
-  .contact-links a {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--accent-link);
+  .pill-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 48px;
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--brand-blue);
+    border-radius: 999px;
+    background: var(--brand-blue);
+    color: #fff7ef;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+      transform 120ms ease,
+      background-color 120ms ease;
+  }
+
+  .pill-link-secondary {
+    background: transparent;
+    color: var(--foreground);
+    border-color: var(--control-border);
+  }
+
+  .pill-link:hover,
+  .pill-link:focus-visible {
+    transform: translateY(-1px);
+    background: color-mix(in srgb, var(--brand-blue) 88%, #000 12%);
+    color: #fff7ef;
     text-decoration: none;
   }
 
-  .contact-links a:hover,
-  .contact-links a:focus-visible {
-    text-decoration: underline;
+  .pill-link-secondary:hover,
+  .pill-link-secondary:focus-visible {
+    background: var(--muted);
+    border-color: var(--border-strong);
+    color: var(--foreground);
   }
 
   .contact-form {

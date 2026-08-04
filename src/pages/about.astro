@@ -22,14 +22,17 @@ import { contact, toolGroups, experience, education } from '@data/resume'
           I build and design with Drupal, React, and design systems. I focus on accessibility,
           information architecture, and interfaces that work well for everyday users.
         </p>
-        <ul class="contact-list" aria-label="Contact information">
-          <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
-          <li>
-            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<i class="fa-brands fa-linkedin"></i></a>
-          </li>
-        </ul>
         <div class="hero-actions">
-          <a class="pill-link" href="/work">View my work</a>
+          <a class="pill-link" href={`mailto:${contact.email}`}>Email me</a>
+          <a
+            class="pill-link pill-link-secondary"
+            href={contact.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a class="pill-link pill-link-secondary" href="/work">View my work</a>
           <a class="pill-link pill-link-secondary" href="/contact">Get in touch</a>
         </div>
       </section>
