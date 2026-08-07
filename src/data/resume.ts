@@ -64,10 +64,11 @@ export const experience: ExperienceEntry[] = [
     company: 'Rutgers University',
     period: 'May 2022 – Current',
     bullets: [
-      'Developed and maintained Drupal websites through custom theming and template development.',
-      'Spearheaded accessibility initiatives through monthly reporting and resolution, including implementing new accessible components, establishing procedures, coaching, and documenting remediation efforts.',
-      'Participated in the full web development lifecycle, including development, QA testing, and ongoing site maintenance.',
-      'UX designer and co-developer of a Next.js student-facing platform and reusable design system components.',
+      'Building dynamic Drupal templates and custom themes across websites for enhanced content publishing.',
+      'Spearheading WCAG 2.1 compliance initiatives through UI component updates, reporting, and documentation.',
+      'Interface designer and Co-developer of a Next.js application using React and Tailwind CSS.',
+      'Routine bug resolutions through systematic QA testing and local environment debugging with Docker/Lando.',
+      'Collaborating with cross-functional teams using GitLab for version control.',
     ],
   },
   {
